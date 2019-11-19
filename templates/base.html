@@ -1,13 +1,20 @@
-<!-- {% load static %} -->
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-	<title>{% block head %}Главная{% endblock %} - Foxy</title>
+	<title>FoxyShop</title>
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
 </head>
 <body>
+	<header>
+		<h1>FoxyShop</h1>
+	</header>
+	<nav>
+		<a href="{% url 'index' %}">Главная</a>
+		<a href="{% url 'shop:products' %}">Каталог товаров</a>
+	</nav>
 	{% block content %}
 	{% endblock content %}
 </body>
