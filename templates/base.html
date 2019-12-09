@@ -15,6 +15,11 @@
 		<a href="{% url 'index' %}">Главная</a>
 		<a href="{% url 'shop:products' %}">Каталог товаров</a>
 	</nav>
+	<nav>
+		{% for brand in brands %}
+		<a href="{% url 'shop:by_brand' brand.pk %}">{{ brand.name }}</a>
+		{% endfor %}
+	</nav>
 	{% block content %}
 	{% endblock content %}
 </body>

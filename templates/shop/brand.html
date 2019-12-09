@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for brand in brands %}
+<div>
+	<h2>{{ brand.name }}</h2>
+	<h1>{{ brand.pk }}</h1>
+</div>
+{% endfor %}
+{% endblock %}
