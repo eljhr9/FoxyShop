@@ -15,7 +15,7 @@ class Product(models.Model):
 	brand = models.ForeignKey('Brand', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Производитель')
 
 	class Meta:
-		verbose_name_plural = 'Товар' 
+		verbose_name_plural = 'Товар'
 		verbose_name = 'Товар'
 		ordering = ['price']
 

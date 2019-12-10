@@ -82,14 +82,14 @@ WSGI_APPLICATION = 'django_shop.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS':{
-            'read_default_file': '/etc/mysql/my.cnf'
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'my_shop',
+        'USER': 'illya',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
-
-
 
 
 # Password validation
