@@ -14,10 +14,11 @@
 	<nav>
 		<a href="{% url 'index' %}">Главная</a>
 		<a href="{% url 'shop:products' %}">Каталог товаров</a>
+		<a href="{% url 'index' %}admin">Админка</a>
 	</nav>
 	<nav>
 		{% for brand in brands %}
-		<a href="{% url 'shop:by_brand' brand.pk %}">{{ brand.name }}</a>
+		<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
 		{% endfor %}
 	</nav>
 	{% block content %}

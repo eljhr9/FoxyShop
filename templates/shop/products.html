@@ -4,9 +4,15 @@
 {% for product in products %}
 <div>
 	<h2>{{ product.title }}</h2>
+	<a href="{% url 'shop:product' product.pk %}">{{ product.title }}</a>
 	<p>{{ product.text }}</p>
 	<h3>{{ product.price }}</h3>
-	<a href="{% url 'shop:by_brand' product.brand.pk %}">{{ product.brand }}</a>
+	{% if product.brand %}
+	  <a href="{% url 'shop:by_brand' product.brand.pk %}">{{ product.brand }}</a>
+	{% endif %}
+	<form action="{% url 'shop:product' product.pk %}">
+		<button>Подробнее...</button>
+	</form>
 </div>
 {% endfor %}
 {% endblock content %}

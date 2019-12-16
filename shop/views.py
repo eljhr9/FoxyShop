@@ -26,3 +26,9 @@ def by_brand(request, brand_id):
 	current_brand = Brand.objects.get(pk=brand_id)
 	context = {'products': products, 'brands': brands, 'current_brand': current_brand}
 	return render(request, 'shop/by_brand.html', context)
+
+def product(request, product_id):
+	product = Product.objects.get(pk=product_id)
+	brands = Brand.objects.all()
+	context = {'product': product, 'brands': brands}
+	return render(request, 'shop/product.html', context)
