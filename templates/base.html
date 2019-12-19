@@ -5,23 +5,35 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<title>FoxyShop</title>
+	<link rel="stylesheet" href="{% static 'shop/style.css' %}">
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
 </head>
 <body>
+
 	<header>
-		<h1>FoxyShop</h1>
+		<div class="header">
+			<div class="logo">
+				<div class="logo_text">
+					<h1><a href="{% url 'index' %}">FoxyShop</a></h1>
+				</div>
+			</div>
+
+			<nav>
+				<a href="{% url 'shop:products' %}">Каталог товаров</a>
+				<a href="{% url 'index' %}admin">Админка</a>
+			</nav>
+		</div>
 	</header>
-	<nav>
-		<a href="{% url 'index' %}">Главная</a>
-		<a href="{% url 'shop:products' %}">Каталог товаров</a>
-		<a href="{% url 'index' %}admin">Админка</a>
-	</nav>
+
 	<nav>
 		{% for brand in brands %}
 		<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
 		{% endfor %}
 	</nav>
-	{% block content %}
-	{% endblock content %}
+
+	<section>
+		{% block content %}
+		{% endblock content %}
+	</section>
 </body>
 </html>

@@ -4,6 +4,10 @@
 <h1>{{ product.title }}</h1>
 <h3>{{ product.text }}</h3>
 <h2>{{ product.price }}</h2>
-<p>{{ product.availability}}</p>
+{% if product.availability %}
+  <p>Есть в наличии</p>
+{% else %}
+  <p>Нет в наличии</p>
+{% endif %}
 <a href="{% url 'shop:by_brand' product.brand.pk %}">{{ product.brand }}</a>
 {% endblock content %}

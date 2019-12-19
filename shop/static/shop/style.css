@@ -1,0 +1,33 @@
+header {
+  /* font-size: 50pt; */
+  background-color: darkorange;
+  height: 170px;
+  margin-left: 0px;
+	margin-right: 0px;
+	min-width: 900px;
+}
+
+.main, .logo, .menubar, .site_content, .footer {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.logo {
+  padding-left: 100px;
+	padding-bottom: 45px;
+}
+
+.logo_text h1 {
+  font-size: 50pt;
+  margin: auto;
+}
+
+.logo_text h1, .logo_text h1 a {
+	padding: 22px 0 0 0;
+  color: white;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+  text-shadow: black 1px 1px 1px, black -1px -1px 1px,
+                 black -1px 1px 1px, black 1px -1px 1px,
+                 black 0 0 30px;
+}

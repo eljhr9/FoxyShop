@@ -30,3 +30,6 @@ class Brand(models.Model):
 		verbose_name_plural = 'Производители'
 		verbose_name = 'Производитель'
 		ordering = ['name']
+
+class Comment(models.Model):
+	"""Отзывы пользователей"""
