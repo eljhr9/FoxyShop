@@ -1,9 +1,12 @@
 header {
   /* font-size: 50pt; */
   background-color: darkorange;
+  /* фоновый цвет */
   height: 170px;
+  /* высота */
   margin-left: 0px;
 	margin-right: 0px;
+  /* внешние отступы */
 	min-width: 900px;
 }
 
@@ -15,19 +18,26 @@ header {
 .logo {
   padding-left: 100px;
 	padding-bottom: 45px;
+  /* внутренние отступы */
 }
 
 .logo_text h1 {
   font-size: 50pt;
+  /* размер шрифта */
   margin: auto;
+  /* внешние отступы */
 }
 
 .logo_text h1, .logo_text h1 a {
 	padding: 22px 0 0 0;
+  /* внутринние отступы */
   color: white;
 	letter-spacing: 0.02em;
+  /* отступы между буквами */
 	text-decoration: none;
+  /* нижнее подчеркивание */
   text-shadow: black 1px 1px 1px, black -1px -1px 1px,
                  black -1px 1px 1px, black 1px -1px 1px,
                  black 0 0 30px;
+  /* тени вокруг текста */
 }
