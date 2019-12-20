@@ -18,10 +18,17 @@
 				</div>
 			</div>
 
-			<nav>
-				<a href="{% url 'shop:products' %}">Каталог товаров</a>
-				<a href="{% url 'index' %}admin">Админка</a>
-			</nav>
+			<div class="menubar">
+
+				<ul class="menu">
+					<li class="selected">
+						<a href="{% url 'shop:products' %}">Каталог товаров</a>
+					</li>
+					<li><a href="{% url 'index' %}admin">Админка</a></li>
+				</ul>
+
+			</div>
+
 		</div>
 	</header>
 

@@ -1,13 +1,18 @@
+* {
+  /* Применяется ко всему */
+  margin: 0;
+  padding: 0;
+}
+
 header {
   /* font-size: 50pt; */
-  background-color: darkorange;
-  /* фоновый цвет */
   height: 170px;
   /* высота */
   margin-left: 0px;
 	margin-right: 0px;
   /* внешние отступы */
-	min-width: 900px;
+	min-width: 100px;
+  background-color: #84A0B8;
 }
 
 .main, .logo, .menubar, .site_content, .footer {
@@ -16,8 +21,9 @@ header {
 }
 
 .logo {
-  padding-left: 100px;
-	padding-bottom: 45px;
+  padding-left: 20px;
+	/* padding-bottom: 45px; */
+  padding-top: 20px;
   /* внутренние отступы */
 }
 
@@ -29,8 +35,10 @@ header {
 }
 
 .logo_text h1, .logo_text h1 a {
-	padding: 22px 0 0 0;
+	padding: 5px 30px 10px 30px;
   /* внутринние отступы */
+  border-radius: 50px 100px 50px 100px;
+  /* закругление углов */
   color: white;
 	letter-spacing: 0.02em;
   /* отступы между буквами */
@@ -40,4 +48,49 @@ header {
                  black -1px 1px 1px, black 1px -1px 1px,
                  black 0 0 30px;
   /* тени вокруг текста */
+}
+
+.logo_text h1 a {
+  /* Доработать, сделалть круглым и оранжевым */
+  background-color: darkorange;
+  /* фоновый цвет */
+  border: 3px solid white;
+}
+
+.menubar {
+	width: 100px;
+	height: 46px;
+}
+
+ul.menu {
+	float: right;
+	/* прижимает элемент к правому краю */
+}
+
+ul.menu li {
+	float: left;
+	padding: 0 0 0 9px;
+	list-style: none;
+	/* не хотим видеть точки перед каждым элементом */
+	margin: 1px 2px 0 0;
+}
+
+ul.menu li a {
+	font: normal 100% 'trebushet ms', sans-serif;
+	display: block;
+	/* неблочный элемент превращает в блочный */
+	height: 20px;
+	padding: 6px 35px 5px 28px;
+	color: #fff;
+	text-decoration: none;
+}
+
+ul.menu li.selected a {
+	color: #aeb002;
+}
+
+ul.menu li a:hover {
+	/* при наведении на ссылку она меняет цвет */
+	color: #e4ec04;
+
 }
