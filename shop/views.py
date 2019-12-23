@@ -5,7 +5,8 @@ from .models import Product, Brand
 
 def index(request):
 	'''домашняя страница магазина'''
-	return render(request, 'shop/index.html')
+	brands = Brand.objects.all()
+	return render(request, 'shop/index.html', {'brands': brands})
 
 
 def products(request):

@@ -4,14 +4,14 @@
   padding: 0;
 }
 
-header {
+.header {
   /* font-size: 50pt; */
   height: 170px;
   /* высота */
   margin-left: 0px;
 	margin-right: 0px;
   /* внешние отступы */
-	min-width: 100px;
+	min-width: 900px;
   background-color: #84A0B8;
 }
 
@@ -30,8 +30,6 @@ header {
 .logo_text h1 {
   font-size: 50pt;
   /* размер шрифта */
-  margin: auto;
-  /* внешние отступы */
 }
 
 .logo_text h1, .logo_text h1 a {
@@ -51,19 +49,20 @@ header {
 }
 
 .logo_text h1 a {
-  /* Доработать, сделалть круглым и оранжевым */
   background-color: darkorange;
   /* фоновый цвет */
   border: 3px solid white;
 }
 
 .menubar {
-	width: 100px;
+	width: 900px;
 	height: 46px;
+  margin-right: 20px;
 }
 
 ul.menu {
 	float: right;
+  padding-top: 15px;
 	/* прижимает элемент к правому краю */
 }
 
@@ -81,16 +80,104 @@ ul.menu li a {
 	/* неблочный элемент превращает в блочный */
 	height: 20px;
 	padding: 6px 35px 5px 28px;
-	color: #fff;
+	color: white;
+  border: 2px solid #A65B00;
 	text-decoration: none;
+  text-shadow: black 1px 1px 1px, black -1px -1px 1px,
+               black -1px 1px 1px, black 1px -1px 1px;
+
+  background-color: #F9F0DA;
+  border-radius: 100px;
 }
 
-ul.menu li.selected a {
+/* ul.menu li.selected a {
 	color: #aeb002;
-}
+} */
 
 ul.menu li a:hover {
 	/* при наведении на ссылку она меняет цвет */
-	color: #e4ec04;
+	/* color: orange; */
+  background-color: darkorange;
+  text-shadow: black 1px 1px 1px, black -1px -1px 1px,
+               black -1px 1px 1px, black 1px -1px 1px,
+               black 0 0 15px;
+  border: 2px solid white;
+}
 
+.d7 {background: #84A0B8;}
+
+.d7:after {content:""; clear:both; display:table}
+
+.d7 form {
+  width: auto;
+  float: right;
+}
+
+.d7 input {
+  width: 250px;
+  height: 31px;
+  padding-left: 15px;
+  border-radius: 50px;
+  border: 2px solid #A65B00;
+  background: #F9F0DA;
+  outline: none;
+  position: relative;
+  transition: .3s linear;
+}
+
+.d7 input::placeholder {
+  color: black;
+}
+
+.d7 input:hover {
+  background-color: darkorange;
+  color: white;
+  border: 2px solid white;
+}
+
+
+
+.d7 input:focus {
+  width: 300px;
+  font-size: 0.9em;
+}
+
+.d7 button {
+  width: 31px;
+  height: 31px;
+	/* display: block; */
+  border: 2px solid #A65B00;
+  background: #F9F0DA;
+  border-radius: 15px;
+  position: static;
+  cursor: pointer;
+  /* right: 340px; */
+}
+
+.d7 button:hover {
+  background-color: darkorange;
+  color: white;
+  border: 2px solid white;
+}
+
+.d7 button:before{
+  /* display: block; */
+  content: "\f002";
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  color: #A65B00;
+  font-weight: 900;
+}
+
+.footer {
+	width: 100%;
+	height: 50px;
+	padding: 28px 0 5px 0;
+	text-align: center;
+	/* выравние по центру */
+	background-color: #84A0B8;
+	color: black;
+	margin-left: 0px;
+	margin-right: 0px;
+  margin-bottom: 0px;
+	min-width: 900px;
 }

@@ -7,10 +7,13 @@
 	<title>FoxyShop</title>
 	<link rel="stylesheet" href="{% static 'shop/style.css' %}">
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+	crossorigin="anonymous">
 </head>
 <body>
 
-	<header>
+	<div class="main">
 		<div class="header">
 			<div class="logo">
 				<div class="logo_text">
@@ -21,8 +24,17 @@
 			<div class="menubar">
 
 				<ul class="menu">
-					<li class="selected">
+					<li><a href="{% url 'index' %}">Главная</a></li>
+					<li>
 						<a href="{% url 'shop:products' %}">Каталог товаров</a>
+					</li>
+					<li class="search">
+						<div class="d7">
+							<form>
+							  <input type="text" placeholder="Искать здесь...">
+								<button type="submit"></button>
+							</form>
+						</div>
 					</li>
 					<li><a href="{% url 'index' %}admin">Админка</a></li>
 				</ul>
@@ -30,17 +42,29 @@
 			</div>
 
 		</div>
-	</header>
 
-	<nav>
-		{% for brand in brands %}
-		<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
-		{% endfor %}
-	</nav>
+		<nav>
+			{% for brand in brands %}
+			<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
+			{% endfor %}
+		</nav>
 
-	<section>
-		{% block content %}
-		{% endblock content %}
-	</section>
+		<section>
+			{% block content %}
+			{% endblock content %}
+		</section>
+
+	<div class="footer">
+		<p>
+			<a href="{% url 'index' %}">Главная</a> |
+			<a href="{% url 'shop:products' %}">Каталог товаров</a> |
+			<a href="#">И тд...</a>
+		</p>
+		<p>&copy; FoxyShop - 12.2019</p>
+	</div>
+
+	</div>
+
+
 </body>
 </html>
