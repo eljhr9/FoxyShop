@@ -16,52 +16,77 @@
 	<div class="main">
 		<div class="header">
 			<div class="logo">
-				<div class="logo_text">
-					<h1><a href="{% url 'index' %}">FoxyShop</a></h1>
+				<div class="logo_upper">
+					<div class="container">
+						<div class="logo_text">
+							<h1><a href="{% url 'index' %}">FoxyShop</a></h1>
+						</div>
+						<div class="wrap">
+						   <div class="search">
+						      <input type="text" class="searchTerm" placeholder="Поиск по каталогу...">
+						      <button type="submit" class="searchButton">
+						        <i class="fa fa-search"></i>
+						     	</button>
+						   </div>
+						</div>
+						<div class="contacts">
+							<div class="phone_number">
+								<a href="tel:+38(099)98-52-672">+38 (099) 98-52-672</a>
+							</div>
+							<div class="request_call">
+								<a href="#">Заказать звонок</a>
+							</div>
+							<div class="more_contacts">
+								<h2>&hellip;</h2>
+							</div>
+						</div>
+						<div class="user_field">
+							<div class="user_choise">
+								<div class="register">
+									<a href="#">Register</a>
+								</div>
+								<div class="login">
+									<a href="#">Login</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
 			<div class="menubar">
-
 				<ul class="menu">
 					<li><a href="{% url 'index' %}">Главная</a></li>
 					<li>
 						<a href="{% url 'shop:products' %}">Каталог товаров</a>
 					</li>
-					<li class="search">
-						<div class="d7">
-							<form>
-							  <input type="text" placeholder="Искать здесь...">
-								<button type="submit"></button>
-							</form>
-						</div>
 					</li>
 					<li><a href="{% url 'index' %}admin">Админка</a></li>
 				</ul>
-
+				<nav>
+					<h4 class="brand">Производитель</h4>
+					{% for brand in brands %}
+					<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
+					{% endfor %}
+				</nav>
 			</div>
 
 		</div>
 
-		<nav>
-			{% for brand in brands %}
-			<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
-			{% endfor %}
-		</nav>
 
 		<section>
 			{% block content %}
 			{% endblock content %}
 		</section>
 
-	<div class="footer">
-		<p>
-			<a href="{% url 'index' %}">Главная</a> |
-			<a href="{% url 'shop:products' %}">Каталог товаров</a> |
-			<a href="#">И тд...</a>
-		</p>
-		<p>&copy; FoxyShop - 12.2019</p>
-	</div>
+		<div class="footer">
+			<p>
+				<a href="{% url 'index' %}">Главная</a> |
+				<a href="{% url 'shop:products' %}">Каталог товаров</a> |
+				<a href="#">И тд...</a>
+			</p>
+			<p>&copy; FoxyShop - 12.2019</p>
+		</div>
 
 	</div>
 

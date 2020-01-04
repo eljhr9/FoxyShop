@@ -4,15 +4,17 @@
   padding: 0;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  /* background: #f2f2f2; */
+  font-family: 'Open Sans', sans-serif;
+  max-width: 1120px;
+  margin: auto;
+}
+
 .header {
-  /* font-size: 50pt; */
-  height: 170px;
-  /* высота */
-  margin-left: 0px;
-	margin-right: 0px;
-  /* внешние отступы */
-	min-width: 900px;
-  background-color: #84A0B8;
+  height: 143.5px;
 }
 
 .main, .logo, .menubar, .site_content, .footer {
@@ -21,19 +23,39 @@
 }
 
 .logo {
-  padding-left: 20px;
-	/* padding-bottom: 45px; */
-  padding-top: 20px;
-  /* внутренние отступы */
+  /* float: left; */
+  display: block;
+  height: 95.5px;
+  width: inherit;
+  background-color: white;
+}
+
+.logo_upper {
+  height: 55.5px;
+  padding: 20px 0px;
+  /* margin-top: 15px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  padding-bottom: 10px;
+  padding-top: 0;
+  height: 80px;
+  display: inline-block;
+  min-width: 900px;
+  width: inherit; */
+}
+
+.logo_text {
+  display: inline-block;
 }
 
 .logo_text h1 {
-  font-size: 50pt;
+  display: inline-block;
+  /* font-size: 30pt; */
   /* размер шрифта */
 }
 
 .logo_text h1, .logo_text h1 a {
-	padding: 5px 30px 10px 30px;
+  /* padding: 8px 15px 8px 15px; */
   /* внутринние отступы */
   border-radius: 50px 100px 50px 100px;
   /* закругление углов */
@@ -45,139 +67,74 @@
   text-shadow: black 1px 1px 1px, black -1px -1px 1px,
                  black -1px 1px 1px, black 1px -1px 1px,
                  black 0 0 30px;
+  /* margin-top: 0; */
   /* тени вокруг текста */
 }
 
 .logo_text h1 a {
   background-color: darkorange;
   /* фоновый цвет */
-  border: 3px solid white;
+  border: 2px solid black;
 }
 
-.menubar {
-	width: 900px;
-	height: 46px;
-  margin-right: 20px;
-}
 
-ul.menu {
-	float: right;
-  padding-top: 15px;
-	/* прижимает элемент к правому краю */
-}
-
-ul.menu li {
-	float: left;
-	padding: 0 0 0 9px;
-	list-style: none;
-	/* не хотим видеть точки перед каждым элементом */
-	margin: 1px 2px 0 0;
-}
-
-ul.menu li a {
-	font: normal 100% 'trebushet ms', sans-serif;
-	display: block;
-	/* неблочный элемент превращает в блочный */
-	height: 20px;
-	padding: 6px 35px 5px 28px;
-	color: white;
-  border: 2px solid #A65B00;
-	text-decoration: none;
-  text-shadow: black 1px 1px 1px, black -1px -1px 1px,
-               black -1px 1px 1px, black 1px -1px 1px;
-
-  background-color: #F9F0DA;
-  border-radius: 100px;
-}
-
-/* ul.menu li.selected a {
-	color: #aeb002;
-} */
-
-ul.menu li a:hover {
-	/* при наведении на ссылку она меняет цвет */
-	/* color: orange; */
-  background-color: darkorange;
-  text-shadow: black 1px 1px 1px, black -1px -1px 1px,
-               black -1px 1px 1px, black 1px -1px 1px,
-               black 0 0 15px;
-  border: 2px solid white;
-}
-
-.d7 {background: #84A0B8;}
-
-.d7:after {content:""; clear:both; display:table}
-
-.d7 form {
-  width: auto;
-  float: right;
-}
-
-.d7 input {
-  width: 250px;
-  height: 31px;
-  padding-left: 15px;
-  border-radius: 50px;
-  border: 2px solid #A65B00;
-  background: #F9F0DA;
-  outline: none;
+.search {
   position: relative;
-  transition: .3s linear;
+  display: flex;
+  float: right;
+  /* padding-top: 10px; */
 }
 
-.d7 input::placeholder {
-  color: black;
+.searchTerm {
+  /* padding-top: 100px; */
+  font-size: 14px;
+  border: 1px solid #eee;
+  border-right: none;
+  /* padding: 5px; */
+  height: 30px;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  color: #666;
 }
 
-.d7 input:hover {
-  background-color: darkorange;
-  color: white;
-  border: 2px solid white;
+.searchTerm:focus{
+  color: #00B4CC;
 }
 
-
-
-.d7 input:focus {
-  width: 300px;
-  font-size: 0.9em;
-}
-
-.d7 button {
-  width: 31px;
-  height: 31px;
-	/* display: block; */
-  border: 2px solid #A65B00;
-  background: #F9F0DA;
-  border-radius: 15px;
-  position: static;
+.searchButton {
+  /* font: arial; */
+  width: 40px;
+  height: 36px;
+  border: 1px solid #eee;
+  border-left: none;
+  background-color: white;
+  text-align: center;
+  color: #0bb648;
+  border-radius: 0 20px 20px 0;
   cursor: pointer;
-  /* right: 340px; */
+  font-size: 20px;
 }
 
-.d7 button:hover {
-  background-color: darkorange;
-  color: white;
-  border: 2px solid white;
+
+.wrap {
+  display: inline-block;
+  /* padding: 5px; */
+  /* position: absolute; */
 }
 
-.d7 button:before{
-  /* display: block; */
-  content: "\f002";
-  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
-  color: #A65B00;
-  font-weight: 900;
+.contacts {
+  display: inline-block;
 }
 
-.footer {
-	width: 100%;
-	height: 50px;
-	padding: 28px 0 5px 0;
-	text-align: center;
-	/* выравние по центру */
-	background-color: #84A0B8;
-	color: black;
-	margin-left: 0px;
-	margin-right: 0px;
-  margin-bottom: 0px;
-	min-width: 900px;
+.user_field {
+  display: inline-block;
 }
+/*Resize the wrap to see the search bar change!*/
+/* .wrap{
+  width: 30%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
