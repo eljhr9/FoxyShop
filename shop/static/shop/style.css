@@ -33,6 +33,7 @@ body{
 .logo_upper {
   height: 55.5px;
   padding: 20px 0px;
+  vertical-align: middle;
   /* margin-top: 15px;
   margin-bottom: 20px;
   margin-left: 50px;
@@ -50,6 +51,7 @@ body{
 
 .logo_text h1 {
   display: inline-block;
+
   /* font-size: 30pt; */
   /* размер шрифта */
 }
