@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Shrewdy';
+    src: url('Shrewdy.eot');
+    src: local('Shrewdy'),
+        url('Shrewdy.eot?#iefix') format('embedded-opentype'),
+        url('Shrewdy.woff2') format('woff2'),
+        url('Shrewdy.woff') format('woff'),
+        url('Shrewdy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

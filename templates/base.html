@@ -30,23 +30,34 @@
 						   </div>
 						</div>
 						<div class="contacts">
-							<div class="phone_number">
-								<a href="tel:+38(099)98-52-672">+38 (099) 98-52-672</a>
+							<div class="contacts_top">
+
+								<div class="phone_number">
+									<a href="tel:+38(099)98-52-672">+38 (099) 985-26-72</a>
+								</div>
+
 							</div>
-							<div class="request_call">
-								<a href="#">Заказать звонок</a>
-							</div>
-							<div class="more_contacts">
-								<h2>&hellip;</h2>
+							<div class="contacts_bottom">
+
+								<div class="request_call">
+									<a href="#">Заказать звонок</a>
+								</div>
+								<div class="more_contacts">
+									<!-- <h2>&hellip;</h2> -->
+									<h2><a href="#">...</a></h2>
+								</div>
+
 							</div>
 						</div>
 						<div class="user_field">
 							<div class="user_choise">
-								<div class="register">
-									<a href="#">Register</a>
-								</div>
-								<div class="login">
-									<a href="#">Login</a>
+								<div class="user_conteiner">
+									<div class="register">
+										<a href="#">Register</a>
+									</div>
+									<div class="login">
+										<a href="#">Login</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -55,20 +66,26 @@
 			</div>
 
 			<div class="menubar">
-				<ul class="menu">
-					<li><a href="{% url 'index' %}">Главная</a></li>
-					<li>
-						<a href="{% url 'shop:products' %}">Каталог товаров</a>
-					</li>
-					</li>
-					<li><a href="{% url 'index' %}admin">Админка</a></li>
-				</ul>
-				<nav>
-					<h4 class="brand">Производитель</h4>
-					{% for brand in brands %}
-					<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
-					{% endfor %}
-				</nav>
+				<div class="navbar">
+
+					<nav>
+						<h4 class="brand">Производитель</h4>
+						{% for brand in brands %}
+						<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
+						{% endfor %}
+					</nav>
+
+					<ul class="menu">
+						<li><a href="{% url 'index' %}">Главная</a></li>
+						<li>
+							<a href="{% url 'shop:products' %}">Каталог товаров</a>
+						</li>
+						</li>
+						<li><a href="{% url 'index' %}admin">Админка</a></li>
+					</ul>
+
+				</div>
+
 			</div>
 
 		</div>

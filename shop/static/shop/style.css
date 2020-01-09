@@ -1,25 +1,38 @@
+@import url("fonts/montserrat/stylesheet.css");
+@import url("fonts/shrewdy/stylesheet.css");
+
 * {
   /* Применяется ко всему */
   margin: 0;
   padding: 0;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
+
+
 
 body{
-  /* background: #f2f2f2; */
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  color: #666;
   max-width: 1120px;
   margin: auto;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
 }
 
 .header {
   height: 143.5px;
 }
 
-.main, .logo, .menubar, .site_content, .footer {
-	margin-left: auto;
-	margin-right: auto;
+.main, .logo, .site_content, .footer {
+  margin: auto;
+  margin-right: -10px;
+  margin-left: -10px;
 }
 
 .logo {
@@ -28,109 +41,251 @@ body{
   height: 95.5px;
   width: inherit;
   background-color: white;
+  text-align: left;
 }
 
 .logo_upper {
   height: 55.5px;
   padding: 20px 0px;
-  vertical-align: middle;
-  /* margin-top: 15px;
-  margin-bottom: 20px;
-  margin-left: 50px;
-  padding-bottom: 10px;
-  padding-top: 0;
-  height: 80px;
-  display: inline-block;
-  min-width: 900px;
-  width: inherit; */
+}
+
+.container {
+  height: inherit;
 }
 
 .logo_text {
   display: inline-block;
+  vertical-align: top;
+  padding-top: 10px;
 }
 
 .logo_text h1 {
   display: inline-block;
 
-  /* font-size: 30pt; */
+  font-size: 40pt;
   /* размер шрифта */
 }
 
 .logo_text h1, .logo_text h1 a {
-  /* padding: 8px 15px 8px 15px; */
+  font-family: 'Shrewdy';
+  font-weight: normal;
+  font-style: normal;
+
+  padding: 5px 20px 5px 20px;
   /* внутринние отступы */
-  border-radius: 50px 100px 50px 100px;
+  border-radius: 0px 20px 20px 25px;
   /* закругление углов */
-  color: white;
+  color: black;
 	letter-spacing: 0.02em;
   /* отступы между буквами */
 	text-decoration: none;
   /* нижнее подчеркивание */
-  text-shadow: black 1px 1px 1px, black -1px -1px 1px,
-                 black -1px 1px 1px, black 1px -1px 1px,
-                 black 0 0 30px;
-  /* margin-top: 0; */
+  text-shadow: lightgray 2px 2px 0px;
   /* тени вокруг текста */
+  background: url("_53876-81626.jpg") center / auto 250% no-repeat;
 }
 
 .logo_text h1 a {
-  background-color: darkorange;
+  /* background-color: darkorange; */
   /* фоновый цвет */
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
+.wrap {
+  display: inline-block;
+  padding: 3px 15px;
+  vertical-align: top;
+  /* position: absolute; */
+}
 
 .search {
   position: relative;
   display: flex;
-  float: right;
-  /* padding-top: 10px; */
+  width: 410px;
+  border-radius: 50px;
 }
+
 
 .searchTerm {
-  /* padding-top: 100px; */
+  padding-left: 17px;
   font-size: 14px;
+  border: none;
   border: 1px solid #eee;
   border-right: none;
-  /* padding: 5px; */
-  height: 30px;
-  border-radius: 20px 0 0 20px;
+  height: 46px;
+  border-radius: 50px 0 0 50px;
   outline: none;
-  color: #666;
-}
-
-.searchTerm:focus{
-  color: #00B4CC;
+  color: black;
+  width: inherit;
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
 .searchButton {
   /* font: arial; */
-  width: 40px;
-  height: 36px;
+  width: 50px;
+  height: 48px;
+  border: none;
   border: 1px solid #eee;
   border-left: none;
   background-color: white;
-  text-align: center;
-  color: #0bb648;
-  border-radius: 0 20px 20px 0;
+  text-align: left;
+  padding-left: 5px;
+  color: darkorange;
+  border-radius: 0 50px 50px 0;
   cursor: pointer;
   font-size: 20px;
 }
 
-
-.wrap {
-  display: inline-block;
-  /* padding: 5px; */
-  /* position: absolute; */
+.search:hover {
+  box-shadow: 0 0 12px #eee;
 }
+
+.searchTerm:focus {
+  border: 1px solid #e5e5e5;
+  border-right: none;
+}
+
+.searchTerm:focus ~ .searchButton {
+  border: 1px solid #e5e5e5;
+  border-left: none;
+}
+
 
 .contacts {
   display: inline-block;
+  padding: 1px 20px;
+  width: 200px;
+  padding-left: 40px;
+}
+
+.contacts_top {
+  display: block;
+  height: 40%;
+}
+
+.contacts_bottom {
+  display: flex;
+  padding: 2px;
+  padding-right: 0;
+}
+
+.phone_number {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+  color: #000;
+}
+
+.request_call a {
+  height: inherit;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  border-bottom: 1px dotted currentColor;
+  cursor: pointer;
+  margin-left: 2px;
+  margin-right: 20px;
+  /* transition: color 0.2s linear; */
+}
+
+.more_contacts {
+  width: 55.5px;
+  display: inline-block;
+  text-align: right;
+  margin-right: -5px;
+}
+
+.more_contacts h2 a {
+  margin: 0px;
+  cursor: pointer;
+  font-size: 25px;
+  /* padding-top: 5px; */
+  line-height: 14px;
+  color: #000;
+  letter-spacing: 2.4px;
+  vertical-align: top;
+}
+
+.more_contacts h2 a:hover {
+  color: darkorange;
+}
+
+.phone_number a:hover {
+  color: darkorange;
+}
+
+.request_call a:hover {
+  color: darkorange;
 }
 
 .user_field {
   display: inline-block;
+  width: 150px;
+  height: inherit;
+  padding: 0 30px;
+  vertical-align: top;
+  padding-left: 15px;
 }
+
+.user_choise {
+  height: inherit;
+  font-weight: 500;
+}
+
+.user_conteiner {
+  height: 45px;
+  margin: auto;
+  align-items: center;
+  border-radius: 50px;
+  background-color: #f7f8fa;
+}
+
+.register {
+  float: left;
+  display: flex;
+  padding: 10px 0;
+  padding-left: 15px;
+}
+
+.register a {
+  text-align: center;
+}
+
+.login {
+  float: right;
+  display: flex;
+  padding: 10px 0;
+  padding-right: 17px;
+}
+
+.login a {
+  text-align: center;
+}
+
+.user_conteiner:hover {
+  background-color: darkorange;
+  box-shadow: 0 0 10px darkgray;
+}
+
+.register:hover a {
+  color: white;
+  text-shadow: 1px 1px 0 black;
+}
+
+.login:hover a {
+  color: white;
+  text-shadow: 1px 1px 0 black;
+}
+
+.login::before {
+  content: "|";
+  color: black;
+  padding-right: 8px;
+  padding-left: 4px;
+}
+
+
 /*Resize the wrap to see the search bar change!*/
 /* .wrap{
   width: 30%;
@@ -140,3 +295,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
 } */
+
+.menubar {
+  width: auto;
+}
