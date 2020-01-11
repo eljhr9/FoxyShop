@@ -336,13 +336,13 @@ ul {
   border-bottom: 2px solid darkorange;
 }
 
-.colection {
+.collection {
   background-color: darkorange;
   text-shadow: black 1px 1px 0px;
 }
 
 
-.colection a::before {
+.collection a::before {
   content: "\f0c9  ";
   font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
   color: white;
@@ -352,7 +352,7 @@ ul {
   text-shadow: black 1px 1px 0px;
 }
 
-.colection a:hover::before {
+.collection a:hover::before {
   content: "\f078  ";
   font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
   color: white;
@@ -362,17 +362,103 @@ ul {
   text-shadow: black 1px 1px 0px;
 }
 
-/* .colection {
-  height: 48px;
-  display: inline-block;
-  padding-top: 12px;
-  height: 36px;
-  background-color: darkorange;
-} */
-
-.li-board:
-
 .nav-collections {
   height: inherit;
   display: none;
+}
+
+.content-container {
+  max-width: 1140px;
+  margin: 50px auto;
+}
+
+.sidebar {
+  width: 286px;
+  display: block;
+  float: left;
+}
+
+.sidebar-container {
+  padding: 0 13px;
+}
+
+.sidebar-collection {
+  padding-right: 20px;
+
+}
+
+.sidebar-block {
+  margin-bottom: 40px;
+  width: 240px;
+}
+
+.sidebar-collection-title {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000;
+  margin: 0px 0px 15px;
+  padding: 0px 0px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-sidebar {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.nav-sidebar ul li {
+  margin-top: 10px;
+}
+
+.nav-sidebar ul li a {
+  color: #999;
+}
+
+.nav-sidebar ul li a i {
+  float: right;
+  color: #999;
+  padding-right: 10px;
+}
+
+.nav-sidebar ul li:hover a, .nav-sidebar ul li:hover a i {
+  color: darkorange;
+  /* transform: translate(0px, -50%) rotate(90deg); */
+}
+
+.article_card {
+  margin-bottom: 20px;
+
+}
+
+.article_card-img {
+  width: 240px;
+  height: 137.5px;
+  margin-bottom: 8px;
+}
+
+.article_card-img a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 0;
+}
+
+.article_card-img a p {
+  position: absolute;
+  margin-top: -21px;
+  background-color: #fff;
+  color: #000;
+  padding: 4px 6px 2px 0px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.section {
+  width: 800px;
+  display: flex;
+  float: right;
 }

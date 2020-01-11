@@ -71,7 +71,7 @@
 
 						<nav class="nav">
 							<ul class="nav-items">
-								<div class="li-board colection">
+								<div class="li-board collection">
 									<li class="">
 										<a href="{% url 'shop:products' %}"> Каталог товаров</a>
 									</li>
@@ -127,10 +127,60 @@
 
 		</div>
 
-		<section>
-			{% block content %}
-			{% endblock content %}
-		</section>
+		<div class="content-container">
+			<div class="content">
+				<div class="sidebar">
+					<div class="sidebar-container">
+						<div class="sidebar-collection sidebar-block">
+							<div class="sidebar-collection-title">Каталог товаров</div>
+							<div class="sidebar-collection-content">
+								<nav class="nav-sidebar">
+									<ul>
+										<li>
+											<a href="#">
+												Телефоны
+												<i class="fas fa-chevron-right"></i>
+											</a>
+										</li>
+										<li><a href="#">Фото и видео</a></li>
+										<li><a href="#">Ноутбуки, планшеты</a></li>
+										<li><a href="#">Гаджеты и авто</a></li>
+										<li><a href="#">Аксессуары</a></li>
+										<li><a href="#">Техника для дома</a></li>
+										<li><a href="#">Разное</a></li>
+										<li><a href="{% url 'shop:brand' %}">Бренды</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+
+						<div class="sidebar-article sidebar-block">
+							<div class="article">
+								<div class="article_card">
+									<div class="article_card-img">
+										<a href="#">
+											<img src="{% static 'shop/75878-img_4625.jpg' %}">
+											<p>12 Января 2020</p>
+										</a>
+									</div>
+									<div class="article_card-title">
+										<a href="#">Почему macbook идеальный выбор для работы</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="section">
+					{% block content %}
+					{% endblock content %}
+				</div>
+
+			</div>
+		</div>
 
 		<div class="footer">
 			<p>
