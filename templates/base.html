@@ -65,31 +65,67 @@
 				</div>
 			</div>
 
-			<div class="menubar">
-				<div class="navbar">
+			<div class="menu">
+				<div class="menubar">
+					<div class="navbar">
 
-					<nav>
-						<h4 class="brand">Производитель</h4>
-						{% for brand in brands %}
-						<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
-						{% endfor %}
-					</nav>
+						<nav class="nav">
+							<ul class="nav-items">
+								<div class="li-board colection">
+									<li class="">
+										<a href="{% url 'shop:products' %}"> Каталог товаров</a>
+									</li>
+								</div>
 
-					<ul class="menu">
-						<li><a href="{% url 'index' %}">Главная</a></li>
-						<li>
-							<a href="{% url 'shop:products' %}">Каталог товаров</a>
-						</li>
-						</li>
-						<li><a href="{% url 'index' %}admin">Админка</a></li>
-					</ul>
+								<div class="li-board">
+									<li><a href="{% url 'index' %}">Главная</a></li>
+								</div>
+								<div class="li-board">
+									<li><a href="#">Акции</a></li>
+									<!-- <li><a href="{% url 'index' %}admin">Админка</a></li> -->
+								</div>
+								<div class="li-board">
+									<li>
+										<a href="#">Новинки</a>
+									</li>
+								</div>
+								<div class="li-board">
+									<li>
+										<a href="{% url 'shop:brand' %}">Бренды</a>
+									</li>
+								</div>
+								<div class="li-board">
+									<li>
+										<a href="#">Статьи</a>
+									</li>
+								</div>
+								<div class="li-board">
+									<li>
+										<a href="#">Оплата и Доставка</a>
+									</li>
+								</div>
+								<div class="li-board">
+									<li>
+										<a href="#">Контакты</a>
+									</li>
+								</div>
+							</ul>
+						</nav>
+						<nav class="nav-collections">
+							<ul>
+								<li>
+									{% for brand in brands %}
+									<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
+									{% endfor %}
+								</li>
+							</ul>
+						</nav>
 
+					</div>
 				</div>
-
 			</div>
 
 		</div>
-
 
 		<section>
 			{% block content %}

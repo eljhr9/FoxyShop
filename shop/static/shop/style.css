@@ -10,13 +10,12 @@
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
 
 
-
 body{
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 14px;
   line-height: 22px;
   color: #666;
-  max-width: 1120px;
+  /* max-width: 1120px; */
   margin: auto;
 }
 
@@ -25,24 +24,23 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
 .header {
   height: 143.5px;
 }
 
-.main, .logo, .site_content, .footer {
-  margin: auto;
-  margin-right: -10px;
-  margin-left: -10px;
-}
-
 .logo {
-  /* float: left; */
+  max-width: 1160px;
+  margin: auto;
   display: block;
   height: 95.5px;
-  width: inherit;
   background-color: white;
   text-align: left;
 }
+
 
 .logo_upper {
   height: 55.5px;
@@ -56,7 +54,8 @@ a {
 .logo_text {
   display: inline-block;
   vertical-align: top;
-  padding-top: 10px;
+  padding-top: 9px;
+  padding-left: 2px;
 }
 
 .logo_text h1 {
@@ -83,12 +82,6 @@ a {
   text-shadow: lightgray 2px 2px 0px;
   /* тени вокруг текста */
   background: url("_53876-81626.jpg") center / auto 250% no-repeat;
-}
-
-.logo_text h1 a {
-  /* background-color: darkorange; */
-  /* фоновый цвет */
-  /* border: 2px solid black; */
 }
 
 .wrap {
@@ -186,6 +179,7 @@ a {
   cursor: pointer;
   margin-left: 2px;
   margin-right: 20px;
+   color: #666;
   /* transition: color 0.2s linear; */
 }
 
@@ -285,17 +279,100 @@ a {
   padding-left: 4px;
 }
 
-
-/*Resize the wrap to see the search bar change!*/
-/* .wrap{
-  width: 30%;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
+.menu {
+  width: 100vw;
+  height: 48px;
+  background-color: black;
+}
 
 .menubar {
-  width: auto;
+  max-width: 1140px;
+  margin: auto;
+  height: inherit;
+}
+
+.navbar {
+  padding: 0 13.5px;
+  height: inherit;
+}
+
+.nav {
+  height: inherit;
+  font-size: 14px;
+  line-height: 18px;
+  display: block;
+}
+
+.nav-items {
+  width: 100%;
+  padding: auto;
+  height: inherit;
+}
+
+.li-board {
+  display: inline-block;
+  color: white;
+  height: 33px;
+  vertical-align: top;
+  padding-top: 15px;
+}
+
+.li-board li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.li-board li a {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+
+
+.li-board li a:hover {
+  border-top: 2px solid darkorange;
+  border-bottom: 2px solid darkorange;
+}
+
+.colection {
+  background-color: darkorange;
+  text-shadow: black 1px 1px 0px;
+}
+
+
+.colection a::before {
+  content: "\f0c9  ";
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  vertical-align: text-top;
+  text-shadow: black 1px 1px 0px;
+}
+
+.colection a:hover::before {
+  content: "\f078  ";
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  vertical-align: text-top;
+  text-shadow: black 1px 1px 0px;
+}
+
+/* .colection {
+  height: 48px;
+  display: inline-block;
+  padding-top: 12px;
+  height: 36px;
+  background-color: darkorange;
+} */
+
+.li-board:
+
+.nav-collections {
+  height: inherit;
+  display: none;
 }
