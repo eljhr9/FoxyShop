@@ -203,14 +203,17 @@ ul {
 
 .more_contacts h2 a:hover {
   color: darkorange;
+  transition-duration: .3s;
 }
 
 .phone_number a:hover {
   color: darkorange;
+  transition-duration: .3s;
 }
 
 .request_call a:hover {
   color: darkorange;
+  transition-duration: .3s;
 }
 
 .user_field {
@@ -260,16 +263,19 @@ ul {
 .user_conteiner:hover {
   background-color: darkorange;
   box-shadow: 0 0 10px darkgray;
+  transition-duration: .5s;
 }
 
 .register:hover a {
   color: white;
   text-shadow: 1px 1px 0 black;
+  transition-duration: .3s;
 }
 
 .login:hover a {
   color: white;
   text-shadow: 1px 1px 0 black;
+  transition-duration: .3s;
 }
 
 .login::before {
@@ -424,6 +430,7 @@ ul {
 
 .nav-sidebar ul li:hover a, .nav-sidebar ul li:hover a i {
   color: darkorange;
+  transition-duration: .3s;
   /* transform: translate(0px, -50%) rotate(90deg); */
 }
 
@@ -455,6 +462,60 @@ ul {
   line-height: 14px;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+
+.hidden {
+  /* display: none; */
+  opacity: 0;
+  position: absolute;
+  width: 240px;
+  height: 137.5px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: -144px;
+  background-color: rgba(0,0,0,0.5);
+  /* transition-duration: 2s; */
+}
+
+.hidden-text {
+  width: 100px;
+  height: 30px;
+  margin: 49px auto;
+}
+
+.hidden-text {
+  border: 2px solid white;
+  padding-top: 9px;
+}
+
+.article_card:hover .hidden {
+  opacity: 1;
+  transition-duration: .5s;
+}
+
+.article_card-title:hover a {
+  color: darkorange;
+  transition-duration: .5s;
+  /* text-shadow: 0.3px 0.3px 0 gray; */
+}
+
+.ad-block {
+  width: 240px;
+}
+
+.some-ad {
+  height: 200px;
+  margin-bottom: 30px;
+}
+
+.some-ad a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 -30px;
 }
 
 .section {
