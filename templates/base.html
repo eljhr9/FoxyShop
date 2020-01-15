@@ -263,15 +263,43 @@
 			</div>
 		</div>
 
-		<div class="footer">
-			<p>
-				<a href="{% url 'index' %}">Главная</a> |
-				<a href="{% url 'shop:products' %}">Каталог товаров</a> |
-				<a href="#">И тд...</a>
-			</p>
-			<p>&copy; FoxyShop - 12.2019</p>
-		</div>
+		<div class="section-footer">
+			<footer>
+				<div class="footer-scheme-01">
+					<form action="#" class="footer-subscribe">
+						<div class="footer-container">
+							<div class="subscribe-items">
+								<div class="subscribe-items-left">
+									<div class="subscribe-item-title">Новостная рассылка</div>
+									<div class="subscribe-item-form">
+										<div class="subscribe-form">
+											<div class="subscribe-form-input">
+												<input type="email" class="input" name="email"
+												placeholder="Адрес електронной почты" required="">
+											</div>
+											<div class="subscribe-form-button">
+												<button class="subscribe-button" type="submit" >
+													Подписаться
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 
+				<div class="footer-scheme-02">
+					<p>
+						<a href="{% url 'index' %}">Главная</a> |
+						<a href="{% url 'shop:products' %}">Каталог товаров</a> |
+						<a href="#">И тд...</a>
+					</p>
+					<p>&copy; FoxyShop - 12.2019</p>
+				</div>
+			</footer>
+		</div>
 	</div>
 
 
