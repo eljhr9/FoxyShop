@@ -13,6 +13,7 @@ class Product(models.Model):
 	availability = models.BooleanField(default=True, verbose_name='Наличие')
 	date_added = models.DateTimeField(auto_now_add=True, verbose_name='Был добавлен')
 	brand = models.ForeignKey('Brand', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Производитель')
+	image = models.ImageField(upload_to='images/', null=True, blank=True)
 
 	class Meta:
 		verbose_name_plural = 'Товар'

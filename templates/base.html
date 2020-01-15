@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>FoxyShop</title>
 	<link rel="stylesheet" href="{% static 'shop/style.css' %}">
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
@@ -218,8 +219,45 @@
 				</div>
 
 				<div class="section">
-					{% block content %}
-					{% endblock content %}
+					<div class="section-content">
+
+						<div class="content-title">
+							<div class="title-text">
+								<h1>Каталог товаров</h1>
+							</div>
+						</div>
+
+						<div class="filter">
+							<div class="filter-button">
+								<div class="filter-text">
+									<label>Сортировать:</label>
+								</div>
+								<div class="filter-choise">
+									<select class="filter-sort">
+										<option value="" selected="">По умолчанию</option>
+										<option value="">По популярности</option>
+										<option value="">По возрастанию цены</option>
+										<option value="">По убиванию цены</option>
+										<option value="">По новинкам</option>
+										<option value="">По скидке</option>
+										<option value="">По алфавиту</option>
+									</select>
+									<div class="filter-icon"><i class="fas fa-sort-down"></i></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="main-content">
+							<div class="products">
+								{% block content %}
+								{% endblock content %}
+							</div>
+							<div class="pagination-field">
+								{% block paginator %}
+								{% endblock paginator %}
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</div>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import Product, Brand
+from django.core.paginator import Paginator
 
 def index(request):
 	'''домашняя страница магазина'''
@@ -13,7 +14,13 @@ def products(request):
 	'''Отображение всех товаров'''
 	products = Product.objects.all()
 	brands = Brand.objects.all()
-	context = {'products': products, 'brands': brands}
+	paginator = Paginator(products, 6, orphans=0, allow_empty_first_page=True)
+	if 'page' in request.GET:
+		page_num = request.GET['page']
+	else:
+		page_num = 1
+	page = paginator.get_page(page_num)
+	context = {'page': page, 'products': page.object_list, 'brands': brands}
 	return render(request, 'shop/products.html', context)
 
 def brand(request):

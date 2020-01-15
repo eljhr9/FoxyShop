@@ -2,17 +2,81 @@
 
 {% block content %}
 {% for product in products %}
-<div>
-	<h2>{{ product.title }}</h2>
-	<a href="{% url 'shop:product' product.pk %}">{{ product.title }}</a>
-	<p>{{ product.text }}</p>
-	<h3>{{ product.price }}</h3>
-	{% if product.brand %}
-	  <a href="{% url 'shop:by_brand' product.brand.pk %}">{{ product.brand }}</a>
+<div class="current-product">
+	<a href="{% url 'shop:product' product.pk %}" class="product-card">
+	{% if product.image %}
+	<div class="product-image"><img src="{{ product.image.url }}" ></div>
+	{% else %}
+	<div class="product-image"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
 	{% endif %}
-	<form action="{% url 'shop:product' product.pk %}">
-		<button>Подробнее...</button>
-	</form>
+	</a>
+	<div class="product-card-title">
+		<a href="{% url 'shop:product' product.pk %}">{{ product.title }}</a>
+	</div>
+	<div class="product-card-rating">
+
+		<div class="rating-items">
+			<a href="{% url 'shop:product' product.pk %}" class="rating">
+				<span class="rating-item full"><i class="fas fa-star"></i></span>
+				<span class="rating-item full"><i class="fas fa-star"></i></span>
+				<span class="rating-item full"><i class="fas fa-star"></i></span>
+				<span class="rating-item full"><i class="fas fa-star"></i></span>
+				<span class="rating-item"><i class="far fa-star"></i></span>
+				<span class="rating-link">
+					<span class="icon"><i class="far fa-comment-dots"></i></span>
+					<span class="icon-count"><p>2</p></span>
+				</span>
+			</a>
+		</div>
+		<div class="product-card-prices">
+			<span><h4>{{ product.price }} ₴</h4></span>
+		</div>
+	<div class="product-card-add">
+		<div class="bascet-field">
+			<a href="{% url 'shop:product' product.pk %}" class="bascet-add">
+				<i class="fas fa-shopping-basket"></i>
+				<span>В корзину</span>
+			</a>
+		</div>
+		<div class="favorite-field">
+			<button type="button" class="button compare">
+				<span class="fas fa-align-right fa-lg"></span>
+			</button>
+			<button class="button favorite">
+				 <span class="far fa-heart fa-lg"></span>
+			</button>
+		</div>
+	</div>
+
+	</div>
+
 </div>
 {% endfor %}
 {% endblock content %}
+
+{% block paginator %}
+<!-- <ul class="pagination pagination-bottom">
+	<li class="pagination-load">
+		<a href="?page={{ page.next_page_number }}" class="pagination-load-button">Загрузить ещё {{ page.paginator.page_size }}</a>
+	</li>
+	<li class="pagination-item pagination-item-prev"></li>
+	<li class="pagination-item"></li>
+	<li class="pagination-item"></li>
+	<li class="pagination-item"></li>
+	<li class="pagination-item pagination-item-next"></li>
+</ul> -->
+<div>
+	{% if page.has_previous %}
+	<a href="?page={{ page.previous_page_number }}">&lt;</a>
+	&nbsp;&nbsp;|&nbsp;&nbsp;
+	{% endif %}
+	Часть №{{ page.number }} из {{ page.paginator.num_pages }}
+	{% if page.has_next %}
+		&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="?page={{ page.next_page_number }}">&gt;</a>
+	{% endif %}
+	{{ page.has_next }}
+	{{ page.next_page_number }}
+
+</div>
+{% endblock paginator %}
