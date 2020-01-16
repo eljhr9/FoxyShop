@@ -19,9 +19,14 @@
 			<div class="logo">
 				<div class="logo_upper">
 					<div class="container">
-						<div class="logo_text">
-							<h1><a href="{% url 'index' %}">FoxyShop</a></h1>
+						<div class="logo_image">
+							<a href="{% url 'index' %}">
+								<img src="{% static 'lable.png' %}" class="lable">
+							</a>
 						</div>
+						<!-- <div class="logo_text">
+							<h1><a href="{% url 'index' %}">FoxyShop</a></h1>
+						</div> -->
 						<div class="wrap">
 						   <div class="search">
 						      <input type="text" class="searchTerm" placeholder="Поиск по каталогу...">

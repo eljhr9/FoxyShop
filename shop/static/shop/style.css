@@ -93,6 +93,11 @@ button {
   background: url("_53876-81626.jpg") center / auto 250% no-repeat;
 }
 
+.logo_image {
+  display: inline-block;
+  margin-top: -14px;
+}
+
 .wrap {
   display: inline-block;
   padding: 3px 15px;
@@ -980,7 +985,6 @@ button {
 }
 
 .lable {
-  padding: 30px;
   width: 210px;
   /* height: 93px; */
   object-fit: cover;
