@@ -100,7 +100,7 @@ button {
 
 .wrap {
   display: inline-block;
-  padding: 3px 15px;
+  padding: 0 15px;
   vertical-align: top;
   /* position: absolute; */
 }
@@ -163,7 +163,7 @@ button {
   display: inline-block;
   padding: 1px 20px;
   width: 200px;
-  padding-left: 40px;
+  vertical-align: top;
 }
 
 .contacts_top {
@@ -184,9 +184,12 @@ button {
   color: #000;
 }
 
+.request_call {
+  display: inline-block;
+}
+
 .request_call a {
   height: inherit;
-  display: inline-block;
   font-size: 12px;
   line-height: 16px;
   border-bottom: 1px dotted currentColor;
