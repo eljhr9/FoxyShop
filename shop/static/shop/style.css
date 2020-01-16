@@ -5,6 +5,7 @@
   /* Применяется ко всему */
   margin: 0;
   padding: 0;
+  outline: 0;
 }
 
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
@@ -593,6 +594,7 @@ button {
   height: 30px;
   padding: 3px 23px 3px 8px;
   background-color: #f7f8fa;
+  border-radius: 0;
 }
 
 .filter-icon {
@@ -834,6 +836,7 @@ button {
 
 .footer-scheme-01 {
   background-color: #0bb648;
+  /* background-color: darkorange; */
   color: #fff;
 }
 
@@ -860,7 +863,12 @@ button {
 
 .subscribe-items-left {
   flex: 0 0 50%;
-  max-width: 50%;
+  max-width: 48%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .subscribe-item-title {
@@ -895,8 +903,15 @@ button {
 
 .input {
   -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
   display: block;
-  width: 100%;
+  width: 96%;
   font-size: 14px;
   line-height: 22px;
   padding: 4px 9px;
@@ -904,7 +919,11 @@ button {
   background-color: #fff;
   overflow: visible;
   font-family: 'Montserrat', sans-serif;
-  box-shadow: none;
+}
+
+.input:focus {
+  /* border: none; */
+
 }
 
 .subscribe-form-button {
@@ -930,7 +949,40 @@ button {
   overflow: visible;
 }
 
+.subscribe-button:hover {
+  background-color: darkorange;
+}
+
+.subscribe-item-policy {
+  font-size: 12px;
+  line-height: 16px;
+  margin: 5px 0px 0px;
+}
+
+.subscribe-items-right {
+  flex: 0 0 50%;
+  max-width: 48%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.footer-subscribe-description {
+  font-size: 14px;
+  line-height: 18px;
+}
+
 .footer-scheme-02 {
   background-color: #f7f8fa;
   color: #999;
+}
+
+.lable {
+  padding: 30px;
+  width: 210px;
+  /* height: 93px; */
+  object-fit: cover;
+  object-position: auto;
 }
