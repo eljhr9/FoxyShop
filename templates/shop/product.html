@@ -1,16 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="content-left col">
+  <div class="product-images">
+  {% if product.image_1 %}
+    <div class="product-image-block">
+      <a href="#" class="product-image-thumb">
+        <img class="product-image" src="{{ product.image_1.url }}">
+      </a>
+    </div>
+    <div class="product-gallery">
+      <a href="#" class="product-gallery-image">
+        <span class="product-gallery-lighter"></span>
+        <img src="{{ product.image_1.url }}">
 
-  <img src="{{ product.image.url }}" >
-  <h1>{{ product.title }}</h1>
-  <h3>{{ product.text }}</h3>
-  <h2>{{ product.price }}</h2>
-  {% if product.availability %}
-    <p>Есть в наличии</p>
+      </a>
+      <a href="#" class="product-gallery-image">
+        <span class="product-gallery-lighter"></span>
+        <img src="{{ product.image_2.url }}">
+      </a>
+      <a href="#" class="product-gallery-image">
+        <span class="product-gallery-lighter"></span>
+        <img src="{{ product.image_3.url }}">
+      </a>
+    </div>
   {% else %}
-    <p>Нет в наличии</p>
+    <div class="product-images"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
   {% endif %}
-  <a href="{% url 'shop:by_brand' product.brand.pk %}">{{ product.brand }}</a>
-
+  </div>
+</div>
+<div class="content-right col">
+  <div class="product-data">
+    <h1>{{ product.title }}</h1>
+    <h3>{{ product.text }}</h3>
+    <h2>{{ product.price }}</h2>
+    {% if product.availability %}
+      <p>Есть в наличии</p>
+    {% else %}
+      <p>Нет в наличии</p>
+    {% endif %}
+    {% if product.brand %}
+    <a href="{% url 'shop:by_brand' product.brand.pk %}">{{ product.brand }}</a>
+    {% endif %}
+  </div>
+</div>
 {% endblock content %}

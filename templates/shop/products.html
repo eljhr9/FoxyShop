@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "collections.html" %}
 
-{% block content %}
+{% block collection %}
 {% for product in products %}
 <div class="current-product">
 	<a href="{% url 'shop:product' product.pk %}" class="product-card">
-	{% if product.image %}
-	<div class="product-image"><img src="{{ product.image.url }}" ></div>
+	{% if product.image_1 %}
+	<div class="product-image"><img src="{{ product.image_1.url }}" ></div>
 	{% else %}
 	<div class="product-image"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
 	{% endif %}
@@ -52,7 +52,7 @@
 
 </div>
 {% endfor %}
-{% endblock content %}
+{% endblock collection %}
 
 {% block paginator %}
 <ul class="pagination pagination-bottom">

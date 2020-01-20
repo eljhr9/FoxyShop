@@ -21,7 +21,7 @@
 					<div class="container">
 						<div class="logo_image">
 							<a href="{% url 'index' %}">
-								<img src="{% static 'lable.png' %}" class="lable">
+								<img src="{% static 'label.png' %}" class="label">
 							</a>
 						</div>
 						<!-- <div class="logo_text">
@@ -135,136 +135,8 @@
 
 		<div class="content-container">
 			<div class="content">
-				<div class="sidebar">
-					<div class="sidebar-container">
-						<div class="sidebar-collection sidebar-block">
-							<div class="sidebar-collection-title">Каталог товаров</div>
-							<div class="sidebar-collection-content">
-								<nav class="nav-sidebar">
-									<ul>
-										<li>
-											<a href="#">
-												Телефоны
-												<i class="fas fa-chevron-right"></i>
-											</a>
-										</li>
-										<li><a href="#">Фото и видео</a></li>
-										<li><a href="#">Ноутбуки, планшеты</a></li>
-										<li><a href="#">Гаджеты и авто</a></li>
-										<li><a href="#">Аксессуары</a></li>
-										<li><a href="#">Техника для дома</a></li>
-										<li><a href="#">Разное</a></li>
-										<li><a href="{% url 'shop:brand' %}">Бренды</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-
-						<div class="sidebar-article sidebar-block">
-							<div class="article">
-								<div class="article_card">
-									<div class="article_card-img">
-										<a href="#">
-
-											<img src="{% static 'shop/75878-img_4625.jpg' %}">
-											<div class="hidden"><div class="hidden-text">Читать</div></div>
-											<p>12 Января 2020</p>
-
-										</a>
-									</div>
-
-									<div class="article_card-title">
-										<a href="#">Почему macbook идеальный выбор для работы!?</a>
-									</div>
-								</div>
-								<div class="article_card">
-									<div class="article_card-img">
-										<a href="#">
-
-											<img src="{% static 'shop/blackwhite-photography-36271549100649patda7aac3.jpg' %}">
-											<div class="hidden"><div class="hidden-text">Читать</div></div>
-											<p>15 Января 2020</p>
-
-										</a>
-									</div>
-
-									<div class="article_card-title">
-										<a href="#">Экосистема Apple все тонкости...</a>
-									</div>
-								</div>
-								<div class="article_card">
-									<div class="article_card-img">
-										<a href="#">
-
-											<img src="{% static 'shop/fintech2-800.jpg' %}">
-											<div class="hidden"><div class="hidden-text">Читать</div></div>
-											<p>25 Февраля 2020</p>
-
-										</a>
-									</div>
-
-									<div class="article_card-title">
-										<a href="#">Главные технологические достижения 2019 года</a>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-						<div class="ad-block">
-							<div class="ad-block-container">
-								<div class="some-ad">
-									<a title="Здрасте" href="#">
-										<img src="{% static 'shop/some-ad.png' %}">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="section">
-					<div class="section-content">
-
-						<div class="content-title">
-							<div class="title-text">
-								<h1>Каталог товаров</h1>
-							</div>
-						</div>
-
-						<div class="filter">
-							<div class="filter-button">
-								<div class="filter-text">
-									<label>Сортировать:</label>
-								</div>
-								<div class="filter-choise">
-									<select class="filter-sort">
-										<option value="" selected="">По умолчанию</option>
-										<option value="">По популярности</option>
-										<option value="">По возрастанию цены</option>
-										<option value="">По убиванию цены</option>
-										<option value="">По новинкам</option>
-										<option value="">По скидке</option>
-										<option value="">По алфавиту</option>
-									</select>
-									<div class="filter-icon"><i class="fas fa-sort-down"></i></div>
-								</div>
-							</div>
-						</div>
-
-						<div class="main-content">
-							<div class="products">
-								{% block content %}
-								{% endblock content %}
-							</div>
-							<div class="pagination-field">
-								{% block paginator %}
-								{% endblock paginator %}
-							</div>
-						</div>
-					</div>
-				</div>
-
+				{% block content %}
+				{% endblock %}
 			</div>
 		</div>
 
@@ -306,13 +178,174 @@
 				</div>
 
 				<div class="footer-scheme-02">
-					<img src="{% static 'lable.png' %}" class="lable">
-					<p>
-						<a href="{% url 'index' %}">Главная</a> |
-						<a href="{% url 'shop:products' %}">Каталог товаров</a> |
-						<a href="#">И тд...</a>
-					</p>
-					<p>&copy; FoxyShop - 12.2019</p>
+					<div class="footer-menu">
+						<div class="justify-content-between">
+
+							<div class="footer-menu-block">
+								<div class="menu-block">
+									<div class="menu-title">
+										<a href="{% url 'index' %}">
+											<img src="{% static 'label.png' %}" class="label label-footer">
+											<!-- <div class="label-lighter"></div> -->
+										</a>
+									</div>
+									<ul class="menu-items">
+										<li class="menu-item menu-item-phone">
+											<a href="tel:+38(099)98-52-672" class="phone_number">
+												+38 (099) 985-26-72
+											</a>
+											<div class="request_call footer-call">
+												<a href="#">Заказать звонок</a>
+											</div>
+										</li>
+										<li class="menu-item menu-item-icon">
+											<i class="far fa-envelope"></i>
+											<a href="mailto:illyaredkolis@gmail.com" itempror="email">
+												illyaredkolis@gmail.com
+											</a>
+										</li>
+										<li class="menu-item menu-item-icon">
+											<i class="fas fa-map-marker-alt"></i>
+											<p itempror="adress" class="menu-item_text"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
+										</li>
+										<li class="menu-item menu-item-icon">
+											<i class="far fa-clock"></i>
+											<p class="menu-item_text">
+												Будние дни с 8:00 до 20:00
+												Выходные с 10:00 до 16:00
+											</p>
+										</li>
+										<li class="menu-item menu-item-icon">
+											<i class="far fa-address-card"></i>
+											<p class="menu-item_text">
+												Редколис Илья Григорьевич
+											</p>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="footer-menu-block">
+								<div class="menu-block">
+									<div class="menu-title title-collection">Каталог товаров</div>
+									<ul class="menu-items">
+										<li class="menu-item collection-item"><a href="#">Телефоны</a></li>
+										<li class="menu-item collection-item"><a href="#">Фото и видео</a></li>
+										<li class="menu-item collection-item"><a href="#">Ноутбуки, планшеты, компьютеры</a></li>
+										<li class="menu-item collection-item"><a href="#">Консоли</a></li>
+										<li class="menu-item collection-item"><a href="#">Наушники и аудио</a></li>
+										<li class="menu-item collection-item"><a href="#">Гаджеты и авто</a></li>
+										<li class="menu-item collection-item"><a href="#">Аксессуары</a></li>
+										<li class="menu-item collection-item"><a href="#">Техника для дома</a></li>
+										<li class="menu-item collection-item"><a href="#">Разное</a></li>
+										<li class="menu-item collection-item"><a href="#">Бренды</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="footer-menu-block">
+								<div class="menu-block">
+									<div class="menu-title title-collection">Дополнительно</div>
+									<ul class="menu-items">
+										<li class="menu-item collection-item"><a href="#">Главная</a></li>
+										<li class="menu-item collection-item"><a href="#">Акции</a></li>
+										<li class="menu-item collection-item"><a href="#">Новинки</a></li>
+										<li class="menu-item collection-item"><a href="#">Статьи</a></li>
+										<li class="menu-item collection-item"><a href="#">Оплата и доставка</a></li>
+										<li class="menu-item collection-item"><a href="#">Контакты</a></li>
+										<li class="menu-item collection-item"><a href="#">Обратная связь</a></li>
+										<li class="menu-item collection-item"><a href="#">Пользовательское соглашение</a></li>
+										<li class="menu-item collection-item"><a href="#">Политика конфиденциальности</a></li>
+										<li class="menu-item collection-item"><a href="#">Часто задаваемые вопросы</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="footer-menu-block">
+								<div class="menu-block">
+									<div class="menu-title title-collection">О компании</div>
+									<ul class="menu-items">
+										<li class="menu-item collection-item">
+											<p>
+												Lorem ipsum dolor sit amet conse ctetur adipisicing elit,
+												 sed do eiusmod tempor incididunt ut labore et dolore.
+												 Lorem ipsum dolor sit amet conse ctetur adipisicing elit,
+												 sed do eiusmod tempor incididunt ut labore et dolore.
+											</p>
+										</li>
+									</ul>
+									<div class="menu-title menu-title-second title-collection">
+										Мы в социальных сетях
+									</div>
+									<ul class="menu-items">
+										<li class="menu-item">
+											<div class="social">
+												<ul>
+													<li class="social-item">
+														<a href="http://instagram.com/">
+															<i class="fab fa-instagram"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="http://facebook.com/">
+															<i class="fab fa-facebook-square"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="http://youtube.com/">
+															<i class="fab fa-youtube"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="http://twitter.com/">
+															<i class="fab fa-twitter"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="https://t.me/">
+															<i class="fab fa-telegram"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="https://ru.pinterest.com/">
+															<i class="fab fa-pinterest"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+				<div class="footer-scheme-03">
+					<div class="footer-copyright">
+						<div class="footer-container">
+							<div class="align-items-center">
+								<div class="footer-copyright-text">
+									<div class="text-lg-left">
+											<p>2020 &copy; FoxyShop — шаблон интернет-магазина созданного для портфолио</p>
+									</div>
+								</div>
+								<div class="footer-copyright-items">
+									<div class="text-lg-right">
+										<ul class="tehnology">
+											<li><i class="fab fa-python"></i></li>
+											<li><i class="fab fa-html5"></i></li>
+											<li><i class="fab fa-css3-alt"></i></li>
+											<li><i class="fab fa-js-square"></i></li>
+											<li><i class="fas fa-database"></i></li>
+											<li><i class="fab fa-git-square"></i></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</footer>
 		</div>

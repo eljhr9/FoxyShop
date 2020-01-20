@@ -96,7 +96,12 @@ button {
 .logo_image {
   display: inline-block;
   margin-top: -14px;
+}
 
+.label {
+  width: 210px;
+  object-fit: cover;
+  object-position: auto;
 }
 
 .wrap {
@@ -181,6 +186,7 @@ button {
 }
 
 .phone_number {
+  display: inline-block;
   font-size: 18px;
   line-height: 22px;
   font-weight: 600;
@@ -226,7 +232,7 @@ button {
   transition-duration: .3s;
 }
 
-.phone_number a:hover {
+.phone_number a:hover, .phone_number:hover {
   color: darkorange;
   transition-duration: .3s;
 }
@@ -240,7 +246,7 @@ button {
   display: inline-block;
   width: 150px;
   height: inherit;
-  padding: 0 30px;
+  /* padding: 0 15px; */
   vertical-align: top;
   padding-left: 15px;
 }
@@ -395,11 +401,12 @@ button {
 
 .content {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .content-container {
   max-width: 1140px;
-  display: flex;
   margin: 50px auto;
   margin-bottom: 0;
 }
@@ -637,7 +644,8 @@ button {
 }
 
 .current-product:hover {
-  box-shadow: 0 0 10px lightgray;
+  box-shadow: 0 0 10px #e5e5e5;
+  transition-duration: .3s;
 }
 
 .product-image img {
@@ -656,6 +664,7 @@ button {
 
 .product-card-title:hover a {
   color: darkorange;
+  transition-duration: .3s;
 }
 
 .product-card-rating {
@@ -733,6 +742,7 @@ button {
 
 .bascet-add:hover i, .bascet-add:hover span {
   color: darkorange;
+  transition-duration: .3s;
 }
 
 .bascet-add i {
@@ -760,6 +770,7 @@ button {
 
 .button:hover {
   color: darkorange;
+  transition-duration: .3s;
 }
 
 .pagination {
@@ -810,6 +821,7 @@ button {
 
 .pagination-link:hover {
   border: 2px solid #3095dd;
+  transition-duration: .3s;
 }
 
 .pagination-item-prev {
@@ -839,6 +851,7 @@ button {
 
 .pagination-item-next a:hover, .pagination-item-prev a:hover {
   color:darkorange;
+  transition-duration: .3s;
 }
 
 .section-footer {
@@ -847,7 +860,7 @@ button {
 
 .footer-scheme-01 {
   background-color: #0bb648;
-  /* background-color: darkorange; */
+  /* background-color: orange; */
   color: #fff;
 }
 
@@ -856,7 +869,7 @@ button {
 }
 
 .footer-container {
-  max-width: 1140px;
+  max-width: 1120px;
   width: 100%;
   padding-right: 10px;
   padding-left: 10px;
@@ -962,6 +975,7 @@ button {
 
 .subscribe-button:hover {
   background-color: darkorange;
+  transition-duration: .3s;
 }
 
 .subscribe-item-policy {
@@ -990,9 +1004,293 @@ button {
   color: #999;
 }
 
-.lable {
+.footer-menu {
+  width: 100%;
+  padding: 10px 10px;
+  padding-bottom: 0px;
+  max-width: 1120px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.footer-menu-block {
+  flex: 0 0 23.2%;
+  max-width: 25%;
+  position: relative;
+  min-height: 1px;
+  padding: 0 10px;
+}
+
+.menu-block {
+  margin-bottom: 20px;
+  width: 265px;
+}
+
+.label-footer {
+  margin-left: 25px;
+}
+
+/* .label-lighter {
+  opacity: 1;
+  position: absolute;
   width: 210px;
-  /* height: 93px; */
+  height: 88px;
+  margin-top: -94px;
+  margin-left: -3px;
+  background-color: rgba(255,255,255,0.4);
+}
+
+.label-lighter:hover {
+  opacity: 0;
+} */
+
+.menu-title {
+  height: 88px;
+  margin-bottom: 10px;
+}
+
+.menu-items {
+  font-size: 14px;
+  line-height: 18px;
+  list-style: none;
+}
+
+.menu-item {
+  margin-bottom: 10px;
+}
+
+.menu-item-phone {
+  margin-left: 33px;
+}
+
+.footer-call {
+  max-width: 100%;
+  margin: 0 35px;
+}
+
+.menu-item-icon {
+  position: relative;
+  margin: 0px 0px 10px;
+}
+
+.menu-item-icon a {
+  color: #999;
+  font-size: 14.5px;
+}
+
+.menu-item-icon i {
+  color: darkorange;
+  font-size: 16px;
+  vertical-align: top;
+  padding: 0 5px;
+  padding-top: 1px;
+  text-align: center;
+  width: 16px;
+}
+
+.menu-item-icon a:hover {
+  color: darkorange;
+  transition: .3s;
+}
+
+.menu-item_text {
+  display: inline-block;
+  width: 235px;
+  font-size: 14px;
+}
+
+.title-collection {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: auto;
+}
+
+.collection-item {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.collection-item a {
+  color: #999;
+}
+
+.collection-item a:hover {
+  color: darkorange;
+  transition: .3s;
+}
+
+.menu-title-second {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.social {
+  font-size: 20px;
+  line-height: 0;
+  margin: 0px -5px;
+}
+
+.social-item {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 7px;
+  margin-bottom: 0px;
+}
+
+.fa-instagram {
+  color: black;
+}
+
+.fa-facebook-square {
+  color: #3b5998;
+}
+
+.fa-youtube {
+  color: #ff0000;
+}
+
+.fa-twitter {
+  color: #1da1f2;
+}
+
+.fa-telegram {
+  color: #0088cc;
+}
+
+.fa-pinterest {
+  color: #bd081c;
+}
+
+.footer-scheme-03 {
+  background-color: #000000;
+  color: #fff;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  line-height: 16px;
+  padding: 5px 0px;
+}
+
+.align-items-center {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.footer-copyright-text {
+  flex: 0 0 71%;
+  max-width: 100%;
+  padding: 0 10px;
+}
+
+.footer-copyright-items {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+  padding: 0 10px;
+}
+
+.text-lg-left {
+  text-align: left;
+}
+
+.text-lg-right {
+  text-align: right;
+}
+
+.tehnology li {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 10px;
+  font-size: 30px;
+}
+
+.content-left {
+  flex: 0 0 48%;
+  max-width: 50%;
+}
+
+.col {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.content-right {
+  flex: 0 0 48%;
+  max-width: 50%;
+}
+
+.product-images {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.product-image-block {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.product-image-thumb {
+  position: relative;
+  display: block;
+}
+
+.product-image {
+  height: 550px;
+  width: 550px;
+}
+
+.product-gallery-image {
+  display: inline-block;
+  height: 75px;
+  vertical-align: middle;
+}
+
+.product-gallery-image img {
+  /* width: 75px; */
+  height: 75px;
   object-fit: cover;
-  object-position: auto;
+  /* object-position: 0 0; */
+}
+
+.product-gallery {
+  width: auto;
+  padding: 0 100px;
+}
+
+.product-gallery-lighter {
+  opacity: 0;
+  position: absolute;
+  width: 100px;
+  height: 75px;
+  background-color: rgba(255,255,255,0.4);
+}
+
+.product-gallery-lighter:hover {
+  opacity: 1;
+  transition: .5s;
+}
+
+.product-data {
+  padding-left: 20px;
+  margin-bottom: 20px;
 }

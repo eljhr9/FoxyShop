@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="sidebar">
+  <div class="sidebar-container">
+    <div class="sidebar-collection sidebar-block">
+      <div class="sidebar-collection-title">Каталог товаров</div>
+      <div class="sidebar-collection-content">
+        <nav class="nav-sidebar">
+          <ul>
+            <li>
+              <a href="#">
+                Телефоны
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </li>
+            <li><a href="#">Фото и видео</a></li>
+            <li><a href="#">Ноутбуки, планшеты</a></li>
+            <li><a href="#">Консоли</a></li>
+            <li><a href="#">Наушники и аудио</a></li>
+            <li><a href="#">Гаджеты и авто</a></li>
+            <li><a href="#">Аксессуары</a></li>
+            <li><a href="#">Техника для дома</a></li>
+            <li><a href="#">Разное</a></li>
+            <li><a href="{% url 'shop:brand' %}">Бренды</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="sidebar-article sidebar-block">
+      <div class="article">
+        <div class="article_card">
+          <div class="article_card-img">
+            <a href="#">
+
+              <img src="{% static 'shop/75878-img_4625.jpg' %}">
+              <div class="hidden"><div class="hidden-text">Читать</div></div>
+              <p>12 Января 2020</p>
+
+            </a>
+          </div>
+
+          <div class="article_card-title">
+            <a href="#">Почему macbook идеальный выбор для работы!?</a>
+          </div>
+        </div>
+        <div class="article_card">
+          <div class="article_card-img">
+            <a href="#">
+
+              <img src="{% static 'shop/blackwhite-photography-36271549100649patda7aac3.jpg' %}">
+              <div class="hidden"><div class="hidden-text">Читать</div></div>
+              <p>15 Января 2020</p>
+
+            </a>
+          </div>
+
+          <div class="article_card-title">
+            <a href="#">Экосистема Apple все тонкости...</a>
+          </div>
+        </div>
+        <div class="article_card">
+          <div class="article_card-img">
+            <a href="#">
+
+              <img src="{% static 'shop/fintech2-800.jpg' %}">
+              <div class="hidden"><div class="hidden-text">Читать</div></div>
+              <p>25 Февраля 2020</p>
+
+            </a>
+          </div>
+
+          <div class="article_card-title">
+            <a href="#">Главные технологические достижения 2019 года</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="ad-block">
+      <div class="ad-block-container">
+        <div class="some-ad">
+          <a title="Здрасте" href="#">
+            <img src="{% static 'shop/some-ad.png' %}">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-content">
+
+    <div class="content-title">
+      <div class="title-text">
+        <h1>Каталог товаров</h1>
+      </div>
+    </div>
+
+    <div class="filter">
+      <div class="filter-button">
+        <div class="filter-text">
+          <label>Сортировать:</label>
+        </div>
+        <div class="filter-choise">
+          <select class="filter-sort">
+            <option value="" selected="">По умолчанию</option>
+            <option value="">По популярности</option>
+            <option value="">По возрастанию цены</option>
+            <option value="">По убиванию цены</option>
+            <option value="">По новинкам</option>
+            <option value="">По скидке</option>
+            <option value="">По алфавиту</option>
+          </select>
+          <div class="filter-icon"><i class="fas fa-sort-down"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="products">
+        {% block collection %}
+        {% endblock collection %}
+      </div>
+      <div class="pagination-field">
+        {% block paginator %}
+        {% endblock paginator %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
