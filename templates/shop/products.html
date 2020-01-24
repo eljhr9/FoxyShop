@@ -1,100 +1,169 @@
 {% extends "collections.html" %}
 
+{% block collection_title %}{{ title }}{% endblock %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<!-- <li class="breadcrumb-item"> -->
+				{% if current_rubric %}
+				<li class="breadcrumb-item">
+					<a href="{% url 'shop:by_rubric' current_rubric.id %}" class="breadcrumb-link">
+						<span>{{ current_rubric.name }}</span>
+					</a>
+				</li>
+				{% elif current_brand %}
+				<li class="breadcrumb-item">
+					<a href="{% url 'shop:brand' %}" class="breadcrumb-link">
+						<span>Бренды</span>
+					</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="{% url 'shop:by_brand' current_brand.id %}" class="breadcrumb-link">
+						<span>{{ current_brand.name }}</span>
+					</a>
+				</li>
+				{% else %}
+				<li class="breadcrumb-item">
+					<a href="{% url 'shop:products' %}" class="breadcrumb-link">
+						<span>Каталог товаров</span>
+					</a>
+				</li>
+				{% endif %}
+			<!-- </li> -->
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
 {% block collection %}
-{% for product in products %}
-<div class="current-product">
-	<a href="{% url 'shop:product' product.pk %}" class="product-card">
-	{% if product.image_1 %}
-	<div class="product-image"><img src="{{ product.image_1.url }}" ></div>
-	{% else %}
-	<div class="product-image"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
-	{% endif %}
-	</a>
-	<div class="product-card-title">
-		<a href="{% url 'shop:product' product.pk %}">{{ product.title }}</a>
-	</div>
-	<div class="product-card-rating">
-
-		<div class="rating-items">
-			<a href="{% url 'shop:product' product.pk %}" class="rating">
-				<span class="rating-item full"><i class="fas fa-star"></i></span>
-				<span class="rating-item full"><i class="fas fa-star"></i></span>
-				<span class="rating-item full"><i class="fas fa-star"></i></span>
-				<span class="rating-item full"><i class="fas fa-star"></i></span>
-				<span class="rating-item"><i class="far fa-star"></i></span>
-				<span class="rating-link">
-					<span class="icon"><i class="far fa-comment-dots"></i></span>
-					<span class="icon-count"><p>2</p></span>
-				</span>
-			</a>
-		</div>
-		<div class="product-card-prices">
-			<span><h4>{{ product.price }} ₴</h4></span>
-		</div>
-	<div class="product-card-add">
-		<div class="bascet-field">
-			<a href="{% url 'shop:product' product.pk %}" class="bascet-add">
-				<i class="fas fa-shopping-basket"></i>
-				<span>В корзину</span>
-			</a>
-		</div>
-		<div class="favorite-field">
-			<button type="button" class="button compare">
-				<span class="fas fa-align-right fa-lg"></span>
-			</button>
-			<button class="button favorite">
-				 <span class="far fa-heart fa-lg"></span>
-			</button>
+{% if products %}
+<div class="products">
+	<div class="filter">
+		<div class="filter-button">
+			<div class="filter-text">
+				<label>Сортировать:</label>
+			</div>
+			<div class="filter-choise">
+				<select class="filter-sort">
+					<option value="" selected="">По умолчанию</option>
+					<option value="">По популярности</option>
+					<option value="">По возрастанию цены</option>
+					<option value="">По убиванию цены</option>
+					<option value="">По новинкам</option>
+					<option value="">По скидке</option>
+					<option value="">По алфавиту</option>
+				</select>
+				<div class="filter-icon"><i class="fas fa-sort-down"></i></div>
+			</div>
 		</div>
 	</div>
 
+	{% for product in products %}
+	<div class="current-product">
+		<a href="{% url 'shop:product' product.pk %}" class="product-card">
+		{% if product.image_1 %}
+		<div class="product-image"><img src="{{ product.image_1.url }}" ></div>
+		{% else %}
+		<div class="product-image"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
+		{% endif %}
+		</a>
+		<div class="product-card-title">
+			<a href="{% url 'shop:product' product.pk %}">{{ product.title }}</a>
+		</div>
+		<div class="product-card-rating">
+
+			<div class="rating-items">
+				<a href="{% url 'shop:product' product.pk %}" class="rating">
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					<span class="rating-link">
+						<span class="icon"><i class="far fa-comment-dots"></i></span>
+						<span class="icon-count"><p>2</p></span>
+					</span>
+				</a>
+			</div>
+			<div class="product-card-prices">
+				<span><h4>{{ product.price }} ₴</h4></span>
+			</div>
+			<div class="product-card-add">
+				<div class="bascet-field">
+					<a href="{% url 'shop:product' product.pk %}" class="bascet-add">
+						<i class="fas fa-shopping-basket"></i>
+						<span>В корзину</span>
+					</a>
+				</div>
+				<div class="favorite-field">
+					<button type="button" class="button compare">
+						<span class="fas fa-align-right fa-lg"></span>
+					</button>
+					<button class="button favorite">
+						 <span class="far fa-heart fa-lg"></span>
+					</button>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
+	{% endfor %}
+</div>
+{% block paginator %}
+<div class="pagination-field">
+	<ul class="pagination pagination-bottom">
+		{% if products.has_next %}
+			<li class="pagination-load">
+				<a href="?page={{ products.next_page_number }}" class="pagination-load-button">Загрузить ещё</a>
+			</li>
+		{% endif %}
+		{% if products.has_previous %}
+			<li class="pagination-item pagination-item-prev">
+				<a href="?page={{ products.previous_page_number }}" class="pagination-link pagination-prev">
+					<i class="fas fa-chevron-left"></i> Назад
+				</a>
+			</li>
+		{% else %}
+			<li class="pagination-item">
+				<div class="pagination-link pagination-prev pagination-item-noprev">
+					<i class="fas fa-chevron-left"></i> Назад
+				</div>
+			</li>
+		{% endif %}
+		<li class="pagination-item pagination-item-num">
+			<a href="?page=1" class="pagination-link">1</a>
+		</li>
+		<li class="pagination-item pagination-item-num">
+			<a href="?page=2" class="pagination-link">2</a>
+		</li>
+		<li class="pagination-item pagination-item-num">
+			<a href="?page=3" class="pagination-link">3</a>
+		</li>
+		{% if products.has_next %}
+			<li class="pagination-item pagination-item-next">
+				<a href="?page={{ products.next_page_number }}" class="pagination-link pagination-next">
+					Вперёд <i class="fas fa-chevron-right"></i>
+				</a>
+			</li>
+		{% else %}
+			<li class="pagination-item">
+				<div class="pagination-link pagination-next pagination-item-nonext">
+					Вперёд <i class="fas fa-chevron-right"></i>
+				</div>
+			</li>
+		{% endif %}
+	</ul>
 
 </div>
-{% endfor %}
-{% endblock collection %}
-
-{% block paginator %}
-<ul class="pagination pagination-bottom">
-	{% if products.has_next %}
-		<li class="pagination-load">
-			<a href="?page={{ products.next_page_number }}" class="pagination-load-button">Загрузить ещё</a>
-		</li>
-	{% endif %}
-	{% if products.has_previous %}
-		<li class="pagination-item pagination-item-prev">
-			<a href="?page={{ products.previous_page_number }}" class="pagination-link pagination-prev">
-				<i class="fas fa-chevron-left"></i> Назад
-			</a>
-		</li>
-	{% else %}
-		<li class="pagination-item">
-			<div class="pagination-link pagination-prev pagination-item-noprev">
-				<i class="fas fa-chevron-left"></i> Назад
-			</div>
-		</li>
-	{% endif %}
-	<li class="pagination-item pagination-item-num">
-		<a href="?page=1" class="pagination-link">1</a>
-	</li>
-	<li class="pagination-item pagination-item-num">
-		<a href="?page=2" class="pagination-link">2</a>
-	</li>
-	<li class="pagination-item pagination-item-num">
-		<a href="?page=3" class="pagination-link">3</a>
-	</li>
-	{% if products.has_next %}
-		<li class="pagination-item pagination-item-next">
-			<a href="?page={{ products.next_page_number }}" class="pagination-link pagination-next">
-				Вперёд <i class="fas fa-chevron-right"></i>
-			</a>
-		</li>
-	{% else %}
-		<li class="pagination-item">
-			<div class="pagination-link pagination-next pagination-item-nonext">
-				Вперёд <i class="fas fa-chevron-right"></i>
-			</div>
-		</li>
-	{% endif %}
-</ul>
 {% endblock paginator %}
+
+{% else %}
+<h2>Здрасте</h2>
+{% endif %}
+{% endblock collection %}

@@ -16,6 +16,7 @@ class Product(models.Model):
 	image_1 = models.ImageField(upload_to='images/', null=True, blank=True)
 	image_2 = models.ImageField(upload_to='images/', null=True, blank=True)
 	image_3 = models.ImageField(upload_to='images/', null=True, blank=True)
+	rubric = models.ForeignKey('Rubric', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Рубрика')
 
 	class Meta:
 		verbose_name_plural = 'Товар'
@@ -25,6 +26,7 @@ class Product(models.Model):
 class Brand(models.Model):
 	"""Производитель"""
 	name = models.CharField(max_length=20, db_index=True, verbose_name='Название')
+	logo = models.ImageField(upload_to='images/brand/', null=True, blank=True)
 
 	def __str__(self):
 		return self.name
@@ -33,6 +35,16 @@ class Brand(models.Model):
 		verbose_name_plural = 'Производители'
 		verbose_name = 'Производитель'
 		ordering = ['name']
+
+class Rubric(models.Model):
+	name = models.CharField(max_length=50, verbose_name='Название')
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name_plural = 'Рубрики'
+		verbose_name = 'Рубрика'
 
 class Comment(models.Model):
 	"""Отзывы пользователей"""

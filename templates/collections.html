@@ -98,39 +98,20 @@
 
     <div class="content-title">
       <div class="title-text">
-        <h1>Каталог товаров</h1>
+        <h1>{% block collection_title %}{% endblock %}</h1>
       </div>
     </div>
 
-    <div class="filter">
-      <div class="filter-button">
-        <div class="filter-text">
-          <label>Сортировать:</label>
-        </div>
-        <div class="filter-choise">
-          <select class="filter-sort">
-            <option value="" selected="">По умолчанию</option>
-            <option value="">По популярности</option>
-            <option value="">По возрастанию цены</option>
-            <option value="">По убиванию цены</option>
-            <option value="">По новинкам</option>
-            <option value="">По скидке</option>
-            <option value="">По алфавиту</option>
-          </select>
-          <div class="filter-icon"><i class="fas fa-sort-down"></i></div>
-        </div>
-      </div>
-    </div>
 
     <div class="main-content">
       <div class="products">
         {% block collection %}
         {% endblock collection %}
       </div>
-      <div class="pagination-field">
+      <!-- <div class="pagination-field">
         {% block paginator %}
         {% endblock paginator %}
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

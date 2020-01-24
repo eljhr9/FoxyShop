@@ -51,7 +51,67 @@
 								<div class="more_contacts">
 									<!-- <h2>&hellip;</h2> -->
 									<h2><a href="#">...</a></h2>
+									<div class="user-icons-popup">
+										<div class="popup-contacts">
+											<ul class="popup-content-contacts">
+												<li class="menu-item menu-item-icon">
+													<i class="far fa-envelope"></i>
+													<a href="mailto:illyaredkolis@gmail.com" itempror="email">
+														illyaredkolis@gmail.com
+													</a>
+												</li>
+												<li class="menu-item menu-item-icon">
+													<i class="fas fa-map-marker-alt"></i>
+													<p itempror="adress" class="more-popup"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
+												</li>
+												<li class="menu-item menu-item-icon">
+													<i class="far fa-clock"></i>
+													<p class="more-popup">
+														Будние дни с 8:00 до 20:00
+														Выходные с 10:00 до 16:00
+													</p>
+												</li>
+
+											</ul>
+											<div class="popup-contacts social-popup">
+												<ul>
+													<li class="social-item">
+														<a href="http://instagram.com/">
+															<i class="fab fa-instagram"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="http://facebook.com/">
+															<i class="fab fa-facebook-square"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="http://youtube.com/">
+															<i class="fab fa-youtube"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="http://twitter.com/">
+															<i class="fab fa-twitter"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="https://t.me/">
+															<i class="fab fa-telegram"></i>
+														</a>
+													</li>
+													<li class="social-item">
+														<a href="https://ru.pinterest.com/">
+															<i class="fab fa-pinterest"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+
+									</div>
 								</div>
+
 
 							</div>
 						</div>
@@ -81,8 +141,37 @@
 									<li class="">
 										<a href="{% url 'shop:products' %}"> Каталог товаров</a>
 									</li>
-								</div>
 
+								</div>
+								<nav class="nav-collection-hidden nav-hidden">
+									<ul class="collection-hidden">
+										{% for rubric in rubrics %}
+										<li><a href="{% url 'shop:by_rubric' rubric.id %}">{{ rubric.name }}</a></li>
+										{% endfor %}
+										<!-- <li><a href="#">Фото и видео</a></li>
+										<li><a href="#">Ноутбуки, планшеты</a></li>
+										<li><a href="#">Консоли</a></li>
+										<li><a href="#">Наушники и аудио</a></li>
+										<li><a href="#">Гаджеты и авто</a></li>
+										<li><a href="#">Аксессуары</a></li>
+										<li><a href="#">Техника для дома</a></li>
+										<li><a href="#">Разное</a></li> -->
+										<li class="brand-hidden">
+											<a href="{% url 'shop:brand' %}" class="more_nav">
+												Бренды<i class="fas fa-chevron-right"></i>
+											</a>
+										</li>
+											<nav class="brand-nav nav-hidden">
+												<ul class="collection-hidden">
+													<li>
+														{% for brand in brands %}
+														<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
+														{% endfor %}
+													</li>
+												</ul>
+											</nav>
+									</ul>
+								</nav>
 								<div class="li-board">
 									<li><a href="{% url 'index' %}">Главная</a></li>
 								</div>
@@ -117,21 +206,14 @@
 								</div>
 							</ul>
 						</nav>
-						<nav class="nav-collections">
-							<ul>
-								<li>
-									{% for brand in brands %}
-									<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
-									{% endfor %}
-								</li>
-							</ul>
-						</nav>
 
 					</div>
 				</div>
 			</div>
 
 		</div>
+		{% block breadcrumb %}{% endblock %}
+		
 
 		<div class="content-container">
 			<div class="content">
@@ -229,7 +311,7 @@
 								<div class="menu-block">
 									<div class="menu-title title-collection">Каталог товаров</div>
 									<ul class="menu-items">
-										<li class="menu-item collection-item"><a href="#">Телефоны</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 1 %}">Телефоны</a></li>
 										<li class="menu-item collection-item"><a href="#">Фото и видео</a></li>
 										<li class="menu-item collection-item"><a href="#">Ноутбуки, планшеты, компьютеры</a></li>
 										<li class="menu-item collection-item"><a href="#">Консоли</a></li>

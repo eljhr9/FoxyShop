@@ -1,12 +1,35 @@
 {% extends "base.html" %}
 
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				{% if product.rubric %}
+				<a href="{% url 'shop:by_rubric' product.rubric.id %}" class="breadcrumb-link">
+					<span>{{ product.rubric.name }}</span>
+				</a>
+				{% else %}
+				<a href="{% url 'shop:products' %}" class="breadcrumb-link">
+					<span>Каталог товаров</span>
+				</a>
+				{% endif %}
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="content-left col">
   <div class="product-images">
   {% if product.image_1 %}
     <div class="product-image-block">
       <a href="#" class="product-image-thumb">
-        <img class="product-image" src="{{ product.image_1.url }}">
+        <img class="product-img" src="{{ product.image_1.url }}">
       </a>
     </div>
     <div class="product-gallery">
@@ -31,17 +54,104 @@
 </div>
 <div class="content-right col">
   <div class="product-data">
-    <h1>{{ product.title }}</h1>
-    <h3>{{ product.text }}</h3>
-    <h2>{{ product.price }}</h2>
-    {% if product.availability %}
-      <p>Есть в наличии</p>
-    {% else %}
-      <p>Нет в наличии</p>
-    {% endif %}
-    {% if product.brand %}
-    <a href="{% url 'shop:by_brand' product.brand.pk %}">{{ product.brand }}</a>
-    {% endif %}
+    <form action="/cart_items" method="post">
+      <div class="product-head">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <div class="product-brand">
+          <a href="{% url 'shop:by_brand' product.brand.pk %}" class="brand-image">
+            <img src="{{ product.brand.logo.url }}" class="brand-logo">
+          </a>
+        </div>
+      </div>
+      <div class="product-variants">
+        <div class="product-sku">
+          Артикул:
+          <span>3254{{ product.pk }}</span>
+        </div>
+        <div class="product-prices">
+          <span>{{ product.price }} ₴</span>
+        </div>
+        <div class="product-rating">
+          <div class="rating-items">
+      			<a href="#comments" class="rating">
+      				<span class="rating-item full"><i class="fas fa-star"></i></span>
+      				<span class="rating-item full"><i class="fas fa-star"></i></span>
+      				<span class="rating-item full"><i class="fas fa-star"></i></span>
+      				<span class="rating-item full"><i class="fas fa-star"></i></span>
+      				<span class="rating-item"><i class="far fa-star"></i></span>
+      				<span class="rating-link">
+      					<span class="icon comment-count"><i class="far fa-comment-dots"></i></span>
+      					<span class="icon-count comment-count"><p>Рейтинг и отзывы (2)</p></span>
+      				</span>
+      			</a>
+      		</div>
+        </div>
+        <div class="product-form">
+          {% if product.availability %}
+          <div class="product-availability available">
+            <p>В наличии</p>
+          </div>
+          {% else %}
+          <div class="product-availability not_available">
+            <p>Нет в наличии</p>
+          </div>
+          {% endif %}
+          <div class="product-buttons">
+            <div class="product-row">
+              <div class="product-quantity">
+                <div class="quantity">
+                  <div class="product-row no-gutters" data-quantity="">
+                    <div class="subtraction">
+                      <button type="button" class="button-counter" data-quantity-change="-1">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                    <div class="count">
+                      <input class="input-count" type="text" name="quantity" value="1" min="1" autocomplete="off">
+                    </div>
+                    <div class="addition">
+                      <button type="button" class="button-counter" data-quantity-change="1">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="product-add">
+                <div class="product_add">
+                  <button class="add-to-cart" type="submit" data-item-add="">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>В корзину</span>
+                  </button>
+                </div>
+              </div>
+              <div class="order">
+                <div class="product-quick_checkout">
+                  <button class="add-to-cart quick_checkout" type="submit" data-quick-checkout>
+                    Заказ в один клик
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+    <div class="product-extras">
+      <div class="extras-row">
+        <div class="bonuses-col">
+          <div class="product-bonuses">
+            <button type="button" data-target="bonuses" data-type="text" class="bonuses-button">
+              <i class="fas fa-piggy-bank"></i>
+              <span> 2599 Бонусов</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock content %}
