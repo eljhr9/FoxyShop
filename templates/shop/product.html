@@ -169,9 +169,95 @@
 				<p>Доставка в <span><a class="delivery-city" href="#"><span>г. Киев</span></a></span></p>
 			</div>
 			<div class="product-geo-items">
-				
+				<div class="salesbeat-div-courier">
+					<p>Курьером:</p>
+					<ul>
+						<li>Курьерская доставка 1 день, 150 грн.</li>
+						<li>Посылка склад-дверь 1 день, 120 грн.</li>
+						<li>Посылка склад-склад 1 день, 100 грн.</li>
+					</ul>
+				</div>
+				<div class="salesbeat-div-pvz">
+					<p>Самовывоз:</p>
+					<ul>
+						<li>Самовывоз, бесплатно.</li>
+						<li>Посылка склад-склад 1 день, 60 грн.</li>
+						<li>Посылка дверь-склад 1 день, 50 грн.</li>
+						<li>Посылка Новой Почтой с наложенным платежём 1 день, 30 грн.</li>
+						<li>Посылка Новой Почтой по предоплате 1 день, 30 грн.</li>
+					</ul>
+					<p>
+						<a href="#" class="salesbeat-pvz-map">
+							<i class="fas fa-map-marked-alt"></i>
+							<span>Просмотр пунктов самовывоза</span>
+						</a>
+					</p>
+				</div>
 			</div>
+		</div>
+		<div class="product-collections">
+			Категории:
+			<a href="{% url 'shop:products' %}">Каталог товаров, </a>
+			<a href="{% url 'shop:by_rubric' product.rubric.id %}">{{ product.rubric.name }}, </a>
+			<a href="{% url 'shop:by_brand' product.brand.id %}">{{ product.brand.name }}</a>
 		</div>
   </div>
 </div>
 {% endblock content %}
+
+{% block comments %}
+<div class="section-share">
+	<div class="share-product">
+		<div class="share-to">
+			<ul>
+				<!-- <li class="share-to-item">
+					<p>Поделится: </p>
+				</li> -->
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-facebook-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-pinterest-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-twitter-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-viber"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-whatsapp-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-telegram"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="product-section">
+	<div class="product-container">
+		<div class="additionally">
+			<div class="additionally-row">
+				<div class="additionally-item">
+					<i class="far fa-list-alt"></i>
+					<p>описание</p>
+				</div>
+				<div class="additionally-item">
+					<i class="fas fa-sliders-h"></i>
+					<p>Характеристики</p>
+				</div>
+				<div class="additionally-item">
+					<i class="far fa-comment-dots"></i>
+					<p>Отзывы</p>
+					<sup>3</sup>
+				</div>
+				<!-- <div class="additionally-item">
+					<i class="far fa-list-alt"></i>
+					<p>описание</p>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock comments %}

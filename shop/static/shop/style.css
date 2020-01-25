@@ -42,6 +42,13 @@ button, html [type="button"] {
   -webkit-appearance: button;
 }
 
+sub, sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
 .header {
   height: 143.5px;
 }
@@ -1961,3 +1968,188 @@ button, html [type="button"] {
   z-index: 3;
   top: -19px;
 }
+
+.salesbeat-div-courier p, .salesbeat-div-pvz p {
+  color: #000;
+  font-weight: 600;
+  margin: 5px 0px;
+}
+
+.salesbeat-div-courier ul, .salesbeat-div-pvz ul {
+  list-style: square;
+  margin: 0px 0px 0px 25px;
+  padding: 0;
+}
+
+.salesbeat-div-courier ul li {
+  margin: 5px 0px;
+  padding: 0;
+}
+
+.salesbeat-div-pvz {
+  margin-top: 20px;
+}
+
+.salesbeat-pvz-map {
+  padding: 0px;
+  height: auto;
+  min-width: 30px;
+  color: #000;
+  line-height: 0px;
+  background: transparent;
+  font-size: 12px;
+  text-transform: none;
+  vertical-align: top;
+}
+
+.salesbeat-pvz-map:hover {
+  color: darkorange;
+  transition: .4s;
+}
+
+.salesbeat-pvz-map i {
+  margin-right: 5px;
+  font-size: 17.5px;
+}
+
+.salesbeat-pvz-map span {
+  margin-left: 5px;
+  border-bottom: 1px dotted currentColor;
+}
+
+.product-collections {
+  margin: 20px 0px;
+  margin-left: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #999;
+}
+
+.product-collections a:hover {
+  color: darkorange;
+  transition: .3s;
+}
+
+.section-share {
+  position: relative;
+}
+
+.share-product {
+  background: #f7f8fa;
+  text-align: center;
+  margin: 20px 0px 40px;
+  height: 33px;
+  padding: 10px 0px;
+}
+
+.share-to {
+  line-height: normal;
+}
+
+.share-to ul {
+  font-size: 13px;
+  list-style-type: none;
+}
+
+.share-to-item {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 14px;
+  font-size: 32px;
+}
+
+.share-to-item a {
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.fa-pinterest-square {
+  color: #c20724;
+}
+
+.fa-twitter-square {
+  color: #00aced;
+}
+
+.fa-viber {
+  color: #7b519d;
+}
+
+.fa-whatsapp-square {
+  color: #65bc54;
+}
+
+.share-to-item p {
+  font-size: 26px;
+}
+
+.product-section {
+  position: relative;
+}
+
+.product-container {
+  max-width: 1120px;
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.additionally {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+}
+
+.additionally-row {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 0px 25px;
+}
+
+.additionally-item {
+  flex: 0 0 auto;
+  width: auto;
+  margin: 0px 20px 15px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #999;
+  cursor: pointer;
+  max-width: none;
+  position: relative;
+  min-height: 1px;
+  padding: 0;
+}
+
+.additionally-item i {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.45em;
+}
+
+.additionally-item p {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 2px;
+}
+
+.additionally-item:hover {
+  color: black;
+  transition: .4s;
+}
+
+.additionally-item sup {
+  position: absolute;
+  margin-left: 5px;
+  top: .4em;
+}
+/* .additionally-item span {
+  font-size: 10px;
+  vertical-align: top;
+} */
