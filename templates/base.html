@@ -213,7 +213,7 @@
 
 		</div>
 		{% block breadcrumb %}{% endblock %}
-		
+
 
 		<div class="content-container">
 			<div class="content">
@@ -312,15 +312,15 @@
 									<div class="menu-title title-collection">Каталог товаров</div>
 									<ul class="menu-items">
 										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 1 %}">Телефоны</a></li>
-										<li class="menu-item collection-item"><a href="#">Фото и видео</a></li>
-										<li class="menu-item collection-item"><a href="#">Ноутбуки, планшеты, компьютеры</a></li>
-										<li class="menu-item collection-item"><a href="#">Консоли</a></li>
-										<li class="menu-item collection-item"><a href="#">Наушники и аудио</a></li>
-										<li class="menu-item collection-item"><a href="#">Гаджеты и авто</a></li>
-										<li class="menu-item collection-item"><a href="#">Аксессуары</a></li>
-										<li class="menu-item collection-item"><a href="#">Техника для дома</a></li>
-										<li class="menu-item collection-item"><a href="#">Разное</a></li>
-										<li class="menu-item collection-item"><a href="#">Бренды</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 2 %}">Фото и видео</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 3 %}">Ноутбуки, планшеты, компьютеры</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 4 %}">Консоли</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 5 %}">Наушники и аудио</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 6 %}">Гаджеты и авто</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 7 %}">Аксессуары</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 8 %}">Техника для дома</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 9 %}">Разное</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:brand' %}">Бренды</a></li>
 									</ul>
 								</div>
 							</div>
@@ -329,7 +329,7 @@
 								<div class="menu-block">
 									<div class="menu-title title-collection">Дополнительно</div>
 									<ul class="menu-items">
-										<li class="menu-item collection-item"><a href="#">Главная</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'index' %}">Главная</a></li>
 										<li class="menu-item collection-item"><a href="#">Акции</a></li>
 										<li class="menu-item collection-item"><a href="#">Новинки</a></li>
 										<li class="menu-item collection-item"><a href="#">Статьи</a></li>

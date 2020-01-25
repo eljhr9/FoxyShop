@@ -11,19 +11,19 @@
         <nav class="nav-sidebar">
           <ul>
             <li>
-              <a href="#">
+              <a href="{% url 'shop:by_rubric' 1 %}">
                 Телефоны
-                <i class="fas fa-chevron-right"></i>
+                <!-- <i class="fas fa-chevron-right"></i> -->
               </a>
             </li>
-            <li><a href="#">Фото и видео</a></li>
-            <li><a href="#">Ноутбуки, планшеты</a></li>
-            <li><a href="#">Консоли</a></li>
-            <li><a href="#">Наушники и аудио</a></li>
-            <li><a href="#">Гаджеты и авто</a></li>
-            <li><a href="#">Аксессуары</a></li>
-            <li><a href="#">Техника для дома</a></li>
-            <li><a href="#">Разное</a></li>
+            <li><a href="{% url 'shop:by_rubric' 2 %}">Фото и видео</a></li>
+            <li><a href="{% url 'shop:by_rubric' 3 %}">Ноутбуки, планшеты</a></li>
+            <li><a href="{% url 'shop:by_rubric' 4 %}">Консоли</a></li>
+            <li><a href="{% url 'shop:by_rubric' 5 %}">Наушники и аудио</a></li>
+            <li><a href="{% url 'shop:by_rubric' 6 %}">Гаджеты и авто</a></li>
+            <li><a href="{% url 'shop:by_rubric' 7 %}">Аксессуары</a></li>
+            <li><a href="{% url 'shop:by_rubric' 8 %}">Техника для дома</a></li>
+            <li><a href="{% url 'shop:by_rubric' 9 %}">Разное</a></li>
             <li><a href="{% url 'shop:brand' %}">Бренды</a></li>
           </ul>
         </nav>
