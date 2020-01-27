@@ -9,7 +9,7 @@
 			</li>
 			<li class="breadcrumb-item">
 				{% if product.rubric %}
-				<a href="{% url 'shop:by_rubric' product.rubric.id %}" class="breadcrumb-link">
+				<a href="{% url 'shop:by_rubric' product.rubric.slug %}" class="breadcrumb-link">
 					<span>{{ product.rubric.name }}</span>
 				</a>
 				{% else %}
@@ -58,7 +58,7 @@
       <div class="product-head">
         <h1 class="product-title">{{ product.title }}</h1>
         <div class="product-brand">
-          <a href="{% url 'shop:by_brand' product.brand.pk %}" class="brand-image">
+          <a href="{% url 'shop:by_brand' product.brand.slug %}" class="brand-image">
             <img src="{{ product.brand.logo.url }}" class="brand-logo">
           </a>
         </div>
@@ -198,8 +198,8 @@
 		<div class="product-collections">
 			Категории:
 			<a href="{% url 'shop:products' %}">Каталог товаров, </a>
-			<a href="{% url 'shop:by_rubric' product.rubric.id %}">{{ product.rubric.name }}, </a>
-			<a href="{% url 'shop:by_brand' product.brand.id %}">{{ product.brand.name }}</a>
+			<a href="{% url 'shop:by_rubric' product.rubric.slug %}">{{ product.rubric.name }}, </a>
+			<a href="{% url 'shop:by_brand' product.brand.slug %}">{{ product.brand.name }}</a>
 		</div>
   </div>
 </div>

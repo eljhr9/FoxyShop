@@ -12,7 +12,7 @@
 			<!-- <li class="breadcrumb-item"> -->
 				{% if current_rubric %}
 				<li class="breadcrumb-item">
-					<a href="{% url 'shop:by_rubric' current_rubric.id %}" class="breadcrumb-link">
+					<a href="{% url 'shop:by_rubric' current_rubric.slug %}" class="breadcrumb-link">
 						<span>{{ current_rubric.name }}</span>
 					</a>
 				</li>
@@ -23,7 +23,7 @@
 					</a>
 				</li>
 				<li class="breadcrumb-item">
-					<a href="{% url 'shop:by_brand' current_brand.id %}" class="breadcrumb-link">
+					<a href="{% url 'shop:by_brand' current_brand.slug %}" class="breadcrumb-link">
 						<span>{{ current_brand.name }}</span>
 					</a>
 				</li>

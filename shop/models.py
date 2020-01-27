@@ -27,6 +27,7 @@ class Brand(models.Model):
 	"""Производитель"""
 	name = models.CharField(max_length=20, db_index=True, verbose_name='Название')
 	logo = models.ImageField(upload_to='images/brand/', null=True, blank=True)
+	slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
 	def __str__(self):
 		return self.name
@@ -38,11 +39,13 @@ class Brand(models.Model):
 
 class Rubric(models.Model):
 	name = models.CharField(max_length=50, verbose_name='Название')
+	slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
 	def __str__(self):
 		return self.name
 
 	class Meta:
+		ordering = ['id']
 		verbose_name_plural = 'Рубрики'
 		verbose_name = 'Рубрика'
 

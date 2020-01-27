@@ -20,10 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('shop/', include('shop.urls')),
+    path('collection/', include('shop.urls')),
 ]
 
 

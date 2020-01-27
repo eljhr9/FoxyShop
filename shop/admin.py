@@ -5,7 +5,19 @@ class ProductAdmin(admin.ModelAdmin):
 	list_display = ('title', 'price', 'availability', 'date_added', 'brand', 'rubric')
 	list_display_links = ('title', 'availability')
 	search_fields = ('title', 'availability', 'date_added', 'brand', 'rubric')
+	list_editable = ['brand', 'rubric']
 
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Brand)
-admin.site.register(Rubric)
+
+class BrandAdmin(admin.ModelAdmin):
+	list_display = ['name', 'slug']
+	prepopulated_fields = {'slug': ('name',)}
+
+
+admin.site.register(Brand, BrandAdmin)
+
+class RubricAdmin(admin.ModelAdmin):
+	list_display = ['name', 'slug']
+	prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(Rubric, RubricAdmin)

@@ -146,7 +146,7 @@
 								<nav class="nav-collection-hidden nav-hidden">
 									<ul class="collection-hidden">
 										{% for rubric in rubrics %}
-										<li><a href="{% url 'shop:by_rubric' rubric.id %}">{{ rubric.name }}</a></li>
+										<li><a href="{% url 'shop:by_rubric' rubric.slug %}">{{ rubric.name }}</a></li>
 										{% endfor %}
 										<!-- <li><a href="#">Фото и видео</a></li>
 										<li><a href="#">Ноутбуки, планшеты</a></li>
@@ -165,7 +165,7 @@
 												<ul class="collection-hidden">
 													<li>
 														{% for brand in brands %}
-														<a href="{% url 'shop:by_brand' brand.id %}">{{ brand.name }}</a>
+														<a href="{% url 'shop:by_brand' brand.slug %}">{{ brand.name }}</a>
 														{% endfor %}
 													</li>
 												</ul>
@@ -312,15 +312,15 @@
 								<div class="menu-block">
 									<div class="menu-title title-collection">Каталог товаров</div>
 									<ul class="menu-items">
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 1 %}">Телефоны</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 2 %}">Фото и видео</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 3 %}">Ноутбуки, планшеты, компьютеры</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 4 %}">Консоли</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 5 %}">Наушники и аудио</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 6 %}">Гаджеты и авто</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 7 %}">Аксессуары</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 8 %}">Техника для дома</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 9 %}">Разное</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'telefony' %}">Телефоны</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">Фото и видео</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">Ноутбуки, планшеты, компьютеры</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'konsoli' %}">Консоли</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">Наушники и аудио</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">Гаджеты и авто</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'aksessuary' %}">Аксессуары</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">Техника для дома</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'raznoe' %}">Разное</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'shop:brand' %}">Бренды</a></li>
 									</ul>
 								</div>

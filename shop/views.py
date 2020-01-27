@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import Product, Brand, Rubric
@@ -45,10 +45,12 @@ def brand(request):
 	context = {'brands': brands, 'rubrics': rubrics}
 	return render(request, 'shop/brand.html', context)
 
-def by_brand(request, brand_id):
-	products = Product.objects.filter(brand=brand_id)
+def by_brand(request, brand_slug):
+	current_brand = get_object_or_404(Brand, slug=brand_slug)
+	# products = Product.objects.filter(brand=brand_slug)
+	products = Product.objects.filter(brand=current_brand)
 	brands = Brand.objects.all()
-	current_brand = Brand.objects.get(pk=brand_id)
+	# current_brand = Brand.objects.get(pk=brand_slug)
 	rubrics = Rubric.objects.all()
 	title = current_brand.name
 	context = {'products': products, 'brands': brands, 'rubrics': rubrics, 'current_brand': current_brand, 'title': title}
@@ -61,11 +63,12 @@ def product(request, product_id):
 	context = {'product': product, 'brands': brands, 'rubrics': rubrics}
 	return render(request, 'shop/product.html', context)
 
-def by_rubric(request, rubric_id):
-	products = Product.objects.filter(rubric=rubric_id)
+def by_rubric(request, rubric_slug):
+	current_rubric = Rubric.objects.get(slug=rubric_slug)
+	products = Product.objects.filter(rubric=current_rubric)
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
-	current_rubric = Rubric.objects.get(pk=rubric_id)
+
 	title = current_rubric.name
 	context = {'products': products, 'rubrics': rubrics, 'brands': brands, 'current_rubric': current_rubric, 'title': title}
 	return render(request, 'shop/products.html', context)
