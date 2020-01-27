@@ -56,8 +56,10 @@ def by_brand(request, brand_slug):
 	context = {'products': products, 'brands': brands, 'rubrics': rubrics, 'current_brand': current_brand, 'title': title}
 	return render(request, 'shop/products.html', context)
 
-def product(request, product_id):
-	product = Product.objects.get(pk=product_id)
+def product(request, product_slug, brand_slug):
+	product = get_object_or_404(Product, slug=product_slug)
+	brand_slug = product.brand.slug
+	# product = Product.objects.get(pk=product_id)
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
 	context = {'product': product, 'brands': brands, 'rubrics': rubrics}
