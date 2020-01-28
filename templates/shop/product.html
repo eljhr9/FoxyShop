@@ -56,7 +56,7 @@
   <div class="product-data">
     <form action="/cart_items" method="post">
       <div class="product-head">
-        <h1 class="product-title">{{ product.title }}</h1>
+        <h1 class="product-title">{{ product.brand }} {{ product.title }}</h1>
         <div class="product-brand">
           <a href="{% url 'shop:by_brand' product.brand.slug %}" class="brand-image">
             <img src="{{ product.brand.logo.url }}" class="brand-logo">
