@@ -3,12 +3,37 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import Product, Brand, Rubric
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import MailingForm
+from django.core.mail import send_mail
+
+def mailing(request):
+	if request.method == 'POST':
+		form = MailingForm(request.POST)
+		if form.is_valid():
+			cd = form.cleaned_data
+			subject = 'Рассылка FoxyShop'
+			message = 'Подписка на рассылку прошла успешно!'
+			send_mail(subject, message, 'admin@myblog.com',[cd['email']])
+			post = True
+			return form, post
+	else:
+		form = MailingForm()
+		post = False
+		return form, post
+
 
 def index(request):
 	'''домашняя страница магазина'''
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
-	context = {'brands': brands, 'rubrics': rubrics}
+	post = False
+	form, post = mailing(request)
+	# if request.method == 'POST':
+	# 	form = mailing(request)
+	# 	post = True
+	# else:
+	# 	form = MailingForm()
+	context = {'brands': brands, 'rubrics': rubrics, 'form': form, 'post': post}
 	return render(request, 'shop/index.html', context)
 
 
@@ -35,14 +60,17 @@ def products(request):
 	except EmptyPage:
 		# If page is out of range (e.g. 9999), deliver last page of results.
 		products = paginator.page(paginator.num_pages)
+	form_mailing, post = mailing(request)
 	# return render(request, 'shop/products.html', {"products": products, "brands": brands})
-	context = {'brands': brands, 'products': products, 'rubrics': rubrics, 'title': title}
+	context = {'brands': brands, 'products': products, 'rubrics': rubrics,
+	'title': title, 'form_mailing': form_mailing, 'post': post}
 	return render(request, 'shop/products.html', context)
 
 def brand(request):
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
-	context = {'brands': brands, 'rubrics': rubrics}
+	form_mailing, post = mailing(request)
+	context = {'brands': brands, 'rubrics': rubrics, 'form_mailing': form_mailing, 'post': post}
 	return render(request, 'shop/brand.html', context)
 
 def by_brand(request, brand_slug):
@@ -53,7 +81,9 @@ def by_brand(request, brand_slug):
 	# current_brand = Brand.objects.get(pk=brand_slug)
 	rubrics = Rubric.objects.all()
 	title = current_brand.name
-	context = {'products': products, 'brands': brands, 'rubrics': rubrics, 'current_brand': current_brand, 'title': title}
+	form_mailing, post = mailing(request)
+	context = {'products': products, 'brands': brands, 'rubrics': rubrics,
+	'current_brand': current_brand, 'title': title, 'form_mailing': form_mailing, 'post': post}
 	return render(request, 'shop/products.html', context)
 
 def product(request, product_slug, brand_slug):
@@ -62,7 +92,8 @@ def product(request, product_slug, brand_slug):
 	# product = Product.objects.get(pk=product_id)
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
-	context = {'product': product, 'brands': brands, 'rubrics': rubrics}
+	form_mailing, post = mailing(request)
+	context = {'product': product, 'brands': brands, 'rubrics': rubrics, 'form_mailing': form_mailing, 'post': post}
 	return render(request, 'shop/product.html', context)
 
 def by_rubric(request, rubric_slug):
@@ -72,5 +103,7 @@ def by_rubric(request, rubric_slug):
 	rubrics = Rubric.objects.all()
 
 	title = current_rubric.name
-	context = {'products': products, 'rubrics': rubrics, 'brands': brands, 'current_rubric': current_rubric, 'title': title}
+	form_mailing, post = mailing(request)
+	context = {'products': products, 'rubrics': rubrics, 'brands': brands,
+	'current_rubric': current_rubric, 'title': title, 'form_mailing': form_mailing, 'post': post}
 	return render(request, 'shop/products.html', context)

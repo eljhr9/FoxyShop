@@ -14,6 +14,7 @@ class Product(models.Model):
 	price = models.IntegerField(verbose_name='Цена')
 	availability = models.BooleanField(default=True, verbose_name='Наличие')
 	date_added = models.DateTimeField(auto_now_add=True, verbose_name='Был добавлен')
+	updated = models.DateTimeField(auto_now=True, verbose_name='Был изменен')
 	brand = models.ForeignKey('Brand', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Производитель')
 	image_1 = models.ImageField(upload_to='images/', null=True, blank=True)
 	image_2 = models.ImageField(upload_to='images/', null=True, blank=True)
@@ -43,6 +44,7 @@ class Brand(models.Model):
 		ordering = ['name']
 
 class Rubric(models.Model):
+	"""Рубрика товара"""
 	name = models.CharField(max_length=50, verbose_name='Название')
 	slug = models.SlugField(max_length=50, db_index=True, unique=True)
 
@@ -56,3 +58,10 @@ class Rubric(models.Model):
 
 class Comment(models.Model):
 	"""Отзывы пользователей"""
+	product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
+	name = models.CharField(max_length=80)
+	email = models.EmailField()
+	body = models.TextField()
+	created = models.DateTimeField(auto_now_add=True, verbose_name='Был добавлен')
+	updated = models.DateTimeField(auto_now=True, verbose_name='Был изменен')
+	is_active = models.BooleanField(default=True)

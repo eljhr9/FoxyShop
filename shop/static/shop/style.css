@@ -2153,3 +2153,33 @@ sub, sup {
   font-size: 10px;
   vertical-align: top;
 } */
+
+.subscribe-content {
+  margin: auto;
+  border-radius: 10px;
+  /* width: 672px; */
+  max-width: 80%;
+  width: 820px;
+  font-size: 15px;
+  background-color: #0bb648;
+  text-shadow: 1px 1px 1px black;
+  color: white;
+}
+
+.subscribe-content i {
+  font-size: 12px;
+  border-color: white;
+}
+
+.subscribe-content p {
+  padding-top: 3px;
+}
+
+.subscribe-icon {
+  border-color: white;
+  padding-bottom: 2px;
+  box-shadow: 1px 1px 1px black;
+  height: 16.5px;
+  margin: auto;
+  margin-right: 12px;
+}

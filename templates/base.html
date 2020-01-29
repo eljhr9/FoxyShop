@@ -225,8 +225,37 @@
 		{% endblock comments %}
 		<div class="section-footer">
 			<footer>
+				{% if post %}
 				<div class="footer-scheme-01">
-					<form action="#" class="footer-subscribe">
+
+					<div class="footer-subscribe">
+						<div class="footer-container">
+							<div class="subscribe-text">
+								<div class="text-content subscribe-content">
+									<div class="text-row">
+										<div class="text-icon subscribe-icon">
+											<!-- <i class="fas fa-info-circle"></i> -->
+											<i class="fas fa-info"></i>
+										</div>
+										<div class="text-col">
+											<p>
+												Запрос на подписку успешно оформлен, подтверждающее письмо
+												было выслано вам на почту!
+											</p>
+										</div>
+									</div>
+								</div>
+								<!-- <h4>Запрос на подписку успешно оформлен, подтверждающее письмо
+									 было выслано вам на почту, в случае его отсутствия проверте
+									 введенные данные и попоробуйте снова</h4>-->
+							</div>
+						</div>
+					</div>
+				</div>
+					{% else %}
+				<div class="footer-scheme-01">
+					<form action="." method="post" class="footer-subscribe">
+						{% csrf_token %}
 						<div class="footer-container">
 							<div class="subscribe-items">
 								<div class="subscribe-items-left">
@@ -235,7 +264,7 @@
 										<div class="subscribe-form">
 											<div class="subscribe-form-input">
 												<input type="email" class="input" name="email"
-												placeholder="Адрес електронной почты" required="">
+												placeholder="Адрес електронной почты" required id="id_email">
 											</div>
 											<div class="subscribe-form-button">
 												<button class="subscribe-button" type="submit" >
@@ -245,7 +274,7 @@
 										</div>
 									</div>
 									<div class="subscribe-item-policy">
-										<p>На данный момент рассылка находится в разработке</p>
+										<p>Нажимая подписаться вы получите сообщение подтверждающее вашу подписку</p>
 									</div>
 								</div>
 								<div class="subscribe-items-right">
@@ -259,6 +288,8 @@
 						</div>
 					</form>
 				</div>
+				{% endif %}
+
 
 				<div class="footer-scheme-02">
 					<div class="footer-menu">
