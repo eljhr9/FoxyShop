@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import Product, Brand, Rubric
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import MailingForm
+from .forms import MailingForm, CommentForm
 from django.core.mail import send_mail
 
 def mailing(request):
@@ -43,6 +43,7 @@ def products(request):
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
 	title = 'Каталог товаров'
+
 	# paginator = Paginator(products, 9)
 	# if 'page' in request.GET:
 	# 	page_num = request.GET['page']
@@ -92,8 +93,19 @@ def product(request, product_slug, brand_slug):
 	# product = Product.objects.get(pk=product_id)
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
+	comments = product.comments.filter(is_active=True)
+	if request.method == 'POST':
+		comment_form = CommentForm(data=request.POST)
+		if comment_form.is_valid():
+			new_comment = comment_form.save(commit=False)
+			new_comment.product = product
+			new_comment.save()
+	else:
+		comment_form = CommentForm()
 	form_mailing, post = mailing(request)
-	context = {'product': product, 'brands': brands, 'rubrics': rubrics, 'form_mailing': form_mailing, 'post': post}
+	context = {'product': product, 'brands': brands, 'rubrics': rubrics,
+	'form_mailing': form_mailing, 'post': post, 'comments': comments,
+	'comment_form': comment_form}
 	return render(request, 'shop/product.html', context)
 
 def by_rubric(request, rubric_slug):

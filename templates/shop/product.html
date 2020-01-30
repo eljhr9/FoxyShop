@@ -81,7 +81,7 @@
       				<span class="rating-item"><i class="far fa-star"></i></span>
       				<span class="rating-link">
       					<span class="icon comment-count"><i class="far fa-comment-dots"></i></span>
-      					<span class="icon-count comment-count"><p>Рейтинг и отзывы (2)</p></span>
+      					<span class="icon-count comment-count"><p>Рейтинг и отзывы ({{ comments.count }})</p></span>
       				</span>
       			</a>
       		</div>
@@ -250,12 +250,88 @@
 				<div class="additionally-item">
 					<i class="far fa-comment-dots"></i>
 					<p>Отзывы</p>
-					<sup>3</sup>
+					<sup>{{ comments.count }}</sup>
 				</div>
 				<!-- <div class="additionally-item">
 					<i class="far fa-list-alt"></i>
 					<p>описание</p>
 				</div> -->
+			</div>
+		</div>
+	</div>
+</div>
+<div class="product-section">
+	<div class="product-container">
+		<div class="comments-row">
+			<div class="comments-all">
+				<div class="product-reviews">
+				{% if comments %}
+					{% for comment in comments %}
+					<div class="review">
+						<div class="review-header">
+							<div class="review-avatar">
+								<div class="review-avatar-logo">
+									<img src="https://avatars.dicebear.com/v2/initials/{{ comment.name }}.svg" alt="{{ comment.name }}">
+								</div>
+							</div>
+							<div class="review-detail">
+								<div class="review-reting">
+									<!--  -->
+									{% if comment.value == 1 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+		      				<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif comment.value == 2 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif comment.value == 3 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif comment.value == 4 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif comment.value == 4 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									{% else %}
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% endif %}
+								</div>
+								<div class="review-author">
+									<span class="author">{{ comment.name }}</span>
+									{{ comment.created|date:'d.m.Y в H:i' }}
+								</div>
+							</div>
+						</div>
+						<div class="review-content">
+							<div class="review-content-text">
+								{{ comment.body }}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				{% else %}
+					<h2>No comments!</h2>
+				{% endif %}
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Brand, Rubric
+from .models import Product, Brand, Rubric, Comment
 
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('title', 'price', 'availability', 'date_added', 'slug', 'brand', 'rubric')
@@ -22,3 +22,9 @@ class RubricAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(Rubric, RubricAdmin)
+
+class CommentAdmin(admin.ModelAdmin):
+	list_display = ['name', 'email', 'product', 'created', 'is_active']
+	search_fields = ('name', 'email', 'body')
+
+admin.site.register(Comment, CommentAdmin)

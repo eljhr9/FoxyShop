@@ -1,6 +1,8 @@
 import os
+from django.utils import timezone
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # def get_image_path(instance, filename):
 # 	return os.path.join('photos', str(instance.id), filename)
@@ -25,6 +27,9 @@ class Product(models.Model):
 		verbose_name_plural = 'Товар'
 		verbose_name = 'Товар'
 		ordering = ['price']
+
+	def __str__(self):
+		return f'{self.brand} {self.title}'
 
 	def get_absolute_url(self):
 		return reverse('shop:product', args=[self.brand.slug, self.slug])
@@ -59,9 +64,18 @@ class Rubric(models.Model):
 class Comment(models.Model):
 	"""Отзывы пользователей"""
 	product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
-	name = models.CharField(max_length=80)
-	email = models.EmailField()
-	body = models.TextField()
+	name = models.CharField(max_length=80, verbose_name='имя', default='')
+	email = models.EmailField(null=True)
+	body = models.TextField(max_length=300, verbose_name='содержимое', default='')
 	created = models.DateTimeField(auto_now_add=True, verbose_name='Был добавлен')
 	updated = models.DateTimeField(auto_now=True, verbose_name='Был изменен')
 	is_active = models.BooleanField(default=True)
+	value = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=0)
+
+	class Meta:
+		ordering = ['created']
+		verbose_name = 'Комментарий'
+		verbose_name_plural = 'Комментарии'
+
+	def __str__(self):
+		return f'Comment by {self.name}'
