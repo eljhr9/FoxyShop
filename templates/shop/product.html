@@ -74,11 +74,43 @@
         <div class="product-rating">
           <div class="rating-items">
       			<a href="#comments" class="rating">
-      				<span class="rating-item full"><i class="fas fa-star"></i></span>
-      				<span class="rating-item full"><i class="fas fa-star"></i></span>
-      				<span class="rating-item full"><i class="fas fa-star"></i></span>
-      				<span class="rating-item full"><i class="fas fa-star"></i></span>
-      				<span class="rating-item"><i class="far fa-star"></i></span>
+							{% if review_value.value__avg <= 1 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif review_value.value__avg <= 2 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif review_value.value__avg <= 3 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif review_value.value__avg <= 4 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif review_value.value__avg <= 5 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							{% else %}
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% endif %}
       				<span class="rating-link">
       					<span class="icon comment-count"><i class="far fa-comment-dots"></i></span>
       					<span class="icon-count comment-count"><p>Рейтинг и отзывы ({{ comments.count }})</p></span>
@@ -329,7 +361,18 @@
 					</div>
 					{% endfor %}
 				{% else %}
-					<h2>No comments!</h2>
+				<div class="text-content form-message">
+						<div class="text-row">
+							<div class="message-icon">
+								<i class="fas fa-pencil-alt"></i>
+							</div>
+							<div class="text-col">
+								<p>
+									Здесь еще никто не оставлял отзывы. Вы можете быть первым!
+								</p>
+							</div>
+						</div>
+				</div>
 				{% endif %}
 				</div>
 			</div>
@@ -343,7 +386,7 @@
 								<span class="required">*</span>
 							</label>
 							<!-- <p>{{ comment_form.value }}</p> -->
-							<input id="id_value" name="value" type="number" value="" required>
+							<input placeholder="" id="id_value" name="value" type="number" value="" required>
 						</div>
 						<div class="form-item">
 							<label for="id_name">
@@ -384,14 +427,14 @@
 						</div>
 					</div>
 				</form>
-				<h2>{{ comment.review_value.value__avg }}</h2>
+				<!-- <h2>{{ review_value.value__avg }}</h2> -->
 				{% else %}
 				<div class="review-form">
 					<div class="form">
 						<div class="text-content form-message">
 								<div class="text-row">
-									<div class="text-icon message-icon">
-										<i class="fas fa-info"></i>
+									<div class="message-icon">
+										<i class="far fa-check-square"></i>
 									</div>
 									<div class="text-col">
 										<p>

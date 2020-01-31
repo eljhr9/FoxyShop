@@ -96,7 +96,7 @@ def product(request, product_slug, brand_slug):
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
 	comments = product.comments.filter(is_active=True)
-	review_value = aggregate(Avg('value'))
+	review_value = Comment.objects.filter(product=product).aggregate(Avg('value'))
 	sent = False
 	if request.method == 'POST':
 		comment_form = CommentForm(data=request.POST)
@@ -104,6 +104,7 @@ def product(request, product_slug, brand_slug):
 			new_comment = comment_form.save(commit=False)
 			new_comment.product = product
 			new_comment.save()
+			cd = comment_form.cleaned_data
 			sent = True
 	else:
 		comment_form = CommentForm()
@@ -124,3 +125,17 @@ def by_rubric(request, rubric_slug):
 	context = {'products': products, 'rubrics': rubrics, 'brands': brands,
 	'current_rubric': current_rubric, 'title': title, 'form_mailing': form_mailing, 'post': post}
 	return render(request, 'shop/products.html', context)
+
+def empty(request):
+	'''Страница которая находится в разработке'''
+	brands = Brand.objects.all()
+	rubrics = Rubric.objects.all()
+	post = False
+	form, post = mailing(request)
+	# if request.method == 'POST':
+	# 	form = mailing(request)
+	# 	post = True
+	# else:
+	# 	form = MailingForm()
+	context = {'brands': brands, 'rubrics': rubrics, 'form': form, 'post': post}
+	return render(request, 'shop/empty.html', context)

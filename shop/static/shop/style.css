@@ -184,7 +184,7 @@ input, textarea {
 .searchButton {
   /* font: arial; */
   width: 50px;
-  height: 48px;
+  height: 56px;
   border: none;
   border: 1px solid #eee;
   border-left: none;
@@ -1860,13 +1860,13 @@ input, textarea {
   min-height: 1px;
   border-radius: 3px;
   border: 2.5px solid black;
+  margin: auto;
   margin-right: 12px;
 }
 
 .text-icon i {
   font-size: 1em;
   padding: 1.5px 6px;
-
 }
 
 .text-col {
@@ -1881,7 +1881,12 @@ input, textarea {
 }
 
 .text-col p {
-  margin-top: 2px;
+  margin-top: 3px;
+  padding-right: 5px;
+}
+
+.text-col h3 {
+  margin-top: 3px;
   padding-right: 5px;
 }
 
@@ -2200,19 +2205,6 @@ input, textarea {
   border-color: white;
 }
 
-.subscribe-content p {
-  padding-top: 3px;
-}
-
-.subscribe-icon {
-  border-color: white;
-  padding-bottom: 2px;
-  box-shadow: 1px 1px 1px black;
-  height: 16.5px;
-  margin: auto;
-  margin-right: 12px;
-}
-
 .comments-row {
   display: flex;
   flex-wrap: wrap;
@@ -2416,14 +2408,23 @@ input, textarea {
   font-size: 12px;
 }
 
-.form-message p {
-  padding-top: 1.5px;
-}
+
 
 .message-icon {
-  /* border-color: white; */
-  padding-bottom: 2px;
+  /* padding-bottom: 2px; */
   height: 16.5px;
   margin: auto;
   margin-right: 12px;
+  /* font-size: 15px; */
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+  position: relative;
+  min-height: 1px;
+}
+
+.message-icon i {
+  font-size: 1.4em;
+  padding: 0 3px;
+  margin-top: -2px;
 }
