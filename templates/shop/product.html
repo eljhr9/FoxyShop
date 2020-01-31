@@ -333,6 +333,77 @@
 				{% endif %}
 				</div>
 			</div>
+			<div class="create-comment">
+				{% if not sent %}
+				<form action="." method="post" class="review-form">
+					<div class="form">
+						<div class="form-item">
+							<label for="id_value">
+								Ваша оценка
+								<span class="required">*</span>
+							</label>
+							<!-- <p>{{ comment_form.value }}</p> -->
+							<input id="id_value" name="value" type="number" value="" required>
+						</div>
+						<div class="form-item">
+							<label for="id_name">
+								Представтесь пожалуйста
+								<span class="required">*</span>
+							</label>
+							{{ comment_form.name }}
+						</div>
+						<div class="form-item">
+							<label for="id_email">
+								Электронная почта
+								<span class="required">*</span>
+							</label>
+							{{ comment_form.email }}
+						</div>
+						<div class="form-item">
+							<label for="id_body">
+								Ваш отзыв
+								<span class="required">*</span>
+							</label>
+							{{ comment_form.body }}
+						</div>
+						{% csrf_token %}
+						<div class="form-item form-item-submit">
+							<div class="submit-row">
+								<div class="submit-button">
+									<button class="add-to-cart comment-send" type="submit">Отправить</button>
+								</div>
+								<div class="submit-text">
+									<div class="form-item-privacy">
+										<p>
+											Нажимая на кнопку «Отправить» вы принимаете условия
+											<a href="#">Нашего сайта</a>.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<h2>{{ comment.review_value.value__avg }}</h2>
+				{% else %}
+				<div class="review-form">
+					<div class="form">
+						<div class="text-content form-message">
+								<div class="text-row">
+									<div class="text-icon message-icon">
+										<i class="fas fa-info"></i>
+									</div>
+									<div class="text-col">
+										<p>
+											Ваш комментарий успешно отправлен
+										</p>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 </div>
