@@ -450,4 +450,72 @@
 		</div>
 	</div>
 </div>
+{% if similar_products %}
+<div class="product-section">
+	<div class="product-container">
+		<div class="products">
+			<div class="similar_products">Аналогичные товары</div>
+			{% for product in similar_products %}
+			<div class="current-product">
+				<a href="{{ product.get_absolute_url }}" class="product-card">
+				{% if product.image_1 %}
+				<div class="product-image"><img src="{{ product.image_1.url }}" ></div>
+				{% else %}
+				<div class="product-image"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
+				{% endif %}
+				</a>
+				<div class="product-card-title">
+					<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+				</div>
+				<div class="product-card-rating">
+
+					<div class="rating-items">
+						<a href="{{ product.get_absolute_url }}" class="rating">
+							{% if product.comments.count >= 1 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% else %}
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% endif %}
+							<span class="rating-link">
+								<span class="icon"><i class="far fa-comment-dots"></i></span>
+								<span class="icon-count"><p>{{ product.comments.count }}</p></span>
+							</span>
+						</a>
+					</div>
+					<div class="product-card-prices">
+						<span><h4>{{ product.price }} ₴</h4></span>
+					</div>
+					<div class="product-card-add">
+						<div class="bascet-field">
+							<a href="{{ product.get_absolute_url }}" class="bascet-add">
+								<i class="fas fa-shopping-basket"></i>
+								<span>В корзину</span>
+							</a>
+						</div>
+						<div class="favorite-field">
+							<button type="button" class="button compare">
+								<span class="fas fa-align-right fa-lg"></span>
+							</button>
+							<button class="button favorite">
+								 <span class="far fa-heart fa-lg"></span>
+							</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endif %}
 {% endblock comments %}

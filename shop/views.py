@@ -30,29 +30,23 @@ def index(request):
 	rubrics = Rubric.objects.all()
 	post = False
 	form, post = mailing(request)
-	# if request.method == 'POST':
-	# 	form = mailing(request)
-	# 	post = True
-	# else:
-	# 	form = MailingForm()
 	context = {'brands': brands, 'rubrics': rubrics, 'form': form, 'post': post}
 	return render(request, 'shop/index.html', context)
 
 
-def products(request):
+def products(request, rubric_slug=None):
 	'''Отображение всех товаров'''
 	products = Product.objects.all()
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
 	title = 'Каталог товаров'
+	rubric = None
 
-	# paginator = Paginator(products, 9)
-	# if 'page' in request.GET:
-	# 	page_num = request.GET['page']
-	# else:
-	# 	page_num = 1
-	# page = paginator.get_page(page_num)
-	# context = {'brands': brands, 'page': page, 'products': page.object_list}
+	if rubric_slug:
+		rubric = get_object_or_404(Rubric, slug=rubric_slug)
+		products = Product.objects.filter(rubric=rubric)
+		title = rubric.name
+
 	paginator = Paginator(products, 12)
 	page = request.GET.get('page')
 	try:
@@ -64,9 +58,8 @@ def products(request):
 		# If page is out of range (e.g. 9999), deliver last page of results.
 		products = paginator.page(paginator.num_pages)
 	form_mailing, post = mailing(request)
-	# return render(request, 'shop/products.html', {"products": products, "brands": brands})
 	context = {'brands': brands, 'products': products, 'rubrics': rubrics,
-	'title': title, 'form_mailing': form_mailing, 'post': post}
+	'title': title, 'form_mailing': form_mailing, 'post': post, 'current_rubric': rubric}
 	return render(request, 'shop/products.html', context)
 
 def brand(request):
@@ -78,10 +71,8 @@ def brand(request):
 
 def by_brand(request, brand_slug):
 	current_brand = get_object_or_404(Brand, slug=brand_slug)
-	# products = Product.objects.filter(brand=brand_slug)
 	products = Product.objects.filter(brand=current_brand)
 	brands = Brand.objects.all()
-	# current_brand = Brand.objects.get(pk=brand_slug)
 	rubrics = Rubric.objects.all()
 	title = current_brand.name
 	form_mailing, post = mailing(request)
@@ -92,7 +83,6 @@ def by_brand(request, brand_slug):
 def product(request, product_slug, brand_slug):
 	product = get_object_or_404(Product, slug=product_slug)
 	brand_slug = product.brand.slug
-	# product = Product.objects.get(pk=product_id)
 	brands = Brand.objects.all()
 	rubrics = Rubric.objects.all()
 	comments = product.comments.filter(is_active=True)
@@ -109,22 +99,12 @@ def product(request, product_slug, brand_slug):
 	else:
 		comment_form = CommentForm()
 	form_mailing, post = mailing(request)
+	similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)
 	context = {'product': product, 'brands': brands, 'rubrics': rubrics,
 	'form_mailing': form_mailing, 'post': post, 'comments': comments,
-	'comment_form': comment_form, 'sent': sent, 'review_value': review_value}
+	'comment_form': comment_form, 'sent': sent, 'review_value': review_value,
+	'similar_products': similar_products}
 	return render(request, 'shop/product.html', context)
-
-def by_rubric(request, rubric_slug):
-	current_rubric = Rubric.objects.get(slug=rubric_slug)
-	products = Product.objects.filter(rubric=current_rubric)
-	brands = Brand.objects.all()
-	rubrics = Rubric.objects.all()
-
-	title = current_rubric.name
-	form_mailing, post = mailing(request)
-	context = {'products': products, 'rubrics': rubrics, 'brands': brands,
-	'current_rubric': current_rubric, 'title': title, 'form_mailing': form_mailing, 'post': post}
-	return render(request, 'shop/products.html', context)
 
 def empty(request):
 	'''Страница которая находится в разработке'''
@@ -132,10 +112,5 @@ def empty(request):
 	rubrics = Rubric.objects.all()
 	post = False
 	form, post = mailing(request)
-	# if request.method == 'POST':
-	# 	form = mailing(request)
-	# 	post = True
-	# else:
-	# 	form = MailingForm()
 	context = {'brands': brands, 'rubrics': rubrics, 'form': form, 'post': post}
 	return render(request, 'shop/empty.html', context)

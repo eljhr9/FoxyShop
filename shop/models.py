@@ -11,7 +11,7 @@ class Product(models.Model):
 	"""Товар публикуемый на сайте"""
 	# image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 	title = models.CharField(max_length=100, verbose_name='Название')
-	slug = models.SlugField(max_length=100, db_index=True, default=1)
+	slug = models.SlugField(max_length=100, db_index=True)
 	text = models.TextField(max_length=500, verbose_name='Характеристики')
 	price = models.IntegerField(verbose_name='Цена')
 	availability = models.BooleanField(default=True, verbose_name='Наличие')

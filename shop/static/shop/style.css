@@ -163,10 +163,12 @@ input, textarea {
   display: flex;
   width: 410px;
   border-radius: 50px;
+  margin-top: 2px;
 }
 
 
 .searchTerm {
+  padding: 0;
   padding-left: 17px;
   font-size: 14px;
   border: none;
@@ -184,7 +186,7 @@ input, textarea {
 .searchButton {
   /* font: arial; */
   width: 50px;
-  height: 56px;
+  height: 48px;
   border: none;
   border: 1px solid #eee;
   border-left: none;
@@ -839,13 +841,13 @@ input, textarea {
 .products {
   display: block;
   width: inherit;
-  margin: 30px -5px;
+  margin: 30px auto;
   margin-top: 0px;
 }
 
 .current-product {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 5px 6px;
   height: 395px;
   box-sizing: content-box;
 }
@@ -2427,4 +2429,15 @@ input, textarea {
   font-size: 1.4em;
   padding: 0 3px;
   margin-top: -2px;
+}
+
+.similar_products {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #000;
+  margin: 0px 0px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
