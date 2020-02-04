@@ -1,11 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Log-in</h1>
-    <p>Please, use the following form to log-in:</p>
-    <form action="." method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <p><input type="submit" value="Log-in"></p>
+<div class="co-section-login">
+  <h1>Вход в личный кабинет</h1>
+</div>
+<div class="co-login">
+  <div class="co-login-form_placeholder">
+    {% if form.errors %}
+    <div class="login-errors">
+      <div class="co-input co-input-pass">
+        <p class="login-error">Неверный логин или пароль</p>
+      </div>
+    </div>
+    {% endif %}
+
+    <form action="{% url 'account:login' %}" method="post">
+      <div class="co-input">
+        <label for="login" class="co-input-label">Логин</label>
+        <div class="co-input-text">
+          {{ form.username }}
+        </div>
+      </div>
+      <div class="co-input co-input-pass">
+        <label for="login" class="co-input-label">Пароль</label>
+        <div class="co-input-text">
+          {{ form.password }}
+        </div>
+      </div>
+      {% csrf_token %}
+      <div class="co-form-controls">
+        <button class="co-button co-form-button">
+          Войти
+        </button>
+        <a href="#" class="co-button co-button-link">Восстановить пароль</a>
+        <a href="#" class="co-button co-button-link">Зарегистрироваться</a>
+      </div>
+
+        <!-- <p><input type="submit" value="Log-in"></p> -->
     </form>
+  </div>
+</div>
 {% endblock %}

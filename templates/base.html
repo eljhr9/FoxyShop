@@ -116,6 +116,34 @@
 
 							</div>
 						</div>
+						{% if user.is_authenticated %}
+						<div class="user_field">
+							<div class="user_icons">
+								<ul class="user_icons-items">
+									<li class="user_icons-item">
+										<a href="#" class="user_icons-icon">
+											<i class="fas fa-align-right compare"></i>
+										</a>
+									</li>
+									<li class="user_icons-item">
+										<a href="#" class="user_icons-icon">
+											<i class="far fa-heart"></i>
+										</a>
+									</li>
+									<li class="user_icons-item">
+										<a href="#" class="user_icons-icon">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+									</li>
+									<li class="user_icons-item">
+										<a href="{% url 'account:logout' %}" class="user_icons-icon">
+											<i class="fas fa-sign-out-alt"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						{% else %}
 						<div class="user_field">
 							<div class="user_choise">
 								<div class="user_conteiner">
@@ -123,10 +151,11 @@
 										<a href="#">Register</a>
 									</div>
 									<div class="login">
-										<a href="#">Login</a>
+										<a href="{% url 'account:login' %}">Login</a>
 									</div>
 								</div>
 							</div>
+							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -217,10 +246,8 @@
 
 
 		<div class="content-container">
-			<div class="content">
-				{% block content %}
-				{% endblock %}
-			</div>
+			{% block content %}
+			{% endblock %}
 		</div>
 		{% block comments %}
 		{% endblock comments %}

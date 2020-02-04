@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm
 
+def logout_view(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('index'))
 
 def user_login(request):
     if request.method == 'POST':

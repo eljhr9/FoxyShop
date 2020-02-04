@@ -42,9 +42,9 @@ button, html [type="button"] {
   -webkit-appearance: button;
 }
 
-.header {
+/* .header {
   height: 143.5px;
-}
+} */
 
 .logo {
   max-width: 1160px;
@@ -316,9 +316,8 @@ button, html [type="button"] {
 
 .user_field {
   display: inline-block;
-  width: 150px;
+  min-width: 150px;
   height: inherit;
-  /* padding: 0 15px; */
   vertical-align: top;
   padding-left: 15px;
 }
@@ -381,6 +380,12 @@ button, html [type="button"] {
   color: black;
   padding-right: 8px;
   padding-left: 4px;
+}
+
+.user_icons {
+  background: #f7f8fa;
+  padding: 4px 25px;
+  border-radius: 50px;
 }
 
 .menu {
