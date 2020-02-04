@@ -1,1 +1,1 @@
-# my_shop
+# FoxyShop
