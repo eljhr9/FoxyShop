@@ -216,7 +216,7 @@ input, textarea {
 
 .contacts {
   display: inline-block;
-  padding: 1px 25px;
+  padding: 1px 20px;
   width: 200px;
   vertical-align: top;
 }
@@ -2609,9 +2609,9 @@ input, textarea {
 
 .co-button {
   border-radius: 0px;
-  background-color: #0bb648;
+  /* background-color: #0bb648; */
   /* background-color: darkorange; */
-  /* background-color: #3095dd; */
+  background-color: #3095dd;
   color: #fff;
   font-size: 15px;
   line-height: 22px;
@@ -2661,6 +2661,33 @@ input, textarea {
   /* text-align: center; */
 }
 
+.errorlist {
+  padding: 20px;
+  margin: 15px 0;
+  /* border: 1px solid #cccccc; */
+  transition-duration: 0.3s;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  position: relative;
+  line-height: 1rem;
+  background-color: #f2dede;
+  color: #a94442;
+  resize: vertical;
+}
+
+.co-input-success {
+  padding: 13px;
+}
+
+.password-change-successfully {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+.login-error p {
+  font-size: 15px;
+}
 
 .co-button-link::after {
   content: '';
@@ -2676,4 +2703,15 @@ input, textarea {
 .co-button-link:hover {
   color: darkorange;
   transition: .4s;
+}
+
+.login-ref {
+
+  font-weight: 600;
+}
+
+.login-ref:hover {
+  text-decoration: underline;
+  color: darkorange;
+  transition: .3s;
 }

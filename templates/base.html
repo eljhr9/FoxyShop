@@ -136,7 +136,7 @@
 										</a>
 									</li>
 									<li class="user_icons-item">
-										<a href="{% url 'account:logout' %}" class="user_icons-icon">
+										<a href="{% url 'logout' %}" class="user_icons-icon">
 											<i class="fas fa-sign-out-alt"></i>
 										</a>
 									</li>
@@ -148,10 +148,10 @@
 							<div class="user_choise">
 								<div class="user_conteiner">
 									<div class="register">
-										<a href="#">Register</a>
+										<a href="{% url 'register' %}">Регист.</a>
 									</div>
 									<div class="login">
-										<a href="{% url 'account:login' %}">Login</a>
+										<a href="{% url 'login' %}">Вход</a>
 									</div>
 								</div>
 							</div>
