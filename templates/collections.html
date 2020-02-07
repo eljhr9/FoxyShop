@@ -2,116 +2,119 @@
 {% load static %}
 
 {% block content %}
-<div class="content">
-  <div class="sidebar">
-    <div class="sidebar-container">
-      <div class="sidebar-collection sidebar-block">
-        <div class="sidebar-collection-title">Каталог товаров</div>
-        <div class="sidebar-collection-content">
-          <nav class="nav-sidebar">
-            <ul>
-              <li>
-                <a href="{% url 'shop:by_rubric' 'telefony' %}">
-                  Телефоны
-                  <!-- <i class="fas fa-chevron-right"></i> -->
+<div class="content-container">
+
+  <div class="content">
+    <div class="sidebar">
+      <div class="sidebar-container">
+        <div class="sidebar-collection sidebar-block">
+          <div class="sidebar-collection-title">Каталог товаров</div>
+          <div class="sidebar-collection-content">
+            <nav class="nav-sidebar">
+              <ul>
+                <li>
+                  <a href="{% url 'shop:by_rubric' 'telefony' %}">
+                    Телефоны
+                    <!-- <i class="fas fa-chevron-right"></i> -->
+                  </a>
+                </li>
+                <li><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">Фото и видео</a></li>
+                <li><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">Ноутбуки, планшеты</a></li>
+                <li><a href="{% url 'shop:by_rubric' 'konsoli' %}">Консоли</a></li>
+                <li><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">Наушники и аудио</a></li>
+                <li><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">Гаджеты и авто</a></li>
+                <li><a href="{% url 'shop:by_rubric' 'aksessuary' %}">Аксессуары</a></li>
+                <li><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">Техника для дома</a></li>
+                <li><a href="{% url 'shop:by_rubric' 'raznoe' %}">Разное</a></li>
+                <li><a href="{% url 'shop:brand' %}">Бренды</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="sidebar-article sidebar-block">
+          <div class="article">
+            <div class="article_card">
+              <div class="article_card-img">
+                <a href="#">
+
+                  <img src="{% static 'shop/75878-img_4625.jpg' %}">
+                  <div class="hidden"><div class="hidden-text">Читать</div></div>
+                  <p>12 Января 2020</p>
+
                 </a>
-              </li>
-              <li><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">Фото и видео</a></li>
-              <li><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">Ноутбуки, планшеты</a></li>
-              <li><a href="{% url 'shop:by_rubric' 'konsoli' %}">Консоли</a></li>
-              <li><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">Наушники и аудио</a></li>
-              <li><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">Гаджеты и авто</a></li>
-              <li><a href="{% url 'shop:by_rubric' 'aksessuary' %}">Аксессуары</a></li>
-              <li><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">Техника для дома</a></li>
-              <li><a href="{% url 'shop:by_rubric' 'raznoe' %}">Разное</a></li>
-              <li><a href="{% url 'shop:brand' %}">Бренды</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+              </div>
 
-      <div class="sidebar-article sidebar-block">
-        <div class="article">
-          <div class="article_card">
-            <div class="article_card-img">
-              <a href="#">
+              <div class="article_card-title">
+                <a href="#">Почему macbook идеальный выбор для работы!?</a>
+              </div>
+            </div>
+            <div class="article_card">
+              <div class="article_card-img">
+                <a href="#">
 
-                <img src="{% static 'shop/75878-img_4625.jpg' %}">
-                <div class="hidden"><div class="hidden-text">Читать</div></div>
-                <p>12 Января 2020</p>
+                  <img src="{% static 'shop/blackwhite-photography-36271549100649patda7aac3.jpg' %}">
+                  <div class="hidden"><div class="hidden-text">Читать</div></div>
+                  <p>15 Января 2020</p>
 
-              </a>
+                </a>
+              </div>
+
+              <div class="article_card-title">
+                <a href="#">Экосистема Apple все тонкости...</a>
+              </div>
+            </div>
+            <div class="article_card">
+              <div class="article_card-img">
+                <a href="#">
+
+                  <img src="{% static 'shop/fintech2-800.jpg' %}">
+                  <div class="hidden"><div class="hidden-text">Читать</div></div>
+                  <p>25 Февраля 2020</p>
+
+                </a>
+              </div>
+
+              <div class="article_card-title">
+                <a href="#">Главные технологические достижения 2019 года</a>
+              </div>
             </div>
 
-            <div class="article_card-title">
-              <a href="#">Почему macbook идеальный выбор для работы!?</a>
-            </div>
-          </div>
-          <div class="article_card">
-            <div class="article_card-img">
-              <a href="#">
-
-                <img src="{% static 'shop/blackwhite-photography-36271549100649patda7aac3.jpg' %}">
-                <div class="hidden"><div class="hidden-text">Читать</div></div>
-                <p>15 Января 2020</p>
-
-              </a>
-            </div>
-
-            <div class="article_card-title">
-              <a href="#">Экосистема Apple все тонкости...</a>
-            </div>
-          </div>
-          <div class="article_card">
-            <div class="article_card-img">
-              <a href="#">
-
-                <img src="{% static 'shop/fintech2-800.jpg' %}">
-                <div class="hidden"><div class="hidden-text">Читать</div></div>
-                <p>25 Февраля 2020</p>
-
-              </a>
-            </div>
-
-            <div class="article_card-title">
-              <a href="#">Главные технологические достижения 2019 года</a>
-            </div>
           </div>
 
         </div>
-
-      </div>
-      <div class="ad-block">
-        <div class="ad-block-container">
-          <div class="some-ad">
-            <a title="Здрасте" href="#">
-              <img src="{% static 'shop/some-ad.png' %}">
-            </a>
+        <div class="ad-block">
+          <div class="ad-block-container">
+            <div class="some-ad">
+              <a title="Здрасте" href="#">
+                <img src="{% static 'shop/some-ad.png' %}">
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="section-content">
+    <div class="section">
+      <div class="section-content">
 
-      <div class="content-title">
-        <div class="title-text">
-          <h1>{% block collection_title %}{% endblock %}</h1>
+        <div class="content-title">
+          <div class="title-text">
+            <h1>{% block collection_title %}{% endblock %}</h1>
+          </div>
         </div>
-      </div>
 
 
-      <div class="main-content">
-        <div class="products">
-          {% block collection %}
-          {% endblock collection %}
+        <div class="main-content">
+          <div class="products">
+            {% block collection %}
+            {% endblock collection %}
+          </div>
+          <!-- <div class="pagination-field">
+            {% block paginator %}
+            {% endblock paginator %}
+          </div> -->
         </div>
-        <!-- <div class="pagination-field">
-          {% block paginator %}
-          {% endblock paginator %}
-        </div> -->
       </div>
     </div>
   </div>

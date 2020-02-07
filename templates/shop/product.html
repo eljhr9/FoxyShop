@@ -24,217 +24,219 @@
 {% endblock %}
 
 {% block content %}
-<div class="content">
-	<div class="content-left col">
-	  <div class="product-images">
-	  {% if product.image_1 %}
-	    <div class="product-image-block">
-	      <a href="#" class="product-image-thumb">
-	        <img class="product-img" src="{{ product.image_1.url }}">
-	      </a>
-	    </div>
-	    <div class="product-gallery">
-	      <a href="#" class="product-gallery-image">
-	        <span class="product-gallery-lighter"></span>
-	        <img src="{{ product.image_1.url }}">
+<div class="content-container">
+	<div class="content">
+		<div class="content-left col">
+		  <div class="product-images">
+		  {% if product.image_1 %}
+		    <div class="product-image-block">
+		      <a href="#" class="product-image-thumb">
+		        <img class="product-img" src="{{ product.image_1.url }}">
+		      </a>
+		    </div>
+		    <div class="product-gallery">
+		      <a href="#" class="product-gallery-image">
+		        <span class="product-gallery-lighter"></span>
+		        <img src="{{ product.image_1.url }}">
 
-	      </a>
-	      <a href="#" class="product-gallery-image">
-	        <span class="product-gallery-lighter"></span>
-	        <img src="{{ product.image_2.url }}">
-	      </a>
-	      <a href="#" class="product-gallery-image">
-	        <span class="product-gallery-lighter"></span>
-	        <img src="{{ product.image_3.url }}">
-	      </a>
-	    </div>
-	  {% else %}
-	    <div class="product-images"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
-	  {% endif %}
-	  </div>
-	</div>
-	<div class="content-right col">
-	  <div class="product-data">
-	    <form action="/cart_items" method="post">
-	      <div class="product-head">
-	        <h1 class="product-title">{{ product.brand }} {{ product.title }}</h1>
-	        <div class="product-brand">
-	          <a href="{% url 'shop:by_brand' product.brand.slug %}" class="brand-image">
-	            <img src="{{ product.brand.logo.url }}" class="brand-logo">
-	          </a>
-	        </div>
-	      </div>
-	      <div class="product-variants">
-	        <div class="product-sku">
-	          Артикул:
-	          <span>3254{{ product.pk }}</span>
-	        </div>
-	        <div class="product-prices">
-	          <span>{{ product.price }} ₴</span>
-	        </div>
-	        <div class="product-rating">
-	          <div class="rating-items">
-	      			<a href="#comments" class="rating">
-								{% if review_value.value__avg <= 1 %}
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								{% elif review_value.value__avg <= 2 %}
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								{% elif review_value.value__avg <= 3 %}
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								{% elif review_value.value__avg <= 4 %}
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								{% elif review_value.value__avg <= 5 %}
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								<span class="rating-item full"><i class="fas fa-star"></i></span>
-								{% else %}
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								<span class="rating-item"><i class="far fa-star"></i></span>
-								{% endif %}
-	      				<span class="rating-link">
-	      					<span class="icon comment-count"><i class="far fa-comment-dots"></i></span>
-	      					<span class="icon-count comment-count"><p>Рейтинг и отзывы ({{ comments.count }})</p></span>
-	      				</span>
-	      			</a>
-	      		</div>
-	        </div>
-	        <div class="product-form">
-	          {% if product.availability %}
-	          <div class="product-availability available">
-	            <p>В наличии</p>
-	          </div>
-	          {% else %}
-	          <div class="product-availability not_available">
-	            <p>Нет в наличии</p>
-	          </div>
-	          {% endif %}
-	          <div class="product-buttons">
-	            <div class="product-row">
-	              <div class="product-quantity">
-	                <div class="quantity">
-	                  <div class="product-row no-gutters" data-quantity="">
-	                    <div class="subtraction">
-	                      <button type="button" class="button-counter" data-quantity-change="-1">
-	                        <i class="fas fa-minus"></i>
-	                      </button>
-	                    </div>
-	                    <div class="count">
-	                      <input class="input-count" type="text" name="quantity" value="1" min="1" autocomplete="off">
-	                    </div>
-	                    <div class="addition">
-	                      <button type="button" class="button-counter" data-quantity-change="1">
-	                        <i class="fas fa-plus"></i>
-	                      </button>
-	                    </div>
-	                  </div>
-	                </div>
+		      </a>
+		      <a href="#" class="product-gallery-image">
+		        <span class="product-gallery-lighter"></span>
+		        <img src="{{ product.image_2.url }}">
+		      </a>
+		      <a href="#" class="product-gallery-image">
+		        <span class="product-gallery-lighter"></span>
+		        <img src="{{ product.image_3.url }}">
+		      </a>
+		    </div>
+		  {% else %}
+		    <div class="product-images"><img src="/media/images/large_technics-04-1_002.jpg"></div>
+		  {% endif %}
+		  </div>
+		</div>
+		<div class="content-right col">
+		  <div class="product-data">
+		    <form action="/cart_items" method="post">
+		      <div class="product-head">
+		        <h1 class="product-title">{{ product.brand }} {{ product.title }}</h1>
+		        <div class="product-brand">
+		          <a href="{% url 'shop:by_brand' product.brand.slug %}" class="brand-image">
+		            <img src="{{ product.brand.logo.url }}" class="brand-logo">
+		          </a>
+		        </div>
+		      </div>
+		      <div class="product-variants">
+		        <div class="product-sku">
+		          Артикул:
+		          <span>3254{{ product.pk }}</span>
+		        </div>
+		        <div class="product-prices">
+		          <span>{{ product.price }} ₴</span>
+		        </div>
+		        <div class="product-rating">
+		          <div class="rating-items">
+		      			<a href="#comments" class="rating">
+									{% if review_value.value__avg <= 1 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif review_value.value__avg <= 2 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif review_value.value__avg <= 3 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif review_value.value__avg <= 4 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% elif review_value.value__avg <= 5 %}
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									<span class="rating-item full"><i class="fas fa-star"></i></span>
+									{% else %}
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									<span class="rating-item"><i class="far fa-star"></i></span>
+									{% endif %}
+		      				<span class="rating-link">
+		      					<span class="icon comment-count"><i class="far fa-comment-dots"></i></span>
+		      					<span class="icon-count comment-count"><p>Рейтинг и отзывы ({{ comments.count }})</p></span>
+		      				</span>
+		      			</a>
+		      		</div>
+		        </div>
+		        <div class="product-form">
+		          {% if product.availability %}
+		          <div class="product-availability available">
+		            <p>В наличии</p>
+		          </div>
+		          {% else %}
+		          <div class="product-availability not_available">
+		            <p>Нет в наличии</p>
+		          </div>
+		          {% endif %}
+		          <div class="product-buttons">
+		            <div class="product-row">
+		              <div class="product-quantity">
+		                <div class="quantity">
+		                  <div class="product-row no-gutters" data-quantity="">
+		                    <div class="subtraction">
+		                      <button type="button" class="button-counter" data-quantity-change="-1">
+		                        <i class="fas fa-minus"></i>
+		                      </button>
+		                    </div>
+		                    <div class="count">
+		                      <input class="input-count" type="text" name="quantity" value="1" min="1" autocomplete="off">
+		                    </div>
+		                    <div class="addition">
+		                      <button type="button" class="button-counter" data-quantity-change="1">
+		                        <i class="fas fa-plus"></i>
+		                      </button>
+		                    </div>
+		                  </div>
+		                </div>
 
-	              </div>
-	              <div class="product-add">
-	                <div class="product_add">
-	                  <button class="add-to-cart" type="submit" data-item-add="">
-	                    <i class="fas fa-cart-plus"></i>
-	                    <span>В корзину</span>
-	                  </button>
-	                </div>
-	              </div>
-	              <div class="order">
-	                <div class="product-quick_checkout">
-	                  <button class="add-to-cart quick_checkout" type="submit" data-quick-checkout>
-	                    Заказ в один клик
-	                  </button>
-	                </div>
-	              </div>
+		              </div>
+		              <div class="product-add">
+		                <div class="product_add">
+		                  <button class="add-to-cart" type="submit" data-item-add="">
+		                    <i class="fas fa-cart-plus"></i>
+		                    <span>В корзину</span>
+		                  </button>
+		                </div>
+		              </div>
+		              <div class="order">
+		                <div class="product-quick_checkout">
+		                  <button class="add-to-cart quick_checkout" type="submit" data-quick-checkout>
+		                    Заказ в один клик
+		                  </button>
+		                </div>
+		              </div>
 
-	            </div>
-	          </div>
-	        </div>
+		            </div>
+		          </div>
+		        </div>
 
-	      </div>
-	    </form>
-	    <div class="product-extras">
-	      <div class="extras-row">
-	        <div class="bonuses-col">
-	          <div class="product-bonuses">
-	            <button type="button" data-target="bonuses" data-type="text" class="bonuses-button">
-	              <i class="fas fa-piggy-bank"></i>
-	              <span> 2599 Бонусов</span>
-	            </button>
-	          </div>
-	        </div>
-					<div class="favorite-col">
+		      </div>
+		    </form>
+		    <div class="product-extras">
+		      <div class="extras-row">
+		        <div class="bonuses-col">
+		          <div class="product-bonuses">
+		            <button type="button" data-target="bonuses" data-type="text" class="bonuses-button">
+		              <i class="fas fa-piggy-bank"></i>
+		              <span> 2599 Бонусов</span>
+		            </button>
+		          </div>
+		        </div>
+						<div class="favorite-col">
 
-						<button class="button-icon">
-							<i class="fas fa-align-right compare"></i>
-							<p data-text-second="В сравнении" ata-text-first="Сравнить">Сравнить</p>
-						</button>
-						<button class="button-icon">
-							<i class="far fa-heart product-add-favorite"></i>
-							<p data-text-first="В избранное" data-text-second="В избранном">В избранное</p>
-						</button>
+							<button class="button-icon">
+								<i class="fas fa-align-right compare"></i>
+								<p data-text-second="В сравнении" ata-text-first="Сравнить">Сравнить</p>
+							</button>
+							<button class="button-icon">
+								<i class="far fa-heart product-add-favorite"></i>
+								<p data-text-first="В избранное" data-text-second="В избранном">В избранное</p>
+							</button>
+						</div>
+		      </div>
+		    </div>
+				<div class="product-geo">
+					<div class="text-content delivery">
+						<i class="fas fa-truck"></i>
+						<p>Доставка в <span><a class="delivery-city" href="#"><span>г. Киев</span></a></span></p>
 					</div>
-	      </div>
-	    </div>
-			<div class="product-geo">
-				<div class="text-content delivery">
-					<i class="fas fa-truck"></i>
-					<p>Доставка в <span><a class="delivery-city" href="#"><span>г. Киев</span></a></span></p>
+					<div class="product-geo-items">
+						<div class="salesbeat-div-courier">
+							<p>Курьером:</p>
+							<ul>
+								<li>Курьерская доставка 1 день, 150 грн.</li>
+								<li>Посылка склад-дверь 1 день, 120 грн.</li>
+								<li>Посылка склад-склад 1 день, 100 грн.</li>
+							</ul>
+						</div>
+						<div class="salesbeat-div-pvz">
+							<p>Самовывоз:</p>
+							<ul>
+								<li>Самовывоз, бесплатно.</li>
+								<li>Посылка склад-склад 1 день, 60 грн.</li>
+								<li>Посылка дверь-склад 1 день, 50 грн.</li>
+								<li>Посылка Новой Почтой с наложенным платежём 1 день, 30 грн.</li>
+								<li>Посылка Новой Почтой по предоплате 1 день, 30 грн.</li>
+							</ul>
+							<p>
+								<a href="#" class="salesbeat-pvz-map">
+									<i class="fas fa-map-marked-alt"></i>
+									<span>Просмотр пунктов самовывоза</span>
+								</a>
+							</p>
+						</div>
+					</div>
 				</div>
-				<div class="product-geo-items">
-					<div class="salesbeat-div-courier">
-						<p>Курьером:</p>
-						<ul>
-							<li>Курьерская доставка 1 день, 150 грн.</li>
-							<li>Посылка склад-дверь 1 день, 120 грн.</li>
-							<li>Посылка склад-склад 1 день, 100 грн.</li>
-						</ul>
-					</div>
-					<div class="salesbeat-div-pvz">
-						<p>Самовывоз:</p>
-						<ul>
-							<li>Самовывоз, бесплатно.</li>
-							<li>Посылка склад-склад 1 день, 60 грн.</li>
-							<li>Посылка дверь-склад 1 день, 50 грн.</li>
-							<li>Посылка Новой Почтой с наложенным платежём 1 день, 30 грн.</li>
-							<li>Посылка Новой Почтой по предоплате 1 день, 30 грн.</li>
-						</ul>
-						<p>
-							<a href="#" class="salesbeat-pvz-map">
-								<i class="fas fa-map-marked-alt"></i>
-								<span>Просмотр пунктов самовывоза</span>
-							</a>
-						</p>
-					</div>
+				<div class="product-collections">
+					Категории:
+					<a href="{% url 'shop:products' %}">Каталог товаров, </a>
+					<a href="{% url 'shop:by_rubric' product.rubric.slug %}">{{ product.rubric.name }}, </a>
+					<a href="{% url 'shop:by_brand' product.brand.slug %}">{{ product.brand.name }}</a>
 				</div>
-			</div>
-			<div class="product-collections">
-				Категории:
-				<a href="{% url 'shop:products' %}">Каталог товаров, </a>
-				<a href="{% url 'shop:by_rubric' product.rubric.slug %}">{{ product.rubric.name }}, </a>
-				<a href="{% url 'shop:by_brand' product.brand.slug %}">{{ product.brand.name }}</a>
-			</div>
-	  </div>
+		  </div>
+		</div>
 	</div>
 </div>
 {% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="profile-container">
+  <div class="co-sidebar--menu">
+    <div class="co-menu-personal">
+      <div class="co-menu-personal-item">
+        <a href="#" class="co-menu-personal-link">История заказов</a>
+      </div>
+      <div class="co-menu-personal-item">
+        <a href="#" class="co-menu-personal-link">Адрес доставки</a>
+      </div>
+      <div class="co-menu-personal-item">
+        <a href="#" class="co-menu-personal-link">Скидки и бонусы</a>
+      </div>
+      <div class="co-menu-personal-item">
+        <a href="{% url 'edit_profile' %}" class="co-menu-personal-link">Контактные данные</a>
+      </div>
+      <div class="co-menu-personal-item">
+        <a href="{% url 'logout' %}" class="co-menu-personal-link">Выход</a>
+      </div>
+    </div>
+  </div>
+  <div class="co-section--content">
+  {% block info %}
+
+  {% endblock info %}
+  </div>
+</div>
+{% endblock %}

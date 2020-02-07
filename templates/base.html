@@ -136,8 +136,10 @@
 										</a>
 									</li>
 									<li class="user_icons-item">
-										<a href="{% url 'logout' %}" class="user_icons-icon">
-											<i class="fas fa-sign-out-alt"></i>
+										<!-- <a href="{% url 'logout' %}" class="user_icons-icon"> -->
+											<!-- <i class="fas fa-sign-out-alt"></i> -->
+										<a href="{% url 'edit_profile' %}" class="user_icons-icon">
+											<i class="far fa-user"></i>
 										</a>
 									</li>
 								</ul>
@@ -244,11 +246,30 @@
 		</div>
 		{% block breadcrumb %}{% endblock %}
 
-
+		{% if messages %}
 		<div class="content-container">
-			{% block content %}
-			{% endblock %}
+		  <div class="messages-profile">
+		    <div class="co-input co-input-pass">
+		      {% for message in messages %}
+		      <div class="co-input-success co-input co-input-pass">
+		        {% if message.tags == 'error' %}
+		        <p class="login-error password-change-successfully">{{ message}}</p>
+		        {% elif message.tags == 'success' %}
+		        <p class="login-error password-change-successfully">{{ message}}</p>
+		        {% else %}
+		        <p class="login-error password-change-another">{{ message}}</p>
+		        {% endif %}
+		      </div>
+		    {% endfor %}
+		    </div>
+		  </div>
 		</div>
+		{% endif %}
+
+
+		{% block content %}
+		{% endblock %}
+
 		{% block comments %}
 		{% endblock comments %}
 		<div class="section-footer">

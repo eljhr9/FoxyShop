@@ -3,11 +3,13 @@
 
 {% block collection_title %}Производитель{% endblock %}
 {% block content %}
-{% for brand in brands %}
-<div>
-	<h2>{{ brand.name }}</h2>
-	<h1>{{ brand.pk }}</h1>
-	<h1>{{ brand.slug }}</h1>
+<div class="content-container">
+	{% for brand in brands %}
+	<div>
+		<h2>{{ brand.name }}</h2>
+		<h1>{{ brand.pk }}</h1>
+		<h1>{{ brand.slug }}</h1>
+	</div>
+	{% endfor %}
 </div>
-{% endfor %}
 {% endblock %}

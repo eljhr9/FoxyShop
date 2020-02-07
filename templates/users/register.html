@@ -1,63 +1,65 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="co-section-login">
-  <h1>Регистрация</h1>
-</div>
-<div class="co-login">
-  <div class="co-login-form_placeholder">
-    {% if user_form.errors %}
-    <div class="login-errors">
-      <div class="co-input co-input-pass">
-        {{ user_form.username.errors }}
-        {{ user_form.email.errors }}
-        {{ user_form.password.errors }}
-        {{ user_form.password2.errors }}
-        {{ user_form.ValidationError }}
+<div class="content-container">
+  <div class="co-section-login">
+    <h1>Регистрация</h1>
+  </div>
+  <div class="co-login">
+    <div class="co-login-form_placeholder">
+      {% if user_form.errors %}
+      <div class="login-errors">
+        <div class="co-input co-input-pass">
+          {{ user_form.username.errors }}
+          {{ user_form.email.errors }}
+          {{ user_form.password.errors }}
+          {{ user_form.password2.errors }}
+          {{ user_form.ValidationError }}
 
+        </div>
       </div>
+      {% endif %}
+      <form action="." method="post">
+        <div class="co-input">
+          <label for="login" class="co-input-label">Логин</label>
+          <div class="co-input-text">
+            {{ user_form.username }}
+          </div>
+        </div>
+        <div class="co-input co-input-pass">
+          <label for="first_name" class="co-input-label">Ваше имя</label>
+          <div class="co-input-text">
+            {{ user_form.first_name }}
+          </div>
+        </div>
+        <div class="co-input co-input-pass">
+          <label for="first_name" class="co-input-label">Email</label>
+          <div class="co-input-text">
+            <!-- {{ user_form.email }} -->
+            <input id="id_email" type="email" name="email" maxlength="254" required>
+          </div>
+        </div>
+        <div class="co-input co-input-pass">
+          <label for="password" class="co-input-label">Пароль</label>
+          <div class="co-input-text">
+            {{ user_form.password }}
+          </div>
+        </div>
+        <div class="co-input co-input-pass">
+          <label for="password2" class="co-input-label">Повторите пароль</label>
+          <div class="co-input-text">
+            {{ user_form.password2 }}
+          </div>
+        </div>
+        {% csrf_token %}
+        <div class="co-form-controls">
+          <button class="co-button co-form-button">
+            Зарегистрировать
+          </button>
+          <a href="{% url 'login' %}" class="co-button co-button-link">Уже есть аккаунт?</a>
+        </div>
+      </form>
     </div>
-    {% endif %}
-    <form action="." method="post">
-      <div class="co-input">
-        <label for="login" class="co-input-label">Логин</label>
-        <div class="co-input-text">
-          {{ user_form.username }}
-        </div>
-      </div>
-      <div class="co-input co-input-pass">
-        <label for="first_name" class="co-input-label">Ваше имя</label>
-        <div class="co-input-text">
-          {{ user_form.first_name }}
-        </div>
-      </div>
-      <div class="co-input co-input-pass">
-        <label for="first_name" class="co-input-label">Email</label>
-        <div class="co-input-text">
-          <!-- {{ user_form.email }} -->
-          <input id="id_email" type="email" name="email" maxlength="254" required>
-        </div>
-      </div>
-      <div class="co-input co-input-pass">
-        <label for="password" class="co-input-label">Пароль</label>
-        <div class="co-input-text">
-          {{ user_form.password }}
-        </div>
-      </div>
-      <div class="co-input co-input-pass">
-        <label for="password2" class="co-input-label">Повторите пароль</label>
-        <div class="co-input-text">
-          {{ user_form.password2 }}
-        </div>
-      </div>
-      {% csrf_token %}
-      <div class="co-form-controls">
-        <button class="co-button co-form-button">
-          Зарегистрировать
-        </button>
-        <a href="{% url 'login' %}" class="co-button co-button-link">Уже есть аккаунт?</a>
-      </div>
-    </form>
   </div>
 </div>
 {% endblock %}
