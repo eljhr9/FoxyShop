@@ -56,7 +56,7 @@
 		</div>
 		<div class="content-right col">
 		  <div class="product-data">
-		    <form action="/cart_items" method="post">
+		    <form action="{% url 'cart:cart_add' product.id %}" method="post">
 		      <div class="product-head">
 		        <h1 class="product-title">{{ product.brand }} {{ product.title }}</h1>
 		        <div class="product-brand">
@@ -141,7 +141,7 @@
 		                      </button>
 		                    </div>
 		                    <div class="count">
-		                      <input class="input-count" type="text" name="quantity" value="1" min="1" autocomplete="off">
+		                      <input class="input-count" type="number" id="id_quantity" name="quantity" value="1" min="1" autocomplete="off">
 		                    </div>
 		                    <div class="addition">
 		                      <button type="button" class="button-counter" data-quantity-change="1">
@@ -152,6 +152,7 @@
 		                </div>
 
 		              </div>
+									{% csrf_token %}
 		              <div class="product-add">
 		                <div class="product_add">
 		                  <button class="add-to-cart" type="submit" data-item-add="">
@@ -167,11 +168,9 @@
 		                  </button>
 		                </div>
 		              </div>
-
 		            </div>
 		          </div>
 		        </div>
-
 		      </div>
 		    </form>
 		    <div class="product-extras">
@@ -298,7 +297,7 @@
 </div>
 <div class="product-section">
 	<div class="product-container">
-		<div class="comments-row">
+		<div class="comments-row" id="comments">
 			<div class="comments-all">
 				<div class="product-reviews">
 				{% if comments %}

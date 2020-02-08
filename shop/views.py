@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import MailingForm, CommentForm
 from django.core.mail import send_mail
 from django.db.models import Avg
+from cart.forms import CartAddProductForm
 
 
 def mailing(request):
@@ -100,10 +101,11 @@ def product(request, product_slug, brand_slug):
 		comment_form = CommentForm()
 	form_mailing, post = mailing(request)
 	similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)
+	cart_product_form = CartAddProductForm()
 	context = {'product': product, 'brands': brands, 'rubrics': rubrics,
 	'form_mailing': form_mailing, 'post': post, 'comments': comments,
 	'comment_form': comment_form, 'sent': sent, 'review_value': review_value,
-	'similar_products': similar_products}
+	'similar_products': similar_products, 'cart_product_form': cart_product_form}
 	return render(request, 'shop/product.html', context)
 
 def empty(request):

@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+        <a href="{% url 'cart:cart_detail' %}" class="breadcrumb-link">
+					<span>Корзина</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="content-container">
+    <div class="product-row">
+      <div class="cart-col">
+        <div id="section-cart" class="section-cart">
+          <div>
+            <h1 class="text-title">Корзина</h1>
+          </div>
+
+          <!-- <form action="url 'cart:cart _add' product.id " method="post"> -->
+            <div class="product-row">
+              <div class="cart-items-col">
+                <div class="cart-items">
+                  {% for item in cart %}
+                    {% with product=item.product %}
+                    <div class="cart-item">
+                      <div class="cart-item-row">
+                        <div class="product-info-col">
+                          <div class="cart-item-row">
+                            <div class="item-image-col">
+                              <a href="{{ product.get_absolute_url }}" class="cart-item-img">
+                                <img class="cart-item-thumb-item" src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'shop/large_technics-04-1_002.jpg' %}{% endif %}" alt="">
+                              </a>
+                            </div>
+                            <div class="item-title-col">
+                              <div class="cart-item-title">
+                                <a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-quantity-col">
+                          <div class="cart-item-row justify-content-end">
+                            <div class="quantity-col">
+                              <div class="cart-item-prices">
+                                <span>{{ item.quantity }}</span>
+                                ×
+                                <span>{{ item.price }} ₴</span>
+                                <div class="cart-item-total_price">{{ item.total_price }} ₴</div>
+                              </div>
+                            </div>
+                            <div class="product-quantity">
+          		                <div class="quantity cart-item-quantity">
+          		                  <div class="product-row no-gutters" data-quantity="">
+          		                    <div class="subtraction">
+          		                      <button type="button" class="button-counter" data-quantity-change="-1">
+          		                        <i class="fas fa-minus"></i>
+          		                      </button>
+          		                    </div>
+          		                    <div class="count">
+          		                      <input class="input-count" type="number" id="id_quantity" name="quantity" value="1" min="1" autocomplete="off">
+          		                    </div>
+          		                    <div class="addition">
+          		                      <button type="button" class="button-counter" data-quantity-change="1">
+          		                        <i class="fas fa-plus"></i>
+          		                      </button>
+          		                    </div>
+                                  <div class="delete-col">
+                                    <button type="button" class="button-counter"><a href="{% url 'cart:cart_remove' product.id%}"><i class="fas fa-trash-alt"></i></a></button>
+
+                                  </div>
+          		                  </div>
+          		                </div>
+          		              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endwith %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="cart-total-col">
+              <div class="cart-sidebar">
+                <div class="cart-order">
+                  <div class="cart-order-items">
+                    <div class="cart-order-item cart-order-item-total_price">
+                      ИТОГО:
+                      <span>{{ cart.get_total_price }} ₴</span>
+                    </div>
+                  </div>
+                  <div class="cart-order-coupon">
+                    <label>Купон на скидку:</label>
+                    <div class="coupon-row">
+                      <div class="coupon-col-input">
+                        <input type="text" class="coupon-input">
+                      </div>
+                      <div class="coupon-col">
+                        <button class="coupon-button" type="button"><i class="fas fa-check"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart-order-buttons">
+                    <div class="co-form-controls cart-submit">
+                      <button class="co-button co-form-button">
+                        оформить заказ
+                      </button>
+                      <div class="cart-order-quick_checkout">
+                        <a href="#" class="co-button co-button-link">Заказ в один клик</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </form> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
