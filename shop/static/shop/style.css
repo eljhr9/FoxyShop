@@ -1638,18 +1638,24 @@ input, textarea {
 }
 
 .product-img {
+  display: block;
   height: 550px;
-  width: 550px;
+  max-width: 550px;
+  object-fit: cover;
+  /* object-position: 0 0; */
+  margin: auto;
 }
 
 .product-gallery-image {
   display: inline-block;
   height: 75px;
   vertical-align: middle;
+  margin: 0 10px;
 }
 
 .product-gallery-image img {
-  /* width: 75px; */
+  min-width: 75px;
+  max-width: 100px;
   height: 75px;
   object-fit: cover;
   /* object-position: 0 0; */
