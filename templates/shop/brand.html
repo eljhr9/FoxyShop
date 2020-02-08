@@ -1,15 +1,54 @@
-{% extends "collections.html" %}
+{% extends "base.html" %}
 
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'shop:brand' %}" class="breadcrumb-link">
+					<span>Бренды</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
 
-{% block collection_title %}Производитель{% endblock %}
 {% block content %}
 <div class="content-container">
-	{% for brand in brands %}
-	<div>
-		<h2>{{ brand.name }}</h2>
-		<h1>{{ brand.pk }}</h1>
-		<h1>{{ brand.slug }}</h1>
+	<div class="content-container1">
+		<div class="content">
+			<div class="brand-col">
+				<div class="content-title">
+					<div class="title-text">
+						<h1>Бренды</h1>
+					</div>
+				</div>
+			</div>
+			<div class="brand-content">
+				<div class="subcollections">
+					<div class="brand-row">
+						{% for brand in brands %}
+						<div class="current-brand-col">
+							<div class="subcollections">
+								<div class="subcollections-logo">
+									<a href="{% url 'shop:by_brand' brand.slug %}" class="subcollections-url">
+										<span class="subcollection_card-thumb-item">
+											<img src="{{ brand.logo.url }}">
+										</span>
+
+									</a>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	{% endfor %}
 </div>
 {% endblock %}

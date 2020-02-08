@@ -1,12 +1,32 @@
 {% extends "collections.html" %}
+{% load static %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'shop:products' %}" class="breadcrumb-link">
+					<span>Каталог товаров</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+{% block collection_title %}Скоро всё будет{% endblock %}
 
 {% block collection %}
 <div class="content-container">
-	<div class="text">
+	<!-- <div class="text">
 		<div class="text-content">
 			<div class="text-row">
 				<div class="text-icon">
-					<!-- <i class="fas fa-info-circle"></i> -->
+
 					<i class="fas fa-info"></i>
 				</div>
 				<div class="text-col">
@@ -14,6 +34,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<img class="empty-page-img" src="{% static 'razrabotka.png' %}" alt="">
 </div>
 {% endblock %}

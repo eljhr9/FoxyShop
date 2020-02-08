@@ -48,12 +48,22 @@
 
 								<div class="request_call">
 									<a href="#">Заказать звонок</a>
+									<div class="user-icons-popup user-popup-profile user-icons-popup-development">
+										<div class="popup-contacts popup-favorite">
+											<div class="popup-content-client">
+												<div class="popup--empty">
+													<i class="fas fa-info-circle"></i>
+													Функция находится в разработке
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
+
 								<div class="more_contacts">
-									<!-- <h2>&hellip;</h2> -->
 									<h2><a href="#">...</a></h2>
-									<div class="user-icons-popup">
-										<div class="popup-contacts">
+									<div class="user-icons-popup user-popup-contacts">
+										<div class="popup-contacts popup-more">
 											<ul class="popup-content-contacts">
 												<li class="menu-item menu-item-icon">
 													<i class="far fa-envelope"></i>
@@ -116,7 +126,7 @@
 
 							</div>
 						</div>
-						{% if user.is_authenticated %}
+
 						<div class="user_field">
 							<div class="user_icons">
 								<ul class="user_icons-items">
@@ -124,16 +134,46 @@
 										<a href="#" class="user_icons-icon">
 											<i class="fas fa-align-right compare"></i>
 										</a>
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+													<div class="popup--empty">
+														<i class="fas fa-align-right compare"></i>
+														Товары для сравнения не выбраны
+													</div>
+												</div>
+											</div>
+										</div>
 									</li>
 									<li class="user_icons-item">
 										<a href="#" class="user_icons-icon">
 											<i class="far fa-heart"></i>
 										</a>
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+													<div class="popup--empty">
+														<i class="far fa-heart"></i>
+														В вашем избранном пока пусто
+													</div>
+												</div>
+											</div>
+										</div>
 									</li>
 									<li class="user_icons-item">
-										<a href="#" class="user_icons-icon">
+										<a href="{% url 'cart:cart_detail' %}" class="user_icons-icon">
 											<i class="fas fa-shopping-basket"></i>
 										</a>
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+													<div class="popup--empty">
+														<i class="fas fa-shopping-basket"></i>
+														В вашей корзине пока пусто
+													</div>
+												</div>
+											</div>
+										</div>
 									</li>
 									<li class="user_icons-item">
 										<!-- <a href="{% url 'logout' %}" class="user_icons-icon"> -->
@@ -141,12 +181,40 @@
 										<a href="{% url 'edit_profile' %}" class="user_icons-icon">
 											<i class="far fa-user"></i>
 										</a>
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-client_auth">
+												<div class="popup-content-client">
+													{% if user.is_authenticated %}
+													<a href="#" class="popup-row">
+														<span class="popup-mini-logo"><i class="fas fa-history"></i></span>
+														<span class="popup-mini-text">История заказов</span>
+													</a>
+													<a href="#" class="popup-row">
+														<span class="popup-mini-logo"><i class="fas fa-map-marker-alt"></i></span>
+														<span class="popup-mini-text">Адрес доставки</span>
+													</a>
+													<a href="#" class="popup-row">
+														<span class="popup-mini-logo"><i class="fas fa-piggy-bank"></i></span>
+														<span class="popup-mini-text">Скидки и бонусы</span>
+													</a>
+													<a href="{% url 'edit_profile' %}" class="popup-row">
+														<span class="popup-mini-logo"><i class="far fa-address-card"></i></span>
+														<span class="popup-mini-text">Контактные данные</span>
+													</a>
+													<div class="dropdown_products-action">
+														<a href="{% url 'logout' %}">Выход</a>
+													</div>
+													{% else %}
+													{% endif %}
+												</div>
+											</div>
+										</div>
 									</li>
 								</ul>
 							</div>
 						</div>
-						{% else %}
-						<div class="user_field">
+
+						<!-- <div class="user_field">
 							<div class="user_choise">
 								<div class="user_conteiner">
 									<div class="register">
@@ -156,8 +224,8 @@
 										<a href="{% url 'login' %}">Вход</a>
 									</div>
 								</div>
-							</div>
-							{% endif %}
+							</div> -->
+
 						</div>
 					</div>
 				</div>
@@ -208,12 +276,12 @@
 									<li><a href="{% url 'index' %}">Главная</a></li>
 								</div>
 								<div class="li-board">
-									<li><a href="#">Акции</a></li>
+									<li><a href="{% url 'empty' %}">Акции</a></li>
 									<!-- <li><a href="{% url 'index' %}admin">Админка</a></li> -->
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="#">Новинки</a>
+										<a href="{% url 'empty' %}">Новинки</a>
 									</li>
 								</div>
 								<div class="li-board">
@@ -223,17 +291,17 @@
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="#">Статьи</a>
+										<a href="{% url 'empty' %}">Статьи</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="#">Оплата и Доставка</a>
+										<a href="{% url 'empty' %}">Оплата и Доставка</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="#">Контакты</a>
+										<a href="{% url 'empty' %}">Контакты</a>
 									</li>
 								</div>
 							</ul>
@@ -407,15 +475,15 @@
 									<div class="menu-title title-collection">Дополнительно</div>
 									<ul class="menu-items">
 										<li class="menu-item collection-item"><a href="{% url 'index' %}">Главная</a></li>
-										<li class="menu-item collection-item"><a href="#">Акции</a></li>
-										<li class="menu-item collection-item"><a href="#">Новинки</a></li>
-										<li class="menu-item collection-item"><a href="#">Статьи</a></li>
-										<li class="menu-item collection-item"><a href="#">Оплата и доставка</a></li>
-										<li class="menu-item collection-item"><a href="#">Контакты</a></li>
-										<li class="menu-item collection-item"><a href="#">Обратная связь</a></li>
-										<li class="menu-item collection-item"><a href="#">Пользовательское соглашение</a></li>
-										<li class="menu-item collection-item"><a href="#">Политика конфиденциальности</a></li>
-										<li class="menu-item collection-item"><a href="#">Часто задаваемые вопросы</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Акции</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Новинки</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Статьи</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Оплата и доставка</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Контакты</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Обратная связь</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Пользовательское соглашение</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Политика конфиденциальности</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Часто задаваемые вопросы</a></li>
 									</ul>
 								</div>
 							</div>

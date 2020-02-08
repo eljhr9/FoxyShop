@@ -23,6 +23,7 @@
     <div class="product-row">
       <div class="cart-col">
         <div id="section-cart" class="section-cart">
+					{% if cart %}
           <div>
             <h1 class="text-title">Корзина</h1>
           </div>
@@ -68,7 +69,7 @@
           		                      </button>
           		                    </div>
           		                    <div class="count">
-          		                      <input class="input-count" type="number" id="id_quantity" name="quantity" value="1" min="1" autocomplete="off">
+          		                      <input class="input-count" type="number" id="id_quantity" name="quantity" value="{{ item.quantity }}" min="1" autocomplete="off">
           		                    </div>
           		                    <div class="addition">
           		                      <button type="button" class="button-counter" data-quantity-change="1">
@@ -125,7 +126,12 @@
             </div>
           </div>
           <!-- </form> -->
-
+					{% else %}
+					<div class="popup--empty popup--emty-big">
+						<i class="fas fa-shopping-basket"></i>
+						В вашей корзине пока пусто
+					</div>
+					{% endif %}
         </div>
       </div>
     </div>

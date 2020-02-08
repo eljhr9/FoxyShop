@@ -15,7 +15,8 @@ def mailing(request):
 		if form.is_valid():
 			cd = form.cleaned_data
 			subject = 'Рассылка FoxyShop'
-			message = 'Подписка на рассылку прошла успешно!'
+			# message = 'Подписка на рассылку прошла успешно!'
+			message = 'Приветули!'
 			send_mail(subject, message, 'admin@myblog.com',[cd['email']])
 			post = True
 			return form, post
