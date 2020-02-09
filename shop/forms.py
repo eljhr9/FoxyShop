@@ -2,7 +2,7 @@ from django import forms
 from .models import Comment
 
 class MailingForm(forms.Form):
-    email = forms.EmailField()
+    mailing_email = forms.EmailField()
 
 class CommentForm(forms.ModelForm):
     class Meta:

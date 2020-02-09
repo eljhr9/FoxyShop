@@ -181,10 +181,11 @@
 										<a href="{% url 'edit_profile' %}" class="user_icons-icon">
 											<i class="far fa-user"></i>
 										</a>
+										{% if user.is_authenticated %}
 										<div class="user-icons-popup user-popup-profile">
 											<div class="popup-contacts popup-client_auth">
 												<div class="popup-content-client">
-													{% if user.is_authenticated %}
+
 													<a href="#" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-history"></i></span>
 														<span class="popup-mini-text">История заказов</span>
@@ -201,14 +202,34 @@
 														<span class="popup-mini-logo"><i class="far fa-address-card"></i></span>
 														<span class="popup-mini-text">Контактные данные</span>
 													</a>
-													<div class="dropdown_products-action">
+													<div class="dropdown_products-action auth-button">
 														<a href="{% url 'logout' %}">Выход</a>
 													</div>
-													{% else %}
-													{% endif %}
 												</div>
 											</div>
 										</div>
+													{% else %}
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+													<div class="popup--empty popup-authenticate">
+														<i class="far fa-user"></i>
+														<div class="dropdown_products-action">
+															<div class="authenticate-row">
+																<div class="authenticate-col">
+																	<a class="register-button" href="{% url 'login' %}">Авторизация</a>
+																</div>
+																<div class="authenticate-col">
+																	<a class="register-button auth-button" href="{% url 'register' %}">Регистрация</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+													{% endif %}
+
 									</li>
 								</ul>
 							</div>
@@ -314,25 +335,6 @@
 		</div>
 		{% block breadcrumb %}{% endblock %}
 
-		{% if messages %}
-		<div class="content-container">
-		  <div class="messages-profile">
-		    <div class="co-input co-input-pass">
-		      {% for message in messages %}
-		      <div class="co-input-success co-input co-input-pass">
-		        {% if message.tags == 'error' %}
-		        <p class="login-error password-change-successfully">{{ message}}</p>
-		        {% elif message.tags == 'success' %}
-		        <p class="login-error password-change-successfully">{{ message}}</p>
-		        {% else %}
-		        <p class="login-error password-change-another">{{ message}}</p>
-		        {% endif %}
-		      </div>
-		    {% endfor %}
-		    </div>
-		  </div>
-		</div>
-		{% endif %}
 
 
 		{% block content %}
@@ -367,8 +369,8 @@
 				</div>
 					{% else %}
 				<div class="footer-scheme-01">
-					<form action="." method="post" class="footer-subscribe">
-						{% csrf_token %}
+					<form id="mailing_form" action="." method="post" class="footer-subscribe">
+
 						<div class="footer-container">
 							<div class="subscribe-items">
 								<div class="subscribe-items-left">
@@ -376,13 +378,16 @@
 									<div class="subscribe-item-form">
 										<div class="subscribe-form">
 											<div class="subscribe-form-input">
-												<input type="email" class="input" name="email"
-												placeholder="Адрес електронной почты" required id="id_email">
+												<!-- {{ mailing_form.as_p }} -->
+												<input type="email" class="input" name="mailing_email"
+												placeholder="Адрес електронной почты" required id="id_mailing_email">
 											</div>
 											<div class="subscribe-form-button">
-												<button class="subscribe-button" type="submit" >
+												{% csrf_token %}
+												<input class="subscribe-button" form="mailing_form" type="submit" name="mailing_form" value="Подписаться">
+												<!-- <button class="subscribe-button">
 													Подписаться
-												</button>
+												</button> -->
 											</div>
 										</div>
 									</div>

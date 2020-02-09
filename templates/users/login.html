@@ -14,7 +14,6 @@
         </div>
       </div>
       {% endif %}
-
       <form action="{% url 'login' %}" method="post">
         <div class="co-input">
           <label for="login" class="co-input-label">Логин или Email</label>
@@ -36,8 +35,6 @@
           <a href="{% url 'password_reset' %}" class="co-button co-button-link">Восстановить пароль</a>
           <a href="{% url 'register' %}" class="co-button co-button-link">Зарегистрироваться</a>
         </div>
-
-          <!-- <p><input type="submit" value="Log-in"></p> -->
       </form>
     </div>
   </div>

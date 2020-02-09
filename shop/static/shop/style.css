@@ -545,7 +545,7 @@ input, textarea {
 }
 
 .dropdown_products-action a {
-  background-color: #3095dd;
+  /* background-color: #3095dd; */
   color: #fff;
   font-size: 12px;
   line-height: 20px;
@@ -601,6 +601,58 @@ input, textarea {
 
 .user-icons-popup-development {
   right: 450px;
+}
+
+.dropdown_products-action {
+  margin-top: 20px;
+}
+.popup-authenticate {
+  margin: 0;
+}
+
+.authenticate-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.authenticate-col {
+  -ms-flex: 0 0 43%;
+  flex: 0 0 44%;
+  max-width: 44%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  /* margin: 0 10px; */
+  padding-right: 5px;
+  padding-left: 5px;
+  margin: auto;
+}
+
+.register-button {
+  background-color: #0bb648;
+  color: #fff;
+  font-size: 5px;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: none;
+  display: block;
+  /* width: 100%; */
+  border: none;
+  text-align: center;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-decoration: none;
+
+}
+
+.auth-button {
+  background-color: #3095dd;
+  color: #fff;
 }
 
 .menu {

@@ -1,25 +1,26 @@
 {% extends "profile_base.html" %}
 
 {% block info %}
-{% if messages %}
-<!-- <div class="content-container"> -->
-  <div class="messages-profile">
-    <div class="co-input co-input-pass">
-      {% for message in messages %}
-      <div class="co-input-success co-input co-input-pass">
-        {% if message.tags == 'error' %}
-        <p class="login-error password-change-successfully">{{ message}}</p>
-        {% elif message.tags == 'success' %}
-        <p class="login-error password-change-successfully">{{ message}}</p>
-        {% else %}
-        <p class="login-error password-change-another">{{ message}}</p>
-        {% endif %}
-      </div>
-    {% endfor %}
-    </div>
-  </div>
-<!-- </div> -->
-{% endif %}
+
+		{% if messages %}
+		<!-- <div class="content-container"> -->
+		  <div class="messages-profile">
+		    <div class="co-input co-input-pass">
+		      {% for message in messages %}
+		      <div class="co-input-success co-input co-input-pass">
+		        {% if message.tags == 'error' %}
+		        <p class="login-error password-change-successfully">{{ message}}</p>
+		        {% elif message.tags == 'success' %}
+		        <p class="login-error password-change-successfully">{{ message}}</p>
+		        {% else %}
+		        <p class="login-error password-change-another">{{ message}}</p>
+		        {% endif %}
+		      </div>
+		    {% endfor %}
+		    </div>
+		  </div>
+		<!-- </div> -->
+		{% endif %}
   <div class="co-section-login">
     <h1>Контактные данные</h1>
   </div>
@@ -42,7 +43,7 @@
         </div>
       </div>
       {% endif %}
-      <form action="." method="post" enctype="multipart/form-data">
+      <form id="edit_form" action="." method="post" enctype="multipart/form-data">
         <div class="co-input profile-avatar">
           {% if user.profile.avatar %}
             <img src="{{ user.profile.avatar.url }}" alt="">
@@ -85,7 +86,8 @@
         <div class="co-input-phone">Например: 0999852672</div>
         {% csrf_token %}
         <div class="co-form-controls">
-          <button class="co-button co-form-button">
+          <!-- <input form="edit_form" name="edit_form" type="submit" class="co-button co-form-button" value="Сохранить изменения"> -->
+          <button form="edit_form" name="edit_form" type="submit" class="co-button co-form-button">
             Сохранить изменения
           </button>
           <a href="{% url 'password_change' %}" class="co-button co-button-link">Сменить пароль</a>
