@@ -103,10 +103,19 @@
 			</div>
 			<div class="product-card-add">
 				<div class="bascet-field">
-					<a href="{{ product.get_absolute_url }}" class="bascet-add">
-						<i class="fas fa-shopping-basket"></i>
-						<span>В корзину</span>
-					</a>
+					<form action="{% url 'cart:cart_add' product.id %}" method="post">
+					<!-- {{ cart_product_form.as_p }} -->
+						<input type="hidden" id="id_quantity" name="quantity" value="1">
+						{% csrf_token %}
+						<!-- <a href="#" type="submit" class="bascet-add">
+							<i class="fas fa-shopping-basket"></i>
+							<span>В корзину</span>
+						</a> -->
+						<button class="bascet-add">
+							<i class="fas fa-shopping-basket"></i>
+							<span>В корзину</span>
+						</button>
+					</form>
 				</div>
 				<div class="favorite-field">
 					<button type="button" class="button compare">

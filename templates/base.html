@@ -163,14 +163,75 @@
 									<li class="user_icons-item">
 										<a href="{% url 'cart:cart_detail' %}" class="user_icons-icon">
 											<i class="fas fa-shopping-basket"></i>
+											{% if cart|length > 0 %}
+												<span class="bage bage-cart">{{ cart|length }}</span>
+											{% endif %}
 										</a>
 										<div class="user-icons-popup user-popup-profile">
 											<div class="popup-contacts popup-favorite">
 												<div class="popup-content-client">
+												{% with total_items=cart|length %}
+													{% if cart|length > 0 %}
+														<div class="dropdown_products-header">
+															В вашей корзине
+															<br>
+															{% if total_items == 1 %}
+																<span>{{ total_items }} товар</span>
+															{% elif total_items <= 4 %}
+																<span>{{ total_items }} товара</span>
+															{% else %}
+															<span>{{ total_items }} товаров</span>
+															{% endif %}
+															на сумму
+														 	<span>{{ cart.get_total_price }} ₴</span>
+													 </div>
+													 <div class="dropdown_products">
+													 	{% for item in cart %}
+															{% with product=item.product %}
+															<div class="dropdown_product">
+																<div class="dropdown_product-row">
+																	<div class="dropdown_product-img-col">
+																		<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
+																			<img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}" alt="" class="dropdown_product-thumb">
+																		</a>
+																	</div>
+																	<div class="dropdown_product-detail-col">
+																		<div class="dropdown_product-title">
+																			<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+																		</div>
+																		<div class="dropdown_product-prices">
+																			<span>{{ item.quantity }}</span>
+			                                ×
+			                                <span>{{ item.price }} ₴</span>
+																		</div>
+																	</div>
+																	<div class="dropdown_product-delete-col">
+	                                	<button type="button" class="button-delete">
+																			<a href="{% url 'cart:cart_remove' product.id%}"><i class="fas fa-trash-alt"></i></a>
+																		</button>
+																	</div>
+																</div>
+															</div>
+															{% endwith %}
+														{% endfor %}
+													 </div>
+													 <div class="dropdown_products-action">
+														 <div class="authenticate-row">
+															 <div class="authenticate-col">
+																 <a class="register-button" href="{% url 'cart:cart_detail' %}">Открыть корзину</a>
+															 </div>
+															 <div class="authenticate-col">
+																 <a class="register-button auth-button" href="#">Оформить заказ</a>
+															 </div>
+														 </div>
+													 </div>
+													{% else %}
 													<div class="popup--empty">
 														<i class="fas fa-shopping-basket"></i>
 														В вашей корзине пока пусто
 													</div>
+													{% endif %}
+												{% endwith %}
 												</div>
 											</div>
 										</div>
@@ -185,7 +246,6 @@
 										<div class="user-icons-popup user-popup-profile">
 											<div class="popup-contacts popup-client_auth">
 												<div class="popup-content-client">
-
 													<a href="#" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-history"></i></span>
 														<span class="popup-mini-text">История заказов</span>
@@ -208,7 +268,7 @@
 												</div>
 											</div>
 										</div>
-													{% else %}
+										{% else %}
 										<div class="user-icons-popup user-popup-profile">
 											<div class="popup-contacts popup-favorite">
 												<div class="popup-content-client">
@@ -228,8 +288,7 @@
 												</div>
 											</div>
 										</div>
-													{% endif %}
-
+										{% endif %}
 									</li>
 								</ul>
 							</div>

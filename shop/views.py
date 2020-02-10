@@ -36,7 +36,9 @@ def products(request, rubric_slug=None):
 	except EmptyPage:
 		# If page is out of range (e.g. 9999), deliver last page of results.
 		products = paginator.page(paginator.num_pages)
-	context = {'products': products, 'title': title, 'current_rubric': rubric}
+	cart_product_form = CartAddProductForm()
+	context = {'products': products, 'title': title, 'current_rubric': rubric,
+	'cart_product_form': cart_product_form}
 	return render(request, 'shop/products.html', context)
 
 def brand(request):
