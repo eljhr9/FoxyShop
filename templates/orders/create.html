@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="profile-container">
+    <div class="co-order-col order-left">
+      <div class="co-order-form">
+        <div class="co-section-login order_form-title">
+          <h1>Оформление заказа</h1>
+        </div>
+        <form id="order_form" class="order_form" action="." method="post">
+          <h2 class="co-order-label">Контактная информация</h2>
+          <div class="co-input">
+            <label for="login" class="co-input-label">Имя</label>
+            <div class="co-input-text">
+              {{ order_form.first_name }}
+            </div>
+          </div>
+          <div class="co-input co-input-pass">
+            <label for="login" class="co-input-label-no-after">Фамилия</label>
+            <div class="co-input-text">
+              {{ order_form.last_name }}
+            </div>
+          </div>
+          <div class="co-input co-input-pass">
+            <label for="login" class="co-input-label">Email</label>
+            <div class="co-input-text">
+              {{ order_form.email }}
+            </div>
+          </div>
+          <div class="co-input co-input-pass">
+            <label for="login" class="co-input-label">Номер телефона</label>
+            <div class="co-input-text">
+              {{ order_form.phone }}
+            </div>
+          </div>
+          <h2 class="co-order-label">Информация по доставке</h2>
+          <div class="co-input co-input-pass">
+            <label for="login" class="co-input-label">Город</label>
+            <div class="co-input-text">
+              {{ order_form.city }}
+            </div>
+          </div>
+          <div class="co-input co-input-pass">
+            <label for="login" class="co-input-label">Адрес</label>
+            <div class="co-input-text">
+              {{ order_form.address }}
+            </div>
+          </div>
+          <div class="co-input co-input-pass">
+            <label for="login" class="co-input-label">Почтовый индекс</label>
+            <div class="co-input-text">
+              {{ order_form.postal_code }}
+            </div>
+          </div>
+          <button name="order_form" type="submit" class="co-button co-form-button co-button-order">Оформить заказ</button>
+          <a href="{% url 'shop:products' %}" class="co-button co-button-link">Продолжить покупки</a>
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+    <div class="co-order-col order-right">
+      <div class="co-order-cart">
+        <div class="order_form">
+          <div class="co-basket_item-list">
+            {% for item in cart %}
+              {% with product=item.product %}
+              <div class="co-basket_item">
+                <div class="co-basket_item-image_container">
+                  <div class="cart-item-img">
+                    <img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}" class="cart-item-thumb-item">
+                  </div>
+                </div>
+                <div class="co-basket_item-description">
+                  {{ product.brand }} {{ product.title }}
+                </div>
+                <div class="co-basket_item-total">
+                  <span class="co-basket_item-count">{{ item.quantity }}</span>
+                   x
+                   <span class="co-basket_item-price">{{ item.price }} ₴</span>
+                </div>
+              </div>
+              {% endwith %}
+            {% endfor %}
+          </div>
+          <div class="co-basket_subtotal-list">
+            <div class="co-basket_subtotal">
+              <div class="co-basket_subtotal-title">Сумма по товарам</div>
+              <div id="items_price" class="co-basket_subtotal-price">{{ cart.get_total_price }} ₴</div>
+            </div>
+            <div id="discoun-block"></div>
+            <div class="co-basket_subtotal">
+              <div class="co-basket_subtotal-title">Стоимость доставки</div>
+              <div id="items_price" class="co-basket_subtotal-price">Бесплатно</div>
+            </div>
+          </div>
+          <div class="co-basket_total">
+            <div class="co-basket_total-title">Итого:</div>
+            <div id="total_price" class="co-basket_total-price">{{ cart.get_total_price }} ₴</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

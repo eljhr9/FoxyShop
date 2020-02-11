@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="co-content">
+  <div class="co-section--content_wrapper">
+    <div class="co-section--content">
+      <div class="co-section--checkout_header">
+        <h1>Заказ № {{ order.id }}</h1>
+      </div>
+      <div class="co-section--content">
+        <div class="co-checkout-block--padded">
+          <div class="co-section--checkout_header--h2">Информация о заказе</div>
+          <div class="co-order-information">
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">Дата оформления</div>
+              <div class="co-order-information_value">
+                {{ order.created|date:'d.m.Y H:i' }}
+              </div>
+            </div>
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">Сумма и статус заказа</div>
+              <div class="co-order-information_value">
+                <span class="co-price">{{ order.get_total_cost }} ₴</span>
+                <span class="co-order-state">Принят</span>
+                <span class="co-order-state">{% if order.paid %}Оплачен{% else %}Не оплаченен{% endif %}</span>
+              </div>
+            </div>
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">Способ оплаты</div>
+              <div class="co-order-information_value">
+                Наличными
+              </div>
+            </div>
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">Способ доставки</div>
+              <div class="co-order-information_value">
+                Обычная доставка с наложенным платежом
+              </div>
+            </div>
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">Адрес доставки</div>
+              <div class="co-order-information_value">
+                {{ order.city }} {{ order.address }} ({{ order.postal_code }})
+              </div>
+            </div>
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">Получатель</div>
+              <div class="co-order-information_value">
+                {{ order.first_name }} {{ order.last_name }}
+              </div>
+            </div>
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">Номер телефона</div>
+              <div class="co-order-information_value">
+                {{ order.phone }}
+              </div>
+            </div>
+            <div class="co-order-information_row">
+              <div class="co-order-information_title">E-mail</div>
+              <div class="co-order-information_value">
+                {{ order.email }}
+              </div>
+            </div>
+          </div>
+          <div class="co-section--checkout_header--h2">Состав заказа</div>
+          <table class="co-table">
+            <tbody>
+              <tr>
+                <td class="co-table-cell co-table-cell--head">Наименование</td>
+                <td class="co-table-cell co-table-cell--head">Кол-во</td>
+                <td class="co-table-cell co-table-cell--head">Стоимость</td>
+              </tr>
+              {% for item in orderitems %}
+              <tr class="co-table-row--striped">
+                <td class="co-table-cell co-table-cell--body" data-title="Наименование">{{ item.product }}</td>
+                <td class="co-table-cell co-table-cell--body" data-title="Кол-во">{{ item.quantity }}</td>
+                <td class="co-table-cell co-table-cell--body" data-title="Стоимость">{{ item.get_cost }} ₴</td>
+              </tr>
+              {% endfor %}
+              <tr class="co-table-footer">
+                <td class="co-table-cell co-table-cell--foot" colspan="3">
+                  <div class="co-order_history-total_title">Итого:</div>
+                  <div class="co-order_history-total_sum co-price">{{ order.get_total_cost }} ₴</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
