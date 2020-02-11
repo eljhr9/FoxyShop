@@ -18,6 +18,13 @@ from shop.urls import views
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from shop.sitemaps import ProductSitemap
+
+
+sitemaps = {
+    'products': ProductSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +34,7 @@ urlpatterns = [
     path('collection/', include('shop.urls')),
     path('account/', include('users.urls')),
     path('empty/', views.empty, name='empty'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 

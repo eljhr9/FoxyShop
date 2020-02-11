@@ -3,14 +3,14 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import Product, Brand, Rubric, Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import CommentForm
+from .forms import CommentForm, SearchForm
 from django.db.models import Avg
 from cart.forms import CartAddProductForm
+from haystack.query import SearchQuerySet
 
 
 def index(request):
 	'''домашняя страница магазина'''
-
 	context = {}
 	return render(request, 'shop/index.html', context)
 
@@ -79,3 +79,17 @@ def empty(request):
 	'''Страница которая находится в разработке'''
 	context = {}
 	return render(request, 'shop/empty.html', context)
+
+def product_search(request):
+	search_form = SearchForm()
+	cd = None
+	results = None
+	total_results = None
+	if 'query' in request.GET:
+		search_form = SearchForm(request.GET)
+		if search_form.is_valid():
+			cd = search_form.cleaned_data
+			results = SearchQuerySet().models(Product).filter(content=cd['query']).load_all()
+			total_results = results.count()
+	context = {'search_form': search_form, 'cd': cd, 'results': results, 'total_results': total_results}
+	return render(request, 'shop/search.html', context)

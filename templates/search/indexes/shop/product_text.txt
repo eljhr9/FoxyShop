@@ -1,0 +1,4 @@
+{{ object.title }}
+{{ object.brand }}
+{{ object.rubric }}
+{{ object.text }}

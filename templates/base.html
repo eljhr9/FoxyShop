@@ -28,14 +28,14 @@
 						<!-- <div class="logo_text">
 							<h1><a href="{% url 'index' %}">FoxyShop</a></h1>
 						</div> -->
-						<div class="wrap">
+						<form action="{% url 'shop:product_search' %}" method="get" class="wrap">
 						   <div class="search">
-						      <input type="text" class="searchTerm" placeholder="Поиск по каталогу...">
+						      <input required id="id_query" type="text" name="query" class="searchTerm" placeholder="Поиск по каталогу...">
 						      <button type="submit" class="searchButton">
 						        <i class="fa fa-search"></i>
 						     	</button>
 						   </div>
-						</div>
+						</form>
 						<div class="contacts">
 							<div class="contacts_top">
 
