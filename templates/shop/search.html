@@ -1,47 +1,118 @@
 {% extends "base.html" %}
 
 
-    <!-- {% if "query" in request.GET %}
-        <h1>Posts containing "{{ cd.query }}"</h1>
-        <h3>Found {{ total_results }} result{{ total_results|pluralize }}</h3>
-        {% for result in results %}
-            {% with product=result.object %}
-                <h4><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h4>
-                {{ product.text|truncatewords:5 }}
-            {% endwith %}
-            {% empty %}
-            <p>There are no results for your query.</p>
-        {% endfor %}
-        <p><a href="{% url 'shop:product_search' %}">Search again</a></p>
-    {% else %}
-        <h1>Search for posts</h1>
-        <form action="." method="get">
-
-          {{ search_form.as_p }}
-          <input type="submit" value="Search">
-        </form>
-    {% endif %} -->
-
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'shop:product_search' %}" class="breadcrumb-link">
+					<span>Результаты поиска</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
 
 
 {% block content %}
-	{% if 'query' in request.GET %}
-    <h1>Posts containing "{{ cd.query }}"</h1>
-    <h3>Found {{ total_results }} result{{ total_results|pluralize }}</h3>
-    {% for result in results %}
-        {% with product=result.object %}
-            <h4><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h4>
-            {{ product.text|truncatewords:5 }}
-        {% endwith %}
-        {% empty %}
-        <p>There are no results for your query.</p>
-    {% endfor %}
-    <p><a href="{% url 'shop:product_search' %}">Search again</a></p>
-	{% else %}
-		<h1>Search for posts</h1>
-		<form action="." method="get">
-			{{ search_form.as_p }}
-			<input type="submit" value="Search">
-		</form>
-	{% endif %}
+  <div class="content-container">
+    <div class="content-container2">
+      <div class="content">
+        <div class="search-col">
+          <div>
+            <div class="text">
+              <h1 class="section-title">Результаты поиска</h1>
+              <div class="text-content">
+                <div class="text-row">
+                  <div class="search-message-icon">
+                    <i class="fas fa-search"></i>
+                  </div>
+                  <div class="text-col">
+                    <p>
+                      {% if cd.query %}
+                      По запросу «{{ cd.query }}» найдены следующие товары:
+                      {% else %}
+                      Для поиска по каталогу укажете ключевое слово или фразу.
+                      {% endif %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          	{% if 'query' in request.GET %}
+          		<div class="products search-products">
+                {% for result in results %}
+                  {% with product=result.object %}
+            			<div class="current-product">
+            				<a href="{{ product.get_absolute_url }}" class="product-card">
+            				{% if product.image_1 %}
+            				<div class="product-image"><img src="{{ product.image_1.url }}" ></div>
+            				{% else %}
+            				<div class="product-image"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
+            				{% endif %}
+            				</a>
+            				<div class="product-card-title">
+            					<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+            				</div>
+            				<div class="product-card-rating">
+
+            					<div class="rating-items">
+            						<a href="{{ product.get_absolute_url }}" class="rating">
+            							{% if product.comments.count >= 1 %}
+            							<span class="rating-item full"><i class="fas fa-star"></i></span>
+            							<span class="rating-item full"><i class="fas fa-star"></i></span>
+            							<span class="rating-item full"><i class="fas fa-star"></i></span>
+            							<span class="rating-item full"><i class="fas fa-star"></i></span>
+            							<span class="rating-item"><i class="far fa-star"></i></span>
+            							{% else %}
+            							<span class="rating-item"><i class="far fa-star"></i></span>
+            							<span class="rating-item"><i class="far fa-star"></i></span>
+            							<span class="rating-item"><i class="far fa-star"></i></span>
+            							<span class="rating-item"><i class="far fa-star"></i></span>
+            							<span class="rating-item"><i class="far fa-star"></i></span>
+            							{% endif %}
+            							<span class="rating-link">
+            								<span class="icon"><i class="far fa-comment-dots"></i></span>
+            								<span class="icon-count"><p>{{ product.comments.count }}</p></span>
+            							</span>
+            						</a>
+            					</div>
+            					<div class="product-card-prices">
+            						<span><h4>{{ product.price }} ₴</h4></span>
+            					</div>
+            					<div class="product-card-add">
+            						<div class="bascet-field">
+            							<a href="{{ product.get_absolute_url }}" class="bascet-add">
+            								<i class="fas fa-shopping-basket"></i>
+            								<span>В корзину</span>
+            							</a>
+            						</div>
+            						<div class="favorite-field">
+            							<button type="button" class="button compare">
+            								<span class="fas fa-align-right fa-lg"></span>
+            							</button>
+            							<button class="button favorite">
+            								 <span class="far fa-heart fa-lg"></span>
+            							</button>
+            						</div>
+            					</div>
+
+            				</div>
+
+            			</div>
+                  {% endwith %}
+          		  {% endfor %}
+          		</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

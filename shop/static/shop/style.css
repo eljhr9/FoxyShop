@@ -4039,3 +4039,50 @@ table {
 .co-order_history-total_sum {
   display: inline-block;
 }
+
+.content-container2 {
+  padding: 0 13px;
+}
+
+.search-col {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.section-title {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #000;
+  margin: 0px 0px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-message-icon {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+  position: relative;
+  min-height: 1px;
+  padding: 0;
+}
+
+.search-message-icon i {
+  overflow: visible;
+  width: 1em;
+  margin-right: 10px;
+  font-size: 1.8em;
+  display: inline-block;
+  height: 1em;
+  vertical-align: -.125em;
+}
+
+.search-products {
+  margin-left: -5px;
+  /* margin-right: -5px; */
+}
