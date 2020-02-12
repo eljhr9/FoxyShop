@@ -49,7 +49,24 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'haystack',
+    'storages',
 ]
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# AWS_S3_SECURE_URLS = False       # use http instead of https
+# AWS_QUERYSTRING_AUTH = False                # don't add complex authentication-related query parameters for requests
+# AWS_S3_ACCESS_KEY_ID = "..."                # Your S3 Access Key
+# AWS_S3_SECRET_ACCESS_KEY = "..."            # Your S3 Secret
+# AWS_STORAGE_BUCKET_NAME = "foxyshop"
+# AWS_S3_HOST = "s3-eu-west-3.amazonaws.com"  # Change to the media center you chose when creating the bucket
+#
+# STATICFILES_STORAGE = "django_shop.s3utils.StaticS3BotoStorage"
+# DEFAULT_FILE_STORAGE = "django_shop.s3utils.MediaS3BotoStorage"
+#
+# # the next monkey patch is necessary to allow dots in the bucket names
+# import ssl
+# if hasattr(ssl, '_create_unverified_context'):
+#    ssl._create_default_https_context = ssl._create_unverified_context
 
 
 # HAYSTACK_URL = os.environ.get('WEBSOLR_URL', '')
@@ -183,6 +200,19 @@ AUTHENTICATION_BACKENDS = ['users.backend.CustomBackend']
 
 CART_SESSION_ID = 'cart'
 
+
+
+
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_LOCATION = 'static'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'shop/static'),
+# ]
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 # Настройки Heroku
 if os.getcwd() == '/app':
     import dj_database_url
@@ -202,4 +232,13 @@ if os.getcwd() == '/app':
     )
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+AWS_ACCESS_KEY_ID = 'AKIATONK7FO4PBHD2OUY'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'foxy-static'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
