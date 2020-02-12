@@ -52,12 +52,19 @@ INSTALLED_APPS = [
 ]
 
 
+HAYSTACK_URL = os.environ.get('WEBSOLR_URL', '')
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr/shop'
+        'URL': HAYSTACK_URL,
     },
 }
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+#         'URL': 'http://127.0.0.1:8983/solr/shop'
+#     },
+# }
 
 
 MIDDLEWARE = [
