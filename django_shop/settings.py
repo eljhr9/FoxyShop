@@ -62,6 +62,7 @@ HAYSTACK_CONNECTIONS = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -104,7 +105,16 @@ WSGI_APPLICATION = 'django_shop.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = DATABASES
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'my_shop',
+        'USER': 'illya',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -165,3 +175,24 @@ EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 AUTHENTICATION_BACKENDS = ['users.backend.CustomBackend']
 
 CART_SESSION_ID = 'cart'
+
+# Настройки Heroku
+if os.getcwd() == '/app':
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(default='postgres://localhost')
+    }
+    # Поддержка заголовка 'X-Forwarded-Proto' для request.is_secure().
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # Разрешены все заголовки хостов.
+    ALLOWED_HOSTS = ['*']
+
+    # Конфигурация статических ресурсов
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    # STATIC_ROOT = 'staticfiles'
+    # STATICFILES_DIRS = (
+    # os.path.join(BASE_DIR, 'static'),
+    # )
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
