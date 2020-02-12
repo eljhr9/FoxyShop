@@ -62,7 +62,7 @@ INSTALLED_APPS = [
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'https://eu-west-1.websolr.com/solr/1095efb8d4a3'
+        'URL': 'https://seven.solrcluster.com/solr/foxyshop'
     },
 }
 
