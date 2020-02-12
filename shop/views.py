@@ -15,16 +15,22 @@ def index(request):
 	return render(request, 'shop/index.html', context)
 
 
-def products(request, rubric_slug=None):
+def products(request, rubric_slug=None, brand_slug=None):
 	'''Отображение всех товаров'''
 	products = Product.objects.all()
 	title = 'Каталог товаров'
 	rubric = None
+	brand = None
 
 	if rubric_slug:
 		rubric = get_object_or_404(Rubric, slug=rubric_slug)
 		products = Product.objects.filter(rubric=rubric)
 		title = rubric.name
+
+	if brand_slug:
+		brand = get_object_or_404(Brand, slug=brand_slug)
+		products = Product.objects.filter(brand=brand)
+		title = brand.name
 
 	paginator = Paginator(products, 12)
 	page = request.GET.get('page')
@@ -36,21 +42,26 @@ def products(request, rubric_slug=None):
 	except EmptyPage:
 		# If page is out of range (e.g. 9999), deliver last page of results.
 		products = paginator.page(paginator.num_pages)
+	if 'page' in request.GET:
+		page_num = request.GET['page']
+	else:
+		page_num = 1
+	page = paginator.get_page(page_num)
 	cart_product_form = CartAddProductForm()
 	context = {'products': products, 'title': title, 'current_rubric': rubric,
-	'cart_product_form': cart_product_form}
+	'cart_product_form': cart_product_form, 'page': page}
 	return render(request, 'shop/products.html', context)
 
 def brand(request):
 	context = {}
 	return render(request, 'shop/brand.html', context)
 
-def by_brand(request, brand_slug):
-	current_brand = get_object_or_404(Brand, slug=brand_slug)
-	products = Product.objects.filter(brand=current_brand)
-	title = current_brand.name
-	context = {'products': products, 'current_brand': current_brand, 'title': title}
-	return render(request, 'shop/products.html', context)
+# def by_brand(request, brand_slug):
+# 	current_brand = get_object_or_404(Brand, slug=brand_slug)
+# 	products = Product.objects.filter(brand=current_brand)
+# 	title = current_brand.name
+# 	context = {'products': products, 'current_brand': current_brand, 'title': title}
+# 	return render(request, 'shop/products.html', context)
 
 def product(request, product_slug, brand_slug):
 	product = get_object_or_404(Product, slug=product_slug)

@@ -4084,5 +4084,12 @@ table {
 
 .search-products {
   margin-left: -5px;
-  /* margin-right: -5px; */
+}
+
+.pagination-item p {
+  cursor: pointer;
+}
+
+.pagination-item-noprev, .pagination-item-nonext {
+  cursor: pointer;
 }

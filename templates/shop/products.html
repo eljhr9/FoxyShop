@@ -154,13 +154,22 @@
 			</li>
 		{% endif %}
 		<li class="pagination-item pagination-item-num">
-			<a href="?page=1" class="pagination-link">1</a>
+			{% if products.has_previous %}
+			<a href="?page={{ page.previous_page_number }}" class="pagination-link">{{ page.previous_page_number }}</a>
+			{% else %}
+			<p class="pagination-link">-</p>
+			{% endif %}
 		</li>
 		<li class="pagination-item pagination-item-num">
-			<a href="?page=2" class="pagination-link">2</a>
+			<!-- <a href="?page=2" class="pagination-link">2</a> -->
+			<p class="pagination-link">{{ page.number }}</p>
 		</li>
 		<li class="pagination-item pagination-item-num">
-			<a href="?page=3" class="pagination-link">3</a>
+			{% if products.has_next %}
+			<a href="?page={{ page.next_page_number }}" class="pagination-link">{{ page.next_page_number }}</a>
+			{% else %}
+			<p class="pagination-link">-</p>
+			{% endif %}
 		</li>
 		{% if products.has_next %}
 			<li class="pagination-item pagination-item-next">
