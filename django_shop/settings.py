@@ -218,10 +218,15 @@ if os.getcwd() == '/app':
     STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     )
+
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# ALLOWED_HOSTS = [config('ALLOWED_HOSTS', cast=Csv()), '127.0.0.1']
+    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 ALLOWED_HOSTS = ['*']
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
