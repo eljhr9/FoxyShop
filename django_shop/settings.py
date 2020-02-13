@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from django.urls import reverse_lazy
+from decouple import config, Csv
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -22,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = SECRET_KEY
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '(wqn8rh2uzj!)d46&&@v)lrp(!#c7&3@$l&k&gjw#7=6)&e*vr')
+SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '(wqn8rh2uzj!)d46&&@v)lrp(!#c7&3@$l&k&gjw#7=6)&e*vr')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = config('DEBUG', default=True, cast=bool)
+# DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = []
 
@@ -69,17 +70,10 @@ INSTALLED_APPS = [
 #    ssl._create_default_https_context = ssl._create_unverified_context
 
 
-# HAYSTACK_URL = os.environ.get('WEBSOLR_URL', '')
-# HAYSTACK_CONNECTIONS = {
-#     'default': {
-#         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-#         'URL': HAYSTACK_URL,
-#     },
-# }
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'https://seven.solrcluster.com/solr/foxyshop'
+        'URL': config('HAYSTACK_URL')
     },
 }
 
@@ -123,12 +117,6 @@ WSGI_APPLICATION = 'django_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -192,8 +180,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'nikolaychiktry@gmail.com'
-EMAIL_HOST_PASSWORD = 'nikolayagain90'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 AUTHENTICATION_BACKENDS = ['users.backend.CustomBackend']
@@ -222,7 +210,7 @@ if os.getcwd() == '/app':
     # Поддержка заголовка 'X-Forwarded-Proto' для request.is_secure().
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     # Разрешены все заголовки хостов.
-    ALLOWED_HOSTS = ['*']
+
 
     # Конфигурация статических ресурсов
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -233,9 +221,12 @@ if os.getcwd() == '/app':
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
 
-AWS_ACCESS_KEY_ID = 'AKIATONK7FO4PBHD2OUY'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'foxy-static'
+# ALLOWED_HOSTS = [config('ALLOWED_HOSTS', cast=Csv()), '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
