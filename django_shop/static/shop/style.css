@@ -1271,7 +1271,6 @@ table {
   margin: auto;
   object-fit: cover;
   object-position: auto;
-  vertical-align: bottom;
 }
 
 .product-card-title {
@@ -1875,28 +1874,32 @@ table {
   display: block;
 }
 
+
 .product-img {
   display: block;
-  height: 550px;
+  max-height: 550px;
   max-width: 550px;
-  object-fit: cover;
-  /* object-position: 0 0; */
   margin: auto;
+  object-fit: cover;
+  object-position: auto;
 }
 
 .product-gallery-image {
   display: inline-block;
   height: 75px;
+  width: 100px;
   vertical-align: middle;
   margin: 0 15px;
 }
 
 .product-gallery-image img {
-  min-width: 75px;
+  display: block;
+  /* min-width: 75px; */
   max-width: 100px;
-  height: 75px;
+  max-height: 75px;
+  margin: auto;
   object-fit: cover;
-  /* object-position: 0 0; */
+  object-position: auto;
 }
 
 .product-gallery {
