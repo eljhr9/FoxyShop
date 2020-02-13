@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
@@ -28,30 +29,28 @@
 	<div class="content">
 		<div class="content-left col">
 		  <div class="product-images">
-		  {% if product.image_1 %}
 		    <div class="product-image-block">
 		      <a href="#" class="product-image-thumb">
-		        <img class="product-img" src="{{ product.image_1.url }}">
+		        <img class="product-img" src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}">
 		      </a>
 		    </div>
 		    <div class="product-gallery">
-		      <a href="#" class="product-gallery-image">
-		        <span class="product-gallery-lighter"></span>
-		        <img src="{{ product.image_1.url }}">
+					<div class="product-gallery-images">
+			      <a href="#" class="product-gallery-image">
+			        <span class="product-gallery-lighter"></span>
+			        <img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}">
 
-		      </a>
-		      <a href="#" class="product-gallery-image">
-		        <span class="product-gallery-lighter"></span>
-		        <img src="{{ product.image_2.url }}">
-		      </a>
-		      <a href="#" class="product-gallery-image">
-		        <span class="product-gallery-lighter"></span>
-		        <img src="{{ product.image_3.url }}">
-		      </a>
+			      </a>
+			      <a href="#" class="product-gallery-image">
+			        <span class="product-gallery-lighter"></span>
+			        <img src="{% if product.image_2 %}{{ product.image_2.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}">
+			      </a>
+			      <a href="#" class="product-gallery-image">
+			        <span class="product-gallery-lighter"></span>
+			        <img src="{% if product.image_3 %}{{ product.image_3.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}">
+			      </a>
+					</div>
 		    </div>
-		  {% else %}
-		    <div class="product-images"><img class="product-img" src="/media/images/large_technics-04-1_002.jpg"></div>
-		  {% endif %}
 		  </div>
 		</div>
 		<div class="content-right col">

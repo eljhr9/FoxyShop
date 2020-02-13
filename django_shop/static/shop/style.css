@@ -1879,7 +1879,7 @@ table {
   display: inline-block;
   height: 75px;
   vertical-align: middle;
-  margin: 0 10px;
+  margin: 0 15px;
 }
 
 .product-gallery-image img {
@@ -1892,7 +1892,13 @@ table {
 
 .product-gallery {
   width: auto;
-  padding: 0 100px;
+  padding: 0 50px;
+}
+
+.product-gallery-images {
+  width: 400px;
+  display: block;
+  margin: auto;
 }
 
 .product-gallery-lighter {

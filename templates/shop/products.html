@@ -1,4 +1,6 @@
 {% extends "collections.html" %}
+{% load static %}
+
 
 {% block collection_title %}{{ title }}{% endblock %}
 
@@ -66,11 +68,7 @@
 	{% for product in products %}
 	<div class="current-product">
 		<a href="{{ product.get_absolute_url }}" class="product-card">
-		{% if product.image_1 %}
-		<div class="product-image"><img src="{{ product.image_1.url }}" ></div>
-		{% else %}
-		<div class="product-image"><img src="/media/images/large_technics-04-1_002.jpg" ></div>
-		{% endif %}
+			<div class="product-image"><img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}" ></div>
 		</a>
 		<div class="product-card-title">
 			<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
@@ -104,13 +102,8 @@
 			<div class="product-card-add">
 				<div class="bascet-field">
 					<form action="{% url 'cart:cart_add' product.id %}" method="post">
-					<!-- {{ cart_product_form.as_p }} -->
 						<input type="hidden" id="id_quantity" name="quantity" value="1">
 						{% csrf_token %}
-						<!-- <a href="#" type="submit" class="bascet-add">
-							<i class="fas fa-shopping-basket"></i>
-							<span>В корзину</span>
-						</a> -->
 						<button class="bascet-add">
 							<i class="fas fa-shopping-basket"></i>
 							<span>В корзину</span>

@@ -1,4 +1,5 @@
 {% extends "profile_base.html" %}
+{% load static %}
 
 {% block info %}
 
@@ -48,7 +49,7 @@
           {% if user.profile.avatar %}
             <img src="{{ user.profile.avatar.url }}" alt="">
           {% else %}
-            <img src="/media/avatars/normal.png">
+						<img src="{% static 'normal.png' %}" alt="">
           {% endif %}
           <div class="co-input-avatar">
             <label for="login" class="co-input-label-no-after">Изменить фото</label>

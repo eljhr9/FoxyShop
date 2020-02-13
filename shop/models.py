@@ -2,6 +2,7 @@ import os
 from django.utils import timezone
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # def get_image_path(instance, filename):
@@ -18,7 +19,7 @@ class Product(models.Model):
 	date_added = models.DateTimeField(auto_now_add=True, verbose_name='Был добавлен')
 	updated = models.DateTimeField(auto_now=True, verbose_name='Был изменен')
 	brand = models.ForeignKey('Brand', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Производитель')
-	image_1 = models.ImageField(upload_to='images/', null=True, blank=True)
+	image_1 = models.ImageField(upload_to='images/', null=True, blank=True,)
 	image_2 = models.ImageField(upload_to='images/', null=True, blank=True)
 	image_3 = models.ImageField(upload_to='images/', null=True, blank=True)
 	rubric = models.ForeignKey('Rubric', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Рубрика')
@@ -37,7 +38,7 @@ class Product(models.Model):
 class Brand(models.Model):
 	"""Производитель"""
 	name = models.CharField(max_length=20, db_index=True, verbose_name='Название')
-	logo = models.ImageField(upload_to='images/brand/', null=True, blank=True)
+	logo = models.ImageField(upload_to='images/brand/', null=True, blank=False)
 	slug = models.SlugField(max_length=20, db_index=True, unique=True)
 
 	def __str__(self):
