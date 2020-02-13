@@ -1258,11 +1258,20 @@ table {
   transition-duration: .3s;
 }
 
-.product-image img {
+.product-card {
+  display: block;
   height: 265px;
   width: 265px;
+}
+
+.product-image img {
+  display: block;
+  max-height: 265px;
+  max-width: 265px;
+  margin: auto;
   object-fit: cover;
   object-position: auto;
+  vertical-align: bottom;
 }
 
 .product-card-title {
