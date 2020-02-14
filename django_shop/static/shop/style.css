@@ -158,7 +158,7 @@ table {
   padding: 0 15px;
   vertical-align: top;
   max-width: 100%;
-  min-width: 30%;
+  min-width: 25%;
   /* position: absolute; */
 }
 
@@ -189,6 +189,7 @@ table {
 
 .searchButton {
   /* font: arial; */
+  min-width: 40px;
   width: 50px;
   height: 48px;
   border: none;
@@ -221,6 +222,7 @@ table {
 .contacts {
   display: inline-block;
   padding: 1px 20px;
+  padding-right: 10px;
   width: 200px;
   vertical-align: top;
 }
@@ -1442,6 +1444,10 @@ table {
   font-size: 12px;
   line-height: 28px;
   min-width: 32px;
+}
+
+.paginator-current-page {
+  border: 2px solid #3095dd;
 }
 
 .pagination-link:hover {
@@ -2759,6 +2765,10 @@ table {
   margin-left: 20px;
 }
 
+.product-reviews {
+  margin-bottom: 20px;
+}
+
 .form-item {
   margin: 0px 0px 20px;
 }
@@ -3251,6 +3261,15 @@ table {
 .messages-profile {
   max-width: 870px;
   margin-right: auto;
+}
+
+.messages-main {
+  max-width: 100%;
+  margin: auto;
+}
+
+.comments-error {
+  margin-left: 20px;
 }
 
 #comments {
@@ -4102,6 +4121,7 @@ table {
 
 .search-products {
   margin-left: -5px;
+  margin-right: -5px;
 }
 
 .pagination-item p {
@@ -4110,4 +4130,18 @@ table {
 
 .pagination-item-noprev, .pagination-item-nonext {
   cursor: pointer;
+}
+
+
+/* css mobile */
+@media only screen
+/* and (min-device-width : 820px) */
+and (max-device-width : 1150px) {
+  .search {
+    position: relative;
+    display: flex;
+    width: 220px;
+    border-radius: 50px;
+    margin-top: 2px;
+  }
 }

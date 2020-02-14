@@ -380,6 +380,20 @@
 			</div>
 			<div class="create-comment">
 				{% if not sent %}
+				{% if comment_form.errors %}
+				<div class="login-errors comments-error">
+					<div class="co-input co-input-pass">
+						{% if comment_form.value.errors %}
+						<ul class="errorlist">
+							<li>Ваша оценка не может быть больше 5</li>
+						</ul>
+						{% endif %}
+						{{ comment_form.name.errors }}
+						{{ comment_form.email.errors }}
+						{{ comment_form.body.errors }}
+					</div>
+				</div>
+				{% endif %}
 				<form action="." method="post" class="review-form">
 					<div class="form">
 						<div class="form-item">

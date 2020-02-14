@@ -3,6 +3,25 @@
 
 {% block content %}
 <div class="content-container">
+  {% if messages %}
+  <!-- <div class="content-container"> -->
+    <div class="messages-main">
+      <div class="co-input co-input-pass">
+        {% for message in messages %}
+        <div class="co-input-success co-input co-input-pass">
+          {% if message.tags == 'error' %}
+          <p class="login-error password-change-successfully">{{ message}}</p>
+          {% elif message.tags == 'success' %}
+          <p class="login-error password-change-successfully">{{ message}}</p>
+          {% else %}
+          <p class="login-error password-change-another">{{ message}}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  <!-- </div> -->
+  {% endif %}
   <img class="empty-page-img" src="{% static 'razrabotka.png' %}" alt="">
 </div>
 {% endblock content %}
