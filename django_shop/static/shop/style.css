@@ -3018,7 +3018,8 @@ table {
   box-shadow: none;
   margin: 0.5rem 0.5rem;
   -webkit-box-flex: 0;
-  flex: 0 0 auto;display: inline-block;
+  flex: 0 0 auto;
+  display: inline-block;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -4132,6 +4133,38 @@ table {
   cursor: pointer;
 }
 
+.social-auth-text {
+  margin: 0 0.5rem;
+  font-size: 20px;
+  /* line-height: 38px; */
+  font-weight: 600;
+  color: #000;
+}
+
+.co-social-auth {
+  font-size: 28px;
+  line-height: 22px;
+  margin: 0.5rem 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.5rem 0.5rem;
+}
+
+.social-auth {
+  margin: 2.5px;
+  padding: 0;
+  vertical-align: top;
+}
+
+.social-auth:hover {
+  color: inherit;
+}
+
+.google-logo {
+  max-width: 30px;
+  max-height: 30px;
+}
 
 /* css mobile */
 @media only screen

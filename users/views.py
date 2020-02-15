@@ -29,8 +29,12 @@ def register(request):
          user_form = UserRegistrationForm()
     return render(request, 'users/register.html', {'user_form': user_form})
 
+
 @login_required
 def edit(request):
+    profile = Profile.objects.filter(user=request.user)
+    if not profile:
+        person = Profile.objects.create(user=request.user)
     if request.method == 'POST' and 'edit_form' in request.POST:
         user_form = UserEditForm(instance=request.user, data=request.POST)
         profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
@@ -43,5 +47,6 @@ def edit(request):
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
+
     context = {'user_form': user_form, 'profile_form': profile_form}
     return render(request, 'users/edit.html', context)

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="content-container">
   <div class="co-section-login">
     <h1>Вход в личный кабинет</h1>
+
   </div>
   <div class="co-login">
     <div class="co-login-form_placeholder">
@@ -28,12 +30,24 @@
           </div>
         </div>
         {% csrf_token %}
+
         <div class="co-form-controls">
           <button class="co-button co-form-button">
             Войти
           </button>
           <a href="{% url 'password_reset' %}" class="co-button co-button-link">Восстановить пароль</a>
           <a href="{% url 'register' %}" class="co-button co-button-link">Зарегистрироваться</a>
+        </div>
+        <div class="co-form-controls">
+          <h2 class="social-auth-text">Войти с помощью: </h2>
+          <a class="co-social-auth" href="{% url 'social:begin' 'facebook' %}">
+            <i class="fab fa-facebook-square"></i>
+            <p class="co-button co-button-link social-auth">Facebook</p>
+          </a>
+          <a class="co-social-auth" href="{% url 'social:begin' 'google-oauth2' %}">
+            <img class="google-logo" src="{% static 'google-logo.png' %}" alt="">
+            <p class="co-button co-button-link social-auth">Google</p>
+          </a>
         </div>
       </form>
     </div>

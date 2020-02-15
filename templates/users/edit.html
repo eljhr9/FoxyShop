@@ -45,20 +45,41 @@
       </div>
       {% endif %}
       <form id="edit_form" action="." method="post" enctype="multipart/form-data">
-        <div class="co-input profile-avatar">
-          {% if user.profile.avatar %}
-            <img src="{{ user.profile.avatar.url }}" alt="">
-          {% else %}
-						<img src="{% static 'normal.png' %}" alt="">
-          {% endif %}
-          <div class="co-input-avatar">
-            <label for="login" class="co-input-label-no-after">Изменить фото</label>
-            <div class="co-input-text">
-              <!-- {{ profile_form.avatar }} -->
-              <input id="id_avatar" type="file" name="avatar" accept="image/*">
-            </div>
-          </div>
-        </div>
+				{% if backends.associated %}
+				{% for ass in backends.associated %}
+					{% if ass.provider == 'facebook' %}
+					<div class="co-input profile-avatar">
+	          {% if user.profile.avatar %}
+	            <img src="{{ user.profile.avatar.url }}" alt="">
+	          {% else %}
+							<img src="{{ass.extra_data.picture.data.url}}" alt="">
+	          {% endif %}
+	          <div class="co-input-avatar">
+	            <label for="login" class="co-input-label-no-after">Изменить фото</label>
+	            <div class="co-input-text">
+
+	              <input id="id_avatar" type="file" name="avatar" accept="image/*">
+	            </div>
+	          </div>
+	        </div>
+					{% endif %}
+				{% endfor %}
+				{% else %}
+	        <div class="co-input profile-avatar">
+	          {% if user.profile.avatar %}
+	            <img src="{{ user.profile.avatar.url }}" alt="">
+	          {% else %}
+							<img src="{% static 'normal.png' %}" alt="">
+	          {% endif %}
+	          <div class="co-input-avatar">
+	            <label for="login" class="co-input-label-no-after">Изменить фото</label>
+	            <div class="co-input-text">
+	              <!-- {{ profile_form.avatar }} -->
+	              <input id="id_avatar" type="file" name="avatar" accept="image/*">
+	            </div>
+	          </div>
+	        </div>
+				{% endif %}
         <div class="co-input">
           <label for="login" class="co-input-label-no-after">Имя</label>
           <div class="co-input-text">
