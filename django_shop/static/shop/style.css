@@ -1266,7 +1266,7 @@ table {
   width: 265px;
 }
 
-.product-image img {
+.product_img {
   display: block;
   max-height: 265px;
   max-width: 265px;
@@ -1384,10 +1384,14 @@ table {
   cursor: pointer;
 }
 
+.favorite-field form {
+  display: inline-block;
+}
+
 .button {
   background-color: white;
   font-size: 13px;
-  padding: 0 5px;
+  padding: 0 2px;
   cursor: pointer;
 }
 
@@ -2355,7 +2359,7 @@ table {
   text-transform: uppercase;
   text-align: center;
   font-weight: 600;
-  padding: 5px 0;
+  padding: 2px 0;
   cursor: pointer;
   text-decoration: none;
 }
@@ -2385,6 +2389,16 @@ table {
   font-size: 14px;
   vertical-align: -.150em;
   /* padding-top: 2px; */
+}
+
+.product-fav {
+  font-size: 14px;
+  vertical-align: -.150em;
+  color: #f8353e;
+}
+
+.product-fav-text {
+  color: #f8353e;
 }
 
 .product-geo {

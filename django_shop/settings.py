@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'haystack',
     'storages',
     'social_django',
+    'sorl.thumbnail',
 ]
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'

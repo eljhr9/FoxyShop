@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block content %}
   <div class="profile-container">
@@ -68,7 +69,13 @@
               <div class="co-basket_item">
                 <div class="co-basket_item-image_container">
                   <div class="cart-item-img">
-                    <img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}" class="cart-item-thumb-item">
+                    {% if product.image_1 %}
+                      {% thumbnail product.image_1 "100x100" as img %}
+                        <img src="{{ img.url }}" class="cart-item-thumb-item">
+                      {% endthumbnail %}
+                    {% else %}
+                      <img src="{% static 'large_technics-04-1_002.jpg' %}" class="cart-item-thumb-item">
+                    {% endif %}
                   </div>
                 </div>
                 <div class="co-basket_item-description">

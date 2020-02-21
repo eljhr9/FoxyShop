@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # def get_image_path(instance, filename):
@@ -23,6 +24,7 @@ class Product(models.Model):
 	image_2 = models.ImageField(upload_to='images/', null=True, blank=True)
 	image_3 = models.ImageField(upload_to='images/', null=True, blank=True)
 	rubric = models.ForeignKey('Rubric', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Рубрика')
+	users_like = models.ManyToManyField(User,  related_name='products_liked', blank=True)
 
 	class Meta:
 		verbose_name_plural = 'Товар'
@@ -80,3 +82,8 @@ class Comment(models.Model):
 
 	def __str__(self):
 		return f'Comment by {self.name}'
+
+# class Favorite(models.Model):
+# 	"""Понравившиеся товары"""
+# 	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='liked', verbose_name='Пользователь')
+# 	product = models.ForeignKey(Product, on_delete=models.DO_NOTHING, verbose_name='Продукт')

@@ -1,5 +1,6 @@
 {% load shop_tags %}
 {% load static %}
+{% load thumbnail %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -192,7 +193,13 @@
 																<div class="dropdown_product-row">
 																	<div class="dropdown_product-img-col">
 																		<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
-																			<img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}" alt="" class="dropdown_product-thumb">
+																			{% if product.image_1 %}
+																				{% thumbnail product.image_1 "80x80" as img %}
+																					<img src="{{ img.url }}" class="dropdown_product-thumb">
+																				{% endthumbnail %}
+																			{% else %}
+																				<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb">
+																			{% endif %}
 																		</a>
 																	</div>
 																	<div class="dropdown_product-detail-col">

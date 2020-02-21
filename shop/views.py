@@ -48,6 +48,21 @@ def products(request, rubric_slug=None, brand_slug=None):
 		page_num = 1
 	page = paginator.get_page(page_num)
 	cart_product_form = CartAddProductForm()
+	# product_favorite = None
+	# favorite_form = FavoriteForm()
+	# if request.user.is_authenticated:
+	# 	favorites = Favorite.objects.filter(user=request.user)
+	# 	if request.method == 'POST' and 'favorite_form' in request.POST:
+	# 		favorite_form = FavoriteForm(data=request.POST)
+	# 		# if favorite_form.is_valid():
+	# 		product = favorite_form.cleaned_data['current_product']
+	# 		# product = favorite_form.cleaned_data['product']
+	# 		product_favorite = Favorite.objects.filter(user=request.user, product=product)
+	# 		if product_favorite:
+	# 			product_favorite.delete()
+	# 		else:
+	# 			Favorite.objects.create(user=request.user, product=product)
+	# 		product_favorite = Favorite.objects.filter(user=request.user, product=product)
 	context = {'products': products, 'title': title, 'current_rubric': rubric,
 	'cart_product_form': cart_product_form, 'page': page}
 	return render(request, 'shop/products.html', context)
@@ -56,12 +71,6 @@ def brand(request):
 	context = {}
 	return render(request, 'shop/brand.html', context)
 
-# def by_brand(request, brand_slug):
-# 	current_brand = get_object_or_404(Brand, slug=brand_slug)
-# 	products = Product.objects.filter(brand=current_brand)
-# 	title = current_brand.name
-# 	context = {'products': products, 'current_brand': current_brand, 'title': title}
-# 	return render(request, 'shop/products.html', context)
 
 def product(request, product_slug, brand_slug):
 	product = get_object_or_404(Product, slug=product_slug)
@@ -79,11 +88,21 @@ def product(request, product_slug, brand_slug):
 			sent = True
 	else:
 		comment_form = CommentForm()
-	similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)
+	similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)[:4]
 	cart_product_form = CartAddProductForm()
+	# product_favorite = None
+	# if request.user.is_authenticated:
+	# 	favorites = Favorite.objects.filter(user=request.user)
+	# 	product_favorite = Favorite.objects.filter(user=request.user, product=product)
+	# 	if request.method == 'POST' and 'favorite_form' in request.POST:
+	# 		if product_favorite:
+	# 			product_favorite.delete()
+	# 		else:
+	# 			Favorite.objects.create(user=request.user, product=product)
+	# 		product_favorite = Favorite.objects.filter(user=request.user, product=product)
 	context = {'product': product, 'comments': comments, 'comment_form': comment_form,
 	'sent': sent, 'review_value': review_value, 'similar_products': similar_products,
-	'cart_product_form': cart_product_form}
+	'cart_product_form': cart_product_form} # , 'product_favorite': product_favorite
 	return render(request, 'shop/product.html', context)
 
 def empty(request):
@@ -104,3 +123,8 @@ def product_search(request):
 			total_results = results.count()
 	context = {'search_form': search_form, 'cd': cd, 'results': results, 'total_results': total_results}
 	return render(request, 'shop/search.html', context)
+
+def liked_product(request):
+	favorite = Favorite.objects.filter(user=request.user)
+	context = {'favorite': favorite}
+	return rendr(request, 'shop/favorite.html', context)

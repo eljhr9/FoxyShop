@@ -1,6 +1,6 @@
 {% extends "collections.html" %}
 {% load static %}
-
+{% load thumbnail %}
 
 {% block collection_title %}{{ title }}{% endblock %}
 
@@ -68,7 +68,15 @@
 	{% for product in products %}
 	<div class="current-product">
 		<a href="{{ product.get_absolute_url }}" class="product-card">
-			<div class="product-image"><img src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}" ></div>
+			<div class="product-image">
+				{% if product.image_1 %}
+					{% thumbnail product.image_1 "300x300" as img %}
+						<img class="product_img" src="{{ img.url }}">
+					{% endthumbnail %}
+				{% else %}
+					<img class="product_img" src="{% static 'large_technics-04-1_002.jpg' %}">
+				{% endif %}
+			</div>
 		</a>
 		<div class="product-card-title">
 			<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
@@ -111,12 +119,18 @@
 					</form>
 				</div>
 				<div class="favorite-field">
-					<button type="button" class="button compare">
-						<span class="fas fa-align-right fa-lg"></span>
-					</button>
-					<button class="button favorite">
-						 <span class="far fa-heart fa-lg"></span>
-					</button>
+					<form class="button" action="">
+						<button type="button" class="button compare">
+							<span class="fas fa-align-right fa-lg"></span>
+						</button>
+					</form>
+					<form class="button" action="{{ product.get_absolute_url }}" method="post">
+						{% csrf_token %}
+						<input id="id_current_product" type="hidden" name="current_product" value="{{ product }}">
+						<button name="favorite_form" class="button favorite" type="submit">
+							 <span class="far fa-heart fa-lg"></span>
+						</button>
+					</form>
 				</div>
 			</div>
 
