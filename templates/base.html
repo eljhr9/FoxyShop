@@ -147,16 +147,77 @@
 										</div>
 									</li>
 									<li class="user_icons-item">
-										<a href="#" class="user_icons-icon">
+										<a href="{% url 'shop:favourite' %}" class="user_icons-icon">
 											<i class="far fa-heart"></i>
+											{% if favourite.count > 0 %}
+												<span class="bage bage-cart">{{ favourite.count }}</span>
+											{% endif %}
 										</a>
 										<div class="user-icons-popup user-popup-profile">
 											<div class="popup-contacts popup-favorite">
 												<div class="popup-content-client">
-													<div class="popup--empty">
-														<i class="far fa-heart"></i>
-														В вашем избранном пока пусто
-													</div>
+													{% if favourite %}
+														{% with total_items=favourite.count %}
+															<div class="dropdown_products-header">
+																В вашем избранном
+																{% if total_items == 1 %}
+																	<span>{{ total_items }} товар</span>
+																{% elif total_items <= 4 %}
+																	<span>{{ total_items }} товара</span>
+																{% else %}
+																<span>{{ total_items }} товаров</span>
+																{% endif %}
+														 </div>
+														 <div class="dropdown_products">
+														 	{% for product in favourite %}
+																<div class="dropdown_product">
+																	<div class="dropdown_product-row">
+																		<div class="dropdown_product-img-col">
+																			<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
+																				{% if product.image_1 %}
+																					{% thumbnail product.image_1 "80x80" as img %}
+																						<img src="{{ img.url }}" class="dropdown_product-thumb">
+																					{% endthumbnail %}
+																				{% else %}
+																					<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb">
+																				{% endif %}
+																			</a>
+																		</div>
+																		<div class="dropdown_product-detail-col">
+																			<div class="dropdown_product-title">
+																				<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+																			</div>
+																			<div class="dropdown_product-prices">
+				                                <span>{{ product.price }} ₴</span>
+																			</div>
+																		</div>
+																		<div class="dropdown_product-delete-col">
+		                                	<button type="button" class="button-delete">
+																				<a href="{% url 'shop:add_favourite' product.id %}"><i class="fas fa-trash-alt"></i></a>
+																			</button>
+																		</div>
+																	</div>
+																</div>
+															{% endfor %}
+														 </div>
+														{% endwith %}
+														<div class="dropdown_products-action">
+ 														 <div class="authenticate-row">
+ 															 <div class="favourite-col">
+ 																 <a class="register-button" href="{% url 'shop:favourite' %}">Перейти к избранному</a>
+ 															 </div>
+ 														 </div>
+ 													 </div>
+													{% else %}
+														<div class="popup--empty">
+															<i class="far fa-heart"></i>
+															{% if request.user.is_authenticated %}
+																В вашем избранном пока пусто
+															{% else %}
+																Авторизируйтесь что бы добавлять товар в избранное
+															{% endif %}
+														</div>
+													{% endif %}
 												</div>
 											</div>
 										</div>
@@ -333,7 +394,11 @@
 								<nav class="nav-collection-hidden nav-hidden">
 									<ul class="collection-hidden">
 										{% for rubric in rubrics %}
+										{% if title == rubric.name %}
+										<li><a href="{% url 'shop:by_rubric' rubric.slug %}" class="selected_rubric">{{ rubric.name }}</a></li>
+										{% else %}
 										<li><a href="{% url 'shop:by_rubric' rubric.slug %}">{{ rubric.name }}</a></li>
+										{% endif %}
 										{% endfor %}
 										<!-- <li><a href="#">Фото и видео</a></li>
 										<li><a href="#">Ноутбуки, планшеты</a></li>
@@ -344,15 +409,25 @@
 										<li><a href="#">Техника для дома</a></li>
 										<li><a href="#">Разное</a></li> -->
 										<li class="brand-hidden">
+											{% if brand_page %}
+											<a href="{% url 'shop:brand' %}" class="more_nav selected_rubric">
+												Бренды<i class="fas fa-chevron-right"></i>
+											</a>
+											{% else %}
 											<a href="{% url 'shop:brand' %}" class="more_nav">
 												Бренды<i class="fas fa-chevron-right"></i>
 											</a>
+											{% endif %}
 										</li>
 											<nav class="brand-nav nav-hidden">
 												<ul class="collection-hidden">
 													<li>
 														{% for brand in brands %}
-														<a href="{% url 'shop:by_brand' brand.slug %}">{{ brand.name }}</a>
+														{% if title == brand.name %}
+															<a href="{% url 'shop:by_brand' brand.slug %}" class="selected_rubric">{{ brand.name }}</a>
+														{% else %}
+															<a href="{% url 'shop:by_brand' brand.slug %}">{{ brand.name }}</a>
+														{% endif %}
 														{% endfor %}
 													</li>
 												</ul>
@@ -360,35 +435,35 @@
 									</ul>
 								</nav>
 								<div class="li-board">
-									<li><a href="{% url 'index' %}">Главная</a></li>
+									<li><a href="{% url 'index' %}" {% if title == 'Главная' %}class="li-board_selected"{% endif %}>Главная</a></li>
 								</div>
 								<div class="li-board">
-									<li><a href="{% url 'empty' %}">Акции</a></li>
+									<li><a href="{% url 'empty' %}" {% if title == 'Акции' %}class="li-board_selected"{% endif %}>Акции</a></li>
 									<!-- <li><a href="{% url 'index' %}admin">Админка</a></li> -->
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="{% url 'empty' %}">Новинки</a>
+										<a href="{% url 'empty' %}" {% if title == 'Новинки' %}class="li-board_selected"{% endif %}>Новинки</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="{% url 'shop:brand' %}">Бренды</a>
+										<a href="{% url 'shop:brand' %}" {% if brand_page %}class="li-board_selected"{% endif %}>Бренды</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="{% url 'empty' %}">Статьи</a>
+										<a href="{% url 'empty' %}" {% if title == 'Статьи' %}class="li-board_selected"{% endif %}>Статьи</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="{% url 'empty' %}">Оплата и Доставка</a>
+										<a href="{% url 'shop:delivery' %}" {% if title == 'Доставка' %}class="li-board_selected"{% endif %}>Оплата и Доставка</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="{% url 'empty' %}">Контакты</a>
+										<a href="{% url 'shop:contacts' %}" {% if title == 'Контакты' %}class="li-board_selected"{% endif %}>Контакты</a>
 									</li>
 								</div>
 							</ul>
@@ -549,9 +624,9 @@
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Акции</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Новинки</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Статьи</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Оплата и доставка</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Контакты</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Обратная связь</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:delivery' %}">Оплата и доставка</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Контакты</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Обратная связь</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Пользовательское соглашение</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Политика конфиденциальности</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Часто задаваемые вопросы</a></li>

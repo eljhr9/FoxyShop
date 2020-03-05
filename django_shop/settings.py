@@ -82,7 +82,7 @@ HAYSTACK_CONNECTIONS = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -106,6 +106,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'shop.context_processors.brand',
                 'shop.context_processors.rubric',
+                'shop.context_processors.favourite',
                 'shop.context_processors.mailing',
                 'cart.context_processors.cart',
                 'social_django.context_processors.backends',

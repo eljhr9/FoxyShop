@@ -10,6 +10,15 @@ def rubric(request):
     rubrics = Rubric.objects.all()
     return {'rubrics': rubrics}
 
+def favourite(request):
+    if request.user.is_authenticated:
+        user = request.user
+        favourite = user.favourite.all()
+    else:
+        user = None
+        favourite = None
+    return {'favourite': favourite}
+
 def mailing(request):
 	if request.method == 'POST' and 'mailing_form' in request.POST:
 		mailing_form = MailingForm(request.POST)

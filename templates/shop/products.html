@@ -124,13 +124,16 @@
 							<span class="fas fa-align-right fa-lg"></span>
 						</button>
 					</form>
-					<form class="button" action="{{ product.get_absolute_url }}" method="post">
-						{% csrf_token %}
-						<input id="id_current_product" type="hidden" name="current_product" value="{{ product }}">
-						<button name="favorite_form" class="button favorite" type="submit">
+					{% if product in favourite %}
+					<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+						<!-- <i class="fas fa-heart product-fav"></i> -->
+						 <span class="fas fa-heart fa-lg product-fav"></span>
+					</a>
+					{% else %}
+						<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
 							 <span class="far fa-heart fa-lg"></span>
-						</button>
-					</form>
+						</a>
+					{% endif %}
 				</div>
 			</div>
 

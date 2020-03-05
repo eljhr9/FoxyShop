@@ -24,7 +24,7 @@ class Product(models.Model):
 	image_2 = models.ImageField(upload_to='images/', null=True, blank=True)
 	image_3 = models.ImageField(upload_to='images/', null=True, blank=True)
 	rubric = models.ForeignKey('Rubric', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Рубрика')
-	users_like = models.ManyToManyField(User,  related_name='products_liked', blank=True)
+	favourite = models.ManyToManyField(User,  related_name='favourite', blank=True)
 
 	class Meta:
 		verbose_name_plural = 'Товар'
@@ -83,7 +83,17 @@ class Comment(models.Model):
 	def __str__(self):
 		return f'Comment by {self.name}'
 
-# class Favorite(models.Model):
-# 	"""Понравившиеся товары"""
-# 	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='liked', verbose_name='Пользователь')
-# 	product = models.ForeignKey(Product, on_delete=models.DO_NOTHING, verbose_name='Продукт')
+class Contact(models.Model):
+	name = models.CharField(max_length=80, verbose_name='имя', blank=True, null=True)
+	email = models.EmailField(blank=True, null=True)
+	body = models.TextField(max_length=300, verbose_name='содержимое')
+	image = models.ImageField(upload_to='contacts/', null=True, blank=True, verbose_name='скриншот')
+	created = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
+
+	class Meta:
+		ordering = ['created']
+		verbose_name = 'Сообщение'
+		verbose_name_plural = 'Сообщения'
+
+	def __str__(self):
+		return f'{self.body[:30]}...'

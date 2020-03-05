@@ -209,16 +209,24 @@
 							</form>
 							<form class="button-icon" action="." method="post">
 								{% csrf_token %}
-								{% if product_favorite %}
-									<button class="button-icon" type="submit" name="favorite_form">
+								{% if is_favourite %}
+								<a class="button-icon" href="{% url 'shop:add_favourite' product.id %}">
+									<i class="fas fa-heart product-fav"></i>
+									<p class="product-fav-text">В избранном</p>
+								</a>
+									<!-- <button class="button-icon" type="submit" name="favorite_form">
 										<i class="fas fa-heart product-fav"></i>
 										<p class="product-fav-text">В избранном</p>
-									</button>
+									</button> -->
 								{% else %}
-									<button class="button-icon" type="submit" name="favorite_form">
+									<a class="button-icon" href="{% url 'shop:add_favourite' product.id %}">
 										<i class="far fa-heart product-add-favorite"></i>
 										<p>В избранное</p>
-									</button>
+									</a>
+									<!-- <button class="button-icon" type="submit" name="favorite_form">
+										<i class="far fa-heart product-add-favorite"></i>
+										<p>В избранное</p>
+									</button> -->
 								{% endif %}
 							</form>
 						</div>
@@ -557,9 +565,12 @@
 							<button type="button" class="button compare">
 								<span class="fas fa-align-right fa-lg"></span>
 							</button>
-							<button class="button favorite">
+							<a class="button favorite" href="#">
+								<span class="far fa-heart fa-lg"></span>
+							</a>
+							<!-- <button class="button favorite">
 								 <span class="far fa-heart fa-lg"></span>
-							</button>
+							</button> -->
 						</div>
 					</div>
 

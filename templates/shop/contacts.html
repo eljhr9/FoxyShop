@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'shop:contacts' %}" class="breadcrumb-link">
+					<span>Контакты</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <div class="content-container1">
+    <div class="content">
+      <div class="title-col">
+        <div class="contacts-container">
+          <h1 class="text-title cart-items">Контакты</h1>
+          <div class="contacts-row">
+            <div class="contacts-col">
+              <p class="contacts-text">Наш адрес: г. Украина, ул. Петра Сагайдачного, дом 25Б</p>
+              <p class="contacts-text">Номер телефона: +38 (099) 98-52-672</p>
+              <p class="contacts-text">Email: <a href="mailto:illyaredkolis@gmail.com">illyaredkolis@gmail.com</a></p>
+              <p class="contacts-text">
+                <strong>График работы офиса и склада:</strong>
+              </p>
+              <table class="contacts-table">
+                <tbody>
+                  <tr>
+                    <td>Понедельник</td>
+                    <td>с 8:00 до 20:00</td>
+                  </tr>
+                  <tr>
+                    <td>Вторник</td>
+                    <td>с 8:00 до 20:00</td>
+                  </tr>
+                  <tr>
+                    <td>Среда</td>
+                    <td>с 8:00 до 20:00</td>
+                  </tr>
+                  <tr>
+                    <td>Четверг</td>
+                    <td>с 8:00 до 20:00</td>
+                  </tr>
+                  <tr>
+                    <td>Пятница</td>
+                    <td>с 8:00 до 20:00</td>
+                  </tr>
+                  <tr>
+                    <td>Суббота</td>
+                    <td>с 10:00 до 16:00</td>
+                  </tr>
+                  <tr>
+                    <td>Воскресенье</td>
+                    <td>с 10:00 до 16:00</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="contacts-text">Заказы через сайт принимаются круглосуточно!</p>
+            </div>
+            <div class="contacts-col">
+              {% if messages %}
+              {% for message in messages %}
+              <div class="co-input co-input-pass">
+                {% if message.tags == 'error' %}
+                <p class="login-error password-change-successfully">{{ message}}</p>
+                {% elif message.tags == 'success' %}
+                <p class="login-error password-change-successfully">{{ message}}</p>
+                {% else %}
+                <p class="login-error password-change-another">{{ message}}</p>
+                {% endif %}
+              </div>
+              {% endfor %}
+              {% else %}
+              <div class="text">
+              	<div class="text-content">
+              		<div class="text-row">
+              			<div class="text-icon">
+              				<!-- <i class="fas fa-info-circle"></i> -->
+              				<i class="fas fa-info"></i>
+              			</div>
+              			<div class="text-col">
+              				<p>Также если у вас появились какие либо вопросы, пожелания либо проблемы относящиеся к нашему рессурсу вы можете связатся с нами используя эту форму!</p>
+              			</div>
+              		</div>
+              	</div>
+              </div>
+              {% endif %}
+              <form id="contact_form" class="contact_form" method="post" enctype="multipart/form-data">
+                <div class="co-input">
+                  <label for="login" class="co-input-label-no-after">Представтесь пожалуйста</label>
+                  <div class="co-input-text">
+                    {{ contact_form.name }}
+                  </div>
+                </div>
+                <div class="co-input co-input-pass">
+                  <label for="login" class="co-input-label">Email</label>
+                  <div class="co-input-text">
+                    {{ contact_form.email }}
+                  </div>
+                </div>
+                <div class="co-input co-input-pass">
+                  <label for="login" class="co-input-label">Введите ваше сообщение</label>
+                  <div class="co-input-text">
+                    {{ contact_form.body }}
+                  </div>
+                </div>
+                <div class="co-input co-input-pass">
+                  <label for="login" class="co-input-label-no-after">Скриншот</label>
+                  <div class="co-input-text">
+                    <!-- {{ contact_form.image }} -->
+                    <input id="id_image" name="image" type="file" accept="image/*">
+                  </div>
+                </div>
+                {% csrf_token %}
+                <div class="co-form-controls">
+                  <button form="contact_form" name="contact_form" type="submit" class="co-button co-form-button">
+                    Отправить сообщение
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

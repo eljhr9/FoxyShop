@@ -642,6 +642,19 @@ table {
   margin: auto;
 }
 
+.favourite-col {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 94%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  margin: 0 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin: auto;
+}
+
 .register-button {
   background-color: #0bb648;
   color: #fff;
@@ -884,6 +897,11 @@ table {
   border-bottom: 2px solid darkorange;
 }
 
+.li-board_selected {
+  border-top: 2px solid darkorange;
+  border-bottom: 2px solid darkorange;
+}
+
 .collection {
   background-color: darkorange;
   text-shadow: black 1px 1px 0px;
@@ -1066,7 +1084,7 @@ table {
   margin-top: 10px;
 }
 
-.nav-sidebar ul li a {
+.nav-sidebar_rubric {
   color: #999;
 }
 
@@ -2983,7 +3001,7 @@ table {
   color:red;
 }
 
-.co-input-text input {
+.co-input-text input, .co-input-text textarea {
   padding: 1.7rem 0.5rem 0.5rem;
   border: 1px solid #cccccc;
   transition-duration: 0.3s;
@@ -4178,6 +4196,86 @@ table {
 .google-logo {
   max-width: 30px;
   max-height: 30px;
+}
+
+.selected_rubric {
+  color: darkorange;
+  font-weight: 600;
+}
+
+.title-col {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+}
+
+.contacts-container {
+  margin: 0px 0px 40px;
+}
+
+.contacts-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.contacts-col {
+  flex: 0 0 50%;
+  max-width: 48%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.contacts-text {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.contacts-text a {
+  text-decoration: underline;
+}
+
+.contacts-text strong {
+  color: #000;
+}
+
+.contacts-text a:hover {
+  color: darkorange;
+  transition: .3s;
+}
+
+.contacts-table {
+  max-width: 100%;
+  margin: 20px 0px;
+  font-size: 15px;
+}
+
+.contacts-table tr {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.contacts-table td {
+  padding: 10px 10px;
+  font-weight: 400;
+}
+
+.contacts-ol {
+  list-style: decimal;
+  margin: 0px 0px 20px 25px;
+  padding: 0px;
+}
+
+.contacts-ol li {
+  margin: 5px 0px;  
 }
 
 /* css mobile */

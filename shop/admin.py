@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Brand, Rubric, Comment
+from .models import Product, Brand, Rubric, Comment, Contact
 
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ('title', 'price', 'availability', 'date_added', 'slug', 'brand', 'rubric')
@@ -28,3 +28,8 @@ class CommentAdmin(admin.ModelAdmin):
 	search_fields = ('name', 'email', 'body')
 
 admin.site.register(Comment, CommentAdmin)
+
+class ContactAdmin(admin.ModelAdmin):
+	list_display = ['name', 'email', 'created', 'body']
+
+admin.site.register(Contact, ContactAdmin)
