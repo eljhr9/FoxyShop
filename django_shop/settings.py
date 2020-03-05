@@ -239,11 +239,11 @@ if os.getcwd() == '/app':
 
 
     # Конфигурация статических ресурсов
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    )
+    # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    # STATIC_ROOT = 'staticfiles'
+    # STATICFILES_DIRS = (
+    # os.path.join(BASE_DIR, 'static'),
+    # )
 
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
@@ -253,8 +253,14 @@ if os.getcwd() == '/app':
     # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
     # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# STATIC_ROOT = 'staticfiles'
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
