@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load blog_tags %}
+{% load thumbnail %}
 
 {% block content %}
 <div class="content-container">
@@ -34,52 +36,24 @@
 
         <div class="sidebar-article sidebar-block">
           <div class="article">
+            {% for article in blogs %}
             <div class="article_card">
               <div class="article_card-img">
-                <a href="{% url 'empty' %}">
-
-                  <img src="{% static 'shop/75878-img_4625.jpg' %}">
+                <a href="{% url 'blog:detail' article.slug %}">
+                  {% thumbnail article.image "480x300" as img %}
+        						<img src="{{ img.url }}">
+        					{% endthumbnail %}
                   <div class="hidden"><div class="hidden-text">Читать</div></div>
-                  <p>12 Января 2020</p>
+                  <p>{{ article.added|date:'d E Y' }}</p>
 
                 </a>
               </div>
 
               <div class="article_card-title">
-                <a href="{% url 'empty' %}">Почему macbook идеальный выбор для работы!?</a>
+                <a href="{% url 'blog:detail' article.slug %}">{{ article.title|markdown|truncatewords_html:10 }}</a>
               </div>
             </div>
-            <div class="article_card">
-              <div class="article_card-img">
-                <a href="{% url 'empty' %}">
-
-                  <img src="{% static 'shop/blackwhite-photography-36271549100649patda7aac3.jpg' %}">
-                  <div class="hidden"><div class="hidden-text">Читать</div></div>
-                  <p>15 Января 2020</p>
-
-                </a>
-              </div>
-
-              <div class="article_card-title">
-                <a href="{% url 'empty' %}">Экосистема Apple все тонкости...</a>
-              </div>
-            </div>
-            <div class="article_card">
-              <div class="article_card-img">
-                <a href="{% url 'empty' %}">
-
-                  <img src="{% static 'shop/fintech2-800.jpg' %}">
-                  <div class="hidden"><div class="hidden-text">Читать</div></div>
-                  <p>25 Февраля 2020</p>
-
-                </a>
-              </div>
-
-              <div class="article_card-title">
-                <a href="{% url 'empty' %}">Главные технологические достижения 2019 года</a>
-              </div>
-            </div>
-
+            {% endfor %}
           </div>
 
         </div>

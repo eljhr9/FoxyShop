@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from taggit.managers import TaggableManager
 
 
@@ -15,10 +16,13 @@ class Blog(models.Model):
     class Meta:
         verbose_name_plural = 'Статьи'
         verbose_name = 'Статья'
-        ordering = ['added']
+        ordering = ['-added']
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:detail', args=[self.slug])
 
 class Comment(models.Model):
     article = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')

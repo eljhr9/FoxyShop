@@ -33,11 +33,17 @@
       <div class="search-col">
         <div>
           <div class="text">
-            <h1 class="section-title">Статьи</h1>
+            <h1 class="section-title">
+              Статьи
+              <a class="rss" href="{% url 'blog:article_feed' %}"><i class="fas fa-rss-square"></i></a>
+            </h1>
             <div class="articles-tags">
               {% for tg in tags %}
               <a href="{% url 'blog:by_tag' tg.slug %}" {% if tg.name == tag.name %}class="tag_button tag_button-selected"{% else %}class="tag_button"{% endif %}>{{ tg }}</a>
               {% endfor %}
+              {% if tag %}
+              <a href="{% url 'blog:list' %}" class="tag_button all-articles_button">Все публикации</a>
+              {% endif %}
             </div>
           </div>
           <div>
@@ -49,7 +55,7 @@
                   <div class="article-row">
                     <div class="{% cycle 'article-col' 'article-col order-md-2' %}">
                       <div class="article_card">
-                        <a class="article_image" href="{% url 'blog:detail' blog.slug %}">
+                        <a class="article_image" href="{{ blog.get_absolute_url }}">
                           <img src="{{ blog.image.url }}">
                           <div class="hidden hidden-article"><div class="hidden-text">Читать</div></div>
                         </a>
@@ -58,7 +64,7 @@
                     <div class="article-col">
                       <div class="article_card">
                         <div class="article_card-date">{{ blog.added|date:'d E Y' }}</div>
-                        <div class="article_card-title"><a href="{% url 'blog:detail' blog.slug %}">{{ blog.title }}</a></div>
+                        <div class="article_card-title"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></div>
                         <div class="article_card-description">{{ blog.body|markdown|truncatewords_html:30 }}</div>
                       </div>
                     </div>

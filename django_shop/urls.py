@@ -18,10 +18,12 @@ from shop.urls import views
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
 from shop.sitemaps import ProductSitemap
+from blog.sitemaps import BlogSitemap
 
 
 sitemaps = {
     'products': ProductSitemap,
+    'articles': BlogSitemap,
 }
 
 urlpatterns = [

@@ -4290,6 +4290,11 @@ table {
   color: #fff;
 }
 
+.all-articles_button {
+  background-color: #3095dd;
+  color: #fff;
+}
+
 .tag_button-selected {
   background-color: #000;
   color: #fff;
@@ -4464,6 +4469,17 @@ table {
 .order-md-2 {
   -ms-flex-order: 2;
   order: 2;
+}
+
+.rss {
+  font-size: 20px;
+  line-height: 0px;
+  color: darkorange;
+  transition: .3s;
+}
+
+.rss:hover {
+  color: #000;
 }
 
 /* css mobile */
