@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'blog:list' %}" class="breadcrumb-link">
+					<span>Статьи</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="content-container">
+  <div class="content-container1">
+    <div class="content">
+      <div class="title-col">
+        <div class="contacts-container">
+          <h1 class="text-title cart-items">{{ article.title }}</h1>
+          <div class="article-content">
+            <div class="article-meta">
+              <div class="articles-meta-date">
+                {{ article.added|date:'d E Y' }}
+              </div>
+            </div>
+            {{ article.body|markdown }}
+            <p>
+              <a href="{% url 'blog:list' %}" class="article_button">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                <span>Вернутся к списку публикаций</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block comments %}
+<div class="section-share">
+	<div class="share-product">
+		<div class="share-to">
+			<ul>
+				<!-- <li class="share-to-item">
+					<p>Поделится: </p>
+				</li> -->
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-facebook-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-pinterest-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-twitter-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-viber"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-whatsapp-square"></i></a>
+				</li>
+				<li class="share-to-item">
+					<a href="#"><i class="fab fa-telegram"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="product-section">
+	<div class="product-container">
+		<div class="additionally">
+			<div class="additionally-row">
+				<div class="additionally-item">
+					<i class="far fa-comment-dots"></i>
+					<p>Комментарии</p>
+					<sup>{{ comments.count }}</sup>
+				</div>
+        <div class="additionally-item">
+					<i class="far fa-newspaper"></i>
+					<p>Другие Статьи</p>
+				</div>
+				<!-- <div class="additionally-item">
+					<i class="far fa-list-alt"></i>
+					<p>описание</p>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="product-section">
+	<div class="product-container">
+		<div class="comments-row" id="comments">
+			<div class="comments-all">
+				<div class="product-reviews">
+				{% if comments %}
+					{% for comment in comments %}
+					<div class="review">
+						<div class="review-header">
+							<div class="review-avatar">
+								<div class="review-avatar-logo">
+									<img src="https://avatars.dicebear.com/v2/initials/{{ comment.name }}.svg" alt="{{ comment.name }}">
+								</div>
+							</div>
+							<div class="review-detail">
+								<div class="review-author">
+									<span class="author">{{ comment.name }}</span>
+									{{ comment.created|date:'d.m.Y в H:i' }}
+								</div>
+							</div>
+						</div>
+						<div class="review-content">
+							<div class="review-content-text">
+								{{ comment.body }}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				{% else %}
+				<div class="text-content form-message">
+						<div class="text-row">
+							<div class="message-icon">
+								<i class="fas fa-pencil-alt"></i>
+							</div>
+							<div class="text-col">
+								<p>
+									Здесь еще никто не оставлял комментарии. Вы можете быть первым!
+								</p>
+							</div>
+						</div>
+				</div>
+				{% endif %}
+				</div>
+			</div>
+			<div class="create-comment">
+				{% if not sent %}
+				{% if comment_form.errors %}
+				<div class="login-errors comments-error">
+					<div class="co-input co-input-pass">
+						{{ comment_form.name.errors }}
+						{{ comment_form.email.errors }}
+						{{ comment_form.body.errors }}
+					</div>
+				</div>
+				{% endif %}
+				<form action="." method="post" class="review-form">
+					<div class="form">
+						<div class="form-item">
+							<label for="id_name">
+								Представтесь пожалуйста
+								<span class="required">*</span>
+							</label>
+							{{ comment_form.name }}
+						</div>
+						<div class="form-item">
+							<label for="id_email">
+								Электронная почта
+								<span class="required">*</span>
+							</label>
+							{{ comment_form.email }}
+						</div>
+						<div class="form-item">
+							<label for="id_body">
+								Ваш отзыв
+								<span class="required">*</span>
+							</label>
+							{{ comment_form.body }}
+						</div>
+						{% csrf_token %}
+						<div class="form-item form-item-submit">
+							<div class="submit-row">
+								<div class="submit-button">
+									<button class="add-to-cart comment-send" name="comment" type="submit">Отправить</button>
+								</div>
+								<div class="submit-text">
+									<div class="form-item-privacy">
+										<p>
+											Нажимая на кнопку «Отправить» вы принимаете условия
+											<a href="#">Нашего сайта</a>.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				{% else %}
+				<div class="review-form">
+					<div class="form">
+						<div class="text-content form-message">
+								<div class="text-row">
+									<div class="message-icon">
+										<i class="far fa-check-square"></i>
+									</div>
+									<div class="text-col">
+										<p>
+											Ваш комментарий успешно отправлен
+										</p>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

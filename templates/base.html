@@ -453,7 +453,7 @@
 								</div>
 								<div class="li-board">
 									<li>
-										<a href="{% url 'empty' %}" {% if title == 'Статьи' %}class="li-board_selected"{% endif %}>Статьи</a>
+										<a href="{% url 'blog:list' %}" {% if title == 'Статьи' %}class="li-board_selected"{% endif %}>Статьи</a>
 									</li>
 								</div>
 								<div class="li-board">
@@ -623,7 +623,7 @@
 										<li class="menu-item collection-item"><a href="{% url 'index' %}">Главная</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Акции</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Новинки</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Статьи</a></li>
+										<li class="menu-item collection-item"><a href="{% url 'blog:list' %}">Статьи</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'shop:delivery' %}">Оплата и доставка</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Контакты</a></li>
 										<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Обратная связь</a></li>

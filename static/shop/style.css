@@ -258,8 +258,8 @@ table {
   cursor: pointer;
   margin-left: 2px;
   margin-right: 20px;
-   color: #666;
-  /* transition: color 0.2s linear; */
+  color: #666;
+  transition-duration: .3s;
 }
 
 .more_contacts {
@@ -278,11 +278,11 @@ table {
   color: #000;
   letter-spacing: 2.4px;
   vertical-align: top;
+  transition-duration: .3s;
 }
 
 .more_contacts h2 a:hover {
   color: darkorange;
-  transition-duration: .3s;
 }
 
 .phone_number a:hover, .phone_number:hover {
@@ -292,7 +292,6 @@ table {
 
 .request_call a:hover {
   color: darkorange;
-  transition-duration: .3s;
 }
 
 .user-icons-popup {
@@ -401,6 +400,7 @@ table {
 
 .register a {
   text-align: center;
+  transition-duration: .3s;
 }
 
 .login {
@@ -412,25 +412,18 @@ table {
 
 .login a {
   text-align: center;
+  transition-duration: .3s;
 }
-
-/* .user_conteiner:hover {
-  background-color: darkorange;
-  box-shadow: 0 0 10px darkgray;
-  transition-duration: .5s;
-} */
 
 .register:hover a {
   color: darkorange;
   /* text-shadow: 1px 1px 0 black; */
-  transition-duration: .3s;
   text-decoration: underline;
 }
 
 .login:hover a {
   color: darkorange;
   /* text-shadow: 1px 1px 0 black; */
-  transition-duration: .3s;
   text-decoration: underline;
 }
 
@@ -473,11 +466,11 @@ table {
   font-size: 20px;
   line-height: 0px;
   color: #000;
+  transition: .4s;
 }
 
 .user_icons-icon:hover {
   color: darkorange;
-  transition: .4s;
 }
 
 .user_icons-item:hover .user_icons-icon {
@@ -509,6 +502,7 @@ table {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  transition: .3s;
 }
 
 .popup-mini-logo {
@@ -551,7 +545,6 @@ table {
 
 .popup-row:hover {
   color: darkorange;
-  transition: .3s;
 }
 
 .dropdown_products-action a {
@@ -569,11 +562,11 @@ table {
   padding: 5px 10px;
   cursor: pointer;
   text-decoration: none;
+  transition: .3s;
 }
 
 .dropdown_products-action a:hover {
   background-color: black;
-  transition: .3s;
 }
 
 .popup--empty {
@@ -805,11 +798,11 @@ table {
 .dropdown_product-title a {
   display: block;
   color: #000;
+  transition: .3s;
 }
 
 .dropdown_product-title a:hover {
   color: darkorange;
-  transition: .3s;
 }
 
 .dropdown_product-prices {
@@ -834,11 +827,11 @@ table {
 
 .button-delete a i {
   color: #999;
+  transition: .3s;
 }
 
 .button-delete:hover a i {
   color: #f8353e;
-  transition: .3s;
 }
 
 .menu {
@@ -959,6 +952,7 @@ table {
   position: relative;
   display: block;
   padding: 7px 20px;
+  transition: .3s;
 }
 
 .more_nav i {
@@ -966,6 +960,7 @@ table {
   font-size: 12px;
   color: black;
   padding-right: 10px;
+  transition: .3s;
 }
 
 .collection:hover ~ .nav-collection-hidden, .nav-collection-hidden:hover {
@@ -976,12 +971,10 @@ table {
 
 .collection-hidden li a:hover {
   color: darkorange;
-  transition: 0.3s;
 }
 
 .more_nav:hover i {
   color: darkorange;
-  transition: 0.3s;
 }
 
 .brand-nav {
@@ -1142,6 +1135,7 @@ table {
   text-align: center;
   margin-top: -144px;
   background-color: rgba(0,0,0,0.5);
+  transition-duration: .5s;
 }
 
 .hidden-text {
@@ -1157,13 +1151,24 @@ table {
 
 .article_card:hover .hidden {
   opacity: 1;
-  transition-duration: .5s;
+
 }
 
 .article_card-title:hover a {
   color: darkorange;
   transition-duration: .5s;
   /* text-shadow: 0.3px 0.3px 0 gray; */
+}
+
+.hidden-article {
+  width: 550px;
+  height: 308px;
+  margin-top: -314px;
+  vertical-align: middle;
+}
+
+.hidden-article .hidden-text {
+  margin: 132px auto;
 }
 
 .ad-block {
@@ -1271,11 +1276,11 @@ table {
   padding: 5px 6px;
   height: 395px;
   box-sizing: content-box;
+  transition-duration: .3s;
 }
 
 .current-product:hover {
   box-shadow: 0 0 10px #e5e5e5;
-  transition-duration: .3s;
 }
 
 .product-card {
@@ -1411,6 +1416,7 @@ table {
   font-size: 13px;
   padding: 0 2px;
   cursor: pointer;
+  transition-duration: .3s;
 }
 
 .compare {
@@ -1419,7 +1425,6 @@ table {
 
 .button:hover {
   color: darkorange;
-  transition-duration: .3s;
 }
 
 .pagination {
@@ -1466,6 +1471,7 @@ table {
   font-size: 12px;
   line-height: 28px;
   min-width: 32px;
+  transition-duration: .3s;
 }
 
 .paginator-current-page {
@@ -1474,7 +1480,6 @@ table {
 
 .pagination-link:hover {
   border: 2px solid #3095dd;
-  transition-duration: .3s;
 }
 
 .pagination-item-prev {
@@ -1619,11 +1624,11 @@ table {
   padding: 5px 10px;
   cursor: pointer;
   overflow: visible;
+  transition-duration: .3s;
 }
 
 .subscribe-button:hover {
   background-color: darkorange;
-  transition-duration: .3s;
 }
 
 .subscribe-item-policy {
@@ -1732,6 +1737,7 @@ table {
 .menu-item-icon a {
   color: #999;
   font-size: 14.5px;
+  transition: .3s;
 }
 
 .menu-item-icon i {
@@ -1746,7 +1752,6 @@ table {
 
 .menu-item-icon a:hover {
   color: darkorange;
-  transition: .3s;
 }
 
 .menu-item_text {
@@ -1773,11 +1778,11 @@ table {
 
 .collection-item a {
   color: #999;
+  transition: .3s;
 }
 
 .collection-item a:hover {
   color: darkorange;
-  transition: .3s;
 }
 
 .menu-title-second {
@@ -1947,11 +1952,11 @@ table {
   width: 100px;
   height: 75px;
   background-color: rgba(255,255,255,0.4);
+  transition: .5s;
 }
 
 .product-gallery-lighter:hover {
   opacity: 1;
-  transition: .5s;
 }
 
 .product-data {
@@ -2116,11 +2121,11 @@ table {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
+  transition: .3s;
 }
 
 .button-counter:hover {
   color: black;
-  transition: .3s;
 }
 
 .count {
@@ -2191,6 +2196,7 @@ table {
   overflow: visible;
   margin: 0;
   vertical-align: top;
+  transition: .4s;
 }
 
 .add-to-cart i {
@@ -2206,7 +2212,6 @@ table {
 
 .add-to-cart:hover {
   background-color: black;
-  transition: .4s;
 }
 
 .order {
@@ -2268,6 +2273,7 @@ table {
   cursor: pointer;
   text-decoration: none;
   overflow: visible;
+  transition: .3s;
 }
 
 .bonuses-button i {
@@ -2287,7 +2293,6 @@ table {
 
 .bonuses-button:hover {
   color: darkorange;
-  transition: .3s;
 }
 
 .text {
@@ -2296,7 +2301,7 @@ table {
 
 .text-content {
   margin: 0px 0px 20px;
-  padding: 10px;
+  padding: 15px;
   font-size: 12px;
   line-height: 16px;
   color: #000;
@@ -2380,11 +2385,11 @@ table {
   padding: 2px 0;
   cursor: pointer;
   text-decoration: none;
+  transition: .4s;
 }
 
 .button-icon:hover {
   color: darkorange;
-  transition: .4s;
 }
 
 .button-icon i {
@@ -2505,11 +2510,11 @@ table {
   font-size: 12px;
   text-transform: none;
   vertical-align: top;
+  transition: .4s;
 }
 
 .salesbeat-pvz-map:hover {
   color: darkorange;
-  transition: .4s;
 }
 
 .salesbeat-pvz-map i {
@@ -2559,7 +2564,7 @@ table {
 .share-to-item {
   display: inline-block;
   vertical-align: top;
-  margin-right: 14px;
+  margin-right: 12px;
   font-size: 32px;
 }
 
@@ -2620,7 +2625,7 @@ table {
   flex: 0 0 auto;
   width: auto;
   margin: 0px 20px 15px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   font-weight: 600;
   text-transform: uppercase;
@@ -2630,23 +2635,25 @@ table {
   position: relative;
   min-height: 1px;
   padding: 0;
+  transition: .4s;
 }
 
 .additionally-item i {
   display: inline-block;
   margin-right: 10px;
-  font-size: 1.45em;
+  font-size: 1.3em;
+  padding-top: 1px;
 }
 
 .additionally-item p {
   display: inline-block;
   vertical-align: top;
-  padding-top: 2px;
+  /* padding-top: 2px; */
+  /* padding-bottom: 3px; */
 }
 
 .additionally-item:hover {
   color: black;
-  transition: .4s;
 }
 
 .additionally-item sup {
@@ -2805,6 +2812,10 @@ table {
   margin: 0px 0px 20px;
 }
 
+.form-item input, .form-item textarea {
+  border: 1px solid #eee;
+}
+
 .form-item label {
   display: block;
   margin: 0px 0px 4px;
@@ -2869,21 +2880,14 @@ table {
 
 .form-message {
   margin: auto;
-  border-radius: 10px;
-  /* width: 672px; */
   max-width: 90%;
   width: 820px;
   font-size: 15px;
-
-  /* text-shadow: 1px 1px 1px black; */
-  /* color: white; */
 }
 
 .form-message i {
   font-size: 12px;
 }
-
-
 
 .message-icon {
   /* padding-bottom: 2px; */
@@ -2958,23 +2962,6 @@ table {
   -ms-flex: 1 0 100%;
   flex: 1 0 100%;
 }
-
-/* .co-input-label {
-  margin-bottom: 0;
-  position: absolute;
-  z-index: 1;
-  top: 1.6rem;
-  left: 0;
-  right: 0;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  font-size: 1em;
-  cursor: text;padding: 0 0.5rem;
-  transition-duration: 0.2s;
-  color: #666666;
-  display: block;
-  line-height: 1;
-} */
 
 .co-input-label {
   cursor: text;
@@ -3074,11 +3061,11 @@ table {
   border-color: transparent;
   padding: 0.25rem 0;
   position: relative;
+  transition: .4s;
 }
 
 .login-error {
   padding: 20px;
-  /* border: 1px solid #cccccc; */
   transition-duration: 0.3s;
   display: block;
   width: 100%;
@@ -3089,7 +3076,6 @@ table {
   background-color: #f2dede;
   color: #a94442;
   resize: vertical;
-  /* text-align: center; */
 }
 
 .errorlist {
@@ -3139,17 +3125,16 @@ table {
 
 .co-button-link:hover {
   color: darkorange;
-  transition: .4s;
 }
 
 .login-ref {
   font-weight: 600;
+  transition: .3s;
 }
 
 .login-ref:hover {
   text-decoration: underline;
   color: darkorange;
-  transition: .3s;
 }
 
 .co-input-label-no-after {
@@ -3268,11 +3253,11 @@ table {
   line-height: 1.25;
   color: black;
   cursor: pointer;
+  transition: .3s;
 }
 
 .co-menu-personal-link:hover {
   color: darkorange;
-  transition: .3s;
 }
 
 .co-section--content {
@@ -3428,11 +3413,11 @@ table {
   display: block;
   color: #000;
   padding: 0 5px;
+  transition: .3s;
 }
 
 .cart-item-title:hover a {
   color: darkorange;
-  transition: .3s;
 }
 
 .product-quantity-col {
@@ -3513,11 +3498,11 @@ table {
   height: 1em;
   margin-bottom: -5px;
   color: #999;
+  transition: .3s;
 }
 
 .delete-col button:hover a i {
   color: #f8353e;
-  transition: .3s;
 }
 
 .cart-item-quantity {
@@ -3656,12 +3641,12 @@ table {
   overflow: visible;
   margin: 0;
   border-radius: 0;
+  transition: .3s;
 }
 
 .coupon-button:hover {
   color: darkorange;
   /* color: #0bb648; */
-  transition: .3s;
 }
 
 .coupon-button i {
@@ -4241,6 +4226,7 @@ table {
 
 .contacts-text a {
   text-decoration: underline;
+  transition: .3s;
 }
 
 .contacts-text strong {
@@ -4249,7 +4235,6 @@ table {
 
 .contacts-text a:hover {
   color: darkorange;
-  transition: .3s;
 }
 
 .contacts-table {
@@ -4275,7 +4260,210 @@ table {
 }
 
 .contacts-ol li {
-  margin: 5px 0px;  
+  margin: 5px 0px;
+}
+
+.articles-tags {
+  margin: -20px 0px 0px;
+}
+
+.tag_button {
+  margin: 10px 10px 0px 0px;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: none;
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  text-align: center;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #f7f8fa;
+  color: #000;
+  transition: .3s;
+}
+
+.tag_button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.tag_button-selected {
+  background-color: #000;
+  color: #fff;
+}
+
+.articles-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.articles-col {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.action_card {
+  margin-bottom: 20px;
+}
+
+.article-row {
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.article-col {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 48%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.article_card {
+  margin: 0 0 20px;
+}
+
+.action_card .article_card {
+  text-align: center;
+}
+
+.article_image {
+  display: block;
+  width: 550px;
+  height: 308px;
+  margin-bottom: 10px;
+}
+
+.article_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 0;
+}
+
+.action_card .article_card-date {
+  padding: 3px 5px 1px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #000;
+  color: #fff;
+  display: inline-block;
+}
+
+.action_card .article_card-title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  margin: 5px 0px;
+}
+
+.article_card-title a {
+  color: #000;
+  transition: .3s;
+}
+
+.article_card-title:hover a {
+  color: darkorange;
+}
+
+.article-content {
+  margin: 0px 0px 40px;
+}
+
+.article-meta {
+  margin: 0px 0px 20px;
+  text-align: center;
+}
+
+.articles-meta-date {
+  padding: 3px 5px 1px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #000;
+  color: #fff;
+  display: inline-block;
+}
+
+.article_card-description h3 {
+  /* color: #000; */
+  font-weight: 500;
+}
+
+.article-content h1, .article-content h2, .article-content h3, .article-content p,
+.message-content h1, .message-content h2, .message-content h3, .message-content p {
+  margin: 0px 0px 20px;
+}
+
+.article-content h3, .article-content h2, .article-content h1 {
+  color: #000;
+}
+
+.article-content a:hover {
+  color: darkorange;
+}
+
+.article-content ul {
+  margin-bottom: 20px;
+  margin-top: -10px;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.article_button {
+  padding-left: 0px;
+  padding-right: 0px;
+  color: #000;
+  background: transparent;
+  line-height: 20px;
+  text-transform: none;
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 0;
+  transition: .3s;
+  text-decoration: none;
+}
+
+.article_button span {
+  border-bottom: 1px solid currentColor;
+}
+
+.article_button:hover {
+  color: darkorange;
+  text-decoration: none;
+}
+
+.order-md-2 {
+  -ms-flex-order: 2;
+  order: 2;
 }
 
 /* css mobile */

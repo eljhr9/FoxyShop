@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'orders.apps.OrdersConfig',
     'cart.apps.CartConfig',
+    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'storages',
     'social_django',
     'sorl.thumbnail',
+    'taggit',
 ]
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
@@ -109,6 +111,7 @@ TEMPLATES = [
                 'shop.context_processors.favourite',
                 'shop.context_processors.mailing',
                 'cart.context_processors.cart',
+                'blog.context_processors.blog',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],

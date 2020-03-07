@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'blog:list' %}" class="breadcrumb-link">
+					<span>Статьи</span>
+				</a>
+			</li>
+      {% if tag %}
+      <li class="breadcrumb-item">
+				<a href="{% url 'blog:by_tag' tag.slug %}" class="breadcrumb-link">
+					<span>{{ tag.name }}</span>
+				</a>
+			</li>
+      {% endif %}
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="content-container">
+  <div class="content-container2">
+    <div class="content">
+      <div class="search-col">
+        <div>
+          <div class="text">
+            <h1 class="section-title">Статьи</h1>
+            <div class="articles-tags">
+              {% for tg in tags %}
+              <a href="{% url 'blog:by_tag' tg.slug %}" {% if tg.name == tag.name %}class="tag_button tag_button-selected"{% else %}class="tag_button"{% endif %}>{{ tg }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          <div>
+            <div class="articles-row">
+              {% for blog in blogs %}
+              <!-- {% cycle 'article-col' 'article-col order-md-2' as currentclass %} -->
+              <div class="articles-col">
+                <div class="action_card">
+                  <div class="article-row">
+                    <div class="{% cycle 'article-col' 'article-col order-md-2' %}">
+                      <div class="article_card">
+                        <a class="article_image" href="{% url 'blog:detail' blog.slug %}">
+                          <img src="{{ blog.image.url }}">
+                          <div class="hidden hidden-article"><div class="hidden-text">Читать</div></div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-col">
+                      <div class="article_card">
+                        <div class="article_card-date">{{ blog.added|date:'d E Y' }}</div>
+                        <div class="article_card-title"><a href="{% url 'blog:detail' blog.slug %}">{{ blog.title }}</a></div>
+                        <div class="article_card-description">{{ blog.body|markdown|truncatewords_html:30 }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
