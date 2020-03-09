@@ -44,6 +44,7 @@
 {% endblock %}
 
 {% block collection %}
+
 {% if products %}
 <div class="products">
 	<div class="filter">
@@ -65,6 +66,26 @@
 			</div>
 		</div>
 	</div>
+
+	{% if messages %}
+	<!-- <div class="content-container"> -->
+		<div class="messages-main">
+			<div class="co-input co-input-pass">
+				{% for message in messages %}
+				<div class="co-input-error co-input co-input-pass article_card">
+					{% if message.tags == 'error' %}
+					<p class="login-error">{{ message}}</p>
+					{% elif message.tags == 'success' %}
+					<p class="login-error password-change-successfully">{{ message}}</p>
+					{% else %}
+					<p class="login-error password-change-another">{{ message}}</p>
+					{% endif %}
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	<!-- </div> -->
+	{% endif %}
 
 	{% for product in products %}
 	<div class="current-product">
@@ -120,24 +141,21 @@
 					</form>
 				</div>
 				<div class="favorite-field">
-					<!-- <a href="{% url 'compare:compare_add' product.id %}">
-						<button name="products" type="button" class="button compare">
-							<span class="fas fa-align-right fa-lg"></span>
-						</button>
-					</a> -->
-					<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
 						{% if product in compare_items %}
+					<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
 						<button name="products" type="submit" class="button compare">
 							{% csrf_token %}
 							<span class="fas fa-align-right fa-lg comparing"></span>
 						</button>
-						{% else %}
+					</form>
+					{% else %}
+					<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
 						<button name="products" type="submit" class="button compare">
 							{% csrf_token %}
 							<span class="fas fa-align-right fa-lg"></span>
 						</button>
-						{% endif %}
 					</form>
+					{% endif %}
 					{% if product in favourite %}
 					<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
 						<!-- <i class="fas fa-heart product-fav"></i> -->

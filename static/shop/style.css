@@ -2230,6 +2230,11 @@ table {
 
 .quick_checkout {
   background-color: #3095dd;
+  max-width: 480px;
+}
+
+.product_add {
+  max-width: 360px;
 }
 
 .product-extras {
@@ -2440,7 +2445,7 @@ table {
 }
 
 .delivery {
-  width: 96%;
+  width: 94.5%;
   font-size: 25px;
   border-radius: 3px;
   margin-bottom: 2px;
@@ -3104,6 +3109,10 @@ table {
 
 .co-input-success {
   padding: 13px;
+}
+
+.co-input-error {
+  padding: 8px;
 }
 
 .password-change-successfully {

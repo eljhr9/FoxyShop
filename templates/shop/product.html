@@ -73,6 +73,27 @@
 		</div>
 		<div class="content-right col">
 		  <div class="product-data">
+
+				{% if messages %}
+				<!-- <div class="content-container"> -->
+					<div class="messages-main">
+						<div class="co-input co-input-pass">
+							{% for message in messages %}
+							<div class="co-input co-input-pass article_card">
+								{% if message.tags == 'error' %}
+								<p class="login-error">{{ message}}</p>
+								{% elif message.tags == 'success' %}
+								<p class="login-error password-change-successfully">{{ message}}</p>
+								{% else %}
+								<p class="login-error password-change-another">{{ message}}</p>
+								{% endif %}
+							</div>
+						{% endfor %}
+						</div>
+					</div>
+				<!-- </div> -->
+				{% endif %}
+
 		    <form action="{% url 'cart:cart_add' product.id %}" method="post">
 		      <div class="product-head">
 		        <h1 class="product-title">{{ product.brand }} {{ product.title }}</h1>
@@ -180,9 +201,12 @@
 		              </div>
 		              <div class="order">
 		                <div class="product-quick_checkout">
-		                  <button class="add-to-cart quick_checkout" type="submit" data-quick-checkout>
+											<a href="{% url 'orders:create_order' %}" class="add-to-cart quick_checkout">
+												Заказ в один клик
+											</a>
+		                  <!-- <button class="add-to-cart quick_checkout" type="submit" data-quick-checkout>
 		                    Заказ в один клик
-		                  </button>
+		                  </button> -->
 		                </div>
 		              </div>
 		            </div>
@@ -201,18 +225,23 @@
 		          </div>
 		        </div>
 						<div class="favorite-col">
+							{% if product in compare_items %}
+							<form action="{% url 'compare:compare_remove' product.id %}" method="post" class="button-icon">
+								<button name="product" type="submit" class="button-icon">
+									{% csrf_token %}
+										<i class="fas fa-align-right compare comparing"></i>
+										<p data-text-second="В сравнении" ata-text-first="Сравнить" class="compare_text comparing">В сравнении</p>
+								</button>
+							</form>
+							{% else %}
 							<form action="{% url 'compare:compare_add' product.id %}" method="post" class="button-icon">
 								<button name="product" type="submit" class="button-icon">
 									{% csrf_token %}
-									{% if product in compare_items %}
-										<i class="fas fa-align-right compare comparing"></i>
-										<p data-text-second="В сравнении" ata-text-first="Сравнить" class="compare_text comparing">В сравнении</p>
-									{% else %}
 										<i class="fas fa-align-right compare"></i>
 										<p data-text-second="В сравнении" ata-text-first="Сравнить" class="compare_text">Сравнить</p>
-									{% endif %}
 								</button>
 							</form>
+							{% endif %}
 							<form class="button-icon" action="." method="post">
 								{% csrf_token %}
 								{% if is_favourite %}
@@ -568,15 +597,31 @@
 							</form>
 						</div>
 						<div class="favorite-field">
-							<button type="button" class="button compare">
-								<span class="fas fa-align-right fa-lg"></span>
-							</button>
-							<a class="button favorite" href="#">
-								<span class="far fa-heart fa-lg"></span>
+								{% if product in compare_items %}
+							<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
+								<button name="product" type="submit" class="button compare">
+									{% csrf_token %}
+									<span class="fas fa-align-right fa-lg comparing"></span>
+								</button>
+							</form>
+							{% else %}
+							<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
+								<button name="product" type="submit" class="button compare">
+									{% csrf_token %}
+									<span class="fas fa-align-right fa-lg"></span>
+								</button>
+							</form>
+							{% endif %}
+							{% if product in favourite %}
+							<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+								<!-- <i class="fas fa-heart product-fav"></i> -->
+								 <span class="fas fa-heart fa-lg product-fav"></span>
 							</a>
-							<!-- <button class="button favorite">
-								 <span class="far fa-heart fa-lg"></span>
-							</button> -->
+							{% else %}
+								<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+									 <span class="far fa-heart fa-lg"></span>
+								</a>
+							{% endif %}
 						</div>
 					</div>
 

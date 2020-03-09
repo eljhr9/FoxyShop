@@ -101,14 +101,33 @@
 														</button>
 													</form>
             						</div>
-            						<div class="favorite-field">
-            							<button type="button" class="button compare">
-            								<span class="fas fa-align-right fa-lg"></span>
-            							</button>
-            							<button class="button favorite">
-            								 <span class="far fa-heart fa-lg"></span>
-            							</button>
-            						</div>
+												<div class="favorite-field">
+														{% if product in compare_items %}
+													<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
+														<button name="product" type="submit" class="button compare">
+															{% csrf_token %}
+															<span class="fas fa-align-right fa-lg comparing"></span>
+														</button>
+													</form>
+													{% else %}
+													<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
+														<button name="product" type="submit" class="button compare">
+															{% csrf_token %}
+															<span class="fas fa-align-right fa-lg"></span>
+														</button>
+													</form>
+													{% endif %}
+													{% if product in favourite %}
+													<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+														<!-- <i class="fas fa-heart product-fav"></i> -->
+														 <span class="fas fa-heart fa-lg product-fav"></span>
+													</a>
+													{% else %}
+														<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+															 <span class="far fa-heart fa-lg"></span>
+														</a>
+													{% endif %}
+												</div>
             					</div>
 
             				</div>
