@@ -29,6 +29,7 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('comparison/', include('comparison.urls')),
     path('cart/', include('cart.urls')),
     path('orders/', include('orders.urls')),
     path('collection/', include('shop.urls')),

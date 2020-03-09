@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+  {{ compare_items.count }}
+  <!-- {{ product_items }} -->
+  {% if prod in compare.product %}
+  <p>YES!</p>
+  {% else %}
+  <p>NO!</p>
+  {% endif %}
+  {% for item in compare %}
+
+    {% with product=item.product %}
+      {% if product in compare_items %}
+      <p>YES!</p>
+      {% else %}
+      <p>NO!</p>
+      {% endif %}
+    <a href="{{ product.get_absolute_url }}">
+      {{ product.title }}
+    </a>
+
+    {% endwith %}
+  {% endfor %}
+{% endblock %}

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'cart.apps.CartConfig',
     'blog.apps.BlogConfig',
+    'comparison.apps.ComparisonConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -112,6 +113,7 @@ TEMPLATES = [
                 'shop.context_processors.mailing',
                 'cart.context_processors.cart',
                 'blog.context_processors.blog',
+                'comparison.context_processors.compare',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
@@ -218,7 +220,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
 CART_SESSION_ID = 'cart'
 
-
+COMPARE_SESSION_ID = 'compare'
 
 # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # AWS_LOCATION = 'static'

@@ -201,10 +201,16 @@
 		          </div>
 		        </div>
 						<div class="favorite-col">
-							<form action="" class="button-icon">
-								<button class="button-icon">
-									<i class="fas fa-align-right compare"></i>
-									<p data-text-second="В сравнении" ata-text-first="Сравнить">Сравнить</p>
+							<form action="{% url 'compare:compare_add' product.id %}" method="post" class="button-icon">
+								<button name="product" type="submit" class="button-icon">
+									{% csrf_token %}
+									{% if product in compare_items %}
+										<i class="fas fa-align-right compare comparing"></i>
+										<p data-text-second="В сравнении" ata-text-first="Сравнить" class="compare_text comparing">В сравнении</p>
+									{% else %}
+										<i class="fas fa-align-right compare"></i>
+										<p data-text-second="В сравнении" ata-text-first="Сравнить" class="compare_text">Сравнить</p>
+									{% endif %}
 								</button>
 							</form>
 							<form class="button-icon" action="." method="post">

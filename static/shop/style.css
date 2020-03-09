@@ -2408,6 +2408,14 @@ table {
   /* padding-bottom: 10px; */
 }
 
+.button-icon .comparing {
+  color: red;
+}
+
+.comparing {
+  color: red;
+}
+
 .product-add-favorite {
   font-size: 14px;
   vertical-align: -.150em;

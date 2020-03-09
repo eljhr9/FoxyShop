@@ -4,6 +4,7 @@ register = template.Library()
 
 from ..models import Product, Comment
 from django.db.models import Avg
+from comparison.comparison import Compare
 
 
 @register.simple_tag
@@ -19,6 +20,7 @@ def total_posts(product_id=1):
         a = 1
     a = a / b
     return int(a)
+
 # @register.inclusion_tag('shop/avg_value.html')
 # @register.simple_tag
 # def show_avg_value(product_id):

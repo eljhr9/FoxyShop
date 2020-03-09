@@ -2,6 +2,7 @@
 {% load static %}
 {% load thumbnail %}
 
+
 {% block collection_title %}{{ title }}{% endblock %}
 
 {% block breadcrumb %}
@@ -119,10 +120,23 @@
 					</form>
 				</div>
 				<div class="favorite-field">
-					<form class="button" action="">
-						<button type="button" class="button compare">
+					<!-- <a href="{% url 'compare:compare_add' product.id %}">
+						<button name="products" type="button" class="button compare">
 							<span class="fas fa-align-right fa-lg"></span>
 						</button>
+					</a> -->
+					<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
+						{% if product in compare_items %}
+						<button name="products" type="submit" class="button compare">
+							{% csrf_token %}
+							<span class="fas fa-align-right fa-lg comparing"></span>
+						</button>
+						{% else %}
+						<button name="products" type="submit" class="button compare">
+							{% csrf_token %}
+							<span class="fas fa-align-right fa-lg"></span>
+						</button>
+						{% endif %}
 					</form>
 					{% if product in favourite %}
 					<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
