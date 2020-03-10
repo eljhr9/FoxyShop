@@ -47,7 +47,26 @@
             </div>
           	{% if 'query' in request.GET %}
           		<div class="products search-products">
-                {% for result in results %}
+
+								{% if messages %}
+									<div class="messages-main">
+										<div class="co-input co-input-pass">
+											{% for message in messages %}
+											<div class="co-input-error co-input co-input-pass article_card">
+												{% if message.tags == 'error' %}
+												<p class="login-error">{{ message}}</p>
+												{% elif message.tags == 'success' %}
+												<p class="login-error password-change-successfully">{{ message}}</p>
+												{% else %}
+												<p class="login-error password-change-another">{{ message}}</p>
+												{% endif %}
+											</div>
+										{% endfor %}
+										</div>
+									</div>
+								{% endif %}
+
+								{% for result in results %}
                   {% with product=result.object %}
             			<div class="current-product">
             				<a href="{{ product.get_absolute_url }}" class="product-card">

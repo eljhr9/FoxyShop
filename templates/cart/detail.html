@@ -42,7 +42,7 @@
                             <div class="item-image-col">
                               <a href="{{ product.get_absolute_url }}" class="cart-item-img">
 																{% if product.image_1 %}
-																	{% thumbnail product.image_1 "100x100" as img %}
+																	{% thumbnail product.image_1 "150x150" as img %}
 	                                	<img class="cart-item-thumb-item" src="{{ img.url }}">
 																	{% endthumbnail %}
 																{% else %}

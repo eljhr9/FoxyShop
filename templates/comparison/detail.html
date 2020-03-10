@@ -1,7 +1,83 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
 
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'compare:compare_detail' %}" class="breadcrumb-link">
+					<span>Сравнени товаров</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
 
 {% block content %}
+<div class="content-container">
+  <div class="content-container1">
+    <div class="content">
+      <div class="title-col">
+        <div class="contacts-container">
+          <h1 class="text-title">Сравнение товаров</h1>
+					<div class="compares">
+						<table class="compares_table">
+							<thead>
+								<tr>
+									<th class="compares-header">
+										<div class="compares-header-toggle-title">
+											Одинаковые свойства
+										</div>
+										<button class='comparing-toggle'>
+											<i class="fas fa-toggle-on"></i>
+											<span>Скрыть</span>
+										</button>
+									</th>
+									{% for item in compare %}
+								    {% with product=item.product %}
+										<th class="compares-header-product">
+											<div class="compares-header-product-image">
+												<div class="product_card">
+													<a href="{{ product.get_absolute_url }}" class="cart-item-img">
+														{% if product.image_1 %}
+															{% thumbnail product.image_1 "150x150" as img %}
+																<img class="cart-item-thumb-item" src="{{ img.url }}">
+															{% endthumbnail %}
+														{% else %}
+															<img class="cart-item-thumb-item" src="{% static 'large_technics-04-1_002.jpg' %}">
+														{% endif %}
+													</a>
+												</div>
+											</div>
+											<div class="compares-header-product-title">
+												<a href="{{ product.get_absolute_url }}">{{ product }}</a>
+											</div>
+										</th>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Цена</th>
+									{% for item in compare %}
+								    {% with product=item.product %}
+										td.
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+							</thead>
+						</table>
+					</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   {{ compare_items.count }}
   <!-- {{ product_items }} -->
   {% if prod in compare.product %}
@@ -12,8 +88,8 @@
   {% for item in compare %}
 
     {% with product=item.product %}
-      {% if product in compare_items %}
-      <p>YES!</p>
+      {% if product.characteristic %}
+      {{ product.characteristic }}
       {% else %}
       <p>NO!</p>
       {% endif %}

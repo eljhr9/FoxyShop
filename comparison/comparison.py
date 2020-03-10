@@ -50,9 +50,6 @@ class Compare(object):
         """Подсчет всех товаров"""
         return sum(item['quantity'] for item in self.compare.values())
 
-    def get_total_price(self):
-        '''Подсчет стоимости товаров в корзине'''
-        return sum(int(item['price']) * item['quantity'] for item in self.compare.values())
 
     def clear(self):
         """Удаление корзины из сессии"""

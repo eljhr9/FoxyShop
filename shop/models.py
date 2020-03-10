@@ -24,7 +24,7 @@ class Product(models.Model):
 	image_2 = models.ImageField(upload_to='images/', null=True, blank=True)
 	image_3 = models.ImageField(upload_to='images/', null=True, blank=True)
 	rubric = models.ForeignKey('Rubric', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Рубрика')
-	favourite = models.ManyToManyField(User,  related_name='favourite', blank=True)
+	favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
 
 	class Meta:
 		verbose_name_plural = 'Товар'

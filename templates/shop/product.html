@@ -75,7 +75,6 @@
 		  <div class="product-data">
 
 				{% if messages %}
-				<!-- <div class="content-container"> -->
 					<div class="messages-main">
 						<div class="co-input co-input-pass">
 							{% for message in messages %}
@@ -91,7 +90,6 @@
 						{% endfor %}
 						</div>
 					</div>
-				<!-- </div> -->
 				{% endif %}
 
 		    <form action="{% url 'cart:cart_add' product.id %}" method="post">
