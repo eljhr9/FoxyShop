@@ -223,7 +223,7 @@
 		          </div>
 		        </div>
 						<div class="favorite-col">
-							{% if product in compare_items %}
+							{% if product in compare %}
 							<form action="{% url 'compare:compare_remove' product.id %}" method="post" class="button-icon">
 								<button name="product" type="submit" class="button-icon">
 									{% csrf_token %}
@@ -595,7 +595,7 @@
 							</form>
 						</div>
 						<div class="favorite-field">
-								{% if product in compare_items %}
+								{% if product in compare %}
 							<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
 								<button name="product" type="submit" class="button compare">
 									{% csrf_token %}

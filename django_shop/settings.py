@@ -24,11 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '(wqn8rh2uzj!)d46&&@v)lrp(!#c7&3@$l&k&gjw#7=6)&e*vr')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
-# DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = []
 
@@ -68,11 +66,6 @@ INSTALLED_APPS = [
 #
 # STATICFILES_STORAGE = "django_shop.s3utils.StaticS3BotoStorage"
 # DEFAULT_FILE_STORAGE = "django_shop.s3utils.MediaS3BotoStorage"
-#
-# # the next monkey patch is necessary to allow dots in the bucket names
-# import ssl
-# if hasattr(ssl, '_create_unverified_context'):
-#    ssl._create_default_https_context = ssl._create_unverified_context
 
 
 HAYSTACK_CONNECTIONS = {
@@ -123,9 +116,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_shop.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -242,27 +232,6 @@ if os.getcwd() == '/app':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     # Разрешены все заголовки хостов.
 
-
-    # Конфигурация статических ресурсов
-    # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    # STATIC_ROOT = 'staticfiles'
-    # STATICFILES_DIRS = (
-    # os.path.join(BASE_DIR, 'static'),
-    # )
-
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    # STATIC_URL = '/static/'
-    # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-    # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# STATIC_ROOT = 'staticfiles'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
@@ -280,4 +249,3 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

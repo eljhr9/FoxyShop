@@ -41,4 +41,4 @@ def compare_remove(request, product_id):
         return redirect('compare:compare_detail')
 
 def compare_detail(request):
-    return render(request, 'comparison/detail.html', {})
+    return render(request, 'comparison/compare.html', {})

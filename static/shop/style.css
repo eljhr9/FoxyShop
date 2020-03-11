@@ -4585,6 +4585,57 @@ table {
   color: darkorange;
 }
 
+.compares_table td {
+  padding: 10px 10px;
+  font-weight: 400;
+}
+
+.compares_item {
+  text-align: center;
+}
+
+.compares_table .compares-header-price {
+  font-weight: 600;
+  color: #000;
+}
+
+.compare_remove {
+  color: #000;
+  background:
+  transparent;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: none;
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  text-align: center;
+  font-weight: 600;
+  padding: 5px 0px;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: visible;
+}
+
+.compare_remove i {
+  margin-right: 5px;
+  font-size: 1.33333em;
+  line-height: .75em;
+}
+
+.compare_remove span {
+  border-bottom: 1px dotted currentColor;
+  vertical-align: 1.5px;
+}
+
+.compare_remove a {
+  transition: .3s;
+}
+
+.compare_remove:hover a {
+  color: red;
+}
+
 /* css mobile */
 @media only screen
 /* and (min-device-width : 820px) */

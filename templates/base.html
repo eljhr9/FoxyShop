@@ -142,68 +142,62 @@
 											<div class="popup-contacts popup-favorite">
 												<div class="popup-content-client">
 													{% if compare|length > 0 %}
-														{% with total_items=compare|length %}
-															{% if compare|length > 0 %}
-																<div class="dropdown_products-header">
-																	В списке сравения
-																	{% if total_items == 1 %}
-																		<span>{{ total_items }} товар</span>
-																	{% elif total_items <= 4 %}
-																		<span>{{ total_items }} товара</span>
-																	{% else %}
-																	<span>{{ total_items }} товаров</span>
-																	{% endif %}
-															 </div>
-															 <div class="dropdown_products">
-															 	{% for item in compare %}
-																	{% with product=item.product %}
-																	<div class="dropdown_product">
-																		<div class="dropdown_product-row">
-																			<div class="dropdown_product-img-col">
-																				<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
-																					{% if product.image_1 %}
-																						{% thumbnail product.image_1 "100x100" as img %}
-																							<img src="{{ img.url }}" class="dropdown_product-thumb">
-																						{% endthumbnail %}
-																					{% else %}
-																						<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb">
-																					{% endif %}
-																				</a>
-																			</div>
-																			<div class="dropdown_product-detail-col">
-																				<div class="dropdown_product-title">
-																					<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
-																				</div>
-																				<div class="dropdown_product-prices">
-					                                <span>{{ item.price }} ₴</span>
-																				</div>
-																			</div>
-																			<div class="dropdown_product-delete-col">
-			                                	<button type="button" class="button-delete">
-																					<a href="{% url 'compare:compare_remove' product.id %}"><i class="fas fa-trash-alt"></i></a>
-																				</button>
-																			</div>
-																		</div>
-																	</div>
-																	{% endwith %}
-																{% endfor %}
-															 </div>
-															 <div class="dropdown_products-action">
-	  														 <div class="authenticate-row">
-	  															 <div class="favourite-col">
-	  																 <a class="register-button" href="{% url 'compare:compare_detail' %}">Перейти к сравнению</a>
-	  															 </div>
-	  														 </div>
-	  													 </div>
-															{% endif %}
-														{% endwith %}
-													{% else %}
-														<div class="popup--empty">
-															<i class="fas fa-align-right compare"></i>
-															Товары для сравнения не выбраны
+													{% with total_items=compare|length %}
+													<div class="dropdown_products-header">
+														В списке сравения
+														{% if total_items == 1 %}
+															<span>{{ total_items }} товар</span>
+														{% elif total_items <= 4 %}
+															<span>{{ total_items }} товара</span>
+														{% else %}
+														<span>{{ total_items }} товаров</span>
+														{% endif %}
+												 	</div>
+												 	{% for product in compare %}
+										      <div class="dropdown_product">
+										        <div class="dropdown_product-row">
+										          <div class="dropdown_product-img-col">
+										            <a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
+										              {% if product.image_1 %}
+										                {% thumbnail product.image_1 "100x100" as img %}
+										                  <img src="{{ img.url }}" class="dropdown_product-thumb">
+										                {% endthumbnail %}
+										              {% else %}
+										                <img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb">
+										              {% endif %}
+										            </a>
+										          </div>
+										          <div class="dropdown_product-detail-col">
+										            <div class="dropdown_product-title">
+										              <a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+										            </div>
+										            <div class="dropdown_product-prices">
+										              <span>{{ product.price }} ₴</span>
+										            </div>
+										          </div>
+										          <div class="dropdown_product-delete-col">
+										            <button type="button" class="button-delete">
+										              <a href="{% url 'compare:compare_remove' product.id %}"><i class="fas fa-trash-alt"></i></a>
+										            </button>
+										          </div>
+										        </div>
+										      </div>
+										     	{% endfor %}
+													</div>
+													<div class="dropdown_products-action">
+														<div class="authenticate-row">
+															<div class="favourite-col">
+																<a class="register-button" href="{% url 'compare:compare_detail' %}">Перейти к сравнению</a>
+															</div>
 														</div>
-													{% endif %}
-												</div>
+													</div>
+													{% endwith %}
+													{% else %}
+													<div class="popup--empty">
+														<i class="fas fa-align-right compare"></i>
+														Товары для сравнения не выбраны
+													</div>
+												{% endif %}
 											</div>
 										</div>
 									</li>

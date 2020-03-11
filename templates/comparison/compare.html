@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="footer-container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'compare:compare_detail' %}" class="breadcrumb-link">
+					<span>Сравнени товаров</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <div class="content-container1">
+    <div class="content">
+      <div class="title-col">
+        <div class="contacts-container">
+          <h1 class="text-title">Сравнение товаров</h1>
+					<div class="compares">
+						<table class="compares_table">
+							<thead>
+								<tr>
+									<th class="compares-header">
+										<div class="compares-header-toggle-title">
+											Одинаковые свойства
+										</div>
+										<button class='comparing-toggle'>
+											<i class="fas fa-toggle-on"></i>
+											<span>Скрыть</span>
+										</button>
+									</th>
+									{% for product in compare %}
+										<th class="compares-header-product">
+											<div class="compares-header-product-image">
+												<div class="product_card">
+													<a href="{{ product.get_absolute_url }}" class="cart-item-img">
+														{% if product.image_1 %}
+															{% thumbnail product.image_1 "150x150" as img %}
+																<img class="cart-item-thumb-item" src="{{ img.url }}">
+															{% endthumbnail %}
+														{% else %}
+															<img class="cart-item-thumb-item" src="{% static 'large_technics-04-1_002.jpg' %}">
+														{% endif %}
+													</a>
+												</div>
+											</div>
+											<div class="compares-header-product-title">
+												<a href="{{ product.get_absolute_url }}">{{ product }}</a>
+											</div>
+										</th>
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Цена</th>
+									{% for product in compare %}
+										<td class="compares-header-price compares_item">
+											{{ product.price }}  ₴
+										</td>
+								  {% endfor %}
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th class="compares-header">Тип дисплея</th>
+									{% for product in compare %}
+								    {% with product=product.characteristic %}
+										<td class="compares_item">
+											{% if product.display_type %}
+											{{ product.display_type }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Диагональ (дюйм)</th>
+									{% for product in compare %}
+								    {% with product=product.characteristic %}
+										<td class="compares_item">
+											{% if product.diagonal %}
+											{{ product.diagonal }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Разрешение (пикс)</th>
+									{% for product in compare %}
+								    {% with product=product.characteristic %}
+										<td class="compares_item">
+											{% if product.resolution %}
+											{{ product.resolution }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Процессор</th>
+									{% for product in compare %}
+								    {% with product=product.characteristic %}
+										<td class="compares_item">
+											{% if product.processor %}
+											{{ product.processor }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Оперативная память</th>
+									{% for product in compare %}
+								    {% with product=product.characteristic %}
+										<td class="compares_item">
+											{% if product.ram %}
+											{{ product.ram }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Встроенная память (Гб)</th>
+									{% for product in compare %}
+								    {% with product=product.characteristic %}
+										<td class="compares_item">
+											{% if product.storage %}
+											{{ product.storage }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Год выпуска</th>
+									{% for product in compare %}
+								    {% with product=product.characteristic %}
+										<td class="compares_item">
+											{% if product.year %}
+											{{ product.year }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+										{% endwith %}
+								  {% endfor %}
+								</tr>
+								<tr>
+									<th class="compares-header">Производитель</th>
+									{% for product in compare %}
+										<td class="compares_item">
+											{% if product.brand %}
+											{{ product.brand }}
+											{% else %}
+											-
+											{% endif %}
+										</td>
+								  {% endfor %}
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<th class="compares-header"></th>
+									{% for product in compare %}
+										<th class="compares-header-product">
+											<button class="compare_remove">
+												<a href="{% url 'compare:compare_remove' product.id %}">
+													<i class="fas fa-trash-alt"></i>
+													<span>Удалить</span>
+												</a>
+											</button>
+										</th>
+								  {% endfor %}
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

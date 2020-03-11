@@ -139,7 +139,7 @@
 					</form>
 				</div>
 				<div class="favorite-field">
-						{% if product in compare_items %}
+					{% if product in compare %}
 					<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
 						<button name="products" type="submit" class="button compare">
 							{% csrf_token %}
