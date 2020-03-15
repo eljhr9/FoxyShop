@@ -14,8 +14,8 @@
 	integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
 	crossorigin="anonymous">
 </head>
-<body>
 
+<body>
 	<div class="main">
 		<div class="header">
 			<div class="logo">
@@ -26,9 +26,6 @@
 								<img src="{% static 'label.png' %}" class="label">
 							</a>
 						</div>
-						<!-- <div class="logo_text">
-							<h1><a href="{% url 'index' %}">FoxyShop</a></h1>
-						</div> -->
 						<form action="{% url 'shop:product_search' %}" method="get" class="wrap">
 						   <div class="search">
 						      <input required id="id_query" type="text" name="query" class="searchTerm" placeholder="Поиск по каталогу...">
@@ -671,7 +668,7 @@
 								</div>
 							</div>
 
-							<div class="footer-menu-block">
+							<div class="footer-menu-block footer-menu-block-extra">
 								<div class="menu-block">
 									<div class="menu-title title-collection">Дополнительно</div>
 									<ul class="menu-items">
@@ -777,8 +774,5 @@
 				</div>
 			</footer>
 		</div>
-	</div>
-
-
-</body>
+	</body>
 </html>

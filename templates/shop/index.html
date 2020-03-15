@@ -2,37 +2,65 @@
 {% load static %}
 
 {% block content %}
-<div class="content-container">
-  {% if messages %}
-  <!-- <div class="content-container"> -->
-    <div class="messages-main">
-      <div class="co-input co-input-pass">
-        {% for message in messages %}
-        <div class="co-input-success co-input co-input-pass">
-          {% if message.tags == 'error' %}
-          <p class="login-error password-change-successfully">{{ message}}</p>
-          {% elif message.tags == 'success' %}
-          <p class="login-error password-change-successfully">{{ message}}</p>
-          {% else %}
-          <p class="login-error password-change-another">{{ message}}</p>
-          {% endif %}
+<div class="layout-page">
+  <div class="section-slider">
+    <div class="slider">
+      <!-- <div class="slider-items">
+        <div class="owl-stage-outer">
+          <div class="slider-item">
+            <a href="{% url 'shop:products' %}">
+              <img src="{% static 'shop/ipad_banner.png' %}" alt="">
+            </a>
+          </div>
+          <div class="slider-item">
+            <a href="{% url 'shop:products' %}">
+              <img src="{% static 'shop/macbook_banner.png' %}" alt="">
+            </a>
+          </div>
+          <div class="slider-item">
+            <a href="{% url 'shop:products' %}">
+              <img src="{% static 'shop/airpods-banner.jpg' %}" alt="">
+            </a>
+          </div>
         </div>
-      {% endfor %}
+      </div> -->
+      <div id="slider">
+        <a href="{% url 'shop:products' %}">
+          <img src="{% static 'shop/ipad_banner.png' %}" alt="">
+        </a>
+        <a href="{% url 'shop:products' %}">
+          <img src="{% static 'shop/macbook_banner.png' %}" alt="">
+        </a>
+        <a href="{% url 'shop:products' %}">
+          <img src="{% static 'shop/airpods-banner.jpg' %}" alt="">
+        </a>
       </div>
     </div>
-  <!-- </div> -->
-  {% endif %}
-  <!-- {% for ass in backends.associated %}
-      {% if ass.provider == 'facebook' %}
-        <div class="col-md-6 text-center">
-            <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+  </div>
+  <div class="content-container">
+    {% if messages %}
+    <!-- <div class="content-container"> -->
+      <div class="messages-main">
+        <div class="co-input co-input-pass">
+          {% for message in messages %}
+          <div class="co-input-success co-input co-input-pass">
+            {% if message.tags == 'error' %}
+            <p class="login-error password-change-successfully">{{ message}}</p>
+            {% elif message.tags == 'success' %}
+            <p class="login-error password-change-successfully">{{ message}}</p>
+            {% else %}
+            <p class="login-error password-change-another">{{ message}}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
         </div>
-        <div class="col-md-6 social-container my-2">                 <p> Signed in via:  {{ ass.provider }} </p>
-            <p> Name:  {{ ass.extra_data.name }} </p>
-            <p> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
-        </div>
-      {% endif %}
-    {% endfor %} -->
-  <img class="empty-page-img" src="{% static 'razrabotka.png' %}" alt="">
+      </div>
+    <!-- </div> -->
+    {% endif %}
+
+    <img class="empty-page-img" src="{% static 'razrabotka.png' %}" alt="">
+  </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{% static 'shop/slider.js' %}"></script>
 {% endblock content %}
