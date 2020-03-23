@@ -1,5 +1,6 @@
 from django.db import models
 from shop.models import Product
+from django.urls import reverse
 
 
 class Order(models.Model):
@@ -24,6 +25,9 @@ class Order(models.Model):
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
+
+    def get_absolute_url(self):
+    		return reverse('orders:order', args=[self.id])
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE, verbose_name='Заказ')

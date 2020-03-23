@@ -4,7 +4,7 @@
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
-	<div class="footer-container">
+	<div class="container">
 		<ul class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
@@ -21,142 +21,140 @@
 
 
 {% block content %}
-  <div class="content-container">
-    <div class="content-container2">
-      <div class="content">
-        <div class="search-col">
-          <div>
-            <div class="text">
-              <h1 class="section-title">Результаты поиска</h1>
-              <div class="text-content">
-                <div class="text-row">
-                  <div class="search-message-icon">
-                    <i class="fas fa-search"></i>
-                  </div>
-                  <div class="text-col">
-                    <p>
-                      {% if cd.query %}
-                      По запросу «{{ cd.query }}» найдены следующие товары:
-                      {% else %}
-                      Для поиска по каталогу укажете ключевое слово или фразу.
-                      {% endif %}
-                    </p>
-                  </div>
+  <div class="container">
+    <div class="content">
+      <div class="search-col">
+        <div>
+          <div class="text">
+            <h1 class="section-title">Результаты поиска</h1>
+            <div class="text-content">
+              <div class="text-row">
+                <div class="search-message-icon">
+                  <i class="fas fa-search"></i>
+                </div>
+                <div class="text-col">
+                  <p>
+                    {% if cd.query %}
+                    По запросу «{{ cd.query }}» найдены следующие товары:
+                    {% else %}
+                    Для поиска по каталогу укажете ключевое слово или фразу.
+                    {% endif %}
+                  </p>
                 </div>
               </div>
             </div>
-          	{% if 'query' in request.GET %}
-          		<div class="products search-products">
+          </div>
+        	{% if 'query' in request.GET %}
+        		<div class="products search-products">
 
-								{% if messages %}
-									<div class="messages-main">
-										<div class="co-input co-input-pass">
-											{% for message in messages %}
-											<div class="co-input-error co-input co-input-pass article_card">
-												{% if message.tags == 'error' %}
-												<p class="login-error">{{ message}}</p>
-												{% elif message.tags == 'success' %}
-												<p class="login-error password-change-successfully">{{ message}}</p>
-												{% else %}
-												<p class="login-error password-change-another">{{ message}}</p>
-												{% endif %}
-											</div>
-										{% endfor %}
-										</div>
-									</div>
-								{% endif %}
-
-								{% for result in results %}
-                  {% with product=result.object %}
-            			<div class="current-product">
-            				<a href="{{ product.get_absolute_url }}" class="product-card">
-            				<div class="product-image">
-											{% if product.image_1 %}
-												{% thumbnail product.image_1 "300x300" as img %}
-													<img class="product_img" src="{{ img.url }}">
-												{% endthumbnail %}
+							{% if messages %}
+								<div class="messages-main">
+									<div class="co-input co-input-pass">
+										{% for message in messages %}
+										<div class="co-input-error co-input co-input-pass article_card">
+											{% if message.tags == 'error' %}
+											<p class="login-error">{{ message}}</p>
+											{% elif message.tags == 'success' %}
+											<p class="login-error password-change-successfully">{{ message}}</p>
 											{% else %}
-												<img class="product_img" src="{% static 'large_technics-04-1_002.jpg' %}">
+											<p class="login-error password-change-another">{{ message}}</p>
 											{% endif %}
 										</div>
-            				</a>
-            				<div class="product-card-title">
-            					<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
-            				</div>
-            				<div class="product-card-rating">
+									{% endfor %}
+									</div>
+								</div>
+							{% endif %}
 
-            					<div class="rating-items">
-            						<a href="{{ product.get_absolute_url }}" class="rating">
-            							{% if product.comments.count >= 1 %}
-            							<span class="rating-item full"><i class="fas fa-star"></i></span>
-            							<span class="rating-item full"><i class="fas fa-star"></i></span>
-            							<span class="rating-item full"><i class="fas fa-star"></i></span>
-            							<span class="rating-item full"><i class="fas fa-star"></i></span>
-            							<span class="rating-item"><i class="far fa-star"></i></span>
-            							{% else %}
-            							<span class="rating-item"><i class="far fa-star"></i></span>
-            							<span class="rating-item"><i class="far fa-star"></i></span>
-            							<span class="rating-item"><i class="far fa-star"></i></span>
-            							<span class="rating-item"><i class="far fa-star"></i></span>
-            							<span class="rating-item"><i class="far fa-star"></i></span>
-            							{% endif %}
-            							<span class="rating-link">
-            								<span class="icon"><i class="far fa-comment-dots"></i></span>
-            								<span class="icon-count"><p>{{ product.comments.count }}</p></span>
-            							</span>
-            						</a>
-            					</div>
-            					<div class="product-card-prices">
-            						<span><h4>{{ product.price }} ₴</h4></span>
-            					</div>
-            					<div class="product-card-add">
-            						<div class="bascet-field">
-													<form action="{% url 'cart:cart_add' product.id %}" method="post">
-														<input type="hidden" id="id_quantity" name="quantity" value="1">
+							{% for result in results %}
+                {% with product=result.object %}
+          			<div class="current-product">
+          				<a href="{{ product.get_absolute_url }}" class="product-card">
+          				<div class="product-image">
+										{% if product.image_1 %}
+											{% thumbnail product.image_1 "300x300" as img %}
+												<img class="product_img" src="{{ img.url }}">
+											{% endthumbnail %}
+										{% else %}
+											<img class="product_img" src="{% static 'large_technics-04-1_002.jpg' %}">
+										{% endif %}
+									</div>
+          				</a>
+          				<div class="product-card-title">
+          					<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+          				</div>
+          				<div class="product-card-rating">
+
+          					<div class="rating-items">
+          						<a href="{{ product.get_absolute_url }}" class="rating">
+          							{% if product.comments.count >= 1 %}
+          							<span class="rating-item full"><i class="fas fa-star"></i></span>
+          							<span class="rating-item full"><i class="fas fa-star"></i></span>
+          							<span class="rating-item full"><i class="fas fa-star"></i></span>
+          							<span class="rating-item full"><i class="fas fa-star"></i></span>
+          							<span class="rating-item"><i class="far fa-star"></i></span>
+          							{% else %}
+          							<span class="rating-item"><i class="far fa-star"></i></span>
+          							<span class="rating-item"><i class="far fa-star"></i></span>
+          							<span class="rating-item"><i class="far fa-star"></i></span>
+          							<span class="rating-item"><i class="far fa-star"></i></span>
+          							<span class="rating-item"><i class="far fa-star"></i></span>
+          							{% endif %}
+          							<span class="rating-link">
+          								<span class="icon"><i class="far fa-comment-dots"></i></span>
+          								<span class="icon-count"><p>{{ product.comments.count }}</p></span>
+          							</span>
+          						</a>
+          					</div>
+          					<div class="product-card-prices">
+          						<span><h4>{{ product.price }} ₴</h4></span>
+          					</div>
+          					<div class="product-card-add">
+          						<div class="bascet-field">
+												<form action="{% url 'cart:cart_add' product.id %}" method="post">
+													<input type="hidden" id="id_quantity" name="quantity" value="1">
+													{% csrf_token %}
+													<button class="bascet-add">
+														<i class="fas fa-shopping-basket"></i>
+														<span>В корзину</span>
+													</button>
+												</form>
+          						</div>
+											<div class="favorite-field">
+													{% if product in compare %}
+												<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
+													<button name="product" type="submit" class="button compare">
 														{% csrf_token %}
-														<button class="bascet-add">
-															<i class="fas fa-shopping-basket"></i>
-															<span>В корзину</span>
-														</button>
-													</form>
-            						</div>
-												<div class="favorite-field">
-														{% if product in compare %}
-													<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
-														<button name="product" type="submit" class="button compare">
-															{% csrf_token %}
-															<span class="fas fa-align-right fa-lg comparing"></span>
-														</button>
-													</form>
-													{% else %}
-													<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
-														<button name="product" type="submit" class="button compare">
-															{% csrf_token %}
-															<span class="fas fa-align-right fa-lg"></span>
-														</button>
-													</form>
-													{% endif %}
-													{% if product in favourite %}
+														<span class="fas fa-align-right fa-lg comparing"></span>
+													</button>
+												</form>
+												{% else %}
+												<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
+													<button name="product" type="submit" class="button compare">
+														{% csrf_token %}
+														<span class="fas fa-align-right fa-lg"></span>
+													</button>
+												</form>
+												{% endif %}
+												{% if product in favourite %}
+												<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+													<!-- <i class="fas fa-heart product-fav"></i> -->
+													 <span class="fas fa-heart fa-lg product-fav"></span>
+												</a>
+												{% else %}
 													<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
-														<!-- <i class="fas fa-heart product-fav"></i> -->
-														 <span class="fas fa-heart fa-lg product-fav"></span>
+														 <span class="far fa-heart fa-lg"></span>
 													</a>
-													{% else %}
-														<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
-															 <span class="far fa-heart fa-lg"></span>
-														</a>
-													{% endif %}
-												</div>
-            					</div>
+												{% endif %}
+											</div>
+          					</div>
 
-            				</div>
+          				</div>
 
-            			</div>
-                  {% endwith %}
-          		  {% endfor %}
-          		</div>
-            {% endif %}
-          </div>
+          			</div>
+                {% endwith %}
+        		  {% endfor %}
+        		</div>
+          {% endif %}
         </div>
       </div>
     </div>

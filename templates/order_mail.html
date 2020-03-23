@@ -1,0 +1,48 @@
+<h2>Здравствуйте, {{ order.first_name }}!</h2>
+<h1>Вы сделали заказ в магазине "FoxyShop"</h1>
+<h2>Заказ №{{ order.id }}</h2>
+<p></p>
+<table>
+  <tbody>
+    <tr>
+      <th>Наименование</th>
+      <th>Кол-во</th>
+      <th>Стоимость</th>
+    </tr>
+    {% for item in orderitems %}
+    <tr>
+      <td style="border-bottom:1px dashed black">{{ item.product }}</td>
+      <td style="border-bottom:1px dashed black">{{ item.quantity }}</td>
+      <td style="border-bottom:1px dashed black">{{ item.get_cost }} ₴</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td></td>
+      <td><i>Сумма:</i></td>
+      <td><b>{{ order.get_total_cost }} ₴</b></td>
+    </tr>
+  </tbody>
+</table>
+<p></p>
+<p>
+  <strong>Доставка:</strong>
+  <br>
+  Обычная доставка с наложенным платежом
+  <br>
+  - Наличным курьеру.
+  <br>
+  заказ ещё не оплачен.
+</p>
+<p>
+  Вы можете также посмотреть <a href="{{ order_url }}">Страницу статуса заказа</a> или вернутся <a href="https://foxyshop.herokuapp.com">в магазин</a>.
+</p>
+<p><a href="{{ order_url }}">Вы можете подписаться на уведомления в Whatsapp или Viber на изменения по заказу</a></p>
+<p>
+  --
+  <br>
+  С уважением,
+  <br>
+  магазин "FoxyShop"
+  <br>
+  <a href="https://foxyshop.herokuapp.com">https://foxyshop.herokuapp.com</a>
+</p>

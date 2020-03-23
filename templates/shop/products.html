@@ -7,7 +7,7 @@
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
-	<div class="footer-container">
+	<div class="container">
 		<ul class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
@@ -132,7 +132,7 @@
 					<form action="{% url 'cart:cart_add' product.id %}" method="post">
 						<input type="hidden" id="id_quantity" name="quantity" value="1">
 						{% csrf_token %}
-						<button class="bascet-add">
+						<button name="products" class="bascet-add">
 							<i class="fas fa-shopping-basket"></i>
 							<span>В корзину</span>
 						</button>

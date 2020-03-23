@@ -20,10 +20,10 @@
 		<div class="header">
 			<div class="logo">
 				<div class="logo_upper">
-					<div class="container">
+					<div class="cont">
 						<div class="logo_image">
 							<a href="{% url 'index' %}">
-								<img src="{% static 'label.png' %}" class="label">
+								<img src="{% static 'label.png' %}" class="label" alt="FoxyShop">
 							</a>
 						</div>
 						<form action="{% url 'shop:product_search' %}" method="get" class="wrap">
@@ -65,13 +65,13 @@
 											<ul class="popup-content-contacts">
 												<li class="menu-item menu-item-icon">
 													<i class="far fa-envelope"></i>
-													<a href="mailto:illyaredkolis@gmail.com" itempror="email">
+													<a href="mailto:illyaredkolis@gmail.com">
 														illyaredkolis@gmail.com
 													</a>
 												</li>
 												<li class="menu-item menu-item-icon">
 													<i class="fas fa-map-marker-alt"></i>
-													<p itempror="adress" class="more-popup"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
+													<p class="more-popup"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
 												</li>
 												<li class="menu-item menu-item-icon">
 													<i class="far fa-clock"></i>
@@ -157,10 +157,10 @@
 										            <a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
 										              {% if product.image_1 %}
 										                {% thumbnail product.image_1 "100x100" as img %}
-										                  <img src="{{ img.url }}" class="dropdown_product-thumb">
+										                  <img src="{{ img.url }}" class="dropdown_product-thumb" alt="product">
 										                {% endthumbnail %}
 										              {% else %}
-										                <img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb">
+										                <img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb" alt="product">
 										              {% endif %}
 										            </a>
 										          </div>
@@ -228,10 +228,10 @@
 																			<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
 																				{% if product.image_1 %}
 																					{% thumbnail product.image_1 "100x100" as img %}
-																						<img src="{{ img.url }}" class="dropdown_product-thumb">
+																						<img src="{{ img.url }}" class="dropdown_product-thumb" alt="product">
 																					{% endthumbnail %}
 																				{% else %}
-																					<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb">
+																					<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb" alt="product">
 																				{% endif %}
 																			</a>
 																		</div>
@@ -308,10 +308,10 @@
 																		<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
 																			{% if product.image_1 %}
 																				{% thumbnail product.image_1 "100x100" as img %}
-																					<img src="{{ img.url }}" class="dropdown_product-thumb">
+																					<img src="{{ img.url }}" class="dropdown_product-thumb" alt="product">
 																				{% endthumbnail %}
 																			{% else %}
-																				<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb">
+																				<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb" alt="product">
 																			{% endif %}
 																		</a>
 																	</div>
@@ -414,25 +414,13 @@
 							</div>
 						</div>
 
-						<!-- <div class="user_field">
-							<div class="user_choise">
-								<div class="user_conteiner">
-									<div class="register">
-										<a href="{% url 'register' %}">Регист.</a>
-									</div>
-									<div class="login">
-										<a href="{% url 'login' %}">Вход</a>
-									</div>
-								</div>
-							</div> -->
-
-						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
 			<div class="menu">
-				<div class="menubar">
+				<div class="container">
 					<div class="navbar">
 
 						<nav class="nav">
@@ -525,254 +513,254 @@
 				</div>
 			</div>
 
-		</div>
-		{% block breadcrumb %}{% endblock %}
+	</div>
+	{% block breadcrumb %}{% endblock %}
 
 
 
-		{% block content %}
-		{% endblock %}
+	{% block content %}
+	{% endblock %}
 
-		{% block comments %}
-		{% endblock comments %}
-		<div class="section-footer">
-			<footer>
-				{% if post %}
-				<div class="footer-scheme-01">
+	{% block comments %}
+	{% endblock comments %}
+	<div class="section-footer">
+		<footer>
+			{% if post %}
+			<div class="footer-scheme-01">
 
-					<div class="footer-subscribe">
-						<div class="footer-container">
-							<div class="subscribe-text">
-								<div class="text-content subscribe-content">
-									<div class="text-row">
-										<div class="message-icon">
-											<i class="far fa-check-square"></i>
-										</div>
-										<div class="text-col">
-											<p>
-												Запрос на подписку успешно оформлен, подтверждающее письмо
-												было выслано вам на почту!
-											</p>
-										</div>
+				<div class="footer-subscribe">
+					<div class="container">
+						<div class="subscribe-text">
+							<div class="text-content subscribe-content">
+								<div class="text-row">
+									<div class="message-icon">
+										<i class="far fa-check-square"></i>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-					{% else %}
-				<div class="footer-scheme-01">
-					<form id="mailing_form" action="." method="post" class="footer-subscribe">
-
-						<div class="footer-container">
-							<div class="subscribe-items">
-								<div class="subscribe-items-left">
-									<div class="subscribe-item-title">Новостная рассылка</div>
-									<div class="subscribe-item-form">
-										<div class="subscribe-form">
-											<div class="subscribe-form-input">
-												<!-- {{ mailing_form.as_p }} -->
-												<input type="email" class="input" name="mailing_email"
-												placeholder="Адрес електронной почты" required id="id_mailing_email">
-											</div>
-											<div class="subscribe-form-button">
-												{% csrf_token %}
-												<input class="subscribe-button" form="mailing_form" type="submit" name="mailing_form" value="Подписаться">
-												<!-- <button class="subscribe-button">
-													Подписаться
-												</button> -->
-											</div>
-										</div>
-									</div>
-									<div class="subscribe-item-policy">
-										<p>Нажимая подписаться вы получите сообщение подтверждающее вашу подписку</p>
-									</div>
-								</div>
-								<div class="subscribe-items-right">
-									<div class="footer-subscribe-description">
+									<div class="text-col">
 										<p>
-											Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и скидок.
+											Запрос на подписку успешно оформлен, подтверждающее письмо
+											было выслано вам на почту!
 										</p>
 									</div>
 								</div>
 							</div>
 						</div>
-					</form>
+					</div>
 				</div>
-				{% endif %}
+			</div>
+				{% else %}
+			<div class="footer-scheme-01">
+				<form id="mailing_form" action="." method="post" class="footer-subscribe">
+
+					<div class="container">
+						<div class="subscribe-items">
+							<div class="subscribe-items-left">
+								<div class="subscribe-item-title">Новостная рассылка</div>
+								<div class="subscribe-item-form">
+									<div class="subscribe-form">
+										<div class="subscribe-form-input">
+											<!-- {{ mailing_form.as_p }} -->
+											<input type="email" class="input" name="mailing_email"
+											placeholder="Адрес електронной почты" required id="id_mailing_email">
+										</div>
+										<div class="subscribe-form-button">
+											{% csrf_token %}
+											<input class="subscribe-button" form="mailing_form" type="submit" name="mailing_form" value="Подписаться">
+											<!-- <button class="subscribe-button">
+												Подписаться
+											</button> -->
+										</div>
+									</div>
+								</div>
+								<div class="subscribe-item-policy">
+									<p>Нажимая подписаться вы получите сообщение подтверждающее вашу подписку</p>
+								</div>
+							</div>
+							<div class="subscribe-items-right">
+								<div class="footer-subscribe-description">
+									<p>
+										Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и скидок.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			{% endif %}
 
 
-				<div class="footer-scheme-02">
-					<div class="footer-menu">
-						<div class="justify-content-between">
+			<div class="footer-scheme-02">
+				<div class="footer-menu">
+					<div class="justify-content-between">
 
-							<div class="footer-menu-block">
-								<div class="menu-block">
-									<div class="menu-title">
-										<a href="{% url 'index' %}">
-											<img src="{% static 'label.png' %}" class="label label-footer">
-											<!-- <div class="label-lighter"></div> -->
+						<div class="footer-menu-block">
+							<div class="menu-block">
+								<div class="menu-title">
+									<a href="{% url 'index' %}">
+										<img src="{% static 'label.png' %}" class="label label-footer" alt="FoxyShop">
+										<!-- <div class="label-lighter"></div> -->
+									</a>
+								</div>
+								<ul class="menu-items">
+									<li class="menu-item menu-item-phone">
+										<a href="tel:+38(099)98-52-672" class="phone_number">
+											+38 (099) 985-26-72
 										</a>
-									</div>
-									<ul class="menu-items">
-										<li class="menu-item menu-item-phone">
-											<a href="tel:+38(099)98-52-672" class="phone_number">
-												+38 (099) 985-26-72
-											</a>
-											<div class="request_call footer-call">
-												<a href="#">Заказать звонок</a>
-											</div>
-										</li>
-										<li class="menu-item menu-item-icon">
-											<i class="far fa-envelope"></i>
-											<a href="mailto:illyaredkolis@gmail.com" itempror="email">
-												illyaredkolis@gmail.com
-											</a>
-										</li>
-										<li class="menu-item menu-item-icon">
-											<i class="fas fa-map-marker-alt"></i>
-											<p itempror="adress" class="menu-item_text"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
-										</li>
-										<li class="menu-item menu-item-icon">
-											<i class="far fa-clock"></i>
-											<p class="menu-item_text">
-												Будние дни с 8:00 до 20:00
-												Выходные с 10:00 до 16:00
-											</p>
-										</li>
-										<li class="menu-item menu-item-icon">
-											<i class="far fa-address-card"></i>
-											<p class="menu-item_text">
-												Редколис Илья Григорьевич
-											</p>
-										</li>
-									</ul>
-								</div>
+										<div class="request_call footer-call">
+											<a href="#">Заказать звонок</a>
+										</div>
+									</li>
+									<li class="menu-item menu-item-icon">
+										<i class="far fa-envelope"></i>
+										<a href="mailto:illyaredkolis@gmail.com">
+											illyaredkolis@gmail.com
+										</a>
+									</li>
+									<li class="menu-item menu-item-icon">
+										<i class="fas fa-map-marker-alt"></i>
+										<p class="menu-item_text"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
+									</li>
+									<li class="menu-item menu-item-icon">
+										<i class="far fa-clock"></i>
+										<p class="menu-item_text">
+											Будние дни с 8:00 до 20:00
+											Выходные с 10:00 до 16:00
+										</p>
+									</li>
+									<li class="menu-item menu-item-icon">
+										<i class="far fa-address-card"></i>
+										<p class="menu-item_text">
+											Редколис Илья Григорьевич
+										</p>
+									</li>
+								</ul>
 							</div>
-
-							<div class="footer-menu-block">
-								<div class="menu-block">
-									<div class="menu-title title-collection">Каталог товаров</div>
-									<ul class="menu-items">
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'telefony' %}">Телефоны</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">Фото и видео</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">Ноутбуки, планшеты, компьютеры</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'konsoli' %}">Консоли</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">Наушники и аудио</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">Гаджеты и авто</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'aksessuary' %}">Аксессуары</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">Техника для дома</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'raznoe' %}">Разное</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:brand' %}">Бренды</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="footer-menu-block footer-menu-block-extra">
-								<div class="menu-block">
-									<div class="menu-title title-collection">Дополнительно</div>
-									<ul class="menu-items">
-										<li class="menu-item collection-item"><a href="{% url 'index' %}">Главная</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Акции</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Новинки</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'blog:list' %}">Статьи</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:delivery' %}">Оплата и доставка</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Контакты</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Обратная связь</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Пользовательское соглашение</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Политика конфиденциальности</a></li>
-										<li class="menu-item collection-item"><a href="{% url 'empty' %}">Часто задаваемые вопросы</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="footer-menu-block">
-								<div class="menu-block">
-									<div class="menu-title title-collection">О компании</div>
-									<ul class="menu-items">
-										<li class="menu-item collection-item">
-											<p>
-												Lorem ipsum dolor sit amet conse ctetur adipisicing elit,
-												 sed do eiusmod tempor incididunt ut labore et dolore.
-												 Lorem ipsum dolor sit amet conse ctetur adipisicing elit,
-												 sed do eiusmod tempor incididunt ut labore et dolore.
-											</p>
-										</li>
-									</ul>
-									<div class="menu-title menu-title-second title-collection">
-										Мы в социальных сетях
-									</div>
-									<ul class="menu-items">
-										<li class="menu-item">
-											<div class="social">
-												<ul>
-													<li class="social-item">
-														<a href="http://instagram.com/">
-															<i class="fab fa-instagram"></i>
-														</a>
-													</li>
-													<li class="social-item">
-														<a href="http://facebook.com/">
-															<i class="fab fa-facebook-square"></i>
-														</a>
-													</li>
-													<li class="social-item">
-														<a href="http://youtube.com/">
-															<i class="fab fa-youtube"></i>
-														</a>
-													</li>
-													<li class="social-item">
-														<a href="http://twitter.com/">
-															<i class="fab fa-twitter"></i>
-														</a>
-													</li>
-													<li class="social-item">
-														<a href="https://t.me/">
-															<i class="fab fa-telegram"></i>
-														</a>
-													</li>
-													<li class="social-item">
-														<a href="https://ru.pinterest.com/">
-															<i class="fab fa-pinterest"></i>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-
 						</div>
-					</div>
 
-				</div>
-				<div class="footer-scheme-03">
-					<div class="footer-copyright">
-						<div class="footer-container">
-							<div class="align-items-center">
-								<div class="footer-copyright-text">
-									<div class="text-lg-left">
-											<p>2020 &copy; FoxyShop — шаблон интернет-магазина созданного для портфолио</p>
-									</div>
+						<div class="footer-menu-block">
+							<div class="menu-block">
+								<div class="menu-title title-collection">Каталог товаров</div>
+								<ul class="menu-items">
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'telefony' %}">Телефоны</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">Фото и видео</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">Ноутбуки, планшеты, компьютеры</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'konsoli' %}">Консоли</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">Наушники и аудио</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">Гаджеты и авто</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'aksessuary' %}">Аксессуары</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">Техника для дома</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'raznoe' %}">Разное</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:brand' %}">Бренды</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="footer-menu-block footer-menu-block-extra">
+							<div class="menu-block">
+								<div class="menu-title title-collection">Дополнительно</div>
+								<ul class="menu-items">
+									<li class="menu-item collection-item"><a href="{% url 'index' %}">Главная</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Акции</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Новинки</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'blog:list' %}">Статьи</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:delivery' %}">Оплата и доставка</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Контакты</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Обратная связь</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Пользовательское соглашение</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Политика конфиденциальности</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Часто задаваемые вопросы</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="footer-menu-block">
+							<div class="menu-block">
+								<div class="menu-title title-collection">О компании</div>
+								<ul class="menu-items">
+									<li class="menu-item collection-item">
+										<p>
+											Lorem ipsum dolor sit amet conse ctetur adipisicing elit,
+											 sed do eiusmod tempor incididunt ut labore et dolore.
+											 Lorem ipsum dolor sit amet conse ctetur adipisicing elit,
+											 sed do eiusmod tempor incididunt ut labore et dolore.
+										</p>
+									</li>
+								</ul>
+								<div class="menu-title menu-title-second title-collection">
+									Мы в социальных сетях
 								</div>
-								<div class="footer-copyright-items">
-									<div class="text-lg-right">
-										<ul class="tehnology">
-											<li><i class="fab fa-python"></i></li>
-											<li><i class="fab fa-html5"></i></li>
-											<li><i class="fab fa-css3-alt"></i></li>
-											<li><i class="fab fa-js-square"></i></li>
-											<li><i class="fas fa-database"></i></li>
-											<li><i class="fab fa-git-square"></i></li>
-										</ul>
-									</div>
+								<ul class="menu-items">
+									<li class="menu-item">
+										<div class="social">
+											<ul>
+												<li class="social-item">
+													<a href="http://instagram.com/">
+														<i class="fab fa-instagram"></i>
+													</a>
+												</li>
+												<li class="social-item">
+													<a href="http://facebook.com/">
+														<i class="fab fa-facebook-square"></i>
+													</a>
+												</li>
+												<li class="social-item">
+													<a href="http://youtube.com/">
+														<i class="fab fa-youtube"></i>
+													</a>
+												</li>
+												<li class="social-item">
+													<a href="http://twitter.com/">
+														<i class="fab fa-twitter"></i>
+													</a>
+												</li>
+												<li class="social-item">
+													<a href="https://t.me/">
+														<i class="fab fa-telegram"></i>
+													</a>
+												</li>
+												<li class="social-item">
+													<a href="https://ru.pinterest.com/">
+														<i class="fab fa-pinterest"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="footer-scheme-03">
+				<div class="footer-copyright">
+					<div class="container">
+						<div class="align-items-center">
+							<div class="footer-copyright-text">
+								<div class="text-lg-left">
+										<p>2020 &copy; FoxyShop — шаблон интернет-магазина созданного для портфолио</p>
+								</div>
+							</div>
+							<div class="footer-copyright-items">
+								<div class="text-lg-right">
+									<ul class="tehnology">
+										<li><i class="fab fa-python"></i></li>
+										<li><i class="fab fa-html5"></i></li>
+										<li><i class="fab fa-css3-alt"></i></li>
+										<li><i class="fab fa-js-square"></i></li>
+										<li><i class="fas fa-database"></i></li>
+										<li><i class="fab fa-git-square"></i></li>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</footer>
-		</div>
-	</body>
+			</div>
+		</footer>
+	</div>
+</body>
 </html>

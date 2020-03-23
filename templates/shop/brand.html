@@ -2,7 +2,7 @@
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
-	<div class="footer-container">
+	<div class="container">
 		<ul class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
@@ -18,33 +18,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-container">
-	<div class="content-container1">
-		<div class="content">
-			<div class="brand-col">
-				<div class="content-title">
-					<div class="title-text">
-						<h1>Бренды</h1>
-					</div>
+<div class="container">
+	<div class="content">
+		<div class="brand-col">
+			<div class="content-title">
+				<div class="title-text">
+					<h1>Бренды</h1>
 				</div>
 			</div>
-			<div class="brand-content">
-				<div class="subcollections">
-					<div class="brand-row">
-						{% for brand in brands %}
-						<div class="current-brand-col">
-							<div class="subcollections">
-								<div class="subcollections-logo">
-									<a href="{% url 'shop:by_brand' brand.slug %}" class="subcollections-url">
-										<span class="subcollection_card-thumb-item">
-											<img src="{{ brand.logo.url }}">
-										</span>
-									</a>
-								</div>
+		</div>
+		<div class="brand-content">
+			<div class="subcollections">
+				<div class="brand-row">
+					{% for brand in brands %}
+					<div class="current-brand-col">
+						<div class="subcollections">
+							<div class="subcollections-logo">
+								<a href="{% url 'shop:by_brand' brand.slug %}" class="subcollections-url">
+									<span class="subcollection_card-thumb-item">
+										<img src="{{ brand.logo.url }}">
+									</span>
+								</a>
 							</div>
 						</div>
-						{% endfor %}
 					</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>

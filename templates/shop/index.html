@@ -5,25 +5,7 @@
 <div class="layout-page">
   <div class="section-slider">
     <div class="slider">
-      <!-- <div class="slider-items">
-        <div class="owl-stage-outer">
-          <div class="slider-item">
-            <a href="{% url 'shop:products' %}">
-              <img src="{% static 'shop/ipad_banner.png' %}" alt="">
-            </a>
-          </div>
-          <div class="slider-item">
-            <a href="{% url 'shop:products' %}">
-              <img src="{% static 'shop/macbook_banner.png' %}" alt="">
-            </a>
-          </div>
-          <div class="slider-item">
-            <a href="{% url 'shop:products' %}">
-              <img src="{% static 'shop/airpods-banner.jpg' %}" alt="">
-            </a>
-          </div>
-        </div>
-      </div> -->
+
       <div id="slider">
         <a href="{% url 'shop:products' %}">
           <img src="{% static 'shop/ipad_banner.png' %}" alt="">
@@ -37,7 +19,14 @@
       </div>
     </div>
   </div>
-  <div class="content-container">
+  <div class="section-benefits">
+    <div class="benefits">
+      <div class="container">
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
     {% if messages %}
     <!-- <div class="content-container"> -->
       <div class="messages-main">

@@ -78,6 +78,30 @@ table {
   height: 143.5px;
 } */
 
+.container {
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto; }
+
+@media (min-width: 576px) {
+  /* line 1, bootstrap-grid.min.css */
+  .container {
+    max-width: 540px; } }
+@media (min-width: 768px) {
+  /* line 1, bootstrap-grid.min.css */
+  .container {
+    max-width: 720px; } }
+@media (min-width: 1025px) {
+  /* line 1, bootstrap-grid.min.css */
+  .container {
+    max-width: 980px; } }
+@media (min-width: 1200px) {
+  /* line 1, bootstrap-grid.min.css */
+  .container {
+    max-width: 1120px; } }
+
 .logo {
   max-width: 1160px;
   margin: auto;
@@ -93,42 +117,9 @@ table {
   padding: 20px 24px;
 }
 
-.container {
+.cont {
   height: inherit;
 }
-
-/* .logo_text {
-  display: inline-block;
-  vertical-align: top;
-  padding-top: 9px;
-  padding-left: 2px;
-}
-
-.logo_text h1 {
-  display: inline-block;
-
-  font-size: 40pt;
-  /* размер шрифта
-}
-
-.logo_text h1, .logo_text h1 a {
-  font-family: 'Shrewdy';
-  font-weight: normal;
-  font-style: normal;
-
-  padding: 5px 20px 5px 20px;
-  /* внутринние отступы
-  border-radius: 0px 20px 20px 25px;
-  /* закругление углов
-  color: black;
-	letter-spacing: 0.02em;
-  /* отступы между буквами
-	text-decoration: none;
-  /* нижнее подчеркивание
-  text-shadow: lightgray 2px 2px 0px;
-  /* тени вокруг текста
-  background: url("_53876-81626.jpg") center / auto 250% no-repeat;
-} */
 
 .logo_image {
   display: inline-block;
@@ -826,17 +817,6 @@ table {
   background-color: black;
 }
 
-.menubar {
-  max-width: 1140px;
-  margin: auto;
-  height: inherit;
-}
-
-.navbar {
-  padding: 0 13.5px;
-  height: inherit;
-}
-
 .nav {
   height: inherit;
   font-size: 14px;
@@ -1017,11 +997,6 @@ table {
   flex-wrap: wrap;
 }
 
-.content-container {
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
 .sidebar {
   display: block;
   float: left;
@@ -1029,9 +1004,6 @@ table {
   max-width: 25%;
 }
 
-.sidebar-container {
-  padding: 0 13px;
-}
 
 .sidebar-collection {
   padding-right: 20px;
@@ -1513,14 +1485,6 @@ table {
   padding: 20px 0px;
 }
 
-.footer-container {
-  max-width: 1120px;
-  /* width: 100%; */
-  padding-right: 10px;
-  padding-left: 10px;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .subscribe-items {
   align-items: center;
@@ -1634,6 +1598,19 @@ table {
   padding-left: 10px;
 }
 
+@media (max-width: 1025px) {
+
+  .subscribe-items-left {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .subscribe-items-right {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 .footer-subscribe-description {
   font-size: 14px;
   line-height: 18px;
@@ -1729,6 +1706,7 @@ table {
 }
 
 .menu-item-icon i {
+  display: inline-block;
   color: darkorange;
   font-size: 16px;
   vertical-align: top;
@@ -1744,7 +1722,7 @@ table {
 
 .menu-item_text {
   display: inline-block;
-  width: 235px;
+  width: 80%;
   font-size: 14px;
 }
 
@@ -1864,7 +1842,8 @@ table {
 
 .content-left {
   flex: 0 0 48%;
-  max-width: 50%;
+  max-width: 47%;
+  min-width: 460px;
 }
 
 .col {
@@ -1877,8 +1856,19 @@ table {
 
 .content-right {
   flex: 0 0 48%;
-  max-width: 50%;
+  max-width: 47%;
 }
+
+@media (max-width: 1025px) {
+  /* line 1, bootstrap-grid.min.css */
+  .content-right {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .content-left {
+    flex: 0 0 100%;
+    max-width: 100%;
+  } }
 
 .product-images {
   display: block;
@@ -1904,6 +1894,13 @@ table {
   object-fit: cover;
   object-position: auto;
 }
+
+@media (max-width: 1200px)
+  and (min-width : 1026px) {
+  /* line 1, bootstrap-grid.min.css */
+  .product-img {
+    max-height: 460px;
+    max-width: 460px; } }
 
 .product-gallery-image {
   display: inline-block;
@@ -1965,7 +1962,7 @@ table {
   font-weight: 400;
   margin: 0px 0px 10px;
   color: #000;
-  width: 430px;
+  width: 80%;
 }
 
 .product-brand {
@@ -2203,14 +2200,19 @@ table {
 }
 
 .order {
-  flex: 0 0 100%;
-  max-width: 96.3%;
   position: relative;
-  width: 100%;
+  width: 88%;
   min-height: 1px;
   padding-right: 10px;
   padding-left: 10px;
 }
+
+@media (max-width: 1025px)
+  and (min-width : 768px) {
+  /* line 1, bootstrap-grid.min.css */
+  .order {
+    width: 91.5%;
+    } }
 
 .product-quick_checkout {
   margin-top: 20px;
@@ -2218,11 +2220,6 @@ table {
 
 .quick_checkout {
   background-color: #3095dd;
-  max-width: 480px;
-}
-
-.product_add {
-  max-width: 360px;
 }
 
 .product-extras {
@@ -2433,7 +2430,7 @@ table {
 }
 
 .delivery {
-  width: 94.5%;
+  width: auto;
   font-size: 25px;
   border-radius: 3px;
   margin-bottom: 2px;
@@ -2600,15 +2597,6 @@ table {
   position: relative;
 }
 
-.product-container {
-  max-width: 1120px;
-  width: 100%;
-  padding-right: 10px;
-  padding-left: 10px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .additionally {
   position: relative;
   width: 100%;
@@ -2694,7 +2682,7 @@ table {
 
 .comments-all {
   flex: 0 0 55%;
-  max-width: 55%;
+  max-width: 54%;
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -2804,6 +2792,20 @@ table {
   margin: 0px 0px 20px;
   margin-left: 20px;
 }
+
+@media (max-width: 1025px) {
+
+  .comments-all {
+    flex: 0 0 100%;
+    max-width: 100%;
+    }
+  .create-comment {
+    flex: 0 0 100%;
+    max-width: 100%;
+    }
+  .review-form {
+    margin-left: 0px;
+    } }
 
 .product-reviews {
   margin-bottom: 20px;
@@ -3688,10 +3690,6 @@ table {
   text-transform: uppercase;
 }
 
-.content-container1 {
-  padding: 0 13px;
-}
-
 .brand-col {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
@@ -4097,10 +4095,6 @@ table {
 
 .co-order_history-total_sum {
   display: inline-block;
-}
-
-.content-container2 {
-  padding: 0 13px;
 }
 
 .search-col {
@@ -4767,6 +4761,18 @@ table {
   overflow: hidden;
 }
 
+.section-benefits {
+  position: relative;
+}
+
+.benefits {
+  margin: 20px 0px 0px;
+}
+
+
+
+
+
 /* css mobile */
 @media only screen
 /* and (min-device-width : 820px) */
@@ -4779,7 +4785,12 @@ and (max-device-width : 1150px) {
     margin-top: 2px;
   }
 
-  /* .footer-menu-block-extra {
+  .sidebar {
     display: none;
-  } */
+  }
+
+  .section {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }

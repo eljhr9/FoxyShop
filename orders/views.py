@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from cart.cart import Cart
+from .tasks import order_created
 
 
 def create_order(request):
@@ -14,7 +15,10 @@ def create_order(request):
                 OrderItem.objects.create(order=order, product=item['product'],
                                          price=item['price'], quantity=item['quantity'])
             cart.clear()
-            return render(request, 'orders/created.html', {'order': order})
+            orderitems = OrderItem.objects.filter(order=order)
+            order_url = request.build_absolute_uri(order.get_absolute_url())
+            order_created.delay(order.id, order_url)
+            return render(request, 'orders/created.html', {'order': order, 'orderitems': orderitems})
     else:
         order_form = OrderCreateForm()
     context = {'cart': cart, 'order_form': order_form}

@@ -4,7 +4,7 @@
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
-	<div class="footer-container">
+	<div class="container">
 		<ul class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
@@ -26,7 +26,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-container">
+<div class="container">
 	<div class="content">
 		<div class="content-left col">
 		  <div class="product-images">
@@ -191,7 +191,7 @@
 									{% csrf_token %}
 		              <div class="product-add">
 		                <div class="product_add">
-		                  <button class="add-to-cart" type="submit" data-item-add="">
+		                  <button name="product" class="add-to-cart" type="submit" data-item-add="">
 		                    <i class="fas fa-cart-plus"></i>
 		                    <span>В корзину</span>
 		                  </button>
@@ -202,9 +202,6 @@
 											<a href="{% url 'orders:create_order' %}" class="add-to-cart quick_checkout">
 												Заказ в один клик
 											</a>
-		                  <!-- <button class="add-to-cart quick_checkout" type="submit" data-quick-checkout>
-		                    Заказ в один клик
-		                  </button> -->
 		                </div>
 		              </div>
 		            </div>
@@ -340,7 +337,7 @@
 	</div>
 </div>
 <div class="product-section">
-	<div class="product-container">
+	<div class="container">
 		<div class="additionally">
 			<div class="additionally-row">
 				<div class="additionally-item">
@@ -365,7 +362,7 @@
 	</div>
 </div>
 <div class="product-section">
-	<div class="product-container">
+	<div class="container">
 		<div class="comments-row" id="comments">
 			<div class="comments-all">
 				<div class="product-reviews">
@@ -538,7 +535,7 @@
 </div>
 {% if similar_products %}
 <div class="product-section">
-	<div class="product-container">
+	<div class="container">
 		<div class="products">
 			<div class="similar_products">Аналогичные товары</div>
 			{% for product in similar_products %}
@@ -588,7 +585,7 @@
 							<form action="{% url 'cart:cart_add' product.id %}" method="post">
 								<input type="hidden" id="id_quantity" name="quantity" value="1">
 								{% csrf_token %}
-								<button class="bascet-add">
+								<button name="product" class="bascet-add">
 									<i class="fas fa-shopping-basket"></i>
 									<span>В корзину</span>
 								</button>
