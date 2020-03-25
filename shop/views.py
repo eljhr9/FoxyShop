@@ -14,7 +14,8 @@ from django.contrib import messages
 
 def index(request):
 	'''домашняя страница магазина'''
-	context = {'title': 'Главная'}
+	products = Product.objects.all()[:8]
+	context = {'title': 'Главная', 'products': products}
 	return render(request, 'shop/index.html', context)
 
 

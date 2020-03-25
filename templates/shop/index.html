@@ -1,28 +1,374 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block content %}
 <div class="layout-page">
   <div class="section-slider">
     <div class="slider">
-
-      <div id="slider">
-        <a href="{% url 'shop:products' %}">
-          <img src="{% static 'shop/ipad_banner.png' %}" alt="">
-        </a>
-        <a href="{% url 'shop:products' %}">
-          <img src="{% static 'shop/macbook_banner.png' %}" alt="">
-        </a>
-        <a href="{% url 'shop:products' %}">
-          <img src="{% static 'shop/airpods-banner.jpg' %}" alt="">
-        </a>
+      <div class="slider_items">
+        <div id="slider" class="owl-carousel">
+          <div class="slider_item">
+            <a href="{% url 'shop:products' %}">
+              <img src="{% static 'shop/ipad_banner.png' %}" alt="">
+            </a>
+          </div>
+          <div class="slider_item">
+            <a href="{% url 'shop:products' %}">
+              <img src="{% static 'shop/macbook_banner.png' %}" alt="">
+            </a>
+          </div>
+          <div class="slider_item">
+            <a href="{% url 'shop:products' %}">
+              <img src="{% static 'shop/airpods-banner.jpg' %}" alt="">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="section-benefits">
     <div class="benefits">
       <div class="container">
+        <div class="authenticate-row">
+          <div class="benefits-col">
+            <div class="benefits-item">
+              <div class="benefits-row">
+                <div class="benefits-item-col_pic">
+                  <img class="benefit-img" src="{% static 'benefit-1.webp' %}" alt="">
+                </div>
+                <div class="benefits-item-col_text">
+                  <div class="benefits-item-title">Бесплатная доставка</div>
+                  <div class="benefits-item-description">
+                    Бесплатная доставка по Украине при сумме заказа от 1200 грн.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="benefits-col">
+            <div class="benefits-item">
+              <div class="benefits-row">
+                <div class="benefits-item-col_pic">
+                  <img class="benefit-img" src="{% static 'benefit-2.webp' %}" alt="">
+                </div>
+                <div class="benefits-item-col_text">
+                  <div class="benefits-item-title">Поддержка 24/7</div>
+                  <div class="benefits-item-description">
+                    На связи с клиентами 24 часа в сутки, 7 дней в неделю
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="benefits-col">
+            <div class="benefits-item">
+              <div class="benefits-row">
+                <div class="benefits-item-col_pic">
+                  <img class="benefit-img" src="{% static 'benefit-3.webp' %}" alt="">
+                </div>
+                <div class="benefits-item-col_text">
+                  <div class="benefits-item-title">30 дней на возврат</div>
+                  <div class="benefits-item-description">
+                    Простой возврат товара в течение 30 дней с даты покупки
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-banners">
+    <div class="container">
+      <div class="banners">
+        <div class="authenticate-row">
+          <div class="banners-top">
+            <a href="{% url 'shop:by_rubric' 'telefony' %}" class="banners-item">
+              <img class="big_img" src="{% static 'banners/telefony.webp' %}" alt="">
+              <span class="banners-item-title">
+                <span>Телефоны</span>
+              </span>
+            </a>
+          </div>
+          <div class="banners-top">
+            <a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}" class="banners-item">
+              <img class="big_img" src="{% static 'banners/noutbuki.jpg' %}" alt="">
+              <span class="banners-item-title">
+                <span>Ноутбуки</span>
+              </span>
+            </a>
+          </div>
+          <div class="banners-bottom">
+            <a href="{% url 'shop:by_rubric' 'konsoli' %}" class="banners-item">
+              <img class="small_img" src="{% static 'banners/konsoli.jpg' %}" alt="">
+              <span class="banners-item-title">
+                <span>Консоли</span>
+              </span>
+            </a>
+          </div>
+          <div class="banners-bottom">
+            <a href="{% url 'shop:by_rubric' 'foto-i-video' %}" class="banners-item">
+              <img class="small_img" src="{% static 'banners/photo.jpg' %}" alt="">
+              <span class="banners-item-title">
+                <span>Фото и видео</span>
+              </span>
+            </a>
+          </div>
+          <div class="banners-bottom">
+            <a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}" class="banners-item">
+              <img class="small_img" src="{% static 'banners/naushniki.jpg' %}" alt="">
+              <span class="banners-item-title">
+                <span>Наушники</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-tabs">
+    <div class="section-title text-center">Подборки товаров</div>
+    <div class="container">
+      <div class="tabs">
+        <div class="authenticate-row tabs-list">
+          <div class="tabs-col is_active">Товары на главной</div>
+          <div class="tabs-col">Товар дня</div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs-content is_active">
+      <div class="section-products">
+        <div class="tabs-products">
+          <div class="container">
+            <div class="products search-products">
+              {% for product in products %}
+                <div class="current-product">
+                  <a href="{{ product.get_absolute_url }}" class="product-card">
+                  <div class="product-image">
+                    {% if product.image_1 %}
+                      {% thumbnail product.image_1 "300x300" as img %}
+                        <img class="product_img" src="{{ img.url }}">
+                      {% endthumbnail %}
+                    {% else %}
+                      <img class="product_img" src="{% static 'large_technics-04-1_002.jpg' %}">
+                    {% endif %}
+                  </div>
+                  </a>
+                  <div class="product-card-title">
+                    <a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+                  </div>
+                  <div class="product-card-rating">
 
+                    <div class="rating-items">
+                      <a href="{{ product.get_absolute_url }}" class="rating">
+                        {% if product.comments.count >= 1 %}
+                        <span class="rating-item full"><i class="fas fa-star"></i></span>
+                        <span class="rating-item full"><i class="fas fa-star"></i></span>
+                        <span class="rating-item full"><i class="fas fa-star"></i></span>
+                        <span class="rating-item full"><i class="fas fa-star"></i></span>
+                        <span class="rating-item"><i class="far fa-star"></i></span>
+                        {% else %}
+                        <span class="rating-item"><i class="far fa-star"></i></span>
+                        <span class="rating-item"><i class="far fa-star"></i></span>
+                        <span class="rating-item"><i class="far fa-star"></i></span>
+                        <span class="rating-item"><i class="far fa-star"></i></span>
+                        <span class="rating-item"><i class="far fa-star"></i></span>
+                        {% endif %}
+                        <span class="rating-link">
+                          <span class="icon"><i class="far fa-comment-dots"></i></span>
+                          <span class="icon-count"><p>{{ product.comments.count }}</p></span>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="product-card-prices">
+                      <span><h4>{{ product.price }} ₴</h4></span>
+                    </div>
+                    <div class="product-card-add">
+                      <div class="bascet-field">
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                          <input type="hidden" id="id_quantity" name="quantity" value="1">
+                          {% csrf_token %}
+                          <button class="bascet-add">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span>В корзину</span>
+                          </button>
+                        </form>
+                      </div>
+                      <div class="favorite-field">
+												{% if product in compare %}
+												<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
+													<button name="products" type="submit" class="button compare">
+														{% csrf_token %}
+														<span class="fas fa-align-right fa-lg comparing"></span>
+													</button>
+												</form>
+												{% else %}
+												<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
+													<button name="products" type="submit" class="button compare">
+														{% csrf_token %}
+														<span class="fas fa-align-right fa-lg"></span>
+													</button>
+												</form>
+												{% endif %}
+                        {% if product in favourite %}
+                        <button class="button favorite">
+                          <!-- <i class="fas fa-heart product-fav"></i> -->
+                           <span class="fas fa-heart fa-lg product-fav"></span>
+                        </button>
+                        {% else %}
+                          <button class="button favorite">
+                            <!-- <i class="fas fa-heart product-fav"></i> -->
+                             <span class="far fa-heart fa-lg"></span>
+                          </button>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tabs-all">
+        <div class="container">
+          <div class="authenticate-row">
+            <div class="more_product-col">
+              <a href="{% url 'shop:products' %}" class="subscribe-button">Посмотреть все товары</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-user_reviews">
+    <div class="review-row">
+      <div class="review-col">
+        <div class="section-title text-center">Отзывы покупателей</div>
+        <div id="user_reviews" class="user_reviews-carousel owl-carousel">
+          <div class="user_review">
+            <div class="container">
+              <div class="user_review-row">
+                <div class="user_review-col">
+                  <div class="user_review-data">
+                    <div class="user_review-thumb">
+                      <img src="{% static 'slider/img/review-3-min.webp' %}" alt="">
+                    </div>
+                    <div class="user_review-name">
+                      Рик Санчез
+                    </div>
+                    <div class="user_review-rating">
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="user_review-content">
+                      <p>
+                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="user_review">
+            <div class="container">
+              <div class="user_review-row">
+                <div class="user_review-col">
+                  <div class="user_review-data">
+                    <div class="user_review-thumb">
+                      <img src="{% static 'slider/img/review-4-min.webp' %}" alt="">
+                    </div>
+                    <div class="user_review-name">
+                      Мистер Мисикс
+                    </div>
+                    <div class="user_review-rating">
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="user_review-content">
+                      <p>
+                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="user_review">
+            <div class="container">
+              <div class="user_review-row">
+                <div class="user_review-col">
+                  <div class="user_review-data">
+                    <div class="user_review-thumb">
+                      <img src="{% static 'slider/img/review-2-min.webp' %}" alt="">
+                    </div>
+                    <div class="user_review-name">
+                      Морти Смит
+                    </div>
+                    <div class="user_review-rating">
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="user_review-content">
+                      <p>
+                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="user_review">
+            <div class="container">
+              <div class="user_review-row">
+                <div class="user_review-col">
+                  <div class="user_review-data">
+                    <div class="user_review-thumb">
+                      <img src="{% static 'slider/img/review-1-min.webp' %}" alt="">
+                    </div>
+                    <div class="user_review-name">
+                      Джерри Смит
+                    </div>
+                    <div class="user_review-rating">
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+            					<span class="rating-item full"><i class="fas fa-star"></i></span>
+                      <span class="rating-item full"><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="user_review-content">
+                      <p>
+                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user_reviews-send">
+          <a href="{% url 'shop:contacts' %}" class="article_button">
+            <i class="far fa-comment-dots"></i>
+            <span>Оставьте свой отзыв</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -50,6 +396,5 @@
     <img class="empty-page-img" src="{% static 'razrabotka.png' %}" alt="">
   </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="{% static 'shop/slider.js' %}"></script>
+
 {% endblock content %}

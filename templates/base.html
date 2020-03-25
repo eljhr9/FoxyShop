@@ -6,13 +6,17 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+	<meta name="viewport" content="width=1200">
 	<title>FoxyShop</title>
-	<link rel="stylesheet" href="{% static 'shop/style.css' %}">
+
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 	integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'slider/owlcarousel2/assets/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'slider/owlcarousel2/assets/owl.theme.default.css' %}">
+	<link rel="stylesheet" href="{% static 'shop/style.css' %}">
 </head>
 
 <body>
@@ -426,7 +430,7 @@
 						<nav class="nav">
 							<ul class="nav-items">
 								<div class="li-board collection">
-									<li class="">
+									<li class="nav-item nav-item-collection">
 										<a href="{% url 'shop:products' %}"> Каталог товаров</a>
 									</li>
 
@@ -440,14 +444,6 @@
 										<li><a href="{% url 'shop:by_rubric' rubric.slug %}">{{ rubric.name }}</a></li>
 										{% endif %}
 										{% endfor %}
-										<!-- <li><a href="#">Фото и видео</a></li>
-										<li><a href="#">Ноутбуки, планшеты</a></li>
-										<li><a href="#">Консоли</a></li>
-										<li><a href="#">Наушники и аудио</a></li>
-										<li><a href="#">Гаджеты и авто</a></li>
-										<li><a href="#">Аксессуары</a></li>
-										<li><a href="#">Техника для дома</a></li>
-										<li><a href="#">Разное</a></li> -->
 										<li class="brand-hidden">
 											{% if brand_page %}
 											<a href="{% url 'shop:brand' %}" class="more_nav selected_rubric">
@@ -475,35 +471,38 @@
 									</ul>
 								</nav>
 								<div class="li-board">
-									<li><a href="{% url 'index' %}" {% if title == 'Главная' %}class="li-board_selected"{% endif %}>Главная</a></li>
-								</div>
-								<div class="li-board">
-									<li><a href="{% url 'empty' %}" {% if title == 'Акции' %}class="li-board_selected"{% endif %}>Акции</a></li>
-									<!-- <li><a href="{% url 'index' %}admin">Админка</a></li> -->
-								</div>
-								<div class="li-board">
-									<li>
-										<a href="{% url 'empty' %}" {% if title == 'Новинки' %}class="li-board_selected"{% endif %}>Новинки</a>
+									<li {% if title == 'Главная' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'index' %}">Главная</a>
 									</li>
 								</div>
 								<div class="li-board">
-									<li>
-										<a href="{% url 'shop:brand' %}" {% if brand_page %}class="li-board_selected"{% endif %}>Бренды</a>
+									<li {% if title == 'Акции' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'empty' %}">Акции</a>
 									</li>
 								</div>
 								<div class="li-board">
-									<li>
-										<a href="{% url 'blog:list' %}" {% if title == 'Статьи' %}class="li-board_selected"{% endif %}>Статьи</a>
+									<li {% if title == 'Новинки' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'empty' %}">Новинки</a>
 									</li>
 								</div>
 								<div class="li-board">
-									<li>
-										<a href="{% url 'shop:delivery' %}" {% if title == 'Доставка' %}class="li-board_selected"{% endif %}>Оплата и Доставка</a>
+									<li {% if brand_page %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'shop:brand' %}">Бренды</a>
 									</li>
 								</div>
 								<div class="li-board">
-									<li>
-										<a href="{% url 'shop:contacts' %}" {% if title == 'Контакты' %}class="li-board_selected"{% endif %}>Контакты</a>
+									<li {% if title == 'Статьи' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'blog:list' %}">Статьи</a>
+									</li>
+								</div>
+								<div class="li-board">
+									<li {% if title == 'Доставка' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'shop:delivery' %}">Оплата и Доставка</a>
+									</li>
+								</div>
+								<div class="li-board">
+									<li {% if title == 'Контакты' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'shop:contacts' %}">Контакты</a>
 									</li>
 								</div>
 							</ul>
@@ -523,6 +522,12 @@
 
 	{% block comments %}
 	{% endblock comments %}
+
+	<script src="{% static 'slider/jquery/jquery-3.4.1.min.js' %}"></script>
+	<script src="{% static 'shop/slider.js' %}"></script>
+	<script src="{% static 'slider/owlcarousel2/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+
 	<div class="section-footer">
 		<footer>
 			{% if post %}
@@ -588,7 +593,6 @@
 				</form>
 			</div>
 			{% endif %}
-
 
 			<div class="footer-scheme-02">
 				<div class="footer-menu">
