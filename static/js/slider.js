@@ -22,3 +22,15 @@ $(document).ready(function(){
 
   });
 });
+
+
+$(document).ready(function(){
+  $("#brands-slider").owlCarousel({
+
+  	items: 6,
+    nav: true,
+  	loop: true,
+    dots: false
+
+  });
+});

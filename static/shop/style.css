@@ -283,7 +283,7 @@ table {
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transition: 0.4s;
-  z-index: 1;
+  z-index: 2;
 }
 
 .user-popup-contacts {
@@ -292,7 +292,7 @@ table {
 
 .popup-contacts {
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   background: #fff;
   width: 260px;
@@ -332,7 +332,7 @@ table {
   padding-bottom: 10px;
   font-size: 22px;
   /* line-height: 0; */
-  margin-left: -15px;
+  margin-left: -20px;
   border-radius: 0 0 10px 10px;
   /* width: 270px; */
   /* padding: 0 10px; */
@@ -616,7 +616,7 @@ table {
 .favourite-col {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
-  max-width: 94%;
+  max-width: 95%;
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -1106,12 +1106,13 @@ table {
 .article_card-img {
   width: 240px;
   height: 137.5px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .article_card-img a img {
   width: 100%;
   height: 100%;
+  background: #000;
   object-fit: cover;
   object-position: 0 0;
 }
@@ -1128,7 +1129,6 @@ table {
   text-transform: uppercase;
 }
 
-
 .hidden {
   opacity: 0;
   position: absolute;
@@ -1143,6 +1143,26 @@ table {
   transition-duration: .5s;
 }
 
+.articles-section-col .article_card-img {
+  width: 360px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.articles-section-col img {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  object-fit: cover;
+  object-position: 0 0;
+}
+
+.articles-section-col .hidden {
+  width: 360px;
+  height: 200px;
+  margin-top: -206px;
+}
+
 .hidden-text {
   width: 100px;
   height: 30px;
@@ -1154,9 +1174,17 @@ table {
   padding-top: 9px;
 }
 
+.articles-section-col .hidden-text {
+  margin: 79px auto;
+}
+
 .article_card:hover .hidden {
   opacity: 1;
+}
 
+.article_card-title {
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .article_card-title:hover a {
@@ -5086,6 +5114,191 @@ table {
 
 .user_reviews-carousel .owl-dots {
   margin: 35px 0px 0px ;
+}
+
+.section-blog {
+  position: relative;
+}
+
+.section-title-description {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 5px 0px 0px;
+}
+
+.articles {
+  margin: 0px 0px 20px;
+}
+
+.articles-section-col {
+  flex: 0 0 31%;
+  max-width: 31%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.section-title a {
+  transition: .3s;
+}
+
+.section-title a:hover {
+  color: darkorange;
+}
+
+.section-brands {
+  margin: 0px 0px 40px;
+  padding: 20px 0px;
+  background-color: #f7f8fa;
+}
+
+.brand_logo {
+  margin: 0px;
+}
+
+.brand_logo-thumb {
+  position: relative;
+  display: block;
+  width: 170px;
+  height: 95px;
+
+}
+
+.brand_logo-thumb-item {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: #fff center center no-repeat;
+  transition: 0.4s;
+}
+
+.brand_logo-thumb-item img {
+  display: block;
+  min-width: 70px;
+  height: 70px;
+  background-color: transparent;
+  object-fit: cover;
+  object-position: 0 0;
+  margin: auto;
+  padding: 12px 0;
+}
+
+.brands-slider .owl-nav .owl-prev, .brands-slider .owl-nav .owl-next,
+.user_reviews-slider .owl-nav .owl-prev, .user_reviews-slider .owl-nav .owl-next {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+
+.brands-slider .owl-nav .owl-prev, .user_reviews-slider .owl-nav .owl-prev {
+  left: -40px;
+}
+
+.brands-slider .owl-nav span {
+  font-size: 45px;
+  line-height: 35px;
+  transition: .3s;
+}
+
+.brands-slider .owl-nav span:hover {
+  color: darkorange;
+}
+
+.brands-slider .owl-nav .owl-next, .user_reviews-slider .owl-nav .owl-next {
+  right: -40px;
+}
+
+.section-instafeed {
+  position: relative;
+}
+
+.instafeed-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.instafeed-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.instafeed-gallery-col {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding: 0px;
+}
+
+.instafeed-gallery-col a {
+  display: block;
+  position: relative;
+  color: #fff !important;
+  background: center no-repeat;
+  background-size: auto;
+  background-size: cover;
+  height: 0px;
+  padding-top: 100%;
+}
+
+.instafeed-img {
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+  display: block;
+  min-height: 1px;
+  max-width: 100%;
+}
+
+.instafeed-gallery-col a span {
+  position: absolute;
+  z-index: 2;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+}
+
+.instafeed-gallery-col a span i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.instafeed-gallery-col a:hover span {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* css mobile */

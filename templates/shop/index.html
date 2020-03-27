@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load thumbnail %}
+{% load blog_tags %}
 
 {% block content %}
 <div class="layout-page">
@@ -10,17 +11,17 @@
         <div id="slider" class="owl-carousel">
           <div class="slider_item">
             <a href="{% url 'shop:products' %}">
-              <img src="{% static 'shop/ipad_banner.png' %}" alt="">
+              <img src="{% static 'slider/img/ipad_banner.png' %}" alt="">
             </a>
           </div>
           <div class="slider_item">
             <a href="{% url 'shop:products' %}">
-              <img src="{% static 'shop/macbook_banner.png' %}" alt="">
+              <img src="{% static 'slider/img/macbook_banner.png' %}" alt="">
             </a>
           </div>
           <div class="slider_item">
             <a href="{% url 'shop:products' %}">
-              <img src="{% static 'shop/airpods-banner.jpg' %}" alt="">
+              <img src="{% static 'slider/img/airpods-banner.jpg' %}" alt="">
             </a>
           </div>
         </div>
@@ -35,7 +36,7 @@
             <div class="benefits-item">
               <div class="benefits-row">
                 <div class="benefits-item-col_pic">
-                  <img class="benefit-img" src="{% static 'benefit-1.webp' %}" alt="">
+                  <img class="benefit-img" src="{% static 'benefit-1.png' %}" alt="">
                 </div>
                 <div class="benefits-item-col_text">
                   <div class="benefits-item-title">Бесплатная доставка</div>
@@ -50,7 +51,7 @@
             <div class="benefits-item">
               <div class="benefits-row">
                 <div class="benefits-item-col_pic">
-                  <img class="benefit-img" src="{% static 'benefit-2.webp' %}" alt="">
+                  <img class="benefit-img" src="{% static 'benefit-2.png' %}" alt="">
                 </div>
                 <div class="benefits-item-col_text">
                   <div class="benefits-item-title">Поддержка 24/7</div>
@@ -65,7 +66,7 @@
             <div class="benefits-item">
               <div class="benefits-row">
                 <div class="benefits-item-col_pic">
-                  <img class="benefit-img" src="{% static 'benefit-3.webp' %}" alt="">
+                  <img class="benefit-img" src="{% static 'benefit-3.png' %}" alt="">
                 </div>
                 <div class="benefits-item-col_text">
                   <div class="benefits-item-title">30 дней на возврат</div>
@@ -86,7 +87,7 @@
         <div class="authenticate-row">
           <div class="banners-top">
             <a href="{% url 'shop:by_rubric' 'telefony' %}" class="banners-item">
-              <img class="big_img" src="{% static 'banners/telefony.webp' %}" alt="">
+              <img class="big_img" src="{% static 'banners/telefony.png' %}" alt="">
               <span class="banners-item-title">
                 <span>Телефоны</span>
               </span>
@@ -256,7 +257,7 @@
                 <div class="user_review-col">
                   <div class="user_review-data">
                     <div class="user_review-thumb">
-                      <img src="{% static 'slider/img/review-3-min.webp' %}" alt="">
+                      <img src="{% static 'slider/img/review-3-min.jpg' %}" alt="">
                     </div>
                     <div class="user_review-name">
                       Рик Санчез
@@ -270,7 +271,7 @@
                     </div>
                     <div class="user_review-content">
                       <p>
-                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                        *Положительный отзыв*
                       </p>
                     </div>
                   </div>
@@ -284,7 +285,7 @@
                 <div class="user_review-col">
                   <div class="user_review-data">
                     <div class="user_review-thumb">
-                      <img src="{% static 'slider/img/review-4-min.webp' %}" alt="">
+                      <img src="{% static 'slider/img/review-4-min.jpg' %}" alt="">
                     </div>
                     <div class="user_review-name">
                       Мистер Мисикс
@@ -298,7 +299,7 @@
                     </div>
                     <div class="user_review-content">
                       <p>
-                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                        *Интересный отзыв*
                       </p>
                     </div>
                   </div>
@@ -312,7 +313,7 @@
                 <div class="user_review-col">
                   <div class="user_review-data">
                     <div class="user_review-thumb">
-                      <img src="{% static 'slider/img/review-2-min.webp' %}" alt="">
+                      <img src="{% static 'slider/img/review-2-min.jpg' %}" alt="">
                     </div>
                     <div class="user_review-name">
                       Морти Смит
@@ -326,7 +327,7 @@
                     </div>
                     <div class="user_review-content">
                       <p>
-                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                        *Отрицательный отзыв*
                       </p>
                     </div>
                   </div>
@@ -340,7 +341,7 @@
                 <div class="user_review-col">
                   <div class="user_review-data">
                     <div class="user_review-thumb">
-                      <img src="{% static 'slider/img/review-1-min.webp' %}" alt="">
+                      <img src="{% static 'slider/img/review-1-min.jpg' %}" alt="">
                     </div>
                     <div class="user_review-name">
                       Джерри Смит
@@ -354,7 +355,7 @@
                     </div>
                     <div class="user_review-content">
                       <p>
-                        Я, конечно новичёк на этой платформе "InSales" , но могу сказать что : Первые впечатление очень хорошие , спасибо за понимание и быстрые ответы в решение возникших проблем , шаблон "DotStore" понравился , поддержка разработчика шаблона на высшем уровне, молодцы ребята ...
+                        *Непонятный отзыв*
                       </p>
                     </div>
                   </div>
@@ -367,6 +368,118 @@
           <a href="{% url 'shop:contacts' %}" class="article_button">
             <i class="far fa-comment-dots"></i>
             <span>Оставьте свой отзыв</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-blog">
+    <div class="section-title text-center">
+      <a href="{% url 'blog:list' %}">Посление новости</a>
+      <div class="section-title-description">
+        Самые свежие и интересные публикации
+      </div>
+    </div>
+    <div class="articles">
+      <div class="container">
+        <div class="articles-row">
+          {% for article in blogs %}
+          <div class="articles-section-col">
+            <div class="article_card">
+              <div class="article_card-img">
+                <a href="{% url 'blog:detail' article.slug %}">
+                  {% thumbnail article.image "720x400" as img %}
+        						<img src="{{ img.url }}">
+        					{% endthumbnail %}
+                  <div class="hidden"><div class="hidden-text">Читать</div></div>
+                  <p>{{ article.added|date:'d E Y' }}</p>
+
+                </a>
+              </div>
+              <div class="article_card-title">
+                <a href="{% url 'blog:detail' article.slug %}">{{ article.title|markdown|truncatewords_html:13 }}</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-brands">
+    <div class="container">
+      <div class="brands-slider owl-carousel" id="brands-slider">
+        {% for brand in brands %}
+        <div class="brand_logo">
+          <a class="brand_logo-thumb" href="{% url 'shop:by_brand' brand.slug %}">
+            <span class="brand_logo-thumb-item">
+              <img src="{{ brand.logo.url }}" alt="">
+            </span>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="section-instafeed">
+    <div class="instafeed">
+      <div class="container">
+        <div class="authenticate-row">
+          <div class="instafeed-col">
+            <div class="section-title text-center">
+              <a href="https://www.instagram.com/__foxyshop__/">@__foxyshop__</a>
+              <div class="section-title-description">Мы в INSTAGRAM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instafeed-row">
+        <div class="instafeed-gallery-col">
+          <a href="https://www.instagram.com/p/B-NcdEMpWKO/">
+            <img class="instafeed-img" src="https://instagram.fiev9-1.fna.fbcdn.net/v/t51.2885-15/e35/91145237_2550658611812625_6887492392010598511_n.jpg?_nc_ht=instagram.fiev9-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=I4t4LbPpryMAX95G_2g&oh=d091052aa4a2cca97b5359ae03fc4711&oe=5EA7A636" alt="instagram_image">
+            <span>
+               <i class="fab fa-instagram fa-2x"></i>
+            </span>
+          </a>
+        </div>
+        <div class="instafeed-gallery-col">
+          <a href="https://www.instagram.com/p/B-NdlhlnNo9/">
+            <img src="https://instagram.fiev9-1.fna.fbcdn.net/v/t51.2885-15/e35/90901580_645639949561761_4707448848707539782_n.jpg?_nc_ht=instagram.fiev9-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=J4xzTgwZBH4AX_MeRVX&oh=2d4bd3ae3c8c780f84557bdc07b99ead&oe=5EA922AB" alt="instagram_image" class="instafeed-img">
+            <span>
+               <i class="fab fa-instagram fa-2x"></i>
+            </span>
+          </a>
+        </div>
+        <div class="instafeed-gallery-col">
+          <a href="https://www.instagram.com/p/B-NdnKwnKEF/">
+            <img src="https://instagram.fiev9-1.fna.fbcdn.net/v/t51.2885-15/e35/90967055_101796108095321_2698582782838055840_n.jpg?_nc_ht=instagram.fiev9-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=MsbYZyqCiGgAX9FuMxA&oh=b2be3588b121a57e1d54a5a1276570b9&oe=5EA84ADD" alt="instagram_image" class="instafeed-img">
+            <span>
+               <i class="fab fa-instagram fa-2x"></i>
+            </span>
+          </a>
+        </div>
+        <div class="instafeed-gallery-col">
+          <a href="https://www.instagram.com/p/B-NdpCfn-tI/">
+            <img src="https://instagram.fiev9-1.fna.fbcdn.net/v/t51.2885-15/e35/91029915_2593768007401452_2991901195955147979_n.jpg?_nc_ht=instagram.fiev9-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=vKruSVq93LkAX83yT_r&oh=b9c95e38494ae0ac45d7b95ade0c595f&oe=5EA7672A" alt="instagram_image" class="instafeed-img">
+            <span>
+               <i class="fab fa-instagram fa-2x"></i>
+            </span>
+          </a>
+        </div>
+        <div class="instafeed-gallery-col">
+          <a href="https://www.instagram.com/p/B-NdqcgH_zW/">
+            <img src="https://instagram.fiev9-1.fna.fbcdn.net/v/t51.2885-15/e35/90982838_530470967846801_1103412290599180394_n.jpg?_nc_ht=instagram.fiev9-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=QP9MGeybFJIAX_aAUHh&oh=0a7ea8072a0d49a1dec229ae425a0633&oe=5EA716DE" alt="instagram_image" class="instafeed-img">
+            <span>
+               <i class="fab fa-instagram fa-2x"></i>
+            </span>
+          </a>
+        </div>
+        <div class="instafeed-gallery-col">
+          <a href="https://www.instagram.com/p/B-Ndr1YHwGZ/">
+            <img src="https://instagram.fiev9-1.fna.fbcdn.net/v/t51.2885-15/e35/90764468_147110080153403_4539728941208269724_n.jpg?_nc_ht=instagram.fiev9-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=xtGBlH9bhGYAX-Egp7C&oh=930361029452e977ac913eae3a495c33&oe=5EA7D80C" alt="instagram_image" class="instafeed-img">
+            <span>
+               <i class="fab fa-instagram fa-2x"></i>
+            </span>
           </a>
         </div>
       </div>
@@ -393,7 +506,6 @@
     <!-- </div> -->
     {% endif %}
 
-    <img class="empty-page-img" src="{% static 'razrabotka.png' %}" alt="">
   </div>
 </div>
 

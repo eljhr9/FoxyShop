@@ -9,7 +9,7 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
 	<meta name="viewport" content="width=1200">
 	<title>FoxyShop</title>
-
+	<link rel="stylesheet" href="{% static 'loader.css' %}">
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 	integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
@@ -20,6 +20,30 @@
 </head>
 
 <body>
+
+	<div class="pre-loader">
+		<div class="cssload-dots">
+ 			<div class="cssload-dot"></div>
+ 			<div class="cssload-dot"></div>
+ 			<div class="cssload-dot"></div>
+ 			<div class="cssload-dot"></div>
+ 			<div class="cssload-dot"></div>
+ 		</div>
+
+ 		<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+ 			<defs>
+ 				<filter id="goo">
+ 					<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12" ></feGaussianBlur>
+ 					<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7" result="goo" ></feColorMatrix>
+
+ 				</filter>
+ 			</defs>
+ 		</svg>
+	</div>
+
+
+
+
 	<div class="main">
 		<div class="header">
 			<div class="logo">
@@ -524,9 +548,9 @@
 	{% endblock comments %}
 
 	<script src="{% static 'slider/jquery/jquery-3.4.1.min.js' %}"></script>
-	<script src="{% static 'shop/slider.js' %}"></script>
 	<script src="{% static 'slider/owlcarousel2/owl.carousel.min.js' %}"></script>
-	<script src="{% static 'js/script.js' %}"></script>
+	<script src="{% static 'js/slider.js' %}"></script>
+
 
 	<div class="section-footer">
 		<footer>
@@ -766,5 +790,12 @@
 			</div>
 		</footer>
 	</div>
+	<script>
+		$(document).ready(function(){
+			setTimeout(function () {
+				document.getElementsByTagName('body')[0].className += 'pre-loaded';
+	    }, 1500);
+		});
+	</script>
 </body>
 </html>
