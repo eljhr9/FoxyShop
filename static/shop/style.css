@@ -1412,25 +1412,39 @@ table {
   /* padding-right: 5px; */
 }
 
-.bascet-add span {
+.bascet-add span, .bascet-added span {
   font-size: 13px;
   text-transform: none;
   font-weight: 600;
 }
 
-.bascet-add:hover i, .bascet-add:hover span {
+.bascet-add:hover i, .bascet-add:hover span,
+.bascet-added:hover i, .bascet-added:hover span {
   color: darkorange;
-  transition-duration: .3s;
+  cursor: pointer;
 }
 
 .bascet-add {
   background: transparent;
   overflow: visible;
+  transition: .3s;
 }
 
 .bascet-add i {
   font-size: 1.6em;
   color: #999;
+}
+
+.bascet-added i {
+  font-size: 1.6em;
+  color: darkorange;
+}
+
+.bascet-added {
+  background: transparent;
+  overflow: visible;
+  transition: .3s;
+  color: darkorange;
 }
 
 .favorite-field {

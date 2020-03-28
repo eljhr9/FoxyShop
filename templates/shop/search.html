@@ -113,10 +113,17 @@
 												<form action="{% url 'cart:cart_add' product.id %}" method="post">
 													<input type="hidden" id="id_quantity" name="quantity" value="1">
 													{% csrf_token %}
-													<button class="bascet-add">
+													{% if product in cartitems %}
+													<button name="products" class="bascet-added">
+														<i class="fas fa-shopping-basket"></i>
+														<span>В корзине</span>
+													</button>
+													{% else %}
+													<button name="products" class="bascet-add">
 														<i class="fas fa-shopping-basket"></i>
 														<span>В корзину</span>
 													</button>
+													{% endif %}
 												</form>
           						</div>
 											<div class="favorite-field">
@@ -137,7 +144,6 @@
 												{% endif %}
 												{% if product in favourite %}
 												<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
-													<!-- <i class="fas fa-heart product-fav"></i> -->
 													 <span class="fas fa-heart fa-lg product-fav"></span>
 												</a>
 												{% else %}

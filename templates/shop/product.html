@@ -191,10 +191,17 @@
 									{% csrf_token %}
 		              <div class="product-add">
 		                <div class="product_add">
-		                  <button name="product" class="add-to-cart" type="submit" data-item-add="">
+											{% if product in cartitems %}
+											<button name="product" class="add-to-cart" type="submit">
+		                    <i class="fas fa-shopping-cart"></i>
+		                    <span>Удалить с корзины</span>
+		                  </button>
+											{% else %}
+		                  <button name="product" class="add-to-cart" type="submit">
 		                    <i class="fas fa-cart-plus"></i>
 		                    <span>В корзину</span>
 		                  </button>
+											{% endif %}
 		                </div>
 		              </div>
 		              <div class="order">
@@ -585,10 +592,17 @@
 							<form action="{% url 'cart:cart_add' product.id %}" method="post">
 								<input type="hidden" id="id_quantity" name="quantity" value="1">
 								{% csrf_token %}
-								<button name="product" class="bascet-add">
+								{% if product in cartitems %}
+								<button name="products" class="bascet-added">
+									<i class="fas fa-shopping-basket"></i>
+									<span>В корзине</span>
+								</button>
+								{% else %}
+								<button name="products" class="bascet-add">
 									<i class="fas fa-shopping-basket"></i>
 									<span>В корзину</span>
 								</button>
+								{% endif %}
 							</form>
 						</div>
 						<div class="favorite-field">

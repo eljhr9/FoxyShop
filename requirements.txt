@@ -22,6 +22,7 @@ kombu==4.6.8
 Markdown==3.2.1
 oauthlib==3.1.0
 Pillow==7.0.0
+pika==0.9.14
 psycopg2==2.8.4
 PyJWT==1.7.1
 pysolr==3.8.1
