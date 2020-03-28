@@ -14,6 +14,11 @@ import os
 from django.urls import reverse_lazy
 from decouple import config, Csv
 
+import djcelery
+
+djcelery.setup_loader()
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -249,3 +254,7 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+BROKER_URL = os.environ.get("CLOUDAMQP_URL", "django://")
+BROKER_POOL_LIMIT = 3
+BROKER_CONNECTION_MAX_RETRIES = None
