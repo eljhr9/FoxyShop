@@ -3080,7 +3080,7 @@ table {
 }
 
 .co-input-text input, .co-input-text textarea {
-  padding: 1.7rem 0.5rem 0.5rem;
+  padding: 1.5rem 0.5rem 0.5rem;
   border: 1px solid #cccccc;
   transition-duration: 0.3s;
   display: block;
@@ -3093,6 +3093,24 @@ table {
   color: #1c1c1c;
   resize: vertical;
 }
+
+.co-input-text.payment {
+  border: 1px solid #cccccc;
+  transition-duration: 0.3s;
+  display: block;
+  width: 98.7%;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  position: relative;
+  line-height: 1rem;
+  background-color: white;
+  color: #1c1c1c;
+  resize: vertical;
+  height: 55px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
 
 .co-input-pass {
   margin: 1rem 0;
@@ -5315,6 +5333,16 @@ table {
   visibility: visible;
 }
 
+.error-ref {
+  color: inherit;
+  text-decoration: underline;
+  transition: .3s;
+}
+
+.error-ref:hover {
+  color: red;
+}
+
 /* css mobile */
 @media only screen
 /* and (min-device-width : 820px) */
@@ -5327,12 +5355,12 @@ and (max-device-width : 1150px) {
     margin-top: 2px;
   } */
 
-  .sidebar {
+  /* .sidebar {
     display: none;
   }
 
   .section {
     flex: 0 0 100%;
     max-width: 100%;
-  }
+  } */
 }

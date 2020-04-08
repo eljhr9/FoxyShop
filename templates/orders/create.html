@@ -55,6 +55,7 @@
             </div>
           </div>
           <button name="order_form" type="submit" class="co-button co-form-button co-button-order">Оформить заказ</button>
+          <button name="order_form_payment" type="submit" class="co-button co-form-button co-button-order">Оплатить</button>
           <a href="{% url 'shop:products' %}" class="co-button co-button-link">Продолжить покупки</a>
           {% csrf_token %}
         </form>

@@ -1,0 +1,25 @@
+<h2>Здравствуйте, {{ order.first_name }}!</h2>
+<h1>Вы оплатили заказ в магазине "FoxyShop"</h1>
+<h2>Заказ №{{ order.id }}</h2>
+
+<p></p>
+<p>
+  <strong>Доставка:</strong>
+  <br>
+  Обычная доставка
+  <br>
+  Заказ оплачен.
+</p>
+<p>
+  Вы можете также посмотреть <a href="{{ order_url }}">Страницу статуса заказа</a> или вернутся <a href="https://foxyshop.herokuapp.com">в магазин</a>.
+</p>
+<p><a href="{{ order_url }}">Вы можете подписаться на уведомления в Whatsapp или Viber на изменения по заказу</a></p>
+<p>
+  --
+  <br>
+  С уважением,
+  <br>
+  магазин "FoxyShop"
+  <br>
+  <a href="https://foxyshop.herokuapp.com">https://foxyshop.herokuapp.com</a>
+</p>

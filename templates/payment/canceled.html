@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+  <div class="login-errors">
+    <div class="co-input-success co-input co-input-pass">
+      <p class="login-error">При оплате произойшла ошибка пожалуйста попробуйде ещё раз, если ошибка повторится вы можете <a class="error-ref" href="{% url 'shop:contacts' %}">связатся с нами</a>!</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

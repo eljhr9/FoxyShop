@@ -29,13 +29,13 @@
             <div class="co-order-information_row">
               <div class="co-order-information_title">Способ оплаты</div>
               <div class="co-order-information_value">
-                Наличными
+                {% if order.paid %}Оплачен{% else %}Наличными{% endif %}
               </div>
             </div>
             <div class="co-order-information_row">
               <div class="co-order-information_title">Способ доставки</div>
               <div class="co-order-information_value">
-                Обычная доставка с наложенным платежом
+                {% if order.paid %}Обычная доставка{% else %}Обычная доставка с наложенным платежом{% endif %}
               </div>
             </div>
             <div class="co-order-information_row">
