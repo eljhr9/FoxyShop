@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
 from shop.sitemaps import ProductSitemap
 from blog.sitemaps import BlogSitemap
+from django.conf.urls.i18n import i18n_patterns
 
 
 sitemaps = {
@@ -26,7 +27,7 @@ sitemaps = {
     'articles': BlogSitemap,
 }
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('payment/', include('payment.urls')),
@@ -37,6 +38,8 @@ urlpatterns = [
     path('account/', include('users.urls')),
     path('empty/', views.empty, name='empty'),
     path('blog/', include('blog.urls')),
+    path('coupons/', include('coupons.urls')),
+    path('rosetta/', include('rosetta.urls')),
     path('social-auth/', include('social_django.urls', namespace="social")),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-]
+)

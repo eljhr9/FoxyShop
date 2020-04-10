@@ -11,18 +11,23 @@ def create_order(request):
     if request.method == "POST" and ('order_form' in request.POST or 'order_form_payment' in request.POST):
         order_form = OrderCreateForm(request.POST)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            if cart.coupon:
+                order.coupon = cart.coupon
+                order.discount = cart.coupon.discount
+            request.session['coupon_id'] = None
+            order.save()
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'],
                                          price=item['price'], quantity=item['quantity'])
             cart.clear()
             orderitems = OrderItem.objects.filter(order=order)
+            order_url = request.build_absolute_uri(order.get_absolute_url())
+            order_created.delay(order.id, order_url)
             if 'order_form_payment' in request.POST:
                 request.session['order_id'] = order.id
                 return redirect(reverse('payment:process'))
             else:
-                order_url = request.build_absolute_uri(order.get_absolute_url())
-                order_created.delay(order.id, order_url)
                 return render(request, 'orders/created.html', {'order': order, 'orderitems': orderitems})
 
     else:

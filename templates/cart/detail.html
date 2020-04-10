@@ -104,20 +104,48 @@
                   <div class="cart-order-items">
                     <div class="cart-order-item cart-order-item-total_price">
                       ИТОГО:
-                      <span>{{ cart.get_total_price }} ₴</span>
+											{% if cart.coupon %}
+												<!-- <span>{{ cart.get_total_price }} ₴</span> -->
+												<span class="order_price">{{ cart.get_total_price_after_discount }} ₴</span>
+											{% else %}
+                      	<span class="order_price">{{ cart.get_total_price }} ₴</span>
+											{% endif %}
                     </div>
                   </div>
                   <div class="cart-order-coupon">
-                    <label>Купон на скидку:</label>
-                    <div class="coupon-row">
-                      <div class="coupon-col-input">
-                        <input type="text" class="coupon-input">
-                      </div>
-                      <div class="coupon-col">
-                        <button class="coupon-button" type="button"><i class="fas fa-check"></i></button>
-                      </div>
-                    </div>
+										<form action="{% url 'coupons:apply' %}" method="post">
+	                    <label>Купон на скидку:</label>
+	                    <div class="coupon-row">
+	                      <div class="coupon-col-input">
+	                        <input id="id_code" name="code" type="text" class="coupon-input" required>
+	                      </div>
+												{% csrf_token %}
+	                      <div class="coupon-col">
+	                        <button class="coupon-button" type="submit"><i class="fas fa-check"></i></button>
+	                      </div>
+	                    </div>
+										</form>
                   </div>
+									{% if cart.coupon %}
+									<div class="login-errors">
+										<div class="coupon-row">
+											<div class="discount-col">
+												<p>Промокод:</p>
+											</div>
+											<div class="coupon-col">
+												<p class="coupon-value">{{ cart.coupon.code }}</p>
+											</div>
+										</div>
+										<div class="coupon-row">
+											<div class="discount-col">
+												<p>Скидка:</p>
+											</div>
+											<div class="coupon-col">
+												<p class="discount-value">-{{ cart.coupon.discount }}%</p>
+											</div>
+										</div>
+									</div>
+									{% endif %}
                   <div class="cart-order-buttons">
                     <div class="co-form-controls cart-submit">
 											<a href="{% url 'orders:create_order' %}" class="co-button co-form-button">оформить заказ</a>

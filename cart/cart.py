@@ -1,5 +1,6 @@
 from django.conf import settings
 from shop.models import Product
+from coupons.models import Coupon
 
 class Cart(object):
 
@@ -11,6 +12,7 @@ class Cart(object):
             #  Сохраняю пустую корзину в сессии
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
+        self.coupon_id = self.session.get('coupon_id')
 
     def add(self, product, quantity=1, update_quantity=False):
         """Добавить товар в корзину или обновить его количество"""
@@ -61,3 +63,17 @@ class Cart(object):
         """Удаление корзины из сессии"""
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
+
+    @property
+    def coupon(self):
+        if self.coupon_id:
+            return Coupon.objects.get(id=self.coupon_id)
+        return None
+
+    def get_discount(self):
+        if self.coupon:
+            return (self.coupon.discount / int('100')) * self.get_total_price()
+        return int('0')
+
+    def get_total_price_after_discount(self):
+        return int(self.get_total_price() - self.get_discount())

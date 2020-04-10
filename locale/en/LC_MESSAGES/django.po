@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-10 16:27+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: django_shop/settings.py:160
+msgid "Russian"
+msgstr "Russian"
+
+#: django_shop/settings.py:161
+msgid "English"
+msgstr "English"
+
+#: templates/base.html:63
+msgid "Поиск по каталогу..."
+msgstr "Catalog search..."
+
+#: templates/base.html:80 templates/base.html:644
+msgid "Заказать звонок"
+msgstr "Request a call"
+
+#: templates/base.html:86
+msgid "Функция находится в разработке"
+msgstr "Feature is under construction"
+
+#: templates/base.html:104
+msgid "Сменить язык на"
+msgstr "Change language to"
+
+#: templates/base.html:118 templates/base.html:655
+msgid "02000, Украина, Киев, улица Петра Сагайдачного, 25Б"
+msgstr "Ukraine, Kiev, Petra Sagaidachnogo street, 25B"
+
+#: templates/base.html:123 templates/base.html:660
+msgid "Будние дни с 8:00 до 20:00"
+msgstr "Weekdays from 8:00 to 20:00"
+
+#: templates/base.html:124 templates/base.html:661
+msgid "Выходные с 10:00 до 16:00"
+msgstr "Weekends from 10:00 to 16:00"
+
+#: templates/base.html:188
+msgid "В списке сравения"
+msgstr "In the comparison list"
+
+#: templates/base.html:190 templates/base.html:260 templates/base.html:337
+msgid "товар"
+msgstr "product"
+
+#: templates/base.html:192 templates/base.html:262 templates/base.html:339
+msgid "товара"
+msgstr "products"
+
+#: templates/base.html:194 templates/base.html:264 templates/base.html:341
+msgid "товаров"
+msgstr "products"
+
+#: templates/base.html:231
+msgid "Перейти к сравнению"
+msgstr "Go to comparison"
+
+#: templates/base.html:239
+msgid "Товары для сравнения не выбраны"
+msgstr "No products selected for comparison"
+
+#: templates/base.html:258
+msgid "В вашем избранном"
+msgstr "Your favorites are still empty"
+
+#: templates/base.html:303
+msgid "Перейти к избранному"
+msgstr "Your favorites are still empty"
+
+#: templates/base.html:311
+msgid "В вашем избранном пока пусто"
+msgstr "Your favorites are still empty"
+
+#: templates/base.html:313
+msgid "Авторизируйтесь что бы добавлять товар в избранное"
+msgstr "Log in to add products to favorites"
+
+#: templates/base.html:334
+msgid "В вашей корзине"
+msgstr "In your basket"
+
+#: templates/base.html:343
+msgid "на сумму"
+msgstr "in the amount of"
+
+#: templates/base.html:385
+msgid "Открыть корзину"
+msgstr "Open basket"
+
+#: templates/base.html:388
+msgid "Оформить заказ"
+msgstr "Checkout"
+
+#: templates/base.html:395
+msgid "В вашей корзине пока пусто"
+msgstr "Your favorites are still empty"
+
+#: templates/base.html:415
+msgid "История заказов"
+msgstr "Purchase history"
+
+#: templates/base.html:419
+msgid "Адрес доставки"
+msgstr "Delivery address"
+
+#: templates/base.html:423
+msgid "Скидки и бонусы"
+msgstr "Discounts and bonuses"
+
+#: templates/base.html:427
+msgid "Контактные данные"
+msgstr "Contact details"
+
+#: templates/base.html:430
+msgid "Выход"
+msgstr "Log out"
+
+#: templates/base.html:444
+msgid "Авторизация"
+msgstr "Login"
+
+#: templates/base.html:447
+msgid "Регистрация"
+msgstr "Registration"
+
+#: templates/base.html:474 templates/base.html:676
+msgid "Каталог товаров"
+msgstr "Collections"
+
+#: templates/base.html:489 templates/base.html:524 templates/base.html:687
+msgid "Бренды"
+msgstr "Brands"
+
+#: templates/base.html:509 templates/base.html:696
+msgid "Главная"
+msgstr "Home"
+
+#: templates/base.html:514 templates/base.html:697
+msgid "Акции"
+msgstr "Discounts"
+
+#: templates/base.html:519 templates/base.html:698
+msgid "Новинки"
+msgstr "New"
+
+#: templates/base.html:529 templates/base.html:699
+msgid "Статьи"
+msgstr "Articles"
+
+#: templates/base.html:534
+msgid "Оплата и Доставка"
+msgstr "Payment and Delivery"
+
+#: templates/base.html:539 templates/base.html:701
+msgid "Контакты"
+msgstr "Contacts"
+
+#: templates/base.html:580
+msgid ""
+"Запрос на подписку успешно оформлен, подтверждающее письмо было выслано вам "
+"на почту!"
+msgstr ""
+"A subscription request has been successfully issued, a confirmation letter "
+"was sent to you by mail!"
+
+#: templates/base.html:596
+msgid "Новостная рассылка"
+msgstr "Newsletter"
+
+#: templates/base.html:601
+msgid "Адрес електронной почты"
+msgstr "Email"
+
+#: templates/base.html:605
+msgid "Подписаться"
+msgstr "Subscribe"
+
+#: templates/base.html:610
+msgid "Нажимая подписаться вы получите сообщение подтверждающее вашу подписку"
+msgstr ""
+"By clicking subscribe you will receive a message confirming your subscription"
+
+#: templates/base.html:616
+msgid ""
+"Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и "
+"скидок"
+msgstr ""
+"Sign up for our newsletter to keep abreast of our new arrivals, promotions "
+"and discounts"
+
+#: templates/base.html:667
+msgid "Редколис Илья Григорьевич"
+msgstr "Redkolis Illya Grigorevich"
+
+#: templates/base.html:678
+msgid "Телефоны"
+msgstr "Phones"
+
+#: templates/base.html:679
+msgid "Фото и видео"
+msgstr "Photo and video"
+
+#: templates/base.html:680
+msgid "Ноутбуки, планшеты, компьютеры"
+msgstr "Laptops, tablets, computers"
+
+#: templates/base.html:681
+msgid "Консоли"
+msgstr "Consoles"
+
+#: templates/base.html:682
+msgid "Наушники и аудио"
+msgstr "Headphones and audio"
+
+#: templates/base.html:683
+msgid "Гаджеты и авто"
+msgstr "Gadgets and cars"
+
+#: templates/base.html:684
+msgid "Аксессуары"
+msgstr "Accessories"
+
+#: templates/base.html:685
+msgid "Техника для дома"
+msgstr "Home Appliances"
+
+#: templates/base.html:686
+msgid "Разное"
+msgstr "Other"
+
+#: templates/base.html:694
+msgid "Дополнительно"
+msgstr "Additionally"
+
+#: templates/base.html:700
+msgid "Оплата и доставка"
+msgstr "Payment and Delivery"
+
+#: templates/base.html:702
+msgid "Обратная связь"
+msgstr "Feedback"
+
+#: templates/base.html:703
+msgid "Пользовательское соглашение"
+msgstr "Custom agreement"
+
+#: templates/base.html:704
+msgid "Политика конфиденциальности"
+msgstr "Privacy policy"
+
+#: templates/base.html:705
+msgid "Часто задаваемые вопросы"
+msgstr "Frequently asked Questions"
+
+#: templates/base.html:712
+msgid "О компании"
+msgstr "About company"
+
+#: templates/base.html:724
+msgid "Мы в социальных сетях"
+msgstr "we are in social networks"
+
+#: templates/base.html:777
+msgid "шаблон интернет-магазина созданного для портфолио"
+msgstr "template of an online store created for portfolio"

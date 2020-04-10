@@ -1,6 +1,10 @@
 {% load shop_tags %}
 {% load static %}
 {% load thumbnail %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +60,7 @@
 						</div>
 						<form action="{% url 'shop:product_search' %}" method="get" class="wrap">
 						   <div class="search">
-						      <input required id="id_query" type="text" name="query" class="searchTerm" placeholder="Поиск по каталогу...">
+						      <input required id="id_query" type="text" name="query" class="searchTerm" placeholder="{% trans 'Поиск по каталогу...' %}">
 						      <button type="submit" class="searchButton">
 						        <i class="fa fa-search"></i>
 						     	</button>
@@ -73,13 +77,13 @@
 							<div class="contacts_bottom">
 
 								<div class="request_call">
-									<a href="#">Заказать звонок</a>
+									<a href="#">{% trans "Заказать звонок" %}</a>
 									<div class="user-icons-popup user-popup-profile user-icons-popup-development">
 										<div class="popup-contacts popup-favorite">
 											<div class="popup-content-client">
 												<div class="popup--empty">
 													<i class="fas fa-info-circle"></i>
-													Функция находится в разработке
+													{% trans "Функция находится в разработке" %}
 												</div>
 											</div>
 										</div>
@@ -92,6 +96,18 @@
 										<div class="popup-contacts popup-more">
 											<ul class="popup-content-contacts">
 												<li class="menu-item menu-item-icon">
+													<i class="fas fa-language"></i>
+													<div class="more-popup">
+														{% for language in languages %}
+														{% if language.code != LANGUAGE_CODE %}
+															<a href="/{{ language.code }}/"  class="selected">
+																{% trans "Сменить язык на" %}: {{ language.name_local }}
+															</a>
+														{% endif %}
+														{% endfor %}
+													</div>
+												</li>
+												<li class="menu-item menu-item-icon">
 													<i class="far fa-envelope"></i>
 													<a href="mailto:illyaredkolis@gmail.com">
 														illyaredkolis@gmail.com
@@ -99,13 +115,13 @@
 												</li>
 												<li class="menu-item menu-item-icon">
 													<i class="fas fa-map-marker-alt"></i>
-													<p class="more-popup"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
+													<p class="more-popup">{% trans "02000, Украина, Киев, улица Петра Сагайдачного, 25Б" %}</p>
 												</li>
 												<li class="menu-item menu-item-icon">
 													<i class="far fa-clock"></i>
 													<p class="more-popup">
-														Будние дни с 8:00 до 20:00
-														Выходные с 10:00 до 16:00
+														{% trans "Будние дни с 8:00 до 20:00" %}
+														{% trans "Выходные с 10:00 до 16:00" %}
 													</p>
 												</li>
 
@@ -113,7 +129,7 @@
 											<div class="popup-contacts social-popup">
 												<ul>
 													<li class="social-item">
-														<a href="http://instagram.com/">
+														<a href="https://www.instagram.com/__foxyshop__/">
 															<i class="fab fa-instagram"></i>
 														</a>
 													</li>
@@ -169,13 +185,13 @@
 													{% if compare|length > 0 %}
 													{% with total_items=compare|length %}
 													<div class="dropdown_products-header">
-														В списке сравения
+														{% trans "В списке сравения" %}
 														{% if total_items == 1 %}
-															<span>{{ total_items }} товар</span>
+															<span>{{ total_items }} {% trans "товар" %}</span>
 														{% elif total_items <= 4 %}
-															<span>{{ total_items }} товара</span>
+															<span>{{ total_items }} {% trans "товара" %}</span>
 														{% else %}
-														<span>{{ total_items }} товаров</span>
+														<span>{{ total_items }} {% trans "товаров" %}</span>
 														{% endif %}
 												 	</div>
 												 	{% for product in compare %}
@@ -212,7 +228,7 @@
 													<div class="dropdown_products-action">
 														<div class="authenticate-row">
 															<div class="favourite-col">
-																<a class="register-button" href="{% url 'compare:compare_detail' %}">Перейти к сравнению</a>
+																<a class="register-button" href="{% url 'compare:compare_detail' %}">{% trans "Перейти к сравнению" %}</a>
 															</div>
 														</div>
 													</div>
@@ -220,7 +236,7 @@
 													{% else %}
 													<div class="popup--empty">
 														<i class="fas fa-align-right compare"></i>
-														Товары для сравнения не выбраны
+														{% trans "Товары для сравнения не выбраны" %}
 													</div>
 												{% endif %}
 											</div>
@@ -239,13 +255,13 @@
 													{% if favourite %}
 														{% with total_items=favourite.count %}
 															<div class="dropdown_products-header">
-																В вашем избранном
+																{% trans "В вашем избранном" %}
 																{% if total_items == 1 %}
-																	<span>{{ total_items }} товар</span>
+																	<span>{{ total_items }} {% trans "товар" %}</span>
 																{% elif total_items <= 4 %}
-																	<span>{{ total_items }} товара</span>
+																	<span>{{ total_items }} {% trans "товара" %}</span>
 																{% else %}
-																<span>{{ total_items }} товаров</span>
+																<span>{{ total_items }} {% trans "товаров" %}</span>
 																{% endif %}
 														 </div>
 														 <div class="dropdown_products">
@@ -284,7 +300,7 @@
 														<div class="dropdown_products-action">
  														 <div class="authenticate-row">
  															 <div class="favourite-col">
- 																 <a class="register-button" href="{% url 'shop:favourite' %}">Перейти к избранному</a>
+ 																 <a class="register-button" href="{% url 'shop:favourite' %}">{% trans "Перейти к избранному" %}</a>
  															 </div>
  														 </div>
  													 </div>
@@ -292,9 +308,9 @@
 														<div class="popup--empty">
 															<i class="far fa-heart"></i>
 															{% if request.user.is_authenticated %}
-																В вашем избранном пока пусто
+																{% trans 'В вашем избранном пока пусто' %}
 															{% else %}
-																Авторизируйтесь что бы добавлять товар в избранное
+																{% trans 'Авторизируйтесь что бы добавлять товар в избранное' %}
 															{% endif %}
 														</div>
 													{% endif %}
@@ -315,16 +331,16 @@
 												{% with total_items=cart|length %}
 													{% if cart|length > 0 %}
 														<div class="dropdown_products-header">
-															В вашей корзине
+															{% trans 'В вашей корзине' %}
 															<br>
 															{% if total_items == 1 %}
-																<span>{{ total_items }} товар</span>
+																<span>{{ total_items }} {% trans 'товар' %}</span>
 															{% elif total_items <= 4 %}
-																<span>{{ total_items }} товара</span>
+																<span>{{ total_items }} {% trans 'товара' %}</span>
 															{% else %}
-															<span>{{ total_items }} товаров</span>
+															<span>{{ total_items }} {% trans 'товаров' %}</span>
 															{% endif %}
-															на сумму
+															{% trans 'на сумму' %}
 														 	<span>{{ cart.get_total_price }} ₴</span>
 													 </div>
 													 <div class="dropdown_products">
@@ -366,17 +382,17 @@
 													 <div class="dropdown_products-action">
 														 <div class="authenticate-row">
 															 <div class="authenticate-col">
-																 <a class="register-button" href="{% url 'cart:cart_detail' %}">Открыть корзину</a>
+																 <a class="register-button" href="{% url 'cart:cart_detail' %}">{% trans 'Открыть корзину' %}</a>
 															 </div>
 															 <div class="authenticate-col">
-																 <a class="register-button auth-button" href="{% url 'orders:create_order' %}">Оформить заказ</a>
+																 <a class="register-button auth-button" href="{% url 'orders:create_order' %}">{% trans 'Оформить заказ' %}</a>
 															 </div>
 														 </div>
 													 </div>
 													{% else %}
 													<div class="popup--empty">
 														<i class="fas fa-shopping-basket"></i>
-														В вашей корзине пока пусто
+														{% trans 'В вашей корзине пока пусто' %}
 													</div>
 													{% endif %}
 												{% endwith %}
@@ -396,22 +412,22 @@
 												<div class="popup-content-client">
 													<a href="#" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-history"></i></span>
-														<span class="popup-mini-text">История заказов</span>
+														<span class="popup-mini-text">{% trans 'История заказов' %}</span>
 													</a>
 													<a href="#" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-map-marker-alt"></i></span>
-														<span class="popup-mini-text">Адрес доставки</span>
+														<span class="popup-mini-text">{% trans 'Адрес доставки' %}</span>
 													</a>
 													<a href="#" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-piggy-bank"></i></span>
-														<span class="popup-mini-text">Скидки и бонусы</span>
+														<span class="popup-mini-text">{% trans 'Скидки и бонусы' %}</span>
 													</a>
 													<a href="{% url 'edit_profile' %}" class="popup-row">
 														<span class="popup-mini-logo"><i class="far fa-address-card"></i></span>
-														<span class="popup-mini-text">Контактные данные</span>
+														<span class="popup-mini-text">{% trans 'Контактные данные' %}</span>
 													</a>
 													<div class="dropdown_products-action auth-button">
-														<a href="{% url 'logout' %}">Выход</a>
+														<a href="{% url 'logout' %}">{% trans 'Выход' %}</a>
 													</div>
 												</div>
 											</div>
@@ -425,10 +441,10 @@
 														<div class="dropdown_products-action">
 															<div class="authenticate-row">
 																<div class="authenticate-col">
-																	<a class="register-button" href="{% url 'login' %}">Авторизация</a>
+																	<a class="register-button" href="{% url 'login' %}">{% trans 'Авторизация' %}</a>
 																</div>
 																<div class="authenticate-col">
-																	<a class="register-button auth-button" href="{% url 'register' %}">Регистрация</a>
+																	<a class="register-button auth-button" href="{% url 'register' %}">{% trans 'Регистрация' %}</a>
 																</div>
 															</div>
 														</div>
@@ -455,7 +471,7 @@
 							<ul class="nav-items">
 								<div class="li-board collection">
 									<li class="nav-item nav-item-collection">
-										<a href="{% url 'shop:products' %}"> Каталог товаров</a>
+										<a href="{% url 'shop:products' %}">{% trans 'Каталог товаров' %}</a>
 									</li>
 
 								</div>
@@ -469,15 +485,9 @@
 										{% endif %}
 										{% endfor %}
 										<li class="brand-hidden">
-											{% if brand_page %}
-											<a href="{% url 'shop:brand' %}" class="more_nav selected_rubric">
-												Бренды<i class="fas fa-chevron-right"></i>
+											<a href="{% url 'shop:brand' %}" {% if brand_page %}class="more_nav selected_rubric"{% else %}class="more_nav"{% endif %}>
+												{% trans 'Бренды' %}<i class="fas fa-chevron-right"></i>
 											</a>
-											{% else %}
-											<a href="{% url 'shop:brand' %}" class="more_nav">
-												Бренды<i class="fas fa-chevron-right"></i>
-											</a>
-											{% endif %}
 										</li>
 											<nav class="brand-nav nav-hidden">
 												<ul class="collection-hidden">
@@ -496,37 +506,37 @@
 								</nav>
 								<div class="li-board">
 									<li {% if title == 'Главная' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'index' %}">Главная</a>
+										<a href="{% url 'index' %}">{% trans 'Главная' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li {% if title == 'Акции' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'empty' %}">Акции</a>
+										<a href="{% url 'empty' %}">{% trans 'Акции' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li {% if title == 'Новинки' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'empty' %}">Новинки</a>
+										<a href="{% url 'empty' %}">{% trans 'Новинки' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li {% if brand_page %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:brand' %}">Бренды</a>
+										<a href="{% url 'shop:brand' %}">{% trans 'Бренды' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li {% if title == 'Статьи' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'blog:list' %}">Статьи</a>
+										<a href="{% url 'blog:list' %}">{% trans 'Статьи' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li {% if title == 'Доставка' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:delivery' %}">Оплата и Доставка</a>
+										<a href="{% url 'shop:delivery' %}">{% trans 'Оплата и Доставка' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li {% if title == 'Контакты' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:contacts' %}">Контакты</a>
+										<a href="{% url 'shop:contacts' %}">{% trans 'Контакты' %}</a>
 									</li>
 								</div>
 							</ul>
@@ -567,8 +577,7 @@
 									</div>
 									<div class="text-col">
 										<p>
-											Запрос на подписку успешно оформлен, подтверждающее письмо
-											было выслано вам на почту!
+											{% trans 'Запрос на подписку успешно оформлен, подтверждающее письмо было выслано вам на почту!' %}
 										</p>
 									</div>
 								</div>
@@ -584,31 +593,27 @@
 					<div class="container">
 						<div class="subscribe-items">
 							<div class="subscribe-items-left">
-								<div class="subscribe-item-title">Новостная рассылка</div>
+								<div class="subscribe-item-title">{% trans 'Новостная рассылка' %}</div>
 								<div class="subscribe-item-form">
 									<div class="subscribe-form">
 										<div class="subscribe-form-input">
-											<!-- {{ mailing_form.as_p }} -->
 											<input type="email" class="input" name="mailing_email"
-											placeholder="Адрес електронной почты" required id="id_mailing_email">
+											placeholder="{% trans 'Адрес електронной почты' %}" required id="id_mailing_email">
 										</div>
 										<div class="subscribe-form-button">
 											{% csrf_token %}
-											<input class="subscribe-button" form="mailing_form" type="submit" name="mailing_form" value="Подписаться">
-											<!-- <button class="subscribe-button">
-												Подписаться
-											</button> -->
+											<input class="subscribe-button" form="mailing_form" type="submit" name="mailing_form" value="{% trans 'Подписаться' %}">
 										</div>
 									</div>
 								</div>
 								<div class="subscribe-item-policy">
-									<p>Нажимая подписаться вы получите сообщение подтверждающее вашу подписку</p>
+									<p>{% trans 'Нажимая подписаться вы получите сообщение подтверждающее вашу подписку' %}</p>
 								</div>
 							</div>
 							<div class="subscribe-items-right">
 								<div class="footer-subscribe-description">
 									<p>
-										Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и скидок.
+										{% trans 'Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и скидок' %}.
 									</p>
 								</div>
 							</div>
@@ -636,7 +641,7 @@
 											+38 (099) 985-26-72
 										</a>
 										<div class="request_call footer-call">
-											<a href="#">Заказать звонок</a>
+											<a href="#">{% trans 'Заказать звонок' %}</a>
 										</div>
 									</li>
 									<li class="menu-item menu-item-icon">
@@ -647,19 +652,19 @@
 									</li>
 									<li class="menu-item menu-item-icon">
 										<i class="fas fa-map-marker-alt"></i>
-										<p class="menu-item_text"> 02000, Україна, Київ, вулиця Петра Сагайдачного, 25Б</p>
+										<p class="menu-item_text">{% trans "02000, Украина, Киев, улица Петра Сагайдачного, 25Б" %}</p>
 									</li>
 									<li class="menu-item menu-item-icon">
 										<i class="far fa-clock"></i>
 										<p class="menu-item_text">
-											Будние дни с 8:00 до 20:00
-											Выходные с 10:00 до 16:00
+											{% trans "Будние дни с 8:00 до 20:00" %}
+											{% trans "Выходные с 10:00 до 16:00" %}
 										</p>
 									</li>
 									<li class="menu-item menu-item-icon">
 										<i class="far fa-address-card"></i>
 										<p class="menu-item_text">
-											Редколис Илья Григорьевич
+											{% trans "Редколис Илья Григорьевич" %}
 										</p>
 									</li>
 								</ul>
@@ -668,43 +673,43 @@
 
 						<div class="footer-menu-block">
 							<div class="menu-block">
-								<div class="menu-title title-collection">Каталог товаров</div>
+								<div class="menu-title title-collection">{% trans "Каталог товаров" %}</div>
 								<ul class="menu-items">
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'telefony' %}">Телефоны</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">Фото и видео</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">Ноутбуки, планшеты, компьютеры</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'konsoli' %}">Консоли</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">Наушники и аудио</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">Гаджеты и авто</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'aksessuary' %}">Аксессуары</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">Техника для дома</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'raznoe' %}">Разное</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:brand' %}">Бренды</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'telefony' %}">{% trans "Телефоны" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">{% trans "Фото и видео" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">{% trans "Ноутбуки, планшеты, компьютеры" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'konsoli' %}">{% trans "Консоли" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">{% trans "Наушники и аудио" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">{% trans "Гаджеты и авто" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'aksessuary' %}">{% trans "Аксессуары" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">{% trans "Техника для дома" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'raznoe' %}">{% trans "Разное" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:brand' %}">{% trans "Бренды" %}</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="footer-menu-block footer-menu-block-extra">
 							<div class="menu-block">
-								<div class="menu-title title-collection">Дополнительно</div>
+								<div class="menu-title title-collection">{% trans "Дополнительно" %}</div>
 								<ul class="menu-items">
-									<li class="menu-item collection-item"><a href="{% url 'index' %}">Главная</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Акции</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Новинки</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'blog:list' %}">Статьи</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:delivery' %}">Оплата и доставка</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Контакты</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">Обратная связь</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Пользовательское соглашение</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Политика конфиденциальности</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'empty' %}">Часто задаваемые вопросы</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'index' %}">{% trans "Главная" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">{% trans "Акции" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">{% trans "Новинки" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'blog:list' %}">{% trans "Статьи" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:delivery' %}">{% trans "Оплата и доставка" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">{% trans "Контакты" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">{% trans "Обратная связь" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">{% trans "Пользовательское соглашение" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">{% trans "Политика конфиденциальности" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'empty' %}">{% trans "Часто задаваемые вопросы" %}</a></li>
 								</ul>
 							</div>
 						</div>
 
 						<div class="footer-menu-block">
 							<div class="menu-block">
-								<div class="menu-title title-collection">О компании</div>
+								<div class="menu-title title-collection">{% trans "О компании" %}</div>
 								<ul class="menu-items">
 									<li class="menu-item collection-item">
 										<p>
@@ -716,14 +721,14 @@
 									</li>
 								</ul>
 								<div class="menu-title menu-title-second title-collection">
-									Мы в социальных сетях
+									{% trans "Мы в социальных сетях" %}
 								</div>
 								<ul class="menu-items">
 									<li class="menu-item">
 										<div class="social">
 											<ul>
 												<li class="social-item">
-													<a href="http://instagram.com/">
+													<a href="https://www.instagram.com/__foxyshop__/">
 														<i class="fab fa-instagram"></i>
 													</a>
 												</li>
@@ -769,7 +774,7 @@
 						<div class="align-items-center">
 							<div class="footer-copyright-text">
 								<div class="text-lg-left">
-										<p>2020 &copy; FoxyShop — шаблон интернет-магазина созданного для портфолио</p>
+										<p>2020 &copy; FoxyShop — {% trans "шаблон интернет-магазина созданного для портфолио" %}</p>
 								</div>
 							</div>
 							<div class="footer-copyright-items">

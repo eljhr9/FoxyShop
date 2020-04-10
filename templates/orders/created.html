@@ -79,6 +79,12 @@
               </tr>
               {% endfor %}
               <tr class="co-table-footer">
+                {% if order.coupon %}
+                <td class="co-table-cell co-table-cell--foot" colspan="1">
+                  <div class="co-order_history-total_title">Скидка:</div>
+                  <div class="co-order_history-total_sum co-price">{{ order.discount }}%</div>
+                </td>
+                {% endif %}
                 <td class="co-table-cell co-table-cell--foot" colspan="3">
                   <div class="co-order_history-total_title">Итого:</div>
                   <div class="co-order_history-total_sum co-price">{{ order.get_total_cost }} ₴</div>

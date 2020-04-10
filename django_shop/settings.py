@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'blog.apps.BlogConfig',
     'payment.apps.PaymentConfig',
+    'coupons.apps.CouponsConfig',
     'comparison.apps.ComparisonConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,6 +58,8 @@ INSTALLED_APPS = [
     'social_django',
     'sorl.thumbnail',
     'taggit',
+    'rosetta',
+    'parler',
 ]
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
@@ -83,6 +86,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -152,8 +156,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
+from django.utils.translation import gettext_lazy as _
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGES = (
+    ('ru', _('Russian')),
+    ('en', _('English')),
+)
+
+LANGUAGE_CODE = 'ru'
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
 
 TIME_ZONE = 'Europe/Kiev'
 
