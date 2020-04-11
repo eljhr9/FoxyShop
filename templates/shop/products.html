@@ -1,16 +1,18 @@
 {% extends "collections.html" %}
 {% load static %}
 {% load thumbnail %}
+{% load i18n %}
 
 
-{% block collection_title %}{{ title }}{% endblock %}
+
+{% block collection_title %}{% trans title %}{% endblock %}
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
 	<div class="container">
 		<ul class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="{% url 'index' %}" class="breadcrumb-link"><span>Главная</span></a>
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>{% trans 'Главная' %}</span></a>
 			</li>
 			<!-- <li class="breadcrumb-item"> -->
 				{% if current_rubric %}
@@ -22,7 +24,7 @@
 				{% elif current_brand %}
 				<li class="breadcrumb-item">
 					<a href="{% url 'shop:brand' %}" class="breadcrumb-link">
-						<span>Бренды</span>
+						<span>{% trans 'Бренды' %}</span>
 					</a>
 				</li>
 				<li class="breadcrumb-item">
@@ -33,7 +35,7 @@
 				{% else %}
 				<li class="breadcrumb-item">
 					<a href="{% url 'shop:products' %}" class="breadcrumb-link">
-						<span>Каталог товаров</span>
+						<span>{% trans 'Каталог товаров' %}</span>
 					</a>
 				</li>
 				{% endif %}

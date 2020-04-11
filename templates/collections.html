@@ -2,6 +2,8 @@
 {% load static %}
 {% load blog_tags %}
 {% load thumbnail %}
+{% load i18n %}
+
 
 {% block content %}
 <div class="container">
@@ -10,7 +12,7 @@
     <div class="sidebar">
       <div class="sidebar-container">
         <div class="sidebar-collection sidebar-block">
-          <div class="sidebar-collection-title">Каталог товаров</div>
+          <div class="sidebar-collection-title">{% trans 'Каталог товаров' %}</div>
           <div class="sidebar-collection-content">
             <nav class="nav-sidebar">
               <ul>
@@ -20,7 +22,7 @@
                   </li>
                 {% endfor %}
                 <li>
-                  <a href="{% url 'shop:brand' %}" class="nav-sidebar_rubric">Бренды</a>
+                  <a href="{% url 'shop:brand' %}" class="nav-sidebar_rubric">{% trans 'Бренды' %}</a>
                 </li>
               </ul>
             </nav>
