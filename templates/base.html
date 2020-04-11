@@ -675,15 +675,9 @@
 							<div class="menu-block">
 								<div class="menu-title title-collection">{% trans "Каталог товаров" %}</div>
 								<ul class="menu-items">
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'telefony' %}">{% trans "Телефоны" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'foto-i-video' %}">{% trans "Фото и видео" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}">{% trans "Ноутбуки, планшеты, компьютеры" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'konsoli' %}">{% trans "Консоли" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}">{% trans "Наушники и аудио" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}">{% trans "Гаджеты и авто" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'aksessuary' %}">{% trans "Аксессуары" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}">{% trans "Техника для дома" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' 'raznoe' %}">{% trans "Разное" %}</a></li>
+									{% for rubric in rubrics %}
+										<li class="menu-item collection-item"><a href="{% url 'shop:by_rubric' rubric.slug %}">{{ rubric.name }}</a></li>
+									{% endfor %}
 									<li class="menu-item collection-item"><a href="{% url 'shop:brand' %}">{% trans "Бренды" %}</a></li>
 								</ul>
 							</div>

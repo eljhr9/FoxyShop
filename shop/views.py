@@ -26,9 +26,10 @@ def products(request, rubric_slug=None, brand_slug=None):
 	rubric = None
 	brand = None
 	brand_page = False
+	language = request.LANGUAGE_CODE
 
 	if rubric_slug:
-		rubric = get_object_or_404(Rubric, slug=rubric_slug)
+		rubric = get_object_or_404(Rubric, translations__language_code=language, translations__slug=rubric_slug)
 		products = Product.objects.filter(rubric=rubric)
 		title = rubric.name
 

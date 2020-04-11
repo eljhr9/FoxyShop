@@ -14,21 +14,14 @@
           <div class="sidebar-collection-content">
             <nav class="nav-sidebar">
               <ul>
+                {% for rubric in rubrics %}
+                  <li>
+                    <a href="{% url 'shop:by_rubric' rubric.slug %}" {% if title == rubric.name %}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>{{ rubric.name }}</a>
+                  </li>
+                {% endfor %}
                 <li>
-                  <a href="{% url 'shop:by_rubric' 'telefony' %}" {% if title == 'Телефоны'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>
-                    Телефоны
-                    <!-- <i class="fas fa-chevron-right"></i> -->
-                  </a>
+                  <a href="{% url 'shop:brand' %}" class="nav-sidebar_rubric">Бренды</a>
                 </li>
-                <li><a href="{% url 'shop:by_rubric' 'foto-i-video' %}" {% if title == 'Фото и видео'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Фото и видео</a></li>
-                <li><a href="{% url 'shop:by_rubric' 'noutbuki-planshety' %}" {% if title == 'Ноутбуки, планшеты'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Ноутбуки, планшеты</a></li>
-                <li><a href="{% url 'shop:by_rubric' 'konsoli' %}" {% if title == 'Консоли'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Консоли</a></li>
-                <li><a href="{% url 'shop:by_rubric' 'naushniki-i-audio' %}" {% if title == 'Наушники и аудио'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Наушники и аудио</a></li>
-                <li><a href="{% url 'shop:by_rubric' 'gadzhety-i-avto' %}" {% if title == 'Гаджеты и авто'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Гаджеты и авто</a></li>
-                <li><a href="{% url 'shop:by_rubric' 'aksessuary' %}" {% if title == 'Аксессуары'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Аксессуары</a></li>
-                <li><a href="{% url 'shop:by_rubric' 'tehnika-dlya-doma' %}" {% if title == 'Техника для дома'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Техника для дома</a></li>
-                <li><a href="{% url 'shop:by_rubric' 'raznoe' %}" {% if title == 'Разное'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Разное</a></li>
-                <li><a href="{% url 'shop:brand' %}" {% if title == 'Бренды'%}class="selected_rubric"{% else %}class="nav-sidebar_rubric"{% endif %}>Бренды</a></li>
               </ul>
             </nav>
           </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-10 16:27+0300\n"
+"POT-Creation-Date: 2020-04-11 10:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: django_shop/settings.py:160
+#: django_shop/settings.py:162
 msgid "Russian"
 msgstr "Russian"
 
-#: django_shop/settings.py:161
+#: django_shop/settings.py:163
 msgid "English"
 msgstr "English"
 
@@ -146,23 +146,23 @@ msgstr "Registration"
 msgid "Каталог товаров"
 msgstr "Collections"
 
-#: templates/base.html:489 templates/base.html:524 templates/base.html:687
+#: templates/base.html:489 templates/base.html:524 templates/base.html:681
 msgid "Бренды"
 msgstr "Brands"
 
-#: templates/base.html:509 templates/base.html:696
+#: templates/base.html:509 templates/base.html:690
 msgid "Главная"
 msgstr "Home"
 
-#: templates/base.html:514 templates/base.html:697
+#: templates/base.html:514 templates/base.html:691
 msgid "Акции"
 msgstr "Discounts"
 
-#: templates/base.html:519 templates/base.html:698
+#: templates/base.html:519 templates/base.html:692
 msgid "Новинки"
 msgstr "New"
 
-#: templates/base.html:529 templates/base.html:699
+#: templates/base.html:529 templates/base.html:693
 msgid "Статьи"
 msgstr "Articles"
 
@@ -170,7 +170,7 @@ msgstr "Articles"
 msgid "Оплата и Доставка"
 msgstr "Payment and Delivery"
 
-#: templates/base.html:539 templates/base.html:701
+#: templates/base.html:539 templates/base.html:695
 msgid "Контакты"
 msgstr "Contacts"
 
@@ -211,74 +211,38 @@ msgstr ""
 msgid "Редколис Илья Григорьевич"
 msgstr "Redkolis Illya Grigorevich"
 
-#: templates/base.html:678
-msgid "Телефоны"
-msgstr "Phones"
-
-#: templates/base.html:679
-msgid "Фото и видео"
-msgstr "Photo and video"
-
-#: templates/base.html:680
-msgid "Ноутбуки, планшеты, компьютеры"
-msgstr "Laptops, tablets, computers"
-
-#: templates/base.html:681
-msgid "Консоли"
-msgstr "Consoles"
-
-#: templates/base.html:682
-msgid "Наушники и аудио"
-msgstr "Headphones and audio"
-
-#: templates/base.html:683
-msgid "Гаджеты и авто"
-msgstr "Gadgets and cars"
-
-#: templates/base.html:684
-msgid "Аксессуары"
-msgstr "Accessories"
-
-#: templates/base.html:685
-msgid "Техника для дома"
-msgstr "Home Appliances"
-
-#: templates/base.html:686
-msgid "Разное"
-msgstr "Other"
-
-#: templates/base.html:694
+#: templates/base.html:688
 msgid "Дополнительно"
 msgstr "Additionally"
 
-#: templates/base.html:700
+#: templates/base.html:694
 msgid "Оплата и доставка"
 msgstr "Payment and Delivery"
 
-#: templates/base.html:702
+#: templates/base.html:696
 msgid "Обратная связь"
 msgstr "Feedback"
 
-#: templates/base.html:703
+#: templates/base.html:697
 msgid "Пользовательское соглашение"
 msgstr "Custom agreement"
 
-#: templates/base.html:704
+#: templates/base.html:698
 msgid "Политика конфиденциальности"
 msgstr "Privacy policy"
 
-#: templates/base.html:705
+#: templates/base.html:699
 msgid "Часто задаваемые вопросы"
 msgstr "Frequently asked Questions"
 
-#: templates/base.html:712
+#: templates/base.html:706
 msgid "О компании"
 msgstr "About company"
 
-#: templates/base.html:724
+#: templates/base.html:718
 msgid "Мы в социальных сетях"
 msgstr "we are in social networks"
 
-#: templates/base.html:777
+#: templates/base.html:771
 msgid "шаблон интернет-магазина созданного для портфолио"
 msgstr "template of an online store created for portfolio"

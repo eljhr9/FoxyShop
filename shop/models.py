@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from parler.models import TranslatableModel, TranslatedFields
 
 # def get_image_path(instance, filename):
 # 	return os.path.join('photos', str(instance.id), filename)
@@ -50,10 +51,15 @@ class Brand(models.Model):
 		verbose_name = 'Производитель'
 		ordering = ['name']
 
-class Rubric(models.Model):
+class Rubric(TranslatableModel):
 	"""Рубрика товара"""
-	name = models.CharField(max_length=50, verbose_name='Название')
-	slug = models.SlugField(max_length=50, db_index=True, unique=True)
+	translations = TranslatedFields(
+		name = models.CharField(max_length=50, db_index=True),
+		slug = models.SlugField(max_length=50, db_index=True, unique=True)
+	)
+
+	# name = models.CharField(max_length=50, verbose_name='Название')
+	# slug = models.SlugField(max_length=50, db_index=True, unique=True)
 
 	def __str__(self):
 		return self.name

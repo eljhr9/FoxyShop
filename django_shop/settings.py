@@ -177,6 +177,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+# django-parler
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'ru'},
+        {'code': 'en'},
+    ),
+    'default': {
+        'fallback': 'ru',
+        'hide_untranslated': False,
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

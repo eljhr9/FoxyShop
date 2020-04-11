@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-10 16:27+0300\n"
+"POT-Creation-Date: 2020-04-11 10:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: django_shop/settings.py:160
+#: django_shop/settings.py:162
 msgid "Russian"
 msgstr "Русский"
 
-#: django_shop/settings.py:161
+#: django_shop/settings.py:163
 msgid "English"
 msgstr "English"
 
@@ -148,23 +148,23 @@ msgstr ""
 msgid "Каталог товаров"
 msgstr ""
 
-#: templates/base.html:489 templates/base.html:524 templates/base.html:687
+#: templates/base.html:489 templates/base.html:524 templates/base.html:681
 msgid "Бренды"
 msgstr ""
 
-#: templates/base.html:509 templates/base.html:696
+#: templates/base.html:509 templates/base.html:690
 msgid "Главная"
 msgstr ""
 
-#: templates/base.html:514 templates/base.html:697
+#: templates/base.html:514 templates/base.html:691
 msgid "Акции"
 msgstr ""
 
-#: templates/base.html:519 templates/base.html:698
+#: templates/base.html:519 templates/base.html:692
 msgid "Новинки"
 msgstr ""
 
-#: templates/base.html:529 templates/base.html:699
+#: templates/base.html:529 templates/base.html:693
 msgid "Статьи"
 msgstr ""
 
@@ -172,7 +172,7 @@ msgstr ""
 msgid "Оплата и Доставка"
 msgstr ""
 
-#: templates/base.html:539 templates/base.html:701
+#: templates/base.html:539 templates/base.html:695
 msgid "Контакты"
 msgstr ""
 
@@ -208,77 +208,38 @@ msgstr ""
 msgid "Редколис Илья Григорьевич"
 msgstr ""
 
-#: templates/base.html:678
-msgid "Телефоны"
-msgstr ""
-
-#: templates/base.html:679
-msgid "Фото и видео"
-msgstr ""
-
-#: templates/base.html:680
-msgid "Ноутбуки, планшеты, компьютеры"
-msgstr ""
-
-#: templates/base.html:681
-msgid "Консоли"
-msgstr ""
-
-#: templates/base.html:682
-msgid "Наушники и аудио"
-msgstr ""
-
-#: templates/base.html:683
-msgid "Гаджеты и авто"
-msgstr ""
-
-#: templates/base.html:684
-msgid "Аксессуары"
-msgstr ""
-
-#: templates/base.html:685
-msgid "Техника для дома"
-msgstr ""
-
-#: templates/base.html:686
-msgid "Разное"
-msgstr ""
-
-#: templates/base.html:694
+#: templates/base.html:688
 msgid "Дополнительно"
 msgstr ""
 
-#: templates/base.html:700
+#: templates/base.html:694
 msgid "Оплата и доставка"
 msgstr ""
 
-#: templates/base.html:702
+#: templates/base.html:696
 msgid "Обратная связь"
 msgstr ""
 
-#: templates/base.html:703
+#: templates/base.html:697
 msgid "Пользовательское соглашение"
 msgstr ""
 
-#: templates/base.html:704
+#: templates/base.html:698
 msgid "Политика конфиденциальности"
 msgstr ""
 
-#: templates/base.html:705
+#: templates/base.html:699
 msgid "Часто задаваемые вопросы"
 msgstr ""
 
-#: templates/base.html:712
+#: templates/base.html:706
 msgid "О компании"
 msgstr ""
 
-#: templates/base.html:724
+#: templates/base.html:718
 msgid "Мы в социальных сетях"
 msgstr ""
 
-#: templates/base.html:777
+#: templates/base.html:771
 msgid "шаблон интернет-магазина созданного для портфолио"
 msgstr ""
-
-#~ msgid "Language"
-#~ msgstr "Язык"
