@@ -1,0 +1,61 @@
+{% extends "profile_base.html" %}
+{% load static %}
+
+{% block info %}
+
+		{% if messages %}
+		  <div class="messages-profile">
+		    <div class="co-input co-input-pass">
+		      {% for message in messages %}
+		      <div class="co-input-success co-input co-input-pass">
+		        {% if message.tags == 'error' %}
+		        <p class="login-error">{{ message}}</p>
+		        {% elif message.tags == 'success' %}
+		        <p class="login-error password-change-successfully">{{ message}}</p>
+		        {% else %}
+		        <p class="login-error password-change-another">{{ message}}</p>
+		        {% endif %}
+		      </div>
+		    {% endfor %}
+		    </div>
+		  </div>
+		{% endif %}
+  <div class="co-section-checkout">
+    <h1>Скидки и Бонусы</h1>
+  </div>
+  <div class="co-checkout-block--padded">
+		<div class="co-discount-list">
+			<div class="co-discount">
+				<div class="co-discount-title">Балланс бонусов:</div>
+				<div class="co-discount-description">{{ bonuses_sum }}</div>
+			</div>
+		</div>
+		<h2 class="co-title--h2">История списания и начисления бонусов</h2>
+    <table class="co-table">
+      <tbody>
+        <tr>
+          <td class="co-table-cell co-table-cell--head">Дата</td>
+          <td class="co-table-cell co-table-cell--head">Описание</td>
+          <td class="co-table-cell co-table-cell--head">Сумма</td>
+        </tr>
+        {% for bonus in bonuses %}
+        <tr class="co-table-row--striped">
+          <td class="co-table-cell co-table-cell--body">{{ bonus.date|date:'d.m.Y H:i' }}</td>
+          <td class="co-table-cell co-table-cell--body">{{ bonus.description }}</td>
+          <td class="co-table-cell co-table-cell--body">{{ bonus.summa }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="co-table-footer">
+          <td class="co-table-cell co-table-cell--foot" colspan="3">
+            <div class="co-order_history-total_title">
+              Итого:
+            </div>
+            <div class="co-order_history-total_sum co-price">
+							{{ bonuses_sum }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

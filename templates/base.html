@@ -12,6 +12,7 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
 	<meta name="viewport" content="width=1200">
+	<meta name="google-site-verification" content="Mw-6_ojKXSeGzFRjL4leF95T1UdCaun80XyeB_yvDgw" />
 	<title>FoxyShop</title>
 	<link rel="stylesheet" href="{% static 'loader.css' %}">
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
@@ -410,7 +411,7 @@
 										<div class="user-icons-popup user-popup-profile">
 											<div class="popup-contacts popup-client_auth">
 												<div class="popup-content-client">
-													<a href="#" class="popup-row">
+													<a href="{% url 'purchase_history' %}" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-history"></i></span>
 														<span class="popup-mini-text">{% trans 'История заказов' %}</span>
 													</a>
@@ -418,7 +419,7 @@
 														<span class="popup-mini-logo"><i class="fas fa-map-marker-alt"></i></span>
 														<span class="popup-mini-text">{% trans 'Адрес доставки' %}</span>
 													</a>
-													<a href="#" class="popup-row">
+													<a href="{% url 'bonus_info' %}" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-piggy-bank"></i></span>
 														<span class="popup-mini-text">{% trans 'Скидки и бонусы' %}</span>
 													</a>

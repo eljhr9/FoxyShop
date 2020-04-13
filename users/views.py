@@ -7,6 +7,7 @@ from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
 from orders.models import Order
 from django.contrib import messages
+from users.models import Bonuses
 
 
 def logout_view(request):
@@ -24,6 +25,8 @@ def register(request):
             profile = Profile.objects.create(user=new_user)
             authenticated_user = authenticate(username=new_user.username, password=request.POST['password'])
             login(request, authenticated_user)
+            description = f'Бонус за регистрацию'
+            Bonuses.objects.create(user=request.user, summa=500, description=description)
             return HttpResponseRedirect(reverse('index'))
 
     else:
@@ -55,6 +58,16 @@ def edit(request):
 @login_required
 def purchase_history(request):
     orders = Order.objects.filter(user=request.user)
+    paid_orders = orders.exclude(paid=False)
+    orders_sum = sum(order.get_total_cost() for order in paid_orders)
     title = 'history'
-    context = {'title': title, 'orders': orders}
+    context = {'title': title, 'orders': orders, 'orders_sum': orders_sum}
     return render(request, 'users/history.html', context)
+
+@login_required
+def bonuses(request):
+    bonuses = Bonuses.objects.filter(user=request.user)
+    bonuses_sum = sum(bonus.summa for bonus in bonuses)
+    title = 'bonuses'
+    context = {'title': title, 'bonuses': bonuses, 'bonuses_sum': bonuses_sum}
+    return render(request, 'users/bonuses.html', context)

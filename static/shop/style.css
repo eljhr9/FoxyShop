@@ -3418,6 +3418,7 @@ table {
   flex-direction: row;
   flex-wrap: wrap;
   box-sizing: border-box;
+  color: #000;
 }
 
 .co-section--content_width {
@@ -5525,6 +5526,51 @@ table {
 
 .co-menu-personal-link.co-active {
   color: darkorange;
+}
+
+.co-discount-list {
+  margin: 0 0 2rem;
+}
+
+.co-discount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+
+.co-discount-title {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  margin: 0 0.25rem;
+}
+
+.co-discount-description {
+  max-width: 100%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  margin: 0 0.25rem;
+  font-weight: bold;
+}
+
+.co-title--h2 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 1rem;
 }
 
 /* css mobile */

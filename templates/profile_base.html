@@ -13,7 +13,7 @@
           <a href="#" {% if title == 'delivery' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Адрес доставки</a>
         </div>
         <div class="co-menu-personal-item">
-          <a href="#" {% if title == 'bonuses' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Скидки и бонусы</a>
+          <a href="{% url 'bonus_info' %}" {% if title == 'bonuses' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Скидки и бонусы</a>
         </div>
         <div class="co-menu-personal-item">
           <a href="{% url 'edit_profile' %}" {% if title == 'edit' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Контактные данные</a>
