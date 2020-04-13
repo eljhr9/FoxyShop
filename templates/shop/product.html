@@ -93,6 +93,13 @@
 				{% endif %}
 
 		    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+					{% if product.discount %}
+					<span class="product-labels">
+						<span class="product-label product-label--sale">
+							Скидка {{ product.discount }}%
+						</span>
+					</span>
+					{% endif %}
 		      <div class="product-head">
 		        <h1 class="product-title">{{ product.brand }} {{ product.title }}</h1>
 		        <div class="product-brand">
@@ -107,7 +114,12 @@
 		          <span>3254{{ product.pk }}</span>
 		        </div>
 		        <div class="product-prices">
-		          <span>{{ product.price }} ₴</span>
+							{% if product.discount %}
+								<span class="current-price">{{ product.get_price }} ₴</span>
+								<span class="last-price">{{ product.price }} ₴</span>
+							{% else %}
+								<span>{{ product.get_price }} ₴</span>
+							{% endif %}
 		        </div>
 		        <div class="product-rating">
 		          <div class="rating-items">
@@ -222,7 +234,7 @@
 		          <div class="product-bonuses">
 		            <button type="button" data-target="bonuses" data-type="text" class="bonuses-button">
 		              <i class="fas fa-piggy-bank"></i>
-		              <span> 2599 Бонусов</span>
+		              <span> {{ product.get_bonuses }} Бонусов</span>
 		            </button>
 		          </div>
 		        </div>
@@ -355,7 +367,7 @@
 					<i class="fas fa-sliders-h"></i>
 					<p>Характеристики</p>
 				</div>
-				<div class="additionally-item">
+				<div class="additionally-item active_item">
 					<i class="far fa-comment-dots"></i>
 					<p>Отзывы</p>
 					<sup>{{ comments.count }}</sup>
@@ -549,6 +561,13 @@
 			<div class="current-product">
 				<a href="{{ product.get_absolute_url }}" class="product-card">
 				<div class="product-image">
+					{% if product.discount %}
+					<span class="product_card-labels">
+						<span class="product_card-label product_card-label--sale">
+							Скидка {{ product.discount }}%
+						</span>
+					</span>
+					{% endif %}
 					{% if product.image_1 %}
 						{% thumbnail product.image_1 "300x300" as img %}
 							<img class="product_img" src="{{ img.url }}">
@@ -585,7 +604,12 @@
 						</a>
 					</div>
 					<div class="product-card-prices">
-						<span><h4>{{ product.price }} ₴</h4></span>
+						{% if product.discount %}
+							<span><h4 class="current-price">{{ product.get_price }} ₴</h4></span>
+							<span class="last-price"><h4>{{ product.price }} ₴</h4></span>
+						{% else %}
+							<span><h4>{{ product.get_price }} ₴</h4></span>
+						{% endif %}
 					</div>
 					<div class="product-card-add">
 						<div class="bascet-field">

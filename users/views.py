@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
+from orders.models import Order
 from django.contrib import messages
 
 
@@ -47,6 +48,13 @@ def edit(request):
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
-
-    context = {'user_form': user_form, 'profile_form': profile_form}
+    title = 'edit'
+    context = {'user_form': user_form, 'profile_form': profile_form, 'title': title}
     return render(request, 'users/edit.html', context)
+
+@login_required
+def purchase_history(request):
+    orders = Order.objects.filter(user=request.user)
+    title = 'history'
+    context = {'title': title, 'orders': orders}
+    return render(request, 'users/history.html', context)

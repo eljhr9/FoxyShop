@@ -91,6 +91,13 @@
 	<div class="current-product">
 		<a href="{{ product.get_absolute_url }}" class="product-card">
 			<div class="product-image">
+				{% if product.discount %}
+				<span class="product_card-labels">
+					<span class="product_card-label product_card-label--sale">
+						Скидка {{ product.discount }}%
+					</span>
+				</span>
+				{% endif %}
 				{% if product.image_1 %}
 					{% thumbnail product.image_1 "300x300" as img %}
 						<img class="product_img" src="{{ img.url }}">
@@ -98,6 +105,7 @@
 				{% else %}
 					<img class="product_img" src="{% static 'large_technics-04-1_002.jpg' %}">
 				{% endif %}
+
 			</div>
 		</a>
 		<div class="product-card-title">
@@ -127,7 +135,12 @@
 				</a>
 			</div>
 			<div class="product-card-prices">
-				<span><h4>{{ product.price }} ₴</h4></span>
+				{% if product.discount %}
+					<span><h4 class="current-price">{{ product.get_price }} ₴</h4></span>
+					<span class="last-price"><h4>{{ product.price }} ₴</h4></span>
+				{% else %}
+					<span><h4>{{ product.get_price }} ₴</h4></span>
+				{% endif %}
 			</div>
 			<div class="product-card-add">
 				<div class="bascet-field">
@@ -182,6 +195,7 @@
 	{% endfor %}
 </div>
 {% block paginator %}
+{% if page %}
 <div class="pagination-field">
 	<ul class="pagination pagination-bottom">
 		{% if products.has_next %}
@@ -236,6 +250,7 @@
 	</ul>
 
 </div>
+{% endif %}
 {% endblock paginator %}
 
 {% else %}

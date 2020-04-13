@@ -20,11 +20,10 @@
 		    </div>
 		  </div>
 		{% endif %}
-  <div class="co-section-login">
+  <div class="co-section-checkout">
     <h1>Контактные данные</h1>
   </div>
-  <div class="co-login">
-    <div class="co-login-form_data">
+  <div class="co-checkout-block--padded">
       {% if user_form.errors %}
       <div class="login-errors">
         <div class="co-input co-input-pass">
@@ -113,6 +112,5 @@
           <a href="{% url 'password_change' %}" class="co-button co-button-link">Сменить пароль</a>
         </div>
       </form>
-    </div>
   </div>
 {% endblock %}

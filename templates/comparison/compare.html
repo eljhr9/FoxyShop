@@ -63,7 +63,7 @@
 								<th class="compares-header">Цена</th>
 								{% for product in compare %}
 									<td class="compares-header-price compares_item">
-										{{ product.price }}  ₴
+										{{ product.get_price }}  ₴
 									</td>
 							  {% endfor %}
 							</tr>

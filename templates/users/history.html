@@ -1,0 +1,31 @@
+{% extends "profile_base.html" %}
+{% load static %}
+
+{% block info %}
+
+		{% if messages %}
+		  <div class="messages-profile">
+		    <div class="co-input co-input-pass">
+		      {% for message in messages %}
+		      <div class="co-input-success co-input co-input-pass">
+		        {% if message.tags == 'error' %}
+		        <p class="login-error">{{ message}}</p>
+		        {% elif message.tags == 'success' %}
+		        <p class="login-error password-change-successfully">{{ message}}</p>
+		        {% else %}
+		        <p class="login-error password-change-another">{{ message}}</p>
+		        {% endif %}
+		      </div>
+		    {% endfor %}
+		    </div>
+		  </div>
+		{% endif %}
+  <div class="co-section-checkout">
+    <h1>История заказов</h1>
+  </div>
+  <div class="co-login">
+    <div class="co-login-form_data">
+
+    </div>
+  </div>
+{% endblock %}

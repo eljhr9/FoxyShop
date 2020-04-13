@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 from coupons.models import Coupon
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 
 class Order(models.Model):
@@ -20,6 +21,7 @@ class Order(models.Model):
     braintree_id = models.CharField(max_length=150, blank=True, null=True)
     coupon = models.ForeignKey(Coupon, related_name='orders', null=True, blank=True, on_delete=models.SET_NULL, verbose_name=_('Купон'))
     discount = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)], verbose_name=_('Скидка'))
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.DO_NOTHING)
 
     class Meta:
         ordering = ('-created',)
@@ -35,6 +37,9 @@ class Order(models.Model):
 
     def get_absolute_url(self):
     		return reverse('orders:order', args=[self.id])
+
+    def get_bonuses_summ(self):
+        return sum(item.product.get_bonuses() for item in self.items.all())
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE, verbose_name=_('Заказ'))

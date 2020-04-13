@@ -111,6 +111,18 @@ def product_search(request):
 	context = {'search_form': search_form, 'cd': cd, 'results': results, 'total_results': total_results}
 	return render(request, 'shop/search.html', context)
 
+def discount(request):
+	products = Product.objects.all().exclude(discount=0)
+	title = 'Акционные товары'
+	context = {'products': products, 'title': title}
+	return render(request, 'shop/products.html', context)
+
+def new(request):
+	# products = Product.objects.all().exclude(discount=0)
+	title = 'Новинки'
+	context = {'title': title}
+	return render(request, 'shop/new_products.html', context)
+
 @login_required
 def favourite_add(request, id):
 	product = get_object_or_404(Product, id=id)

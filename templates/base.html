@@ -213,7 +213,7 @@
 										              <a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
 										            </div>
 										            <div class="dropdown_product-prices">
-										              <span>{{ product.price }} ₴</span>
+										              <span>{{ product.get_price }} ₴</span>
 										            </div>
 										          </div>
 										          <div class="dropdown_product-delete-col">
@@ -284,7 +284,7 @@
 																				<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
 																			</div>
 																			<div class="dropdown_product-prices">
-				                                <span>{{ product.price }} ₴</span>
+				                                <span>{{ product.get_price }} ₴</span>
 																			</div>
 																		</div>
 																		<div class="dropdown_product-delete-col">
@@ -433,7 +433,7 @@
 											</div>
 										</div>
 										{% else %}
-										<div class="user-icons-popup user-popup-profile">
+										<div class="user-icons-popup §">
 											<div class="popup-contacts popup-favorite">
 												<div class="popup-content-client">
 													<div class="popup--empty popup-authenticate">
@@ -510,13 +510,13 @@
 									</li>
 								</div>
 								<div class="li-board">
-									<li {% if title == 'Акции' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'empty' %}">{% trans 'Акции' %}</a>
+									<li {% if title == 'Акционные товары' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+										<a href="{% url 'shop:discount' %}">{% trans 'Акции' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
 									<li {% if title == 'Новинки' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'empty' %}">{% trans 'Новинки' %}</a>
+										<a href="{% url 'shop:new' %}">{% trans 'Новинки' %}</a>
 									</li>
 								</div>
 								<div class="li-board">
@@ -688,8 +688,8 @@
 								<div class="menu-title title-collection">{% trans "Дополнительно" %}</div>
 								<ul class="menu-items">
 									<li class="menu-item collection-item"><a href="{% url 'index' %}">{% trans "Главная" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'empty' %}">{% trans "Акции" %}</a></li>
-									<li class="menu-item collection-item"><a href="{% url 'empty' %}">{% trans "Новинки" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:discount' %}">{% trans "Акции" %}</a></li>
+									<li class="menu-item collection-item"><a href="{% url 'shop:new' %}">{% trans "Новинки" %}</a></li>
 									<li class="menu-item collection-item"><a href="{% url 'blog:list' %}">{% trans "Статьи" %}</a></li>
 									<li class="menu-item collection-item"><a href="{% url 'shop:delivery' %}">{% trans "Оплата и доставка" %}</a></li>
 									<li class="menu-item collection-item"><a href="{% url 'shop:contacts' %}">{% trans "Контакты" %}</a></li>
@@ -774,12 +774,67 @@
 							<div class="footer-copyright-items">
 								<div class="text-lg-right">
 									<ul class="tehnology">
-										<li><i class="fab fa-python"></i></li>
-										<li><i class="fab fa-html5"></i></li>
-										<li><i class="fab fa-css3-alt"></i></li>
-										<li><i class="fab fa-js-square"></i></li>
-										<li><i class="fas fa-database"></i></li>
-										<li><i class="fab fa-git-square"></i></li>
+										<li>
+											<i class="fab fa-python"></i>
+											<div class="user-icons-popup popup-bottom">
+												<div class="popup-tehnology">
+													<div class="popup-content-client">
+														<p class="popup-tehnology-text">Pyhon 3.6.8</p>
+														<p class="popup-tehnology-text">Django 2.2.10</p>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<i class="fab fa-html5"></i>
+											<div class="user-icons-popup popup-bottom">
+												<div class="popup-tehnology">
+													<div class="popup-content-client">
+														<p class="popup-tehnology-text">HTML5</p>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<i class="fab fa-css3-alt"></i>
+											<div class="user-icons-popup popup-bottom">
+												<div class="popup-tehnology">
+													<div class="popup-content-client">
+														<p class="popup-tehnology-text">CSS3</p>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<i class="fab fa-js-square"></i>
+											<div class="user-icons-popup popup-bottom">
+												<div class="popup-tehnology">
+													<div class="popup-content-client">
+														<p class="popup-tehnology-text">JavaScript</p>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<i class="fas fa-database"></i>
+											<div class="user-icons-popup popup-bottom">
+												<div class="popup-tehnology">
+													<div class="popup-content-client">
+														<p class="popup-tehnology-text">PostgreSQL</p>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<i class="fab fa-github"></i>
+											<div class="user-icons-popup popup-bottom_last">
+												<div class="popup-tehnology_last">
+													<div class="popup-content-client">
+														<a href="https://github.com/illuhich/FoxyShop" class="popup-tehnology-ref">FoxyShop code on GitHub</a>
+													</div>
+												</div>
+											</div>
+										</li>
 									</ul>
 								</div>
 							</div>

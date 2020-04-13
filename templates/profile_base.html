@@ -2,30 +2,32 @@
 
 
 {% block content %}
-<div class="profile-container">
-  <div class="co-sidebar--menu">
-    <div class="co-menu-personal">
-      <div class="co-menu-personal-item">
-        <a href="#" class="co-menu-personal-link">История заказов</a>
-      </div>
-      <div class="co-menu-personal-item">
-        <a href="#" class="co-menu-personal-link">Адрес доставки</a>
-      </div>
-      <div class="co-menu-personal-item">
-        <a href="#" class="co-menu-personal-link">Скидки и бонусы</a>
-      </div>
-      <div class="co-menu-personal-item">
-        <a href="{% url 'edit_profile' %}" class="co-menu-personal-link">Контактные данные</a>
-      </div>
-      <div class="co-menu-personal-item">
-        <a href="{% url 'logout' %}" class="co-menu-personal-link">Выход</a>
+<div class="co-section--content_wrapper">
+  <!-- <div class="profile-container"> -->
+    <div class="co-sidebar--menu">
+      <div class="co-menu-personal">
+        <div class="co-menu-personal-item">
+          <a href="{% url 'purchase_history' %}" {% if title == 'history' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>История заказов</a>
+        </div>
+        <div class="co-menu-personal-item">
+          <a href="#" {% if title == 'delivery' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Адрес доставки</a>
+        </div>
+        <div class="co-menu-personal-item">
+          <a href="#" {% if title == 'bonuses' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Скидки и бонусы</a>
+        </div>
+        <div class="co-menu-personal-item">
+          <a href="{% url 'edit_profile' %}" {% if title == 'edit' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Контактные данные</a>
+        </div>
+        <div class="co-menu-personal-item">
+          <a href="{% url 'logout' %}" class="co-menu-personal-link">Выход</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="co-section--content co-section--content_width">
-  {% block info %}
+    <div class="co-section--content">
+    {% block info %}
 
-  {% endblock info %}
-  </div>
+    {% endblock info %}
+    </div>
+  <!-- </div> -->
 </div>
 {% endblock %}

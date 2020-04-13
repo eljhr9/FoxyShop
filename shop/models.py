@@ -25,6 +25,7 @@ class Product(models.Model):
 	image_3 = models.ImageField(upload_to='images/', null=True, blank=True)
 	rubric = models.ForeignKey('Rubric', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Рубрика')
 	favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
+	discount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], default=0, verbose_name='Скидка (%)')
 
 	class Meta:
 		verbose_name_plural = 'Товар'
@@ -36,6 +37,17 @@ class Product(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('shop:product', args=[self.brand.slug, self.slug])
+
+	def get_discount(self):
+		if self.discount:
+			return (self.discount / int('100')) * self.price
+		return int('0')
+
+	def get_price(self):
+		return int(self.price - self.get_discount())
+
+	def get_bonuses(self):
+		return int(self.get_price() / 20)
 
 class Brand(models.Model):
 	"""Производитель"""

@@ -4,6 +4,7 @@ from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from .tasks import order_created
+from users.models import Bonuses
 
 
 def create_order(request):
@@ -16,6 +17,8 @@ def create_order(request):
                 order.coupon = cart.coupon
                 order.discount = cart.coupon.discount
             request.session['coupon_id'] = None
+            if request.user.is_authenticated:
+                order.user = request.user
             order.save()
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'],
@@ -24,6 +27,9 @@ def create_order(request):
             orderitems = OrderItem.objects.filter(order=order)
             order_url = request.build_absolute_uri(order.get_absolute_url())
             order_created.delay(order.id, order_url)
+            if request.user.is_authenticated:
+                description = f'Оформление заказа №{order.id}'
+                Bonuses.objects.create(user=request.user, summa=order.get_bonuses_summ(), description=description)
             if 'order_form_payment' in request.POST:
                 request.session['order_id'] = order.id
                 return redirect(reverse('payment:process'))
@@ -31,7 +37,10 @@ def create_order(request):
                 return render(request, 'orders/created.html', {'order': order, 'orderitems': orderitems})
 
     else:
-        order_form = OrderCreateForm()
+        if request.user.is_authenticated:
+            order_form = OrderCreateForm(instance=request.user)
+        else:
+            order_form = OrderCreateForm()
     context = {'cart': cart, 'order_form': order_form}
     return render(request, 'orders/create.html', context)
 

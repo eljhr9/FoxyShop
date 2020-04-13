@@ -1,0 +1,37 @@
+{% extends 'collections.html' %}
+{% load i18n %}
+
+{% block collection_title %}{% trans title %}{% endblock %}
+
+{% block breadcrumb %}
+<div class="breadcrumb-scheme-01">
+	<div class="container">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'index' %}" class="breadcrumb-link"><span>{% trans 'Главная' %}</span></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="{% url 'shop:products' %}" class="breadcrumb-link">
+					<span>{% trans 'Каталог товаров' %}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+{% block collection %}
+<div class="text">
+  <div class="text-content">
+    <div class="text-row">
+      <div class="text-icon">
+        <!-- <i class="fas fa-info-circle"></i> -->
+        <i class="fas fa-info"></i>
+      </div>
+      <div class="text-col">
+        <p>За последнее время не появлялось нового товара!</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
