@@ -93,19 +93,43 @@
 
           					<div class="rating-items">
           						<a href="{{ product.get_absolute_url }}" class="rating">
-          							{% if product.comments.count >= 1 %}
-          							<span class="rating-item full"><i class="fas fa-star"></i></span>
-          							<span class="rating-item full"><i class="fas fa-star"></i></span>
-          							<span class="rating-item full"><i class="fas fa-star"></i></span>
-          							<span class="rating-item full"><i class="fas fa-star"></i></span>
-          							<span class="rating-item"><i class="far fa-star"></i></span>
-          							{% else %}
-          							<span class="rating-item"><i class="far fa-star"></i></span>
-          							<span class="rating-item"><i class="far fa-star"></i></span>
-          							<span class="rating-item"><i class="far fa-star"></i></span>
-          							<span class="rating-item"><i class="far fa-star"></i></span>
-          							<span class="rating-item"><i class="far fa-star"></i></span>
-          							{% endif %}
+												{% if product.get_comment_average.value__avg <= 1 %}
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												{% elif product.get_comment_average.value__avg <= 2 %}
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												{% elif product.get_comment_average.value__avg <= 3 %}
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												{% elif product.get_comment_average.value__avg <= 4 %}
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												{% elif product.get_comment_average.value__avg <= 5 %}
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												<span class="rating-item full"><i class="fas fa-star"></i></span>
+												{% else %}
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												<span class="rating-item"><i class="far fa-star"></i></span>
+												{% endif %}
           							<span class="rating-link">
           								<span class="icon"><i class="far fa-comment-dots"></i></span>
           								<span class="icon-count"><p>{{ product.comments.count }}</p></span>

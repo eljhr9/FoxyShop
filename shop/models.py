@@ -6,9 +6,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from parler.models import TranslatableModel, TranslatedFields
+from django.db.models import Avg
 
-# def get_image_path(instance, filename):
-# 	return os.path.join('photos', str(instance.id), filename)
 
 class Product(models.Model):
 	"""Товар публикуемый на сайте"""
@@ -48,6 +47,9 @@ class Product(models.Model):
 
 	def get_bonuses(self):
 		return int(self.get_price() / 20)
+
+	def get_comment_average(self):
+		return self.comments.all().aggregate(Avg('value'))
 
 class Brand(models.Model):
 	"""Производитель"""

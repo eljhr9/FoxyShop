@@ -561,7 +561,17 @@
 	<script src="{% static 'slider/jquery/jquery-3.4.1.min.js' %}"></script>
 	<script src="{% static 'slider/owlcarousel2/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'js/slider.js' %}"></script>
-
+	<script>
+		$(document).ready(function() {
+			$('.additionally-item').click(function(event) {
+				$('.tabs-content').removeClass('is_active')
+				$('.additionally-item').removeClass('active_item')
+				$(this).addClass('active_item')
+				var block = $(this).attr('data_id');
+				$('#'+block).addClass('is_active')
+			});
+		});
+	</script>
 
 	<div class="section-footer">
 		<footer>

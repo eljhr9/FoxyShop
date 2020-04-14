@@ -4,7 +4,7 @@ from .models import OrderItem, Order
 from .forms import OrderCreateForm, OrderDeliveryForm
 from cart.cart import Cart
 from .tasks import order_created
-from users.models import Bonuses
+from users.models import Bonuses, Delivery
 
 
 def create_order(request):
@@ -44,7 +44,9 @@ def create_order(request):
     else:
         if request.user.is_authenticated:
             order_form = OrderCreateForm(instance=request.user)
-            order_delivery = OrderDeliveryForm(instance=request.user.delivery)
+            if not Delivery.objects.filter(user=request.user):
+                delivery = Delivery.objects.create(user=request.user)
+            order_delivery = OrderDeliveryForm(instance=delivery)
         else:
             order_form = OrderCreateForm()
             order_delivery = OrderDeliveryForm()

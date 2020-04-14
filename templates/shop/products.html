@@ -115,12 +115,36 @@
 
 			<div class="rating-items">
 				<a href="{{ product.get_absolute_url }}#comments" class="rating">
-					{% if product.comments.count >= 1 %}
+					{% if product.get_comment_average.value__avg <= 1 %}
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					{% elif product.get_comment_average.value__avg <= 2 %}
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					{% elif product.get_comment_average.value__avg <= 3 %}
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					<span class="rating-item"><i class="far fa-star"></i></span>
+					{% elif product.get_comment_average.value__avg <= 4 %}
 					<span class="rating-item full"><i class="fas fa-star"></i></span>
 					<span class="rating-item full"><i class="fas fa-star"></i></span>
 					<span class="rating-item full"><i class="fas fa-star"></i></span>
 					<span class="rating-item full"><i class="fas fa-star"></i></span>
 					<span class="rating-item"><i class="far fa-star"></i></span>
+					{% elif product.get_comment_average.value__avg <= 5 %}
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
+					<span class="rating-item full"><i class="fas fa-star"></i></span>
 					{% else %}
 					<span class="rating-item"><i class="far fa-star"></i></span>
 					<span class="rating-item"><i class="far fa-star"></i></span>

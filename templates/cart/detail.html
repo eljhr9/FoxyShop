@@ -35,6 +35,7 @@
                 <div class="cart-items">
                   {% for item in cart %}
                     {% with product=item.product %}
+										<form action="{% url 'cart:cart_add' product.id %}" method="post">
                     <div class="cart-item">
                       <div class="cart-item-row">
                         <div class="product-info-col">
@@ -67,11 +68,12 @@
                                 <div class="cart-item-total_price">{{ item.total_price }} ₴</div>
                               </div>
                             </div>
+														{% csrf_token %}
                             <div class="product-quantity">
           		                <div class="quantity cart-item-quantity">
-          		                  <div class="product-row no-gutters" data-quantity="">
+          		                  <div class="product-row no-gutters">
           		                    <div class="subtraction">
-          		                      <button type="button" class="button-counter" data-quantity-change="-1">
+          		                      <button name="quantity" class="button-counter" onclick="document.getElementById('id_quantity').value=parseInt(document.getElementById('id_quantity').value)-1" type="submit">
           		                        <i class="fas fa-minus"></i>
           		                      </button>
           		                    </div>
@@ -79,7 +81,7 @@
           		                      <input class="input-count" type="number" id="id_quantity" name="quantity" value="{{ item.quantity }}" min="1" autocomplete="off">
           		                    </div>
           		                    <div class="addition">
-          		                      <button type="button" class="button-counter" data-quantity-change="1">
+          		                      <button name="quantity+" class="button-counter" onclick="document.getElementById('id_quantity').value=parseInt(document.getElementById('id_quantity').value)+1" type="submit">
           		                        <i class="fas fa-plus"></i>
           		                      </button>
           		                    </div>
@@ -94,6 +96,7 @@
                         </div>
                       </div>
                     </div>
+										</form>
                   {% endwith %}
                 {% endfor %}
               </div>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load thumbnail %}
+{% load blog_tags %}
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
@@ -32,12 +33,12 @@
 		  <div class="product-images">
 		    <div class="product-image-block">
 		      <a href="#" class="product-image-thumb">
-		        <img class="product-img" src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}">
+		        <img id="img" class="product-img" src="{% if product.image_1 %}{{ product.image_1.url }}{% else %}{% static 'large_technics-04-1_002.jpg' %}{% endif %}">
 		      </a>
 		    </div>
 		    <div class="product-gallery">
 					<div class="product-gallery-images">
-			      <a href="#" class="product-gallery-image">
+			      <a class="product-gallery-image" onclick="document.getElementById('img').setAttribute('src','{{ product.image_1.url }}');">
 			        <span class="product-gallery-lighter"></span>
 							{% if product.image_1 %}
 								{% thumbnail product.image_1 "100x100" as img1 %}
@@ -47,7 +48,7 @@
 								<img src="{% static 'large_technics-04-1_002.jpg' %}">
 							{% endif %}
 			      </a>
-			      <a href="#" class="product-gallery-image">
+			      <a class="product-gallery-image" onclick="document.getElementById('img').setAttribute('src','{{ product.image_2.url }}');">
 			        <span class="product-gallery-lighter"></span>
 							{% if product.image_2 %}
 								{% thumbnail product.image_2 "100x100" as img2 %}
@@ -57,7 +58,7 @@
 								<img src="{% static 'large_technics-04-1_002.jpg' %}">
 							{% endif %}
 			      </a>
-			      <a href="#" class="product-gallery-image">
+			      <a class="product-gallery-image" onclick="document.getElementById('img').setAttribute('src','{{ product.image_3.url }}');">
 			        <span class="product-gallery-lighter"></span>
 							{% if product.image_3 %}
 								{% thumbnail product.image_3 "100x100" as img3 %}
@@ -124,31 +125,31 @@
 		        <div class="product-rating">
 		          <div class="rating-items">
 		      			<a href="#comments" class="rating">
-									{% if review_value.value__avg <= 1 %}
+									{% if product.get_comment_average.value__avg <= 1 %}
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif review_value.value__avg <= 2 %}
+									{% elif product.get_comment_average.value__avg <= 2 %}
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif review_value.value__avg <= 3 %}
+									{% elif product.get_comment_average.value__avg <= 3 %}
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif review_value.value__avg <= 4 %}
+									{% elif product.get_comment_average.value__avg <= 4 %}
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif review_value.value__avg <= 5 %}
+									{% elif product.get_comment_average.value__avg <= 5 %}
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
 									<span class="rating-item full"><i class="fas fa-star"></i></span>
@@ -184,7 +185,7 @@
 		                <div class="quantity">
 		                  <div class="product-row no-gutters" data-quantity="">
 		                    <div class="subtraction">
-		                      <button type="button" class="button-counter" data-quantity-change="-1">
+		                      <button type="button" class="button-counter" onclick="document.getElementById('id_quantity').value=parseInt(document.getElementById('id_quantity').value)-1">
 		                        <i class="fas fa-minus"></i>
 		                      </button>
 		                    </div>
@@ -192,7 +193,7 @@
 		                      <input class="input-count" type="number" id="id_quantity" name="quantity" value="1" min="1" autocomplete="off">
 		                    </div>
 		                    <div class="addition">
-		                      <button type="button" class="button-counter" data-quantity-change="1">
+		                      <button type="button" class="button-counter" onclick="document.getElementById('id_quantity').value=parseInt(document.getElementById('id_quantity').value)+1">
 		                        <i class="fas fa-plus"></i>
 		                      </button>
 		                    </div>
@@ -359,197 +360,304 @@
 	<div class="container">
 		<div class="additionally">
 			<div class="additionally-row">
-				<div class="additionally-item">
+				<div class="additionally-item" data_id="description">
 					<i class="far fa-list-alt"></i>
 					<p>описание</p>
 				</div>
-				<div class="additionally-item">
+				<div class="additionally-item" data_id="properties">
 					<i class="fas fa-sliders-h"></i>
 					<p>Характеристики</p>
 				</div>
-				<div class="additionally-item active_item">
+				<div class="additionally-item active_item" data_id="comments">
 					<i class="far fa-comment-dots"></i>
 					<p>Отзывы</p>
 					<sup>{{ comments.count }}</sup>
 				</div>
-				<!-- <div class="additionally-item">
-					<i class="far fa-list-alt"></i>
-					<p>описание</p>
-				</div> -->
+				<div class="additionally-item" data_id="articles">
+					<i class="far fa-newspaper"></i>
+					<p>Статьи</p>
+					<sup>3</sup>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<div class="product-section">
-	<div class="container">
-		<div class="comments-row" id="comments">
-			<div class="comments-all">
-				<div class="product-reviews">
-				{% if comments %}
-					{% for comment in comments %}
-					<div class="review">
-						<div class="review-header">
-							<div class="review-avatar">
-								<div class="review-avatar-logo">
-									<img src="https://avatars.dicebear.com/v2/initials/{{ comment.name }}.svg" alt="{{ comment.name }}">
-								</div>
-							</div>
-							<div class="review-detail">
-								<div class="review-reting">
-									<!--  -->
-									{% if comment.value == 1 %}
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-		      				<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif comment.value == 2 %}
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif comment.value == 3 %}
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif comment.value == 4 %}
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% elif comment.value == 4 %}
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									<span class="rating-item full"><i class="fas fa-star"></i></span>
-									{% else %}
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									<span class="rating-item"><i class="far fa-star"></i></span>
-									{% endif %}
-								</div>
-								<div class="review-author">
-									<span class="author">{{ comment.name }}</span>
-									{{ comment.created|date:'d.m.Y в H:i' }}
-								</div>
-							</div>
+
+		<div class="tabs-content" id="description">
+			<!-- <div class="articles-row">
+				{% for article in blogs %}
+				<div class="articles-section-col">
+					<div class="article_card">
+						<div class="article_card-img">
+							<a href="{% url 'blog:detail' article.slug %}">
+								{% thumbnail article.image "720x400" as img %}
+									<img src="{{ img.url }}">
+								{% endthumbnail %}
+								<div class="hidden"><div class="hidden-text">Читать</div></div>
+								<p>{{ article.added|date:'d E Y' }}</p>
+
+							</a>
 						</div>
-						<div class="review-content">
-							<div class="review-content-text">
-								{{ comment.body }}
-							</div>
-						</div>
-					</div>
-					{% endfor %}
-				{% else %}
-				<div class="text-content form-message">
-						<div class="text-row">
-							<div class="message-icon">
-								<i class="fas fa-pencil-alt"></i>
-							</div>
-							<div class="text-col">
-								<p>
-									Здесь еще никто не оставлял отзывы. Вы можете быть первым!
-								</p>
-							</div>
-						</div>
-				</div>
-				{% endif %}
-				</div>
-			</div>
-			<div class="create-comment">
-				{% if not sent %}
-				{% if comment_form.errors %}
-				<div class="login-errors comments-error">
-					<div class="co-input co-input-pass">
-						{% if comment_form.value.errors %}
-						<ul class="errorlist">
-							<li>Ваша оценка не может быть больше 5</li>
-						</ul>
-						{% endif %}
-						{{ comment_form.name.errors }}
-						{{ comment_form.email.errors }}
-						{{ comment_form.body.errors }}
-					</div>
-				</div>
-				{% endif %}
-				<form action="." method="post" class="review-form">
-					<div class="form">
-						<div class="form-item">
-							<label for="id_value">
-								Ваша оценка
-								<span class="required">*</span>
-							</label>
-							<!-- <p>{{ comment_form.value }}</p> -->
-							<input placeholder="" id="id_value" name="value" type="number" value="" required>
-						</div>
-						<div class="form-item">
-							<label for="id_name">
-								Представтесь пожалуйста
-								<span class="required">*</span>
-							</label>
-							{{ comment_form.name }}
-						</div>
-						<div class="form-item">
-							<label for="id_email">
-								Электронная почта
-								<span class="required">*</span>
-							</label>
-							{{ comment_form.email }}
-						</div>
-						<div class="form-item">
-							<label for="id_body">
-								Ваш отзыв
-								<span class="required">*</span>
-							</label>
-							{{ comment_form.body }}
-						</div>
-						{% csrf_token %}
-						<div class="form-item form-item-submit">
-							<div class="submit-row">
-								<div class="submit-button">
-									<button class="add-to-cart comment-send" name="comment" type="submit">Отправить</button>
-								</div>
-								<div class="submit-text">
-									<div class="form-item-privacy">
-										<p>
-											Нажимая на кнопку «Отправить» вы принимаете условия
-											<a href="#">Нашего сайта</a>.
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</form>
-				<!-- <h2>{{ review_value.value__avg }}</h2> -->
-				{% else %}
-				<div class="review-form">
-					<div class="form">
-						<div class="text-content form-message">
-								<div class="text-row">
-									<div class="message-icon">
-										<i class="far fa-check-square"></i>
-									</div>
-									<div class="text-col">
-										<p>
-											Ваш комментарий успешно отправлен
-										</p>
-									</div>
-								</div>
+						<div class="article_card-title">
+							<a href="{% url 'blog:detail' article.slug %}">{{ article.title|markdown|truncatewords_html:13 }}</a>
 						</div>
 					</div>
 				</div>
-				{% endif %}
+				{% endfor %}
+			</div> -->
+			<h1>Пусто</h1>
+		</div>
+
+		<div class="tabs-content" id="properties">
+			<div class="comments-row">
+				<div class="product-properties">
+					{% with character=product.characteristic %}
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Диагональ (дюйм)</span>
+						</dt>
+						<dd class="product-property-value">{% if character.diagonal %}{{ character.diagonal }}{% else %} - {% endif %}</dd>
+					</dl>
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Тип дисплея</span>
+						</dt>
+						<dd class="product-property-value">{% if character.display_type %}{{ character.display_type }}{% else %} - {% endif %}</dd>
+					</dl>
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Разрешение (пикс)</span>
+						</dt>
+						<dd class="product-property-value">{% if character.resolution %}{{ character.resolution }}{% else %} - {% endif %}</dd>
+					</dl>
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Процессор</span>
+						</dt>
+						<dd class="product-property-value">{% if character.processor %}{{ character.processor }}{% else %} - {% endif %}</dd>
+					</dl>
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Оперативная память</span>
+						</dt>
+						<dd class="product-property-value">{% if character.ram %}{{ character.ram }}{% else %} - {% endif %}</dd>
+					</dl>
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Встроеная память (Гб)</span>
+						</dt>
+						<dd class="product-property-value">{% if character.storage %}{{ character.storage }}{% else %} - {% endif %}</dd>
+					</dl>
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Год выпуска</span>
+						</dt>
+						<dd class="product-property-value">{% if character.year %}{{ character.year }}{% else %} - {% endif %}</dd>
+					</dl>
+					<dl class="product-properties-item">
+						<dt class="product-property-title">
+							<span>Бренд</span>
+						</dt>
+						<dd class="product-property-value">{% if product.brand %}{{ product.brand }}{% else %} - {% endif %}</dd>
+					</dl>
+					{% endwith %}
+				</div>
 			</div>
 		</div>
+
+		<div class="tabs-content" id="comments">
+			<div class="comments-row">
+				<div class="comments-all">
+					<div class="product-reviews">
+					{% if comments %}
+						{% for comment in comments %}
+						<div class="review">
+							<div class="review-header">
+								<div class="review-avatar">
+									<div class="review-avatar-logo">
+										<img src="https://avatars.dicebear.com/v2/initials/{{ comment.name }}.svg" alt="{{ comment.name }}">
+									</div>
+								</div>
+								<div class="review-detail">
+									<div class="review-reting">
+										<!--  -->
+										{% if comment.value == 1 %}
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+			      				<span class="rating-item"><i class="far fa-star"></i></span>
+										{% elif comment.value == 2 %}
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										{% elif comment.value == 3 %}
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										{% elif comment.value == 4 %}
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										{% elif comment.value == 4 %}
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										<span class="rating-item full"><i class="fas fa-star"></i></span>
+										{% else %}
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										<span class="rating-item"><i class="far fa-star"></i></span>
+										{% endif %}
+									</div>
+									<div class="review-author">
+										<span class="author">{{ comment.name }}</span>
+										{{ comment.created|date:'d.m.Y в H:i' }}
+									</div>
+								</div>
+							</div>
+							<div class="review-content">
+								<div class="review-content-text">
+									{{ comment.body }}
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					{% else %}
+					<div class="text-content form-message">
+							<div class="text-row">
+								<div class="message-icon">
+									<i class="fas fa-pencil-alt"></i>
+								</div>
+								<div class="text-col">
+									<p>
+										Здесь еще никто не оставлял отзывы. Вы можете быть первым!
+									</p>
+								</div>
+							</div>
+					</div>
+					{% endif %}
+					</div>
+				</div>
+				<div class="create-comment">
+					{% if not sent %}
+					{% if comment_form.errors %}
+					<div class="login-errors comments-error">
+						<div class="co-input co-input-pass">
+							{% if comment_form.value.errors %}
+							<ul class="errorlist">
+								<li>Ваша оценка не может быть больше 5</li>
+							</ul>
+							{% endif %}
+							{{ comment_form.name.errors }}
+							{{ comment_form.email.errors }}
+							{{ comment_form.body.errors }}
+						</div>
+					</div>
+					{% endif %}
+					<form action="." method="post" class="review-form">
+						<div class="form">
+							<div class="form-item">
+								<label for="id_value">
+									Ваша оценка
+									<span class="required">*</span>
+								</label>
+								<!-- <p>{{ comment_form.value }}</p> -->
+								<input placeholder="" id="id_value" name="value" type="number" value="" required>
+							</div>
+							<div class="form-item">
+								<label for="id_name">
+									Представтесь пожалуйста
+									<span class="required">*</span>
+								</label>
+								{{ comment_form.name }}
+							</div>
+							<div class="form-item">
+								<label for="id_email">
+									Электронная почта
+									<span class="required">*</span>
+								</label>
+								{{ comment_form.email }}
+							</div>
+							<div class="form-item">
+								<label for="id_body">
+									Ваш отзыв
+									<span class="required">*</span>
+								</label>
+								{{ comment_form.body }}
+							</div>
+							{% csrf_token %}
+							<div class="form-item form-item-submit">
+								<div class="submit-row">
+									<div class="submit-button">
+										<button class="add-to-cart comment-send" name="comment" type="submit">Отправить</button>
+									</div>
+									<div class="submit-text">
+										<div class="form-item-privacy">
+											<p>
+												Нажимая на кнопку «Отправить» вы принимаете условия
+												<a href="#">Нашего сайта</a>.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<!-- <h2>{{ review_value.value__avg }}</h2> -->
+					{% else %}
+					<div class="review-form">
+						<div class="form">
+							<div class="text-content form-message">
+									<div class="text-row">
+										<div class="message-icon">
+											<i class="far fa-check-square"></i>
+										</div>
+										<div class="text-col">
+											<p>
+												Ваш комментарий успешно отправлен
+											</p>
+										</div>
+									</div>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-content is_active" id="articles">
+			<div class="articles-row">
+				{% for article in blogs %}
+				<div class="articles-section-col">
+					<div class="article_card">
+						<div class="article_card-img">
+							<a href="{% url 'blog:detail' article.slug %}">
+								{% thumbnail article.image "720x400" as img %}
+									<img src="{{ img.url }}">
+								{% endthumbnail %}
+								<div class="hidden"><div class="hidden-text">Читать</div></div>
+								<p>{{ article.added|date:'d E Y' }}</p>
+
+							</a>
+						</div>
+						<div class="article_card-title">
+							<a href="{% url 'blog:detail' article.slug %}">{{ article.title|markdown|truncatewords_html:13 }}</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
 	</div>
 </div>
 {% if similar_products %}
@@ -584,12 +692,36 @@
 
 					<div class="rating-items">
 						<a href="{{ product.get_absolute_url }}" class="rating">
-							{% if product.comments.count >= 1 %}
+							{% if product.get_comment_average.value__avg <= 1 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif product.get_comment_average.value__avg <= 2 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif product.get_comment_average.value__avg <= 3 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif product.get_comment_average.value__avg <= 4 %}
 							<span class="rating-item full"><i class="fas fa-star"></i></span>
 							<span class="rating-item full"><i class="fas fa-star"></i></span>
 							<span class="rating-item full"><i class="fas fa-star"></i></span>
 							<span class="rating-item full"><i class="fas fa-star"></i></span>
 							<span class="rating-item"><i class="far fa-star"></i></span>
+							{% elif product.get_comment_average.value__avg <= 5 %}
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
+							<span class="rating-item full"><i class="fas fa-star"></i></span>
 							{% else %}
 							<span class="rating-item"><i class="far fa-star"></i></span>
 							<span class="rating-item"><i class="far fa-star"></i></span>
