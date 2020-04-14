@@ -47,7 +47,7 @@
             <div class="co-order-information_row">
               <div class="co-order-information_title">Получатель</div>
               <div class="co-order-information_value">
-                {{ order.first_name }} {{ order.last_name }}
+                {{ order.first_name }} {% if order.last_name %}{{ order.last_name }}{% else %} - {% endif %}
               </div>
             </div>
             <div class="co-order-information_row">

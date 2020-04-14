@@ -3,11 +3,10 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
-from .models import Profile
+from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm, DeliveryEditForm
+from .models import Profile, Bonuses, Delivery
 from orders.models import Order
 from django.contrib import messages
-from users.models import Bonuses
 
 
 def logout_view(request):
@@ -71,3 +70,21 @@ def bonuses(request):
     title = 'bonuses'
     context = {'title': title, 'bonuses': bonuses, 'bonuses_sum': bonuses_sum}
     return render(request, 'users/bonuses.html', context)
+
+@login_required
+def delivery(request):
+    delivery = Delivery.objects.filter(user=request.user)
+    if not delivery:
+        delivery = Delivery.objects.create(user=request.user)
+    if request.method == 'POST' and 'edit_form' in request.POST:
+        delivery_form = DeliveryEditForm(instance=request.user.delivery, data=request.POST)
+        if delivery_form.is_valid():
+            delivery_form.save()
+            messages.success(request, 'Изменения сохранены')
+        else:
+            messages.error(request, 'Произойшла ошибка, попробуйте снова')
+    else:
+        delivery_form = DeliveryEditForm(instance=request.user.delivery)
+    title = 'delivery'
+    context = {'delivery_form': delivery_form, 'title': title}
+    return render(request, 'users/delivery.html', context)

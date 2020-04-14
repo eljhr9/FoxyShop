@@ -415,7 +415,7 @@
 														<span class="popup-mini-logo"><i class="fas fa-history"></i></span>
 														<span class="popup-mini-text">{% trans 'История заказов' %}</span>
 													</a>
-													<a href="#" class="popup-row">
+													<a href="{% url 'change_delivery' %}" class="popup-row">
 														<span class="popup-mini-logo"><i class="fas fa-map-marker-alt"></i></span>
 														<span class="popup-mini-text">{% trans 'Адрес доставки' %}</span>
 													</a>
@@ -434,7 +434,7 @@
 											</div>
 										</div>
 										{% else %}
-										<div class="user-icons-popup §">
+										<div class="user-icons-popup user-popup-profile">
 											<div class="popup-contacts popup-favorite">
 												<div class="popup-content-client">
 													<div class="popup--empty popup-authenticate">

@@ -1,0 +1,64 @@
+{% extends "profile_base.html" %}
+{% load static %}
+
+{% block info %}
+  <div class="co-section-checkout">
+    <h1>Адрес доставки</h1>
+  </div>
+  <div class="co-checkout-block--padded">
+		{% if messages %}
+		  <div class="messages-profile">
+		    <div class="co-input co-input-profile">
+		      {% for message in messages %}
+		      <div class="co-input">
+		        {% if message.tags == 'error' %}
+		        <p class="login-error">{{ message}}</p>
+		        {% elif message.tags == 'success' %}
+		        <p class="login-error password-change-successfully profile-message">{{ message}}</p>
+		        {% else %}
+		        <p class="login-error password-change-another profile-message">{{ message}}</p>
+		        {% endif %}
+		      </div>
+		    {% endfor %}
+		    </div>
+		  </div>
+		{% endif %}
+      {% if delivery_form.errors %}
+      <div class="login-errors">
+        <div class="co-input co-input-pass">
+          {{ form.city.errors }}
+          {{ form.address.errors }}
+          {{ form.postal_code.errors }}
+        </div>
+      </div>
+      {% endif %}
+
+      <form id="edit_form" action="." method="post" enctype="multipart/form-data">
+        <div class="co-input">
+          <label for="login" class="co-input-label-no-after">Город</label>
+          <div class="co-input-text">
+            {{ delivery_form.city }}
+          </div>
+        </div>
+        <div class="co-input co-input-pass">
+          <label for="login" class="co-input-label-no-after">Адрес</label>
+          <div class="co-input-text">
+            {{ delivery_form.address }}
+          </div>
+        </div>
+        <div class="co-input co-input-pass">
+          <label for="login" class="co-input-label-no-after">Почтовый индекс</label>
+          <div class="co-input-text">
+            {{ delivery_form.postal_code }}
+          </div>
+        </div>
+        {% csrf_token %}
+        <div class="co-form-controls">
+          <!-- <input form="edit_form" name="edit_form" type="submit" class="co-button co-form-button" value="Сохранить изменения"> -->
+          <button form="edit_form" name="edit_form" type="submit" class="co-button co-form-button">
+            Сохранить изменения
+          </button>
+        </div>
+      </form>
+  </div>
+{% endblock %}

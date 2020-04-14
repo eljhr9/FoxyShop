@@ -2,28 +2,27 @@
 {% load static %}
 
 {% block info %}
-
+  <div class="co-section-checkout">
+    <h1>История заказов</h1>
+  </div>
+  <div class="co-checkout-block--padded">
 		{% if messages %}
 		  <div class="messages-profile">
-		    <div class="co-input co-input-pass">
+		    <div class="co-input co-input-profile">
 		      {% for message in messages %}
-		      <div class="co-input-success co-input co-input-pass">
+		      <div class="co-input">
 		        {% if message.tags == 'error' %}
 		        <p class="login-error">{{ message}}</p>
 		        {% elif message.tags == 'success' %}
-		        <p class="login-error password-change-successfully">{{ message}}</p>
+		        <p class="login-error password-change-successfully profile-message">{{ message}}</p>
 		        {% else %}
-		        <p class="login-error password-change-another">{{ message}}</p>
+		        <p class="login-error password-change-another profile-message">{{ message}}</p>
 		        {% endif %}
 		      </div>
 		    {% endfor %}
 		    </div>
 		  </div>
 		{% endif %}
-  <div class="co-section-checkout">
-    <h1>История заказов</h1>
-  </div>
-  <div class="co-checkout-block--padded">
     {% if orders %}
     <table class="co-table">
       <tbody>

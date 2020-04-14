@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Delivery
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -26,3 +26,8 @@ class ProfileEditForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ('phone_number', 'avatar')
+
+class DeliveryEditForm(forms.ModelForm):
+	class Meta:
+		model = Delivery
+		fields = ('city', 'address', 'postal_code')

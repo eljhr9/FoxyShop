@@ -3115,7 +3115,7 @@ table {
   color:red;
 }
 
-.co-input-text input, .co-input-text textarea {
+.co-input-text input, .co-input-text textarea, .co-input-text select {
   padding: 1.5rem 0.5rem 0.5rem;
   border: 1px solid #cccccc;
   transition-duration: 0.3s;
@@ -5571,6 +5571,14 @@ table {
   font-weight: 600;
   color: #000;
   margin: 0 0 1rem;
+}
+
+.co-input-profile {
+  margin: 2rem 0;
+}
+
+.profile-message {
+  border-radius: 0px;
 }
 
 /* css mobile */

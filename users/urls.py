@@ -18,4 +18,5 @@ urlpatterns = [
     path('edit/', views.edit, name="edit_profile"),
     path('history/', views.purchase_history, name="purchase_history"),
     path('bonuses/', views.bonuses, name="bonus_info"),
+    path('delivery/', views.delivery, name="change_delivery")
 ]

@@ -10,7 +10,7 @@
           <a href="{% url 'purchase_history' %}" {% if title == 'history' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>История заказов</a>
         </div>
         <div class="co-menu-personal-item">
-          <a href="#" {% if title == 'delivery' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Адрес доставки</a>
+          <a href="{% url 'change_delivery' %}" {% if title == 'delivery' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Адрес доставки</a>
         </div>
         <div class="co-menu-personal-item">
           <a href="{% url 'bonus_info' %}" {% if title == 'bonuses' %}class="co-menu-personal-link co-active"{% else %}class="co-menu-personal-link"{% endif %}>Скидки и бонусы</a>

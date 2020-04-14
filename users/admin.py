@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Bonuses
+from .models import Profile, Bonuses, Delivery
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'phone_number', 'avatar')
@@ -11,3 +11,5 @@ class BonusesAdmin(admin.ModelAdmin):
     list_display = ('user', 'summa', 'description', 'date')
 
 admin.site.register(Bonuses, BonusesAdmin)
+
+admin.site.register(Delivery)

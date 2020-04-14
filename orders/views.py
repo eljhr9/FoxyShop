@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import OrderItem, Order
-from .forms import OrderCreateForm
+from .forms import OrderCreateForm, OrderDeliveryForm
 from cart.cart import Cart
 from .tasks import order_created
 from users.models import Bonuses
@@ -11,8 +11,13 @@ def create_order(request):
     cart = Cart(request)
     if request.method == "POST" and ('order_form' in request.POST or 'order_form_payment' in request.POST):
         order_form = OrderCreateForm(request.POST)
-        if order_form.is_valid():
+        order_delivery = OrderDeliveryForm(request.POST)
+        if order_form.is_valid() and order_delivery.is_valid():
             order = order_form.save(commit=False)
+            cd = order_delivery.cleaned_data
+            order.city = cd['city']
+            order.address = cd['address']
+            order.postal_code = cd['postal_code']
             if cart.coupon:
                 order.coupon = cart.coupon
                 order.discount = cart.coupon.discount
@@ -39,9 +44,11 @@ def create_order(request):
     else:
         if request.user.is_authenticated:
             order_form = OrderCreateForm(instance=request.user)
+            order_delivery = OrderDeliveryForm(instance=request.user.delivery)
         else:
             order_form = OrderCreateForm()
-    context = {'cart': cart, 'order_form': order_form}
+            order_delivery = OrderDeliveryForm()
+    context = {'cart': cart, 'order_form': order_form, 'order_delivery': order_delivery}
     return render(request, 'orders/create.html', context)
 
 def order_test(request, order_id):
