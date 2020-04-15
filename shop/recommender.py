@@ -1,5 +1,5 @@
 import redis
-from django.conf import settings
+import os
 from .models import Product
 
 
