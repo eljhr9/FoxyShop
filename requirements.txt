@@ -14,6 +14,7 @@ Django==2.2.10
 django-celery==3.3.1
 django-haystack==2.8.1
 django-parler==1.9.2
+django-redis-cache==2.1.0
 django-rosetta==0.9.3
 django-storages==1.9.1
 django-taggit==1.2.0

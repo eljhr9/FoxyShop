@@ -291,6 +291,13 @@ Configuration.configure(
     BRAINTREE_PRIVATE_KEY
 )
 
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
-REDIS_DB = 1
+# REDIS_HOST = 'localhost'
+# REDIS_PORT = 6379
+# REDIS_DB = 1
+
+CACHES = {
+    "default": {
+         "BACKEND": "redis_cache.RedisCache",
+         "LOCATION": os.environ.get('REDIS_URL'),
+    }
+}
