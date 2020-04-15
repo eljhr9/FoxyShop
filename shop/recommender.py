@@ -4,7 +4,8 @@ from .models import Product
 
 
 # connect to redis
-r = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
+# r = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
+r = redis.from_url(os.environ.get("REDIS_URL"))
 
 class Recommender(object):
 
