@@ -88,8 +88,9 @@ def product(request, product_slug, brand_slug):
 	else:
 		comment_form = CommentForm()
 	r = Recommender()
-	# similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)[:4]
 	similar_products = r.suggest_products_for([product], 4)
+	if not similar_products:
+		similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)[:4]
 	cart_product_form = CartAddProductForm()
 	context = {'product': product, 'comments': comments, 'comment_form': comment_form,
 	'sent': sent, 'review_value': review_value, 'similar_products': similar_products,

@@ -5,6 +5,7 @@ from .forms import OrderCreateForm, OrderDeliveryForm
 from cart.cart import Cart
 from .tasks import order_created
 from users.models import Bonuses, Delivery
+from shop.recommender import Recommender
 
 
 def create_order(request):
@@ -25,13 +26,17 @@ def create_order(request):
             if request.user.is_authenticated:
                 order.user = request.user
             order.save()
+            product_list = []
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'],
                                          price=item['price'], quantity=item['quantity'])
+                product_list.append(item['product'])
             cart.clear()
             orderitems = OrderItem.objects.filter(order=order)
             order_url = request.build_absolute_uri(order.get_absolute_url())
             order_created.delay(order.id, order_url)
+            r = Recommender()
+            r.products_bought(product_list)
             if request.user.is_authenticated:
                 description = f'Оформление заказа №{order.id}'
                 Bonuses.objects.create(user=request.user, summa=order.get_bonuses_summ(), description=description)
@@ -44,10 +49,12 @@ def create_order(request):
     else:
         if request.user.is_authenticated:
             order_form = OrderCreateForm(instance=request.user)
-            delivery = Delivery.objects.filter(user=request.user)
-            if not delivery:
+            try:
+                delivery = Delivery.objects.get(user=request.user)
+            except:
                 delivery = Delivery.objects.create(user=request.user)
             order_delivery = OrderDeliveryForm(instance=delivery)
+
         else:
             order_form = OrderCreateForm()
             order_delivery = OrderDeliveryForm()

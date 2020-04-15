@@ -298,6 +298,6 @@ Configuration.configure(
 CACHES = {
     "default": {
          "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": os.environ.get('REDIS_URL'),
+         "LOCATION": config('REDIS_URL'),
     }
 }
