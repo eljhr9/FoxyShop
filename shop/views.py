@@ -10,6 +10,7 @@ from cart.forms import CartAddProductForm
 from haystack.query import SearchQuerySet
 from django.core.mail import send_mail
 from django.contrib import messages
+from .recommender import Recommender
 
 
 def index(request):
@@ -86,7 +87,9 @@ def product(request, product_slug, brand_slug):
 			sent = True
 	else:
 		comment_form = CommentForm()
-	similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)[:4]
+	r = Recommender()
+	# similar_products = Product.objects.filter(rubric=product.rubric).exclude(id=product.id)[:4]
+	similar_products = r.suggest_products_for([product], 4)
 	cart_product_form = CartAddProductForm()
 	context = {'product': product, 'comments': comments, 'comment_form': comment_form,
 	'sent': sent, 'review_value': review_value, 'similar_products': similar_products,
