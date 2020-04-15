@@ -219,9 +219,11 @@
 		              </div>
 		              <div class="order">
 		                <div class="product-quick_checkout">
-											<a href="{% url 'orders:create_order' %}" class="add-to-cart quick_checkout">
+											<!-- <a href="{% url 'orders:create_order' %}" class="add-to-cart quick_checkout"> -->
+											<button name="quick_checkout" class="add-to-cart quick_checkout" type="submit">
 												Заказ в один клик
-											</a>
+											</button>
+											<!-- </a> -->
 		                </div>
 		              </div>
 		            </div>
@@ -382,28 +384,19 @@
 		</div>
 
 		<div class="tabs-content" id="description">
-			<!-- <div class="articles-row">
-				{% for article in blogs %}
-				<div class="articles-section-col">
-					<div class="article_card">
-						<div class="article_card-img">
-							<a href="{% url 'blog:detail' article.slug %}">
-								{% thumbnail article.image "720x400" as img %}
-									<img src="{{ img.url }}">
-								{% endthumbnail %}
-								<div class="hidden"><div class="hidden-text">Читать</div></div>
-								<p>{{ article.added|date:'d E Y' }}</p>
-
-							</a>
-						</div>
-						<div class="article_card-title">
-							<a href="{% url 'blog:detail' article.slug %}">{{ article.title|markdown|truncatewords_html:13 }}</a>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div> -->
-			<h1>Пусто</h1>
+			<div class="text">
+			  <div class="text-content">
+			    <div class="text-row">
+			      <div class="text-icon">
+			        <!-- <i class="fas fa-info-circle"></i> -->
+			        <i class="fas fa-info"></i>
+			      </div>
+			      <div class="text-col">
+			        <p>Описание к данному товару отсутствует!</p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		</div>
 
 		<div class="tabs-content" id="properties">
@@ -463,7 +456,7 @@
 			</div>
 		</div>
 
-		<div class="tabs-content" id="comments">
+		<div class="tabs-content is_active" id="comments">
 			<div class="comments-row">
 				<div class="comments-all">
 					<div class="product-reviews">
@@ -634,7 +627,7 @@
 			</div>
 		</div>
 
-		<div class="tabs-content is_active" id="articles">
+		<div class="tabs-content" id="articles">
 			<div class="articles-row">
 				{% for article in blogs %}
 				<div class="articles-section-col">

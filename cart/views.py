@@ -23,6 +23,8 @@ def cart_add(request, product_id):
         return redirect('shop:products')
     elif 'product' in request.POST:
         return redirect(product.get_absolute_url())
+    elif 'quick_checkout' in request.POST:
+        return redirect('orders:create_order')
     else:
         return redirect('cart:cart_detail')
 

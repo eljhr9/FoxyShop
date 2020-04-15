@@ -134,12 +134,163 @@
     <div class="container">
       <div class="tabs">
         <div class="authenticate-row tabs-list">
-          <div class="tabs-col is_active">Товары на главной</div>
-          <div class="tabs-col">Товар дня</div>
+          <div class="tabs-col is_active" data_id="main_products">Товары на главной</div>
+          <div class="tabs-col" data_id="discount_products">Товар дня</div>
         </div>
       </div>
     </div>
-    <div class="tabs-content is_active">
+
+    <div class="tabs-content" id="discount_products">
+      <div class="section-products">
+        <div class="tabs-products">
+          <div class="container">
+            <div class="products search-products">
+              {% for product in discount_products %}
+                <div class="current-product">
+                  <a href="{{ product.get_absolute_url }}" class="product-card">
+                  <div class="product-image">
+                    {% if product.discount %}
+            				<span class="product_card-labels">
+            					<span class="product_card-label product_card-label--sale">
+            						Скидка {{ product.discount }}%
+            					</span>
+            				</span>
+            				{% endif %}
+                    {% if product.image_1 %}
+                      {% thumbnail product.image_1 "300x300" as img %}
+                        <img class="product_img" src="{{ img.url }}">
+                      {% endthumbnail %}
+                    {% else %}
+                      <img class="product_img" src="{% static 'large_technics-04-1_002.jpg' %}">
+                    {% endif %}
+                  </div>
+                  </a>
+                  <div class="product-card-title">
+                    <a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+                  </div>
+                  <div class="product-card-rating">
+
+                    <div class="rating-items">
+                      <a href="{{ product.get_absolute_url }}" class="rating">
+                        {% if product.get_comment_average.value__avg <= 1 %}
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									{% elif product.get_comment_average.value__avg <= 2 %}
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									{% elif product.get_comment_average.value__avg <= 3 %}
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									{% elif product.get_comment_average.value__avg <= 4 %}
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									{% elif product.get_comment_average.value__avg <= 5 %}
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									<span class="rating-item full"><i class="fas fa-star"></i></span>
+      									{% else %}
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									<span class="rating-item"><i class="far fa-star"></i></span>
+      									{% endif %}
+                        <span class="rating-link">
+                          <span class="icon"><i class="far fa-comment-dots"></i></span>
+                          <span class="icon-count"><p>{{ product.comments.count }}</p></span>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="product-card-prices">
+                      {% if product.discount %}
+              					<span><h4 class="current-price">{{ product.get_price }} ₴</h4></span>
+              					<span class="last-price"><h4>{{ product.price }} ₴</h4></span>
+              				{% else %}
+              					<span><h4>{{ product.get_price }} ₴</h4></span>
+              				{% endif %}
+                    </div>
+                    <div class="product-card-add">
+                      <div class="bascet-field">
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                          <input type="hidden" id="id_quantity" name="quantity" value="1">
+                          {% csrf_token %}
+                          {% if product in cartitems %}
+              						<button name="products" class="bascet-added">
+              							<i class="fas fa-shopping-basket"></i>
+              							<span>В корзине</span>
+              						</button>
+              						{% else %}
+              						<button name="products" class="bascet-add">
+              							<i class="fas fa-shopping-basket"></i>
+              							<span>В корзину</span>
+              						</button>
+              						{% endif %}
+                        </form>
+                      </div>
+                      <div class="favorite-field">
+												{% if product in compare %}
+												<form class="button" action="{% url 'compare:compare_remove' product.id %}" method="post">
+													<button name="products" type="submit" class="button compare">
+														{% csrf_token %}
+														<span class="fas fa-align-right fa-lg comparing"></span>
+													</button>
+												</form>
+												{% else %}
+												<form class="button" action="{% url 'compare:compare_add' product.id %}" method="post">
+													<button name="products" type="submit" class="button compare">
+														{% csrf_token %}
+														<span class="fas fa-align-right fa-lg"></span>
+													</button>
+												</form>
+												{% endif %}
+                        {% if product in favourite %}
+                        <button class="button favorite">
+                          <!-- <i class="fas fa-heart product-fav"></i> -->
+                           <span class="fas fa-heart fa-lg product-fav"></span>
+                        </button>
+                        {% else %}
+                          <button class="button favorite">
+                            <!-- <i class="fas fa-heart product-fav"></i> -->
+                             <span class="far fa-heart fa-lg"></span>
+                          </button>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tabs-all">
+        <div class="container">
+          <div class="authenticate-row">
+            <div class="more_product-col">
+              <a href="{% url 'shop:discount' %}" class="subscribe-button">Посмотреть акционные товары</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-content is_active" id="main_products">
       <div class="section-products">
         <div class="tabs-products">
           <div class="container">

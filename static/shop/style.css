@@ -74,10 +74,6 @@ table {
   border-collapse: collapse;
 }
 
-/* .header {
-  height: 143.5px;
-} */
-
 .container {
   width: 100%;
   padding-right: 10px;
@@ -814,6 +810,7 @@ table {
 .menu {
   height: 48px;
   background-color: black;
+  transition: background-color 0.4s linear;
 }
 
 .nav {
@@ -824,7 +821,7 @@ table {
 }
 
 .nav-items {
-  width: 100%;
+  width: 101%;
   padding: auto;
   height: inherit;
 }
@@ -842,13 +839,6 @@ table {
   padding-right: 20px;
 }
 
-/* .li-board li a {
-  color: white;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 4px 0;
-} */
-
 .nav-item a {
   position: relative;
   display: inline-block;
@@ -856,6 +846,14 @@ table {
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 600;
+  color: #fff;
+}
+
+.topWindow .nav-item a {
+  color: #000;
+}
+
+.collection .nav-item a {
   color: #fff;
 }
 
@@ -889,16 +887,6 @@ table {
 .nav-item:hover a:after, .nav-item.is_active a::after {
   bottom: 9px;
 }
-
-/* .li-board li a:hover {
-  border-top: 2px solid darkorange;
-  border-bottom: 2px solid darkorange;
-} */
-
-/* .li-board_selected {
-  border-top: 2px solid darkorange;
-  border-bottom: 2px solid darkorange;
-} */
 
 .collection {
   background-color: darkorange;
@@ -1015,7 +1003,7 @@ table {
 .breadcrumb {
   font-size: 12px;
   line-height: 12px;
-  padding: 10px 5px;
+  padding: 10px 0px;
   list-style: none;
   margin-bottom: 40px;
 }
@@ -2346,6 +2334,7 @@ table {
 
 .quick_checkout {
   background-color: #3095dd;
+  min-width: 500px;
 }
 
 .product-extras {
@@ -5647,6 +5636,66 @@ table {
   min-height: 1px;
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.another_articles {
+  margin-bottom: 20px;
+}
+
+.topWindow {
+  width: 1280px;
+  position: fixed;
+  top: 0;
+  z-index:9999;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.3);
+}
+
+.topWindow .top_hide_nav {
+  display: none;
+}
+
+.nav-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.nav-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.nav-col-user {
+  align-self: center;
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.user_icons-clone {
+  display: none;
+}
+
+.topWindow .user_icons-clone {
+  margin-left: 20px;
+  display: block;
+}
+
+.topWindow .user_icons-item {
+  margin-right: 0px;
 }
 
 /* css mobile */

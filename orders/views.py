@@ -44,7 +44,8 @@ def create_order(request):
     else:
         if request.user.is_authenticated:
             order_form = OrderCreateForm(instance=request.user)
-            if not Delivery.objects.filter(user=request.user):
+            delivery = Delivery.objects.get(user=request.user)
+            if not delivery:
                 delivery = Delivery.objects.create(user=request.user)
             order_delivery = OrderDeliveryForm(instance=delivery)
         else:

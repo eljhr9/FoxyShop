@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load blog_tags %}
+{% load thumbnail %}
 
 {% block breadcrumb %}
 <div class="breadcrumb-scheme-01">
@@ -80,139 +81,158 @@
 	<div class="container">
 		<div class="additionally">
 			<div class="additionally-row">
-				<div class="additionally-item">
+				<div class="additionally-item active_item" data_id="comments">
 					<i class="far fa-comment-dots"></i>
 					<p>Комментарии</p>
 					<sup>{{ comments.count }}</sup>
 				</div>
-        <div class="additionally-item">
+        <div class="additionally-item" data_id="articles">
 					<i class="far fa-newspaper"></i>
 					<p>Другие Статьи</p>
 				</div>
-				<!-- <div class="additionally-item">
-					<i class="far fa-list-alt"></i>
-					<p>описание</p>
-				</div> -->
 			</div>
 		</div>
-	</div>
-</div>
 
-<div class="product-section">
-	<div class="container">
-		<div class="comments-row" id="comments">
-			<div class="comments-all">
-				<div class="product-reviews">
-				{% if comments %}
-					{% for comment in comments %}
-					<div class="review">
-						<div class="review-header">
-							<div class="review-avatar">
-								<div class="review-avatar-logo">
-									<img src="https://avatars.dicebear.com/v2/initials/{{ comment.name }}.svg" alt="{{ comment.name }}">
+		<div class="tabs-content" id="articles">
+			<div class="articles-row another_articles">
+				{% for article in blogs %}
+				<div class="articles-section-col">
+					<div class="article_card">
+						<div class="article_card-img">
+							<a href="{% url 'blog:detail' article.slug %}">
+								{% thumbnail article.image "720x400" as img %}
+									<img src="{{ img.url }}">
+								{% endthumbnail %}
+								<div class="hidden"><div class="hidden-text">Читать</div></div>
+								<p>{{ article.added|date:'d E Y' }}</p>
+
+							</a>
+						</div>
+						<div class="article_card-title">
+							<a href="{% url 'blog:detail' article.slug %}">{{ article.title|markdown|truncatewords_html:13 }}</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="tabs-content is_active" id="comments">
+			<div class="comments-row" id="comments">
+				<div class="comments-all">
+					<div class="product-reviews">
+					{% if comments %}
+						{% for comment in comments %}
+						<div class="review">
+							<div class="review-header">
+								<div class="review-avatar">
+									<div class="review-avatar-logo">
+										<img src="https://avatars.dicebear.com/v2/initials/{{ comment.name }}.svg" alt="{{ comment.name }}">
+									</div>
+								</div>
+								<div class="review-detail">
+									<div class="review-author">
+										<span class="author">{{ comment.name }}</span>
+										{{ comment.created|date:'d.m.Y в H:i' }}
+									</div>
 								</div>
 							</div>
-							<div class="review-detail">
-								<div class="review-author">
-									<span class="author">{{ comment.name }}</span>
-									{{ comment.created|date:'d.m.Y в H:i' }}
+							<div class="review-content">
+								<div class="review-content-text">
+									{{ comment.body }}
 								</div>
 							</div>
 						</div>
-						<div class="review-content">
-							<div class="review-content-text">
-								{{ comment.body }}
+						{% endfor %}
+					{% else %}
+					<div class="text-content form-message">
+							<div class="text-row">
+								<div class="message-icon">
+									<i class="fas fa-pencil-alt"></i>
+								</div>
+								<div class="text-col">
+									<p>
+										Здесь еще никто не оставлял комментарии. Вы можете быть первым!
+									</p>
+								</div>
+							</div>
+					</div>
+					{% endif %}
+					</div>
+				</div>
+				<div class="create-comment">
+					{% if not sent %}
+					{% if comment_form.errors %}
+					<div class="login-errors comments-error">
+						<div class="co-input co-input-pass">
+							{{ comment_form.name.errors }}
+							{{ comment_form.email.errors }}
+							{{ comment_form.body.errors }}
+						</div>
+					</div>
+					{% endif %}
+					<form action="." method="post" class="review-form">
+						<div class="form">
+							<div class="form-item">
+								<label for="id_name">
+									Представтесь пожалуйста
+									<span class="required">*</span>
+								</label>
+								{{ comment_form.name }}
+							</div>
+							<div class="form-item">
+								<label for="id_email">
+									Электронная почта
+									<span class="required">*</span>
+								</label>
+								{{ comment_form.email }}
+							</div>
+							<div class="form-item">
+								<label for="id_body">
+									Ваш отзыв
+									<span class="required">*</span>
+								</label>
+								{{ comment_form.body }}
+							</div>
+							{% csrf_token %}
+							<div class="form-item form-item-submit">
+								<div class="submit-row">
+									<div class="submit-button">
+										<button class="add-to-cart comment-send" name="comment" type="submit">Отправить</button>
+									</div>
+									<div class="submit-text">
+										<div class="form-item-privacy">
+											<p>
+												Нажимая на кнопку «Отправить» вы принимаете условия
+												<a href="#">Нашего сайта</a>.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					{% else %}
+					<div class="review-form">
+						<div class="form">
+							<div class="text-content form-message">
+									<div class="text-row">
+										<div class="message-icon">
+											<i class="far fa-check-square"></i>
+										</div>
+										<div class="text-col">
+											<p>
+												Ваш комментарий успешно отправлен
+											</p>
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>
-					{% endfor %}
-				{% else %}
-				<div class="text-content form-message">
-						<div class="text-row">
-							<div class="message-icon">
-								<i class="fas fa-pencil-alt"></i>
-							</div>
-							<div class="text-col">
-								<p>
-									Здесь еще никто не оставлял комментарии. Вы можете быть первым!
-								</p>
-							</div>
-						</div>
-				</div>
-				{% endif %}
+					{% endif %}
 				</div>
 			</div>
-			<div class="create-comment">
-				{% if not sent %}
-				{% if comment_form.errors %}
-				<div class="login-errors comments-error">
-					<div class="co-input co-input-pass">
-						{{ comment_form.name.errors }}
-						{{ comment_form.email.errors }}
-						{{ comment_form.body.errors }}
-					</div>
-				</div>
-				{% endif %}
-				<form action="." method="post" class="review-form">
-					<div class="form">
-						<div class="form-item">
-							<label for="id_name">
-								Представтесь пожалуйста
-								<span class="required">*</span>
-							</label>
-							{{ comment_form.name }}
-						</div>
-						<div class="form-item">
-							<label for="id_email">
-								Электронная почта
-								<span class="required">*</span>
-							</label>
-							{{ comment_form.email }}
-						</div>
-						<div class="form-item">
-							<label for="id_body">
-								Ваш отзыв
-								<span class="required">*</span>
-							</label>
-							{{ comment_form.body }}
-						</div>
-						{% csrf_token %}
-						<div class="form-item form-item-submit">
-							<div class="submit-row">
-								<div class="submit-button">
-									<button class="add-to-cart comment-send" name="comment" type="submit">Отправить</button>
-								</div>
-								<div class="submit-text">
-									<div class="form-item-privacy">
-										<p>
-											Нажимая на кнопку «Отправить» вы принимаете условия
-											<a href="#">Нашего сайта</a>.
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</form>
-				{% else %}
-				<div class="review-form">
-					<div class="form">
-						<div class="text-content form-message">
-								<div class="text-row">
-									<div class="message-icon">
-										<i class="far fa-check-square"></i>
-									</div>
-									<div class="text-col">
-										<p>
-											Ваш комментарий успешно отправлен
-										</p>
-									</div>
-								</div>
-						</div>
-					</div>
-				</div>
-				{% endif %}
-			</div>
+
 		</div>
 	</div>
 </div>

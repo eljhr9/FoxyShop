@@ -464,85 +464,379 @@
 			</div>
 		</div>
 
-			<div class="menu">
+			<div id="navbar" class="menu">
 				<div class="container">
-					<div class="navbar">
+					<div class="nav-row">
+						<div class="nav-col">
+							<div class="navbar">
 
-						<nav class="nav">
-							<ul class="nav-items">
-								<div class="li-board collection">
-									<li class="nav-item nav-item-collection">
-										<a href="{% url 'shop:products' %}">{% trans 'Каталог товаров' %}</a>
-									</li>
+								<nav class="nav">
+									<ul class="nav-items">
+										<div class="li-board collection">
+											<li class="nav-item nav-item-collection">
+												<a href="{% url 'shop:products' %}">{% trans 'Каталог товаров' %}</a>
+											</li>
 
-								</div>
-								<nav class="nav-collection-hidden nav-hidden">
-									<ul class="collection-hidden">
-										{% for rubric in rubrics %}
-										{% if title == rubric.name %}
-										<li><a href="{% url 'shop:by_rubric' rubric.slug %}" class="selected_rubric">{{ rubric.name }}</a></li>
-										{% else %}
-										<li><a href="{% url 'shop:by_rubric' rubric.slug %}">{{ rubric.name }}</a></li>
-										{% endif %}
-										{% endfor %}
-										<li class="brand-hidden">
-											<a href="{% url 'shop:brand' %}" {% if brand_page %}class="more_nav selected_rubric"{% else %}class="more_nav"{% endif %}>
-												{% trans 'Бренды' %}<i class="fas fa-chevron-right"></i>
-											</a>
-										</li>
-											<nav class="brand-nav nav-hidden">
-												<ul class="collection-hidden">
-													<li>
-														{% for brand in brands %}
-														{% if title == brand.name %}
-															<a href="{% url 'shop:by_brand' brand.slug %}" class="selected_rubric">{{ brand.name }}</a>
-														{% else %}
-															<a href="{% url 'shop:by_brand' brand.slug %}">{{ brand.name }}</a>
-														{% endif %}
-														{% endfor %}
-													</li>
-												</ul>
-											</nav>
+										</div>
+										<nav class="nav-collection-hidden nav-hidden">
+											<ul class="collection-hidden">
+												{% for rubric in rubrics %}
+												{% if title == rubric.name %}
+												<li><a href="{% url 'shop:by_rubric' rubric.slug %}" class="selected_rubric">{{ rubric.name }}</a></li>
+												{% else %}
+												<li><a href="{% url 'shop:by_rubric' rubric.slug %}">{{ rubric.name }}</a></li>
+												{% endif %}
+												{% endfor %}
+												<li class="brand-hidden">
+													<a href="{% url 'shop:brand' %}" {% if brand_page %}class="more_nav selected_rubric"{% else %}class="more_nav"{% endif %}>
+														{% trans 'Бренды' %}<i class="fas fa-chevron-right"></i>
+													</a>
+												</li>
+													<nav class="brand-nav nav-hidden">
+														<ul class="collection-hidden">
+															<li>
+																{% for brand in brands %}
+																{% if title == brand.name %}
+																	<a href="{% url 'shop:by_brand' brand.slug %}" class="selected_rubric">{{ brand.name }}</a>
+																{% else %}
+																	<a href="{% url 'shop:by_brand' brand.slug %}">{{ brand.name }}</a>
+																{% endif %}
+																{% endfor %}
+															</li>
+														</ul>
+													</nav>
+											</ul>
+										</nav>
+										<div class="li-board">
+											<li {% if title == 'Главная' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+												<a href="{% url 'index' %}">{% trans 'Главная' %}</a>
+											</li>
+										</div>
+										<div class="li-board">
+											<li {% if title == 'Акционные товары' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+												<a href="{% url 'shop:discount' %}">{% trans 'Акции' %}</a>
+											</li>
+										</div>
+										<div class="li-board">
+											<li {% if title == 'Новинки' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+												<a href="{% url 'shop:new' %}">{% trans 'Новинки' %}</a>
+											</li>
+										</div>
+										<div class="li-board">
+											<li {% if brand_page %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+												<a href="{% url 'shop:brand' %}">{% trans 'Бренды' %}</a>
+											</li>
+										</div>
+										<div class="li-board">
+											<li {% if title == 'Статьи' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+												<a href="{% url 'blog:list' %}">{% trans 'Статьи' %}</a>
+											</li>
+										</div>
+										<div class="li-board top_hide_nav">
+											<li {% if title == 'Доставка' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+												<a href="{% url 'shop:delivery' %}">{% trans 'Оплата и Доставка' %}</a>
+											</li>
+										</div>
+										<div class="li-board">
+											<li {% if title == 'Контакты' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
+												<a href="{% url 'shop:contacts' %}">{% trans 'Контакты' %}</a>
+											</li>
+										</div>
 									</ul>
 								</nav>
-								<div class="li-board">
-									<li {% if title == 'Главная' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'index' %}">{% trans 'Главная' %}</a>
-									</li>
-								</div>
-								<div class="li-board">
-									<li {% if title == 'Акционные товары' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:discount' %}">{% trans 'Акции' %}</a>
-									</li>
-								</div>
-								<div class="li-board">
-									<li {% if title == 'Новинки' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:new' %}">{% trans 'Новинки' %}</a>
-									</li>
-								</div>
-								<div class="li-board">
-									<li {% if brand_page %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:brand' %}">{% trans 'Бренды' %}</a>
-									</li>
-								</div>
-								<div class="li-board">
-									<li {% if title == 'Статьи' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'blog:list' %}">{% trans 'Статьи' %}</a>
-									</li>
-								</div>
-								<div class="li-board">
-									<li {% if title == 'Доставка' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:delivery' %}">{% trans 'Оплата и Доставка' %}</a>
-									</li>
-								</div>
-								<div class="li-board">
-									<li {% if title == 'Контакты' %}class="nav-item is_active"{% else %}class="nav-item"{% endif %}>
-										<a href="{% url 'shop:contacts' %}">{% trans 'Контакты' %}</a>
-									</li>
-								</div>
-							</ul>
-						</nav>
 
+							</div>
+						</div>
+						<div class="nav-col-user">
+							<div class="user_icons-clone">
+								<ul class="user_icons-items">
+
+									<li class="user_icons-item">
+										<a href="{% url 'compare:compare_detail' %}" class="user_icons-icon">
+											<i class="fas fa-align-right compare"></i>
+											{% if compare|length > 0 %}
+												<span class="bage bage-cart">{{ compare|length }}</span>
+											{% endif %}
+										</a>
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+													{% if compare|length > 0 %}
+													{% with total_items=compare|length %}
+													<div class="dropdown_products-header">
+														{% trans "В списке сравения" %}
+														{% if total_items == 1 %}
+															<span>{{ total_items }} {% trans "товар" %}</span>
+														{% elif total_items <= 4 %}
+															<span>{{ total_items }} {% trans "товара" %}</span>
+														{% else %}
+														<span>{{ total_items }} {% trans "товаров" %}</span>
+														{% endif %}
+												 	</div>
+												 	{% for product in compare %}
+										      <div class="dropdown_product">
+										        <div class="dropdown_product-row">
+										          <div class="dropdown_product-img-col">
+										            <a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
+										              {% if product.image_1 %}
+										                {% thumbnail product.image_1 "100x100" as img %}
+										                  <img src="{{ img.url }}" class="dropdown_product-thumb" alt="product">
+										                {% endthumbnail %}
+										              {% else %}
+										                <img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb" alt="product">
+										              {% endif %}
+										            </a>
+										          </div>
+										          <div class="dropdown_product-detail-col">
+										            <div class="dropdown_product-title">
+										              <a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+										            </div>
+										            <div class="dropdown_product-prices">
+										              <span>{{ product.get_price }} ₴</span>
+										            </div>
+										          </div>
+										          <div class="dropdown_product-delete-col">
+										            <button type="button" class="button-delete">
+										              <a href="{% url 'compare:compare_remove' product.id %}"><i class="fas fa-trash-alt"></i></a>
+										            </button>
+										          </div>
+										        </div>
+										      </div>
+										     	{% endfor %}
+													</div>
+													<div class="dropdown_products-action">
+														<div class="authenticate-row">
+															<div class="favourite-col">
+																<a class="register-button" href="{% url 'compare:compare_detail' %}">{% trans "Перейти к сравнению" %}</a>
+															</div>
+														</div>
+													</div>
+													{% endwith %}
+													{% else %}
+													<div class="popup--empty">
+														<i class="fas fa-align-right compare"></i>
+														{% trans "Товары для сравнения не выбраны" %}
+													</div>
+												{% endif %}
+											</div>
+										</div>
+									</li>
+									<li class="user_icons-item">
+										<a href="{% url 'shop:favourite' %}" class="user_icons-icon">
+											<i class="far fa-heart"></i>
+											{% if favourite.count > 0 %}
+												<span class="bage bage-cart">{{ favourite.count }}</span>
+											{% endif %}
+										</a>
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+													{% if favourite %}
+														{% with total_items=favourite.count %}
+															<div class="dropdown_products-header">
+																{% trans "В вашем избранном" %}
+																{% if total_items == 1 %}
+																	<span>{{ total_items }} {% trans "товар" %}</span>
+																{% elif total_items <= 4 %}
+																	<span>{{ total_items }} {% trans "товара" %}</span>
+																{% else %}
+																<span>{{ total_items }} {% trans "товаров" %}</span>
+																{% endif %}
+														 </div>
+														 <div class="dropdown_products">
+														 	{% for product in favourite %}
+																<div class="dropdown_product">
+																	<div class="dropdown_product-row">
+																		<div class="dropdown_product-img-col">
+																			<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
+																				{% if product.image_1 %}
+																					{% thumbnail product.image_1 "100x100" as img %}
+																						<img src="{{ img.url }}" class="dropdown_product-thumb" alt="product">
+																					{% endthumbnail %}
+																				{% else %}
+																					<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb" alt="product">
+																				{% endif %}
+																			</a>
+																		</div>
+																		<div class="dropdown_product-detail-col">
+																			<div class="dropdown_product-title">
+																				<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+																			</div>
+																			<div class="dropdown_product-prices">
+				                                <span>{{ product.get_price }} ₴</span>
+																			</div>
+																		</div>
+																		<div class="dropdown_product-delete-col">
+		                                	<button type="button" class="button-delete">
+																				<a href="{% url 'shop:add_favourite' product.id %}"><i class="fas fa-trash-alt"></i></a>
+																			</button>
+																		</div>
+																	</div>
+																</div>
+															{% endfor %}
+														 </div>
+														{% endwith %}
+														<div class="dropdown_products-action">
+ 														 <div class="authenticate-row">
+ 															 <div class="favourite-col">
+ 																 <a class="register-button" href="{% url 'shop:favourite' %}">{% trans "Перейти к избранному" %}</a>
+ 															 </div>
+ 														 </div>
+ 													 </div>
+													{% else %}
+														<div class="popup--empty">
+															<i class="far fa-heart"></i>
+															{% if request.user.is_authenticated %}
+																{% trans 'В вашем избранном пока пусто' %}
+															{% else %}
+																{% trans 'Авторизируйтесь что бы добавлять товар в избранное' %}
+															{% endif %}
+														</div>
+													{% endif %}
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="user_icons-item">
+										<a href="{% url 'cart:cart_detail' %}" class="user_icons-icon">
+											<i class="fas fa-shopping-basket"></i>
+											{% if cart|length > 0 %}
+												<span class="bage bage-cart">{{ cart|length }}</span>
+											{% endif %}
+										</a>
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+												{% with total_items=cart|length %}
+													{% if cart|length > 0 %}
+														<div class="dropdown_products-header">
+															{% trans 'В вашей корзине' %}
+															<br>
+															{% if total_items == 1 %}
+																<span>{{ total_items }} {% trans 'товар' %}</span>
+															{% elif total_items <= 4 %}
+																<span>{{ total_items }} {% trans 'товара' %}</span>
+															{% else %}
+															<span>{{ total_items }} {% trans 'товаров' %}</span>
+															{% endif %}
+															{% trans 'на сумму' %}
+														 	<span>{{ cart.get_total_price }} ₴</span>
+													 </div>
+													 <div class="dropdown_products">
+													 	{% for item in cart %}
+															{% with product=item.product %}
+															<div class="dropdown_product">
+																<div class="dropdown_product-row">
+																	<div class="dropdown_product-img-col">
+																		<a href="{{ product.get_absolute_url }}" class="dropdown_product-img">
+																			{% if product.image_1 %}
+																				{% thumbnail product.image_1 "100x100" as img %}
+																					<img src="{{ img.url }}" class="dropdown_product-thumb" alt="product">
+																				{% endthumbnail %}
+																			{% else %}
+																				<img src="{% static 'large_technics-04-1_002.jpg' %}" class="dropdown_product-thumb" alt="product">
+																			{% endif %}
+																		</a>
+																	</div>
+																	<div class="dropdown_product-detail-col">
+																		<div class="dropdown_product-title">
+																			<a href="{{ product.get_absolute_url }}">{{ product.brand }} {{ product.title }}</a>
+																		</div>
+																		<div class="dropdown_product-prices">
+																			<span>{{ item.quantity }}</span>
+			                                ×
+			                                <span>{{ item.price }} ₴</span>
+																		</div>
+																	</div>
+																	<div class="dropdown_product-delete-col">
+	                                	<button type="button" class="button-delete">
+																			<a href="{% url 'cart:cart_remove' product.id%}"><i class="fas fa-trash-alt"></i></a>
+																		</button>
+																	</div>
+																</div>
+															</div>
+															{% endwith %}
+														{% endfor %}
+													 </div>
+													 <div class="dropdown_products-action">
+														 <div class="authenticate-row">
+															 <div class="authenticate-col">
+																 <a class="register-button" href="{% url 'cart:cart_detail' %}">{% trans 'Открыть корзину' %}</a>
+															 </div>
+															 <div class="authenticate-col">
+																 <a class="register-button auth-button" href="{% url 'orders:create_order' %}">{% trans 'Оформить заказ' %}</a>
+															 </div>
+														 </div>
+													 </div>
+													{% else %}
+													<div class="popup--empty">
+														<i class="fas fa-shopping-basket"></i>
+														{% trans 'В вашей корзине пока пусто' %}
+													</div>
+													{% endif %}
+												{% endwith %}
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="user_icons-item">
+										<!-- <a href="{% url 'logout' %}" class="user_icons-icon"> -->
+											<!-- <i class="fas fa-sign-out-alt"></i> -->
+										<a href="{% url 'edit_profile' %}" class="user_icons-icon">
+											<i class="far fa-user"></i>
+										</a>
+										{% if user.is_authenticated %}
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-client_auth">
+												<div class="popup-content-client">
+													<a href="{% url 'purchase_history' %}" class="popup-row">
+														<span class="popup-mini-logo"><i class="fas fa-history"></i></span>
+														<span class="popup-mini-text">{% trans 'История заказов' %}</span>
+													</a>
+													<a href="{% url 'change_delivery' %}" class="popup-row">
+														<span class="popup-mini-logo"><i class="fas fa-map-marker-alt"></i></span>
+														<span class="popup-mini-text">{% trans 'Адрес доставки' %}</span>
+													</a>
+													<a href="{% url 'bonus_info' %}" class="popup-row">
+														<span class="popup-mini-logo"><i class="fas fa-piggy-bank"></i></span>
+														<span class="popup-mini-text">{% trans 'Скидки и бонусы' %}</span>
+													</a>
+													<a href="{% url 'edit_profile' %}" class="popup-row">
+														<span class="popup-mini-logo"><i class="far fa-address-card"></i></span>
+														<span class="popup-mini-text">{% trans 'Контактные данные' %}</span>
+													</a>
+													<div class="dropdown_products-action auth-button">
+														<a href="{% url 'logout' %}">{% trans 'Выход' %}</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										{% else %}
+										<div class="user-icons-popup user-popup-profile">
+											<div class="popup-contacts popup-favorite">
+												<div class="popup-content-client">
+													<div class="popup--empty popup-authenticate">
+														<i class="far fa-user"></i>
+														<div class="dropdown_products-action">
+															<div class="authenticate-row">
+																<div class="authenticate-col">
+																	<a class="register-button" href="{% url 'login' %}">{% trans 'Авторизация' %}</a>
+																</div>
+																<div class="authenticate-col">
+																	<a class="register-button auth-button" href="{% url 'register' %}">{% trans 'Регистрация' %}</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										{% endif %}
+									</li>
+
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -561,12 +855,36 @@
 	<script src="{% static 'slider/jquery/jquery-3.4.1.min.js' %}"></script>
 	<script src="{% static 'slider/owlcarousel2/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'js/slider.js' %}"></script>
+	<script type="text/javascript">
+    var objToStick = $("#navbar"); //Получаем нужный объект
+    var topOfObjToStick = $(objToStick).offset().top; //Получаем начальное расположение нашего блока
+
+    $(window).scroll(function () {
+        var windowScroll = $(window).scrollTop(); //Получаем величину, показывающую на сколько прокручено окно
+        if (windowScroll > topOfObjToStick) { // Если прокрутили больше, чем расстояние до блока, то приклеиваем его
+            $(objToStick).addClass("topWindow");
+        } else {
+            $(objToStick).removeClass("topWindow");
+        };
+    });
+</script>
 	<script>
 		$(document).ready(function() {
 			$('.additionally-item').click(function(event) {
 				$('.tabs-content').removeClass('is_active')
 				$('.additionally-item').removeClass('active_item')
 				$(this).addClass('active_item')
+				var block = $(this).attr('data_id');
+				$('#'+block).addClass('is_active')
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('.tabs-col').click(function(event) {
+				$('.tabs-content').removeClass('is_active')
+				$('.tabs-col').removeClass('is_active')
+				$(this).addClass('is_active')
 				var block = $(this).attr('data_id');
 				$('#'+block).addClass('is_active')
 			});
