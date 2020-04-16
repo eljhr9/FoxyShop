@@ -258,16 +258,15 @@
 												</form>
 												{% endif %}
                         {% if product in favourite %}
-                        <button class="button favorite">
-                          <!-- <i class="fas fa-heart product-fav"></i> -->
-                           <span class="fas fa-heart fa-lg product-fav"></span>
-                        </button>
-                        {% else %}
-                          <button class="button favorite">
-                            <!-- <i class="fas fa-heart product-fav"></i> -->
-                             <span class="far fa-heart fa-lg"></span>
-                          </button>
-                        {% endif %}
+              					<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+              						<!-- <i class="fas fa-heart product-fav"></i> -->
+              						 <span class="fas fa-heart fa-lg product-fav"></span>
+              					</a>
+              					{% else %}
+              						<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+              							 <span class="far fa-heart fa-lg"></span>
+              						</a>
+              					{% endif %}
                       </div>
                     </div>
 
@@ -408,16 +407,15 @@
 												</form>
 												{% endif %}
                         {% if product in favourite %}
-                        <button class="button favorite">
-                          <!-- <i class="fas fa-heart product-fav"></i> -->
-                           <span class="fas fa-heart fa-lg product-fav"></span>
-                        </button>
-                        {% else %}
-                          <button class="button favorite">
-                            <!-- <i class="fas fa-heart product-fav"></i> -->
-                             <span class="far fa-heart fa-lg"></span>
-                          </button>
-                        {% endif %}
+              					<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+              						<!-- <i class="fas fa-heart product-fav"></i> -->
+              						 <span class="fas fa-heart fa-lg product-fav"></span>
+              					</a>
+              					{% else %}
+              						<a href="{% url 'shop:add_favourite' product.id %}" class="button favorite">
+              							 <span class="far fa-heart fa-lg"></span>
+              						</a>
+              					{% endif %}
                       </div>
                     </div>
 

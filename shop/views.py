@@ -29,6 +29,8 @@ def products(request, rubric_slug=None, brand_slug=None):
 	brand = None
 	brand_page = False
 	language = request.LANGUAGE_CODE
+	if request.method == 'POST' and 'price-' in request.POST:
+		products.order_by('-price')
 
 	if rubric_slug:
 		rubric = get_object_or_404(Rubric, translations__language_code=language, translations__slug=rubric_slug)
