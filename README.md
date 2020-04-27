@@ -6,7 +6,7 @@ FoxyShop is a Django online store created for portfolio.
 
 
 # Screenshot
-![FoxyShop](https://i.imgur.com/7t1FJOF.png)
+![FoxyShop](https://i.imgur.com/hHAilnN.png)
 
 ## Features
 This store is based on Django version 2.2.10 and the PostgreSQL database. Here is a list of all the features and technologies used in this project:
