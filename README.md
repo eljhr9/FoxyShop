@@ -19,7 +19,7 @@ This store is based on Django version 2.2.10 and the PostgreSQL database. Here i
 - Braintree payment system
 - Configured internationalization and localization using GNU gettext
 - The project has 2 translations (Russian and English), you can change the language in "..." menu ![Change Language](https://i.imgur.com/AlccuXi.png?1)
-Front-end used HTML5, pure CSS3 and JavaScript (jQuery)
+- Front-end used HTML5, pure CSS3 and JavaScript (jQuery)
 
 ## Author
 
