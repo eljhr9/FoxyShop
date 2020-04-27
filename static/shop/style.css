@@ -5644,7 +5644,7 @@ table {
 }
 
 .topWindow {
-  width: 1280px;
+  width: 100%;
   position: fixed;
   top: 0;
   z-index:9999;
