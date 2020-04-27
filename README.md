@@ -1,9 +1,6 @@
 # FoxyShop
-View website: https://foxyshop.herokuapp.com/
-
-# Description
 FoxyShop is a Django online store created for portfolio.
-
+View website: https://foxyshop.herokuapp.com/
 
 # Screenshot
 ![FoxyShop](https://i.imgur.com/hHAilnN.png)
@@ -18,8 +15,11 @@ This store is based on Django version 2.2.10 and the PostgreSQL database. Here i
 - Celery and RabbytMQ are used to send email messages asynchronously
 - AWS is used to store media files
 - There is a bonus system, for each purchase, registered users receive bonuses depending on the amount of the order
+- Product recommendation system created using Redis
+- Braintree payment system
 - Configured internationalization and localization using GNU gettext
 - The project has 2 translations (Russian and English), you can change the language in "..." menu ![Change Language](https://i.imgur.com/AlccuXi.png?1)
+Front-end used HTML5, pure CSS3 and JavaScript (jQuery)
 
 ## Author
 
