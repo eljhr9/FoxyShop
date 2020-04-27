@@ -223,6 +223,7 @@ table {
 
 .request_call {
   display: inline-block;
+  min-width: 124px;
 }
 
 .request_call a {
@@ -283,7 +284,7 @@ table {
 }
 
 .user-popup-contacts {
-  right: 330px;
+  right: 322px;
 }
 
 .popup-contacts {
