@@ -422,6 +422,10 @@ table {
   display: block
 }
 
+.user_icons-clone .user_icons-items {
+  margin: 0px;
+}
+
 .user_icons-item {
   position: relative;
   display: inline-block;
