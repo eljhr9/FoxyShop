@@ -308,5 +308,3 @@ CACHES = {
          "LOCATION": config('REDIS_URL'),
     }
 }
-
-SESSION_COOKIE_SAMESITE = None
